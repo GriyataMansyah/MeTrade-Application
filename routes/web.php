@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('login', function () {
+Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('daftar', function () {
+Route::get('/daftar', function () {
     return view('daftar');
 });

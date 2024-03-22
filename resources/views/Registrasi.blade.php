@@ -58,12 +58,15 @@
     .tombol2{
     text-align: right;
     }
+    .p {
+      overflow:hidden;
+    }
     </style>
 </head>
 <body>
     <div class="row">
         <div class="col-md-6 col-lg-6 d-none d-sm-block">
-            <img src="{{ URL('images/Polibatam.jpg')}}" class="img1 img-fluid">
+            <img src="Asset/Polibatam.jpg" class="img1 img-fluid">
         </div>
         <div class="class2 col-md-6 col-lg-6 col-sm-12">
             <div class="container animate__animated animate__fadeInRight">
@@ -145,7 +148,7 @@
                           <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8m4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5"/>
                           <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
                         </svg></span>
-                        <div class="form-floating">
+                        <div class="form-floating p">
                           <input type="password" class="form-control input1" id="floatingInputGroup2" placeholder="Konfirmasi Password" required>
                           <label for="floatingInputGroup2">Konfirmasi Password</label>
                         </div>
@@ -155,8 +158,10 @@
     
                   <!-- INI TOMBOL KIRIM-->
                   <div class="tombol2">
-                  <a href='login'><input class="btn btn-danger batal" type="button" value="Batal"></a>
-                  <input class="btn btn-primary kirim" type="submit" value="Masuk">
+                  <a href="Login.html">
+                  <input class="btn btn-danger kirim" type="button" value="Batal">
+                  </a>
+                  <input class="btn btn-primary batal" type="submit" value="Masuk">
                   </div>
                   
                 </form>
