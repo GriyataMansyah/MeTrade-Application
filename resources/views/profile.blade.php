@@ -283,10 +283,10 @@
     .thisbody {
       position: absolute;
       width: 92%;
-      height: 75vh;
-      background-color: whitesmoke;
+      height: auto;
       margin-left: 95px;
       margin-top: 25px;
+      overflow: scroll;
     }
 
     .ha5 {
@@ -356,6 +356,10 @@
       padding-right: 15px;
     }
 
+    .wrap{
+      background-color: whitesmoke;
+    }
+
     .header2 {
       /* position: ; */
       width: 102%;
@@ -387,6 +391,7 @@
       background-color: whitesmoke;
       margin-top: 18px;
       margin-left: 15px;
+      overflow: scroll;
     }
 
     .footer2 {
@@ -484,9 +489,34 @@
       background-color: red;
     }
 
-    .i {
-      height:5px;
+    .badan1 {
+      height:100vh;
+      padding-left:20px;
     }
+
+    .badan2 {
+      height:100vh;
+      padding-left:10px;
+    }
+
+
+    .gam1 {
+      width:360px;
+    }
+
+    .pembungkus {
+      background-color: whitesmoke;
+      padding:20px;
+    }
+
+    .putih{
+      color:whitesmoke;
+    }
+
+    .pad {
+      padding-left: 10px;
+    }
+    
     </style>
 </head>
       <!-- INI HEADER -->
@@ -558,172 +588,282 @@
         </div>
 
        <!-- INI BADANNYA -->
-    <div class="d-none d-lg-block thisbody animate__animated animate__fadeIn">
-      <div class="row">
-      <h5 class="ha5 col-9">Daftar Dokumen</h5>
-      <div class="col-3 drow1">
-        <div type="button" class="btn btn-outline-secondary drow"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="hoh1 bi bi-arrow-clockwise" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
-          <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
-        </svg><p class="dalamputih">Muat Ulang</p></div>
-        <div type="button" class="btn btn-primary drow"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="hoh1 bi bi-file-earmark-plus" viewBox="0 0 16 16">
-          <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5"/>
-          <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/>
-        </svg><p class="dalambiru" data-bs-toggle="modal" data-bs-target="#Modal">Buat Dokumen</p></div>
-      </div>
-    </div>
-      <hr>
-      <div class="table-responsive">
-        <div class="container">
-          <table class="table table-bordered">
-            <thead>
-              <tr class="i">
-                <th class="table-primary" scope="col">Nomor</th>
-                <th class="table-primary" scope="col">Dokumen</th>
-                <th class="table-primary" scope="col">Nomor Pengajuan</th>
-                <th class="table-primary" scope="col">Tanggal Daftar</th>
-                <th class="table-primary" scope="col">Nama Respon</th>
-                <th class="table-primary" scope="col">Tanggal Respon</th>
-                <th class="table-primary" scope="col">Jalur</th>
-                <th class="table-primary" scope="col">Kantor Pabean</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Dokumen 1</td>
-                <td>NP-001</td>
-                <td>2024-03-14</td>
-                <td>Respon 1</td>
-                <td>2024-03-15</td>
-                <td>Jalur 1</td>
-                <td>Kantor Pabean 1</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Dokumen 2</td>
-                <td>NP-002</td>
-                <td>2024-03-15</td>
-                <td>Respon 2</td>
-                <td>2024-03-16</td>
-                <td>Jalur 2</td>
-                <td>Kantor Pabean 2</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-              <!-- INI ADALAH BADAN RESPONSIVE -->
-              <div class="d-block d-lg-none thisbody2 animate__animated animate__fadeIn">
-                <div class="row">
-                  <h5 class="ha5 col-6">Daftar Dokumen</h5>
-                  <div class="col-6 drow1">
-                    <div type="button" class="btn btn-outline-secondary drow"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="hoh1 bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
-                      <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
-                    </svg><p class="dalamputih">Muat Ulang</p></div>
-                    <div type="button" class="btn btn-primary drow"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="hoh1 bi bi-file-earmark-plus" viewBox="0 0 16 16">
-                      <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5"/>
-                      <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/>
-                    </svg><p class="dalambiru" data-bs-toggle="modal" data-bs-target="#Modal">Buat Dokumen</p></div>
-                  </div>
-                </div>
-                  <hr>
-                  <div class="table-responsive">
-                    <div class="container">
-                      <table class="table table-bordered">
-                        <thead>
-                          <tr class="i">
-                            <th class="table-primary" scope="col">Nomor</th>
-                            <th class="table-primary" scope="col">Dokumen</th>
-                            <th class="table-primary" scope="col">Nomor Pengajuan</th>
-                            <th class="table-primary" scope="col">Tanggal Daftar</th>
-                            <th class="table-primary" scope="col">Nama Respon</th>
-                            <th class="table-primary" scope="col">Tanggal Respon</th>
-                            <th class="table-primary" scope="col">Jalur</th>
-                            <th class="table-primary" scope="col">Kantor Pabean</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Dokumen 1</td>
-                            <td>NP-001</td>
-                            <td>2024-03-14</td>
-                            <td>Respon 1</td>
-                            <td>2024-03-15</td>
-                            <td>Jalur 1</td>
-                            <td>Kantor Pabean 1</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Dokumen 2</td>
-                            <td>NP-002</td>
-                            <td>2024-03-15</td>
-                            <td>Respon 2</td>
-                            <td>2024-03-16</td>
-                            <td>Jalur 2</td>
-                            <td>Kantor Pabean 2</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+       <div class="d-none d-lg-block animate__animated animate__fadeIn">
+        <div class="thisbody row">
+          <div class="col-4 badan1">
+            <div class="row wrap">
+            <img src="Asset/logo.png" class="gam1 col-12 mx-auto d-bloc">
+            <div class="col-12">
+              <h5><b>Level Akses:</b></h5>
+              <p>User Portal Manifes</p>
+              <br>
+              <h5><b>Role Dokumen Pabean:</b></h5>
+              <p>Ekspor BC 3.0</p>
+            </div>
+          </div>
+          </div>
+          <div class="col-8 badan2">
+            <div class="pembungkus">
+            <div class="row">
+              <div class="col-6">
+                <b>NPWP:</b><br>
+                <p>987654321</p>
               </div>
-
-  <!------POP UP DARI BADAN-->
-  <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header mb-3 " style="background-color: #DDFAFE;">
-          <h1 class="modal-title fs-5 " id="exampleModalLabel">Buat Dokumen Baru</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form >
-            <div class="form-group row mb-3">
-              <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Entitas</p></label>
-              <div class="offset-1 col-8">
-              <input type="text" class="form-control" value="EXSPORTIR" disabled>
+              <div class="col-6">
+                <b>NIB:</b><br>
+                <p>987654321</p>
               </div>
             </div>
-            <div class="form-group row mb-3">
-              <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Jenis Pemberitahuan</p></label>
-              <div class="offset-1 col-8">
-              <input type="text" class="form-control" value="Pengeluaran" disabled>
+            <div class="col-12 putih">.</div>
+            <div class="row">
+              <div class="col-6">
+                <b>Nama Perusahaan:</b><br>
+                <p>Monkey Moon</p>
+              </div>
+              <div class="col-6">
+                <b>Alamat Perusahaan:</b><br>
+                <p>Jl.Imam Bonjol Ae Lah Bingung Mau Nulis Apa</p>        
+              </div>
+              <div class="col-12 putih">
+                .
               </div>
             </div>
-            <div class="form-group row mb-3">
-              <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Asal Barang</p></label>
-              <div class="offset-1 col-8">
-              <input type="text" class="form-control" value="Kawasan Pabean" disabled>
+            <div class="row">
+              <dov class="col-12">
+                <b>Nama:</b><br>
+                <p>Agem At Talla</p>
+              </dov>
+              <div class="col-12 putih">
+                .
               </div>
             </div>
-            <div class="form-group row mb-3">
-              <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Tujuan Barang</p></label>
-              <div class="offset-1 col-8">
-              <input type="text" class="form-control" value="Luar Daerah Pabean" disabled >
+            <div class="row">
+              <div class="col-6">
+              <b>Username:</b><br>
+              <p>MangkatWir</p>
+            </div>
+            <div class="col-6">
+              <b>Password:</b><br>
+              <p>**************
+                <a href="" type="button" class="pad"data-bs-toggle="modal" data-bs-target="#Modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+              </svg></a></p>
+            </div>
+            <div class="col-12 putih">
+              .
+            </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+              <b>E-mail:</b><br>
+              <p>MangkatWir
+                <a href="" type="button" class="pad"data-bs-toggle="modal" data-bs-target="#Modalemail"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                </svg></a>
+              </p>
+            </div>
+            <div class="col-12 putih">
+              .
+            </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <b>Phone:</b><br>
+                <p>0987654345678
+                  <a href="" type="button" class="pad"data-bs-toggle="modal" data-bs-target="#Modalphone"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                  </svg></a>
+                </p>
               </div>
             </div>
-            <div class="form-group row mb-3">
-              <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Jenis Dokumen</p></label>
-              <div class="offset-1 col-8">
-              <input type="text" class="form-control" value="BC 3.0" disabled >
-              </div>
-            </div>
-
-            </div>
-            
-          </form>
-          <div class="modal-footer mt-3 ">
-            <button type="button" class="btn btn-outline-secondary px-3" data-bs-dismiss="modal">Batal</button>
-            <button type="button" class="btn btn-primary px-3">Simpan</button>
+          </div>
           </div>
         </div>
-        
       </div>
-    </div>
+              <!-- INI ADALAH BADAN RESPONSIVE -->
+              <div class="d-block d-lg-none animate__animated animate__fadeIn">
+              <div class="thisbody2 row ">
+                <div class="col-4 badan1">
+                  <div class="row wrap">
+                  <img src="Asset/logo.png" class="gam1 col-12 mx-auto d-bloc">
+                  <div class="col-12">
+                    <h5><b>Level Akses:</b></h5>
+                    <p>User Portal Manifes</p>
+                    <br>
+                    <h5><b>Role Dokumen Pabean:</b></h5>
+                    <p>Ekspor BC 3.0</p>
+                  </div>
+                </div>
+                </div>
+                <div class="col-8 badan2">
+                  <div class="pembungkus">
+                  <div class="row">
+                    <div class="col-md-6 col-sl-12">
+                      <b>NPWP:</b><br>
+                      <p>987654321</p>
+                    </div>
+                    <div class="col-6">
+                      <b>NIB:</b><br>
+                      <p>987654321</p>
+                    </div>
+                  </div>
+                  <div class="col-12 putih">.</div>
+                  <div class="row">
+                    <div class="col-md-6 col-sl-12">
+                      <b>Nama Perusahaan:</b><br>
+                      <p>Monkey Moon</p>
+                    </div>
+                    <div class="col-6">
+                      <b>Alamat Perusahaan:</b><br>
+                      <p>Jl.Imam Bonjol Ae Lah Bingung Mau Nulis Apa</p>        
+                    </div>
+                    <div class="col-12 putih">
+                      .
+                    </div>
+                  </div>
+                  <div class="row">
+                    <dov class="col-12">
+                      <b>Nama:</b><br>
+                      <p>Agem At Talla</p>
+                    </dov>
+                    <div class="col-12 putih">
+                      .
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 col-sl-12">
+                    <b>Username:</b><br>
+                    <p>MangkatWir</p>
+                  </div>
+                  <div class="col-6">
+                    <b>Password:</b><br>
+                    <p>**************
+                      <a href="" type="button" class="pad"data-bs-toggle="modal" data-bs-target="#Modal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                      </svg></a>
+                    </p>
+                  </div>
+                  <div class="col-12 putih">
+                    .
+                  </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                    <b>E-mail:</b><br>
+                    <p>MangkatWir
+                      <a href="" type="button" class="pad"data-bs-toggle="modal" data-bs-target="#Modalemail"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                      </svg></a>
+                    </p>
+                  </div>
+                  <div class="col-12 putih">
+                    .
+                  </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <b>Phone:</b><br>
+                      <p>0987654345678
+                        <a href="" type="button" class="pad"data-bs-toggle="modal" data-bs-target="#Modalphone"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                          <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                          <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                        </svg></a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+
+            <!------POP UP DARI password-->
+            <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header mb-3 " style="background-color: #DDFAFE;">
+                    <h1 class="modal-title fs-5 " id="exampleModalLabel">Ganti Password</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form >
+                      <div class="form-group row mb-3">
+                        <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Password Baru</p></label>
+                        <div class="offset-1 col-8">
+                        <input type="text" class="form-control" >
+                        </div>
+                      </div>
+                      </div>
+                      
+                    </form>
+                    <div class="modal-footer mt-3 ">
+                      <button type="button" class="btn btn-outline-secondary px-3" data-bs-dismiss="modal">Batal</button>
+                      <button type="button" class="btn btn-primary px-3">Simpan</button>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+
+                  <!------POP UP DARI email-->
+            <div class="modal fade" id="Modalemail" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header mb-3 " style="background-color: #DDFAFE;">
+                    <h1 class="modal-title fs-5 " id="exampleModalLabel">Ganti E-mail</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form >
+                      <div class="form-group row mb-3">
+                        <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">E-mail Baru</p></label>
+                        <div class="offset-1 col-8">
+                        <input type="text" class="form-control" >
+                        </div>
+                      </div>
+                      </div>
+                      
+                    </form>
+                    <div class="modal-footer mt-3 ">
+                      <button type="button" class="btn btn-outline-secondary px-3" data-bs-dismiss="modal">Batal</button>
+                      <button type="button" class="btn btn-primary px-3">Simpan</button>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+
+                  <!------POP UP DARI phone-->
+            <div class="modal fade" id="Modalphone" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header mb-3 " style="background-color: #DDFAFE;">
+                    <h1 class="modal-title fs-5 " id="exampleModalLabel">Ganti Nomor Phone</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form >
+                      <div class="form-group row mb-3">
+                        <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Nomor Baru</p></label>
+                        <div class="offset-1 col-8">
+                        <input type="text" class="form-control" >
+                        </div>
+                      </div>
+                      </div>
+                      
+                    </form>
+                    <div class="modal-footer mt-3 ">
+                      <button type="button" class="btn btn-outline-secondary px-3" data-bs-dismiss="modal">Batal</button>
+                      <button type="button" class="btn btn-primary px-3">Simpan</button>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
 
       <!-- INI SIDEBAR -->
     <div class="sidebar d-none d-lg-block animate__animated animate__fadeInLeft" id="sidebar">
