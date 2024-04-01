@@ -34,3 +34,33 @@
 function submitForm3() {
   document.getElementById("formulir3").submit();
 }
+// -------------------------
+function submitForm4() {
+  document.getElementById("formulir4").submit();
+}
+//------------------------
+function updateInputValue() {
+  var selectElement = document.getElementById("rupiah1");
+  var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+  var inputValueElement = document.getElementById("rupiah2");
+
+  if (selectedOption === "1") { 
+    inputValueElement.value = "350.000,00"; 
+  } else {
+    inputValueElement.value = "";
+  }
+}
+//------------------------
+function updateInputValue1() {
+  var selectElement = document.getElementById("batu");
+  var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+  var inputValueElement = document.getElementById("batu2");
+
+  if (selectedOption === "1") { 
+    inputValueElement.value = "STG - SINGAPURE ONE"; 
+  } else {
+    inputValueElement.value = "";
+  }
+}
+
+

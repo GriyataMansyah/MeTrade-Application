@@ -25,3 +25,4 @@ Route::view('/entitas', 'entitas');
 Route::view('/dokumen', 'dokumenpen');
 Route::view('/pengangkut', 'pengangkut');
 Route::view('/kemasan', 'kemasan');
+Route::view('/transaksi', 'transaksi');
