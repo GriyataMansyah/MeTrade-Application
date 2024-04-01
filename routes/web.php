@@ -17,10 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
 
-Route::get('/daftar', function () {
-    return view('daftar');
-});
+
+// Menampilkan Saja
+Route::view('/header', 'header');
+Route::view('/entitas', 'entitas');
+Route::view('/dokumen', 'dokumenpen');
+Route::view('/pengangkut', 'pengangkut');
+Route::view('/kemasan', 'kemasan');
