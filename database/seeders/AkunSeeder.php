@@ -3,7 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Akun;
+use Illuminate\Support\Facades\Hash;
+
 
 class AkunSeeder extends Seeder
 {
@@ -12,14 +15,17 @@ class AkunSeeder extends Seeder
      */
     public function run(): void
     {
-        akun::create([
+        Akun::create([
             "username" => "pengekspor",
-            "password" => "pengekspor",
+            "password" => Hash::make("pengekspor"),
+            "level" => "pengekspor"
         ]);
-
-        akun::create([
+        
+        // Membuat akun petugas
+        Akun::create([
             "username" => "petugas",
-            "password" => "petugas",
+            "password" => Hash::make("petugas"),
+            "level" => "petugas",
         ]);
-    }
+}
 }

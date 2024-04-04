@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('dokumens', function (Blueprint $table) {
-            $table->bigInteger('id_pengekspor')->unsigned()->nullable();
+            $table->Integer('id_pengekspor')->unsigned();
             $table->foreign('id_pengekspor')->references('id')->on('pengekspors');
 
-            $table->bigInteger('id_petugas')->unsigned()->nullable();
+            $table->Integer('id_petugas')->unsigned();
             $table->foreign('id_petugas')->references('id')->on('petugas');
 
-            $table->bigInteger('nomor_pengajuan')->unsigned()->nullable();
+            $table->Integer('nomor_pengajuan')->unsigned();
             $table->foreign('nomor_pengajuan')->references('nomor_pengajuan')->on('headers');
 
             $table->increments("id_dokumen");

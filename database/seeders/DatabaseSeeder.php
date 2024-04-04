@@ -13,10 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Memanggil seeder-seeder yang ingin Anda jalankan
         $this->call(AkunSeeder::class);
-        // $this->call(PengeksporSeeder::class);
-        // $this->call(DokumenSeeder::class);
-        // Tambahkan seeder lainnya sesuai kebutuhan Anda
     }
 }

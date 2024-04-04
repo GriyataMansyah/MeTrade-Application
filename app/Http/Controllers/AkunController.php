@@ -2,64 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\akun;
+use App\Models\Akun;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AkunController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        return view('login');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function login(Request $request)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(akun $akun)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(akun $akun)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, akun $akun)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(akun $akun)
-    {
-        //
+        $infomasuk = $request->only('username', 'password');
+    
+        if (Auth::attempt($infomasuk)) {
+            return redirect('/header');
+        } else {
+            Session::flash('error', 'Login gagal. Pastikan username dan password Anda benar.');
+            return redirect('/login');
+        }
     }
 }

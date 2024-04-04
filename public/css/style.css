@@ -532,6 +532,14 @@ a {
   margin-left: 20px;
 }
 
+.kotakz {
+  width: 97%;
+  height: auto;
+  margin-top: 8px;
+  position: sticky;
+  margin-left: 20px;
+}
+
 .kotakdalam {
   background-color: #5fadd1;
   width: 98%;
@@ -805,4 +813,43 @@ a {
 
   .naupal {
     height: 50px;
+  }
+
+  .pungutan {
+    background-color: rgb(172, 174, 174);
+    width:100%;
+    height:40px;
+  }
+
+  .pungutans {
+    font-size: 18px;
+    padding:5px;
+    padding-left: 10px;
+  }
+
+  .tabel1 {
+    margin-top: 10px;
+  }
+
+  .kepalaa{
+    height:30px;
+  }
+  
+  
+  .kotakw {
+    width: 97%;
+    height:auto;
+    margin-top: 8px;
+    position: sticky;
+    margin-left:20px;
+  }
+
+  .kotak2w {
+    width: 97%;
+    height:auto;
+    margin-top: 8px;
+    position: sticky;
+    border: 1px solid grey;
+    margin-left:10px;
+    padding-bottom: 10px;
   }

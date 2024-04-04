@@ -12,6 +12,6 @@ class dokumen extends Model
     protected $table= "dokumen";
 
     protected $fillable = array(
-        "id_dokumen","entitas","jenis_pemberitahuan","asal_brg","tujuan_brg","jenis_dokumen"
+        "id_dokumen","entitas","jenis_pemberitahuan","asal_brg","tujuan_brg","jenis_dokumen","id_pengekspor","id_petugas","nomor_pengajuan"
     );
 }

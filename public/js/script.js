@@ -62,5 +62,26 @@ function updateInputValue1() {
     inputValueElement.value = "";
   }
 }
+//------------------------
+function updateInputValue2() {
+  var selectElement = document.getElementById("kode");
+  var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+  var inputValueElement = document.getElementById("kode2");
 
+  if (selectedOption === "1") { 
+    inputValueElement.value = "WIRE HARNES"; 
+  } else if (selectedOption === "2") { 
+    inputValueElement.value = "STAINLES TOP"; 
+  } else {
+    inputValueElement.value = "";
+  }
+}
+// -------------------------
+function submitForm5() {
+  document.getElementById("formulir5").submit();
+}
+// -------------------------
+function submitForm6() {
+  document.getElementById("formulir6").submit();
+}
 

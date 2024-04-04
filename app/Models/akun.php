@@ -4,14 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
+use Illuminate\Contracts\Auth\Authenticatable;
 
-class akun extends Model
+class Akun extends Model implements Authenticatable
 {
-    use HasFactory;
+    use HasFactory, AuthenticatableTrait;
 
-    protected $table= "akun";
+    public $timestamps = false;
+    
+    protected $table = "Akuns";
 
-    protected $fillable = array(
-        "id_akun","username","password"
-    );
+    protected $fillable = [
+        "username", "password", "level"
+    ];
 }

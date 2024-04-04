@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AkunController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,11 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/login', [AkunController::class, 'index']);
 
-
+Route::post('/login', [AkunController::class, 'login']);
 
 // Menampilkan Saja
 Route::view('/header', 'header');
@@ -26,3 +25,6 @@ Route::view('/dokumen', 'dokumenpen');
 Route::view('/pengangkut', 'pengangkut');
 Route::view('/kemasan', 'kemasan');
 Route::view('/transaksi', 'transaksi');
+Route::view('/barang', 'barang');
+Route::view('/pungutan', 'pungutan');
+Route::view('/pernyataan','pernyataan');
