@@ -41,4 +41,3 @@ class AkunController extends Controller
     return redirect('log');
     }
 }
-`
