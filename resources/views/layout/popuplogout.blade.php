@@ -1,13 +1,13 @@
 <!-- INI POP UP LOG OUT -->
 <div class="popup position-absolute top-0 end-0 animate__animated animate__headShake" id="popup1">
     <div class="col-12 patas">
-      <img src="Asset/logo2.png" class="hay">
+      <img src="{{ asset('images/logo2.png')}}" class="hay">
       <a href="#">
         <h2 class="teman">Teman-Teman</h2>
       </a>
     </div>
     <div class="col-12 pbawah">
-      <a href="#" class="a4">
+      <a href="{{ url('/profile')}}" class="a4">
         <svg class="svg1" xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor"
           class="bi bi-person-square" viewBox="0 0 16 16">
           <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
@@ -20,8 +20,9 @@
         </div>
       </a>
       <hr class="h0">
-      <a href="">
-        <button type="button" class="yebtn btn btn-outline-danger">Log Out</button>
-      </a>
+      <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit" class="yebtn btn btn-outline-danger">Log Out</button>
+    </form>    
     </div>
   </div>

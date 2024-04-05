@@ -6,6 +6,7 @@
     <title>Login</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="{{ asset('images/logo2.png')}}" rel="icon">
     <style>
     body {
         height: 100vh;
@@ -50,12 +51,12 @@
 <body>
     <div class="row">
         <div class="col-md-6 col-lg-6 d-none d-sm-block">
-            <img src="Asset/Polibatam.jpg" class="img1 img-fluid">
+            <img src="{{asset('images/polibatam.jpg')}}" class="img1 img-fluid">
         </div>
         <div class="class2 col-md-6 col-lg-6 col-sm-12">
             <div class="position-static">
             <div class="container animate__animated animate__fadeInRight">
-            <img src="Asset/logo2.png" width="20%" class="gam1 mx-auto d-block">
+            <img src="{{asset('images/logo2.png')}}" width="25%" class="gam1 mx-auto d-block">
             <h4 class="text1 d-flex justify-content-center"><b>Selamat Datang Di MeTrade</b></h4>
             <p class="text1 d-flex justify-content-center">Portal Pengguna Jasa Direktorat Jendral Bea Dan Cukai Aplikasi Dummy Ceisa 4.0 Dari Politeknik Negeri Batam</p>
 
@@ -85,7 +86,7 @@
               </div>
 
               <!-- INI TOMBOL KIRIM DAN PENDAFTARAN BARU-->
-              <a><p>Pendaftaran Baru</p></a> 
+              <a href={{url('regis')}}><p>Pendaftaran Baru</p></a> 
               <a>
               <input class="btn btn-primary kirim" type="submit" value="Masuk">
               </a>

@@ -2,21 +2,25 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\PengeksporController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('/', [AkunController::class, 'index'])->name('login');
 
-Route::get('/login', [AkunController::class, 'index']);
+Route::post('/', [AkunController::class, 'login']);
 
-Route::post('/login', [AkunController::class, 'login']);
+Route::post('/layout/popuplogout', [AkunController::class, 'logout'])->name('logout');
+
+Route::post('/sesi/registrasi', [PengeksporController::class,'regis'])->name('reg');
+
+Route::view('/regis','sesi/Registrasi');
+
+Route::get('akun/login', [AkunController::class, 'login'])->name('new.login');
+
+Route::view('/profile','pengekspor/profile');
+
+Route::view('/log','sesi/login');
+
+
 
 // Menampilkan Saja
 Route::view('/header', 'header');

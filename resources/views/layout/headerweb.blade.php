@@ -6,8 +6,8 @@
         <button class="a1 btn btn-secondary" onclick="muncul()">HI, <b>Teman-Teman</b></button>
       </div>
   
-      <div class="col-12 hrs">
-      </div>
+      <hr class="col-12 hrs">
+      </hr>
   
       <div class="col-12">
         <p class="cei">CEISA 4.0</p>

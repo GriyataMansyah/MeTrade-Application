@@ -238,14 +238,14 @@ a {
 
 .hrs {
   width: 100%;
-  background-color: gray;
+  background-color: black;
   height: 1px;
   margin-top: 12px;
 }
 
 .cei {
-  margin-top: 10px;
   font-size: 16px;
+  margin-top: -5px;
 }
 
 .footer {
@@ -370,7 +370,7 @@ a {
 }
 
 .cei2 {
-  margin-top: 10px;
+  margin-top: 5px;
   font-size: 16px;
   margin-left: 14px;
 }
@@ -853,3 +853,32 @@ a {
     margin-left:10px;
     padding-bottom: 10px;
   }
+
+  
+  .badan1 {
+    height:100vh;
+    padding-left:20px;
+  }
+
+  .badan2 {
+    height:100vh;
+    padding-left:10px;
+  }
+
+  .gam1 {
+    width:360px;
+  }
+
+  .pembungkus {
+    background-color: whitesmoke;
+    padding:20px;
+  }
+
+  .putih{
+    color:whitesmoke;
+  }
+
+  .pad {
+    padding-left: 10px;
+  }
+  

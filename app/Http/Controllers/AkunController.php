@@ -9,20 +9,36 @@ use Illuminate\Support\Facades\Session;
 
 class AkunController extends Controller
 {
+    // FUNCTION UNTUK LOG IN
     public function index()
     {
-        return view('login');
+        return view('sesi.login');
     }
 
     public function login(Request $request)
     {
-        $infomasuk = $request->only('username', 'password');
+        $credentials = $request->only('username', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
     
-        if (Auth::attempt($infomasuk)) {
-            return redirect('/header');
-        } else {
-            Session::flash('error', 'Login gagal. Pastikan username dan password Anda benar.');
-            return redirect('/login');
+            if ($user->level === 'pengekspor') {
+                return view('/pengekspor/dashboard');
+            } elseif ($user->level === 'petugas') {
+                return view('/petugas/dashboard');
+            }
         }
+    
+        Session::flash('error', 'Login gagal. Pastikan username dan password Anda benar.');
+        return redirect('/');
+    }
+    
+
+    // FUNCTION UNTUK LOG OUT
+    public function logout()
+    {
+    Auth::logout();
+    return redirect('log');
     }
 }
+`

@@ -1,7 +1,7 @@
 
 <!-- INI SIDEBAR -->
 <div class="sidebar d-none d-lg-block animate__animated animate__fadeInLeft" id="sidebar">
-    <img src="Asset/logo.png" class="logoo animate__animated animate__fadeInDown">
+    <img src="{{ asset('images/logo.png')}}" class="logoo animate__animated animate__fadeInDown">
   
     <a href="">
       <p class="logo1"></p>
@@ -109,7 +109,7 @@
         </svg>
       </div>
     </a>
-    <img src="Asset/logo.png" class="logoo animate__animated animate__fadeInDown">
+    <img src="{{ asset('images/logo.png')}}" class="logoo animate__animated animate__fadeInDown">
   
   
     <a href="">

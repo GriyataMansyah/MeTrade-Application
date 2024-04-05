@@ -12,6 +12,6 @@ class pengekspor extends Model
     protected $table= "pengekspor";
 
     protected $fillable = array(
-        "id_pengekspor","nama","npwp","email","no_hp"
+        "nama","npwp","email","no_hp"
     );
 }

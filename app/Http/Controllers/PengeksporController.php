@@ -4,62 +4,42 @@ namespace App\Http\Controllers;
 
 use App\Models\pengekspor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\User;
+use Illuminate\Support\Facades\DB;
+
 
 class PengeksporController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function regis(Request $request)
     {
-        //
-    }
+        $password = $request->input('password');
+        $confirmedPassword = $request->input('confirmedPassword');
+    
+        
+        if ($password != $confirmedPassword) {
+            return redirect()->back()->withInput()->with('error', 'Konfirmasi Password Tidak Cocok,Harap Isi Ulang Seluruh Data');
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        $userData = new \stdClass();
+        $userData->npwp = $request->input('npwp');
+        $userData->no_hp = $request->input('no_hp');
+        $userData->nama = $request->input('nama');
+        $userData->email = $request->input('email');
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $akunData = new \stdClass();
+        $akunData->username = $request->input('username');
+        $akunData->password = bcrypt($request->input('password'));
+        $akunData->level = "pengekspor";
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(pengekspor $pengekspor)
-    {
-        //
-    }
+        $akunId = DB::table('akuns')->insertGetId((array) $akunData);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(pengekspor $pengekspor)
-    {
-        //
-    }
+        $userData->id_akun = $akunId;
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, pengekspor $pengekspor)
-    {
-        //
-    }
+        DB::table('pengekspors')->insert((array) $userData);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(pengekspor $pengekspor)
-    {
-        //
+        return redirect()->to('/')->with('success', 'Pendaftaran berhasil, silakan masuk.');
+
     }
 }

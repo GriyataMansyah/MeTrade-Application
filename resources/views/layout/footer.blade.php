@@ -5,7 +5,7 @@
         <p>2024 @ Mahasiswa Teknologi Rekayasa Perangkat Lunak</p>
       </div>
       <div class="col-2">
-        <P><a href='#'>TIM MeTrade</a></P>
+        <P>TIM MeTrade</P>
       </div>
     </div>
   </div>

@@ -84,4 +84,8 @@ function submitForm5() {
 function submitForm6() {
   document.getElementById("formulir6").submit();
 }
-
+//--------------------------
+var divToRedirect = document.getElementById('redirectDiv');
+divToRedirect.addEventListener('click', function() {
+    window.location.href = 'profile';
+});
