@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class pengekspor extends Model
 {
-    use HasFactory;
+    protected $table= "pengekspors";
 
-    protected $table= "pengekspor";
+    public $timestamps = false;
 
     protected $fillable = array(
         "nama","npwp","email","no_hp"

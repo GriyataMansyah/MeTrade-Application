@@ -89,3 +89,7 @@ var divToRedirect = document.getElementById('redirectDiv');
 divToRedirect.addEventListener('click', function() {
     window.location.href = 'profile';
 });
+//--------------------------
+function refreshPage() {
+  location.reload();
+}

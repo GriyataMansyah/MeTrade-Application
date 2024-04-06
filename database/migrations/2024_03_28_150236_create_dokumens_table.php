@@ -18,9 +18,6 @@ return new class extends Migration
             $table->Integer('id_petugas')->unsigned();
             $table->foreign('id_petugas')->references('id')->on('petugas');
 
-            $table->Integer('nomor_pengajuan')->unsigned();
-            $table->foreign('nomor_pengajuan')->references('nomor_pengajuan')->on('headers');
-
             $table->increments("id_dokumen");
             $table->string("entitas");
             $table->string("jenis_pemberitahuan");

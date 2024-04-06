@@ -35,7 +35,7 @@
         <p class="inlogo1"></p>
       </a>
       <div class="dropdown-content animate__animated animate__slideInLeft">
-        <a href="#" class="dropdown-item">Dokumen Pabean</a>
+        <a href="{{ url("daftar")}}" class="dropdown-item">Dokumen Pabean</a>
         <a href="#" class="dropdown-item">Pengajuan Rush Handling</a>
         <a href="#" class="dropdown-item">Dokumen Barang Kiriman</a>
       </div>
