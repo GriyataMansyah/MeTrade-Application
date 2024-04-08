@@ -12,6 +12,18 @@ class HeaderController extends Controller
 {
     
   public function tambah(Request $request){
+    $request->validate([
+      'pelabuhan_ekspor' => 'required',
+      'kantor_asal' => 'required',
+      'kantor_ekspor' => 'required',
+      'jenis_ekspor' => 'required',
+      'kategori_ekspor' => 'required',
+      'cara_dagang' => 'required',
+      'cara_bayar' => 'required',
+      'komoditi' => 'required',
+      'curah' => 'required',
+  ]);
+  
     $header = new Header;
     $part1 = mt_rand(100000, 999999);
     $part2 = mt_rand(100000, 999999);

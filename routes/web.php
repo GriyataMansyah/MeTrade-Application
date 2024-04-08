@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\DokumenController;
+use App\Http\Controllers\EntitasController;
 use App\Http\Controllers\PengeksporController;
 
 Route::get('', [AkunController::class, 'index'])->name('login');
@@ -35,6 +36,14 @@ Route::view('/header', 'pengekspor/header')->name('header');
 Route::view('/entitas', 'pengekspor/entitas')->name("entitas");
 
 Route::post('header', [HeaderController::class, 'tambah']);
+
+Route::view('/entitas', 'pengekspor/entitas')->name('entitas');
+
+Route::post('entitas', [EntitasController::class, 'tambah']);
+
+
+Route::view('/dokumenpen', 'pengekspor/dokumenpen')->name("dokumenpen");
+
 // Menampilkan Saja
 
 Route::view('1', 'petugas/datamaster');

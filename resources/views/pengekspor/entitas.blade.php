@@ -47,7 +47,8 @@
       <div class="kotak0">
         <div class="row">
         <div class="col-6">
-          <form id="formulir2" action="">
+          <form id="formulir2" method="post">
+            @csrf
           <table class="tabless">
             <thead>
               <tr>
@@ -64,12 +65,12 @@
   
                   Nama:<br><br>
                   <div class="input-group mb-3 input1">
-                    <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_ek">
                   </div>
   
                   Alamat:<br><br>
                   <div class="input-group mb-3 input1">
-                    <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1"></textarea>
+                    <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_ek"></textarea>
                   </div>
                 </td>
               </tr>
@@ -89,19 +90,19 @@
                 <td class="td1">
                   Nama:<br><br>
                   <div class="input-group mb-3 input1">
-                    <input type="text" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pen">
                   </div>
   
                   Alamat:<br><br>
                   <div class="input-group mb-3 input1">
-                    <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1"></textarea>
+                    <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pen"></textarea>
                   </div>
   
                   Negara:<br><br>
                   <div class="input-group mb-3 input1">
-                    <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1">
+                    <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pen">
                       <option value=""></option>
-                      <option value="1">SG - SINGAPURA</option>
+                      <option value="SG - SINGAPURA">SG - SINGAPURA</option>
                     </select>
                   </div>
                 </td>
@@ -123,19 +124,19 @@
                   <td class="td1">
                     Nama:<br><br>
                     <div class="input-group mb-3 input1">
-                      <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1">
+                      <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pem">
                     </div>
     
                     Alamat:<br><br>
                     <div class="input-group mb-3 input1">
-                      <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1"></textarea>
+                      <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pem"></textarea>
                     </div>
     
                     Negara:<br><br>
                     <div class="input-group mb-3 input1">
-                      <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1">
+                      <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pem">
                         <option value=""></option>
-                        <option value="1">SG - SINGAPURA</option>
+                        <option value="SG - SINGAPURA">SG - SINGAPURA</option>
                       </select>
                     </div>
                   </td>
@@ -226,7 +227,8 @@
                 <div class="row">
                 <div class="col-6">
                   <table class="tabless">
-                    <form id="formulir2" action="">
+                    <form id="formulir2" action="post">
+                      @csrf
                     <thead>
                       <tr>
                         <th class="th1">Eksportir</th>
@@ -242,12 +244,12 @@
           
                           Nama:<br><br>
                           <div class="input-group mb-3 input1">
-                            <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_ek">
                           </div>
           
                           Alamat:<br><br>
                           <div class="input-group mb-3 input1">
-                            <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1"></textarea>
+                            <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_ek"></textarea>
                           </div>
                         </td>
                       </tr>
@@ -267,17 +269,17 @@
                         <td class="td1">
                           Nama:<br><br>
                           <div class="input-group mb-3 input1">
-                            <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pen">
                           </div>
           
                           Alamat:<br><br>
                           <div class="input-group mb-3 input1">
-                            <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1"></textarea>
+                            <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pen"></textarea>
                           </div>
           
                           Negara:<br><br>
                           <div class="input-group mb-3 input1">
-                            <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1">
+                            <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pen">
                               <option value=""></option>
                               <option value="1">SG - SINGAPURA</option>
                             </select>
@@ -302,17 +304,17 @@
                         <td class="td1">        
                           Nama:<br><br>
                           <div class="input-group mb-3 input1">
-                            <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pem">
                           </div>
           
                           Alamat:<br><br>
                           <div class="input-group mb-3 input1">
-                            <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1"></textarea>
+                            <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pem"></textarea>
                           </div>
 
                           Negara:<br><br>
                           <div class="input-group mb-3 input1">
-                            <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1">
+                            <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pem">
                               <option value=""></option>
                               <option value="1">SG - SINGAPURA</option>
                             </select>

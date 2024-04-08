@@ -1,3 +1,13 @@
+<?php
+$kantor_muat_asal = \App\Models\kantor_muat_asal::all();
+$pelabuhan = \App\Models\PelabuhanMuatEkspor::all();
+$JenisEkspor = \App\Models\JenisEkspor::all();
+$KategoriEkspor = \App\Models\KategoriEkspor::all();
+$JenisDagang = \App\Models\JenisDagang::all();
+$CaraBayar = \App\Models\CaraBayar::all();
+$Komoditi = \App\Models\Komoditi::all();
+$Curah = \App\Models\Curah::all();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,119 +70,140 @@
       <div class="card-body">
         <form id="formulir"  method="post"> 
           @csrf
+
+
         <div class="custom-form-group">
           <label>Nomor Pengajuan</label>
           <input type="text" id="b" class="text" disabled>
         </div>
 
-        <span class="error-message"></span>
-
 
         <div class="form-group">
           <label for="kantor_pabean_muat_asal">Kantor Pabean Muat Asal</label>
-          <select id="kantor_pabean_muat_asal" name="kantor_asal">
+          <select id="kantor_pabean_muat_asal" name="kantor_asal" required>
             <option value=""></option>
-            <option value="TB000 KPPBC TMP A BATU AMPAR">TB000 KPPBC TMP A BATU AMPAR</option>
-            <option value="2">TB001 KPPBC TMP B BATU AJI</option>
-          </select>
+            <?php
+            foreach ($kantor_muat_asal as $kantor) {
+                ?>
+                <option value="<?php echo $kantor->nama; ?>"><?php echo $kantor->nama; ?></option>
+                <?php
+            }?>
+        </select>
         </div>
-        <span id="kantor_pabean_muat_asal-error" class="error-message"></span>
 
 
         <div class="form-group">
           <label for="pelabuhan_muat_ekspor">Pelabuhan Muat Ekspor</label>
-          <select id="pelabuhan_muat_ekspor" name="pelabuhan_ekspor">
+          <select id="pelabuhan_muat_ekspor" name="pelabuhan_ekspor" required>
             <option value=""></option>
-            <option value="IDDAS - BATU AMPAR">IDDAS - BATU AMPAR</option>
+            <?php
+            foreach ($pelabuhan as $pel) {
+                ?>
+                <option value="<?php echo $pel->nama; ?>"><?php echo $pel->nama; ?></option>
+                <?php
+            }?>
           </select>
         </div>
-        <span id="pelabuhan_muat_ekspor-error" class="error-message"></span>
 
 
         <div class="form-group">
           <label for="kantor_pabean_muat_ekspor">Kantor Pabean Muat Ekspor</label>
-          <select type="text" id="kantor_pabean_muat_ekspor" name="kantor_ekspor">
+          <select type="text" id="kantor_pabean_muat_ekspor" name="kantor_ekspor" required>
             <option value=""></option>
-            <option value="IDDAS - BATU AMPAR">IDDAS - BATU AMPAR</option>
+            <?php
+            foreach ($pelabuhan as $pel) {
+                ?>
+                <option value="<?php echo $pel->nama; ?>"><?php echo $pel->nama; ?></option>
+                <?php
+            }?>
           </select>
         </div>
-        <span class="error-message"></span>
 
-
+        
         <div class="form-group">
           <label for="jenis_ekspor">Jenis Ekspor</label>
           <select id="jenis_ekspor" name="jenis_ekspor">
             <option value=""></option>
-            <option value="1 - Ekspor Biasa">1 - Ekspor Biasa</option>
-            <option value="2">2 - Ekspor Re-Import</option>
-            <option value="3">3 - Ekspor Re-Ekspor</option>
+            <option value=""></option>
+            <?php
+            foreach ($JenisEkspor as $jen) {
+                ?>
+                <option value="<?php echo $jen->nama; ?>"><?php echo $jen->nama; ?></option>
+                <?php
+            }?>
           </select>
         </div>
-        <span id="jenis_ekspor-error" class="error-message"></span>
 
 
         <div class="form-group">
           <label for="kategori_ekspor">Kategori Ekspor</label>
           <select id="kategori_ekspor" name="kategori_ekspor">
             <option value=""></option>
-            <option value="10 - Biasa">10 - Biasa</option>
-            <option value="21">21 - Yang Pada Saat Impor Mendapat Fasilitas Pembebasan BM (Niper Dgn Pembebasan)
-            </option>
-            <option value="22">22 - Yang Pada Saat Impor Mendapat Fasilitas Pengembalian BM (Niper Dgn Pengembalian)
-            </option>
-            <option value="23">23 - KITE dengan Pembebasan dan Pengembalian</option>
-            <option value="31">31 - Khusus Barang Perwakilan Negara Asing</option>
-            <option value="32">32 - Khusus Barang Badan Internasional</option>
-            <option value="33">33 - Khusus Barang Kiriman (Pos atau Jasa Titipan)</option>
-            <option value="34">34 - Khusus Barang Pindahan</option>
-            <option value="35">35 - Khusus Barang Keperluan Ibadah Untuk Umum, Sosial, Pendidikan, Kebudayaan/Olahraga
-              dan Bencana Alam</option>
+            <?php
+            foreach ($KategoriEkspor as $kat) {
+                ?>
+                <option value="<?php echo $kat->nama; ?>"><?php echo $kat->nama; ?></option>
+                <?php
+            }?>
+    
           </select>
         </div>
-        <span id="kategori_ekspor-error" class="error-message"></span>
+
 
         <div class="form-group">
           <label for="cara_dagang" >Cara Dagang</label>
           <select id="cara_dagang" name="cara_dagang">
             <option value=""></option>
-            <option value="1 - Biasa">1 - Biasa</option>
-            <option value="15">15 - Lainnya</option>
-            <option value="2">2 - IMB – Imbal dagang</option>
+            <?php
+            foreach ($JenisDagang as $jd) {
+                ?>
+                <option value="<?php echo $jd->nama; ?>"><?php echo $jd->nama; ?></option>
+                <?php
+            }?>
           </select>
         </div>
-        <span id="cara_dagang-error" class="error-message"></span>
+
 
         <div class="form-group">
           <label for="cara_bayar">Cara Bayar</label>
           <select id="cara_bayar" name="cara_bayar">
             <option value=""></option>
-            <option value="1 - Biasa/Tunai">1 - Biasa/Tunai</option>
-            <option value="2">2 - Berkala</option>
-            <option value="3">3 - Dengan Jaminan</option>
-            <option value="9">9 - Gabungan/Lainnya</option>
+            <?php
+            foreach ($CaraBayar as $cb) {
+                ?>
+                <option value="<?php echo $cb->nama; ?>"><?php echo $cb->nama; ?></option>
+                <?php
+            }?>
           </select>
         </div>
-        <span id="cara_bayar-error" class="error-message"></span>
+
 
         <div class="form-group">
           <label for="komoditi">Komoditi</label>
           <select id="komoditi" name="komoditi">
             <option value=""></option>
-            <option value="1 - Migas">1 - Migas</option>
-            <option value="2">2 - Non Migas</option>
+            <?php
+            foreach ($Komoditi as $ko) {
+                ?>
+                <option value="<?php echo $ko->nama; ?>"><?php echo $ko->nama; ?></option>
+                <?php
+            }?>
           </select>
         </div>
-        <span id="komoditi-error" class="error-message"></span>
+
 
         <div class="form-group">
           <label for="curah">Curah</label>
           <select id="curah" name="curah">
             <option value=""></option>
-            <option value="1 - Curah">1 - Curah</option>
-            <option value="2">2 - Non Curah</option>
+            <?php
+            foreach ($Curah as $cu) {
+                ?>
+                <option value="<?php echo $cu->nama; ?>"><?php echo $cu->nama; ?></option>
+                <?php
+            }?>
           </select>
         </div>
-        <span id="curah-error" class="error-message"></span>
       </form>
       </div>
     </div>
@@ -230,115 +261,142 @@
   <div class="kotak2">
     <div class="card-form">
       <div class="card-body">
-        <form id="formulir" action="{{ url('/ent')}}">
+        <form id="formulir"  method="post"> 
+          @csrf
+
+
         <div class="custom-form-group">
           <label>Nomor Pengajuan</label>
           <input type="text" id="b" class="text" disabled>
         </div>
 
-        <span class="error-message"></span>
 
         <div class="form-group">
           <label for="kantor_pabean_muat_asal">Kantor Pabean Muat Asal</label>
-          <select id="kantor_pabean_muat_asal">
+          <select id="kantor_pabean_muat_asal" name="kantor_asal" required>
             <option value=""></option>
-            <option value="1">TB000 KPPBC TMP A BATU AMPAR</option>
-            <option value="2">TB001 KPPBC TMP B BATU AJI</option>
-          </select>
+            <?php
+            foreach ($kantor_muat_asal as $kantor) {
+                ?>
+                <option value="<?php echo $kantor->nama; ?>"><?php echo $kantor->nama; ?></option>
+                <?php
+            }?>
+        </select>
         </div>
-        <span id="kantor_pabean_muat_asal-error" class="error-message"></span>
+
 
         <div class="form-group">
           <label for="pelabuhan_muat_ekspor">Pelabuhan Muat Ekspor</label>
-          <select id="pelabuhan_muat_ekspor">
+          <select id="pelabuhan_muat_ekspor" name="pelabuhan_ekspor" required>
             <option value=""></option>
-            <option value="1">IDDAS - BATU AMPAR</option>
+            <?php
+            foreach ($pelabuhan as $pel) {
+                ?>
+                <option value="<?php echo $pel->nama; ?>"><?php echo $pel->nama; ?></option>
+                <?php
+            }?>
           </select>
         </div>
-        <span id="pelabuhan_muat_ekspor-error" class="error-message"></span>
+
 
         <div class="form-group">
           <label for="kantor_pabean_muat_ekspor">Kantor Pabean Muat Ekspor</label>
-          <select type="text" id="kantor_pabean_muat_ekspor">
+          <select type="text" id="kantor_pabean_muat_ekspor" name="kantor_ekspor" required>
             <option value=""></option>
-            <option value="1">IDDAS - BATU AMPAR</option>
+            <?php
+            foreach ($pelabuhan as $pel) {
+                ?>
+                <option value="<?php echo $pel->nama; ?>"><?php echo $pel->nama; ?></option>
+                <?php
+            }?>
           </select>
         </div>
-        <span class="error-message"></span>
 
+        
         <div class="form-group">
           <label for="jenis_ekspor">Jenis Ekspor</label>
-          <select id="jenis_ekspor">
+          <select id="jenis_ekspor" name="jenis_ekspor">
             <option value=""></option>
-            <option value="1">1 - Ekspor Biasa</option>
-            <option value="2">2 - Ekspor Re-Import</option>
-            <option value="3">3 - Ekspor Re-Ekspor</option>
+            <?php
+            foreach ($JenisEkspor as $jen) {
+                ?>
+                <option value="<?php echo $jen->nama; ?>"><?php echo $jen->nama; ?></option>
+                <?php
+            }?>
           </select>
         </div>
-        <span id="jenis_ekspor-error" class="error-message"></span>
+
 
         <div class="form-group">
           <label for="kategori_ekspor">Kategori Ekspor</label>
-          <select id="kategori_ekspor">
+          <select id="kategori_ekspor" name="kategori_ekspor">
             <option value=""></option>
-            <option value="10">10 - Biasa</option>
-            <option value="21">21 - Fasilitas Pembebasan BM (Niper Dgn Pembebasan)
-            </option>
-            <option value="22">22 - Fasilitas Pengembalian BM (Niper Dgn Pengembalian)
-            </option>
-            <option value="23">23 - KITE dengan Pembebasan dan Pengembalian</option>
-            <option value="31">31 - Khusus Barang Perwakilan Negara Asing</option>
-            <option value="32">32 - Khusus Barang Badan Internasional</option>
-            <option value="33">33 - Khusus Barang Kiriman</option>
-            <option value="34">34 - Khusus Barang Pindahan</option>
-            <option value="35">35 - Khusus Barang Keperluan Untuk Umum</option>
+            <?php
+            foreach ($KategoriEkspor as $kat) {
+                ?>
+                <option value="<?php echo $kat->nama; ?>"><?php echo $kat->nama; ?></option>
+                <?php
+            }?>
+    
           </select>
         </div>
-        <span id="kategori_ekspor-error" class="error-message"></span>
+
 
         <div class="form-group">
-          <label for="cara_dagang">Cara Dagang</label>
-          <select id="cara_dagang">
+          <label for="cara_dagang" >Cara Dagang</label>
+          <select id="cara_dagang" name="cara_dagang">
             <option value=""></option>
-            <option value="1">1 - Biasa</option>
-            <option value="15">15 - Lainnya</option>
-            <option value="2">2 - IMB – Imbal dagang</option>
+            <?php
+            foreach ($JenisDagang as $jd) {
+                ?>
+                <option value="<?php echo $jd->nama; ?>"><?php echo $jd->nama; ?></option>
+                <?php
+            }?>
           </select>
         </div>
-        <span id="cara_dagang-error" class="error-message"></span>
+
 
         <div class="form-group">
           <label for="cara_bayar">Cara Bayar</label>
-          <select id="cara_bayar">
+          <select id="cara_bayar" name="cara_bayar">
             <option value=""></option>
-            <option value="1">1 - Biasa/Tunai</option>
-            <option value="2">2 - Berkala</option>
-            <option value="3">3 - Dengan Jaminan</option>
-            <option value="9">9 - Gabungan/Lainnya</option>
+            <?php
+            foreach ($CaraBayar as $cb) {
+                ?>
+                <option value="<?php echo $cb->nama; ?>"><?php echo $cb->nama; ?></option>
+                <?php
+            }?>
           </select>
         </div>
-        <span id="cara_bayar-error" class="error-message"></span>
+
 
         <div class="form-group">
           <label for="komoditi">Komoditi</label>
-          <select id="komoditi">
+          <select id="komoditi" name="komoditi">
             <option value=""></option>
-            <option value="1">1 - Migas</option>
-            <option value="2">2 - Non Migas</option>
+            <?php
+            foreach ($Komoditi as $ko) {
+                ?>
+                <option value="<?php echo $ko->nama; ?>"><?php echo $ko->nama; ?></option>
+                <?php
+            }?>
           </select>
         </div>
-        <span id="komoditi-error" class="error-message"></span>
+
 
         <div class="form-group">
           <label for="curah">Curah</label>
-          <select id="curah">
+          <select id="curah" name="curah">
             <option value=""></option>
-            <option value="1">1 - Curah</option>
-            <option value="2">2 - Non Curah</option>
+            <?php
+            foreach ($Curah as $cu) {
+                ?>
+                <option value="<?php echo $cu->nama; ?>"><?php echo $cu->nama; ?></option>
+                <?php
+            }?>
           </select>
         </div>
-        <span id="curah-error" class="error-message"></span>
-        </form>
+      </form>
       </div>
     </div>
 
