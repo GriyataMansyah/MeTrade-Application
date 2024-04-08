@@ -893,3 +893,10 @@ a {
   .i {
     height:5px;
   }
+
+  .btn12345{
+    width:60px;
+    height:40px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }

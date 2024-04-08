@@ -37,7 +37,7 @@ Route::view('/entitas', 'pengekspor/entitas')->name("entitas");
 Route::post('header', [HeaderController::class, 'tambah']);
 // Menampilkan Saja
 
-
+Route::view('1', 'petugas/datamaster');
 Route::view('/dokumen', 'dokumenpen');
 Route::view('/pengangkut', 'pengangkut');
 Route::view('/kemasan', 'kemasan');
