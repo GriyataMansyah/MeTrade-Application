@@ -44,7 +44,7 @@
         </div>   
       </div>
       <hr class="container00 container-fluid">
-      <div class="kotak">
+      <div class="kotak0">
         <div class="row">
         <div class="col-6">
           <form id="formulir2" action="">

@@ -8,9 +8,10 @@
   };
   
   function generateRandomNumber() {
-    var randomNumber = Math.floor(Math.random() * 9000000000) + 1000000000;
+    var part1 = Math.floor(Math.random() * 9000000000000000) + 100000;
+    var randomNumber = part1;
     document.getElementById("b").value = randomNumber;
-  }
+}
 // ------------------------
   function muncul() {
     var myDiv = document.getElementById("popup1");

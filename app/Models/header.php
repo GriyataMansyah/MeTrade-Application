@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class header extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
 
-    protected $table= "header";
+    protected $table= "headers";
 
     protected $fillable = array(
-        "nomor_pengajuan","kantor_muat_asal","pelabuhan_muat_ekspor","kantor_muat_ekspor","jenis_ekspor","kategori_ekspor","cara_dagang","cara_bayar","komoditi","curah"
+        "id_dokumen","nomor_pengajuan","kantor_muat_asal","pelabuhan_muat_ekspor","kantor_muat_ekspor","jenis_ekspor","kategori_ekspor","cara_dagang","cara_bayar","komoditi","curah"
     );
 }

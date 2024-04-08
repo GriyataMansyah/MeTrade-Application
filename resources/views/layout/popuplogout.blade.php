@@ -3,7 +3,7 @@
     <div class="col-12 patas">
       <img src="{{ asset('images/logo2.png')}}" class="hay">
       <a href="#">
-        <h2 class="teman">Teman-Teman</h2>
+        <h2 class="teman">...</h2>
       </a>
     </div>
     <div class="col-12 pbawah">
@@ -20,9 +20,6 @@
         </div>
       </a>
       <hr class="h0">
-      <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button type="submit" class="yebtn btn btn-outline-danger">Log Out</button>
-    </form>    
+        <a type="submit" href="{{ route('logout')}}" class="yebtn btn btn-outline-danger">Log Out</a> 
     </div>
   </div>

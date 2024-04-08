@@ -2,64 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\header;
+use App\Models\Dokumen;
+use App\Models\Header;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class HeaderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+    
+  public function tambah(Request $request){
+    $header = new Header;
+    $part1 = mt_rand(100000, 999999);
+    $part2 = mt_rand(100000, 999999);
+    $part3 = mt_rand(100000, 999999);
+    $id = Auth::id();
+    $dokumen = Dokumen::where('id_pengekspor', $id)->latest('id')->first();
+    $header->id_dokumen = $dokumen->id; 
+    $nomor_pengajuan = $part1 . $part2 . $part3;
+    $header->nomor_pengajuan= $nomor_pengajuan;
+    $header->pelabuhan_muat_ekspor = $request->input('pelabuhan_ekspor');
+    $header->kantor_muat_asal = $request->input('kantor_asal');
+    $header->kantor_muat_ekspor = $request->input('kantor_ekspor');
+    $header->jenis_ekspor = $request->input('jenis_ekspor');
+    $header->kategori_ekspor = $request->input('kategori_ekspor');
+    $header->cara_dagang = $request->input('cara_dagang');
+    $header->cara_bayar = $request->input('cara_bayar');
+    $header->komoditi = $request->input('komoditi');
+    $header->curah = $request->input('curah');
+    $header -> save();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    return redirect()->route('entitas');
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(header $header)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(header $header)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, header $header)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(header $header)
-    {
-        //
-    }
 }

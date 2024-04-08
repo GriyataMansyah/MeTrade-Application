@@ -40,6 +40,7 @@ class PengeksporController extends Controller
         DB::table('pengekspors')->insert((array) $userData);
 
         return redirect()->to('/')->with('success', 'Pendaftaran berhasil, silakan masuk.');
-
     }
+
+    
 }

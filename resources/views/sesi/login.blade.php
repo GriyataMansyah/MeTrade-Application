@@ -61,7 +61,7 @@
             <p class="text1 d-flex justify-content-center">Portal Pengguna Jasa Direktorat Jendral Bea Dan Cukai Aplikasi Dummy Ceisa 4.0 Dari Politeknik Negeri Batam</p>
 
             <!-- INI UNTUK USERNAME -->
-            <form method="POST">
+            <form method="POST" action="{{ route('cobalogin') }}">
               @csrf
             <div class="input-group has-validation inputa1">
                 <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -88,7 +88,7 @@
               <!-- INI TOMBOL KIRIM DAN PENDAFTARAN BARU-->
               <a href={{url('regis')}}><p>Pendaftaran Baru</p></a> 
               <a>
-              <input class="btn btn-primary kirim" type="submit" value="Masuk">
+              <input class="btn btn-primary kirim" type="submit" value="submit">
               </a>
               
             </form>

@@ -532,6 +532,14 @@ a {
   margin-left: 20px;
 }
 
+.kotak0 {
+  width: 97%;
+  height: auto;
+  margin-top: 8px;
+  position: sticky;
+  margin-left: 20px;
+}
+
 .kotakz {
   width: 97%;
   height: auto;

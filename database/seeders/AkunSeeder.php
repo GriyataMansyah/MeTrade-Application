@@ -16,15 +16,15 @@ class AkunSeeder extends Seeder
     public function run(): void
     {
         Akun::create([
-            "username" => "pengekspor",
-            "password" => Hash::make("pengekspor"),
+            "username" => "1",
+            "password" => Hash::make("1"),
             "level" => "pengekspor"
         ]);
         
         // Membuat akun petugas
         Akun::create([
-            "username" => "petugas",
-            "password" => Hash::make("petugas"),
+            "username" => "2",
+            "password" => Hash::make("2"),
             "level" => "petugas",
         ]);
 }

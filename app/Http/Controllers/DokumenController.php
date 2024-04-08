@@ -8,15 +8,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Pengekspor;
 use App\Models\Petugas;
+use Illuminate\Support\Facades\Session;
+
 
 class DokumenController extends Controller
 {
+    public function dokumens(){
+         return view('pengekspor.daftardok');
+    }
+
     public function tambahDok(Request $request)
     {
         $dokumen = new Dokumen;
-        $id_pengekspor = Pengekspor::where('id_akun', Auth::id())->value('id');
-        $dokumen->id_pengekspor = $id_pengekspor;
         $id_petugas = Petugas::first()->id;
+        $id_akun = Auth::id();
+        $id_pengekspor = Pengekspor::where('id_akun', $id_akun)->value('id');
+        $dokumen->id_pengekspor = $id_pengekspor;    
         $dokumen->id_petugas = $id_petugas;
         $dokumen->entitas = $request->entitas;
         $dokumen->jenis_pemberitahuan = $request->jenis_pemberitahuan;
@@ -24,6 +31,8 @@ class DokumenController extends Controller
         $dokumen->tujuan_brg = $request->tujuan_brg;
         $dokumen->jenis_dokumen = $request->jenis_dokumen;
         $dokumen->save();
+
+        Session::put('id_dokumen', $dokumen->id);
 
         return redirect()->route('header');
     }

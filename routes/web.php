@@ -2,14 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
-use App\Http\Controllers\PengeksporController;
+use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\DokumenController;
+use App\Http\Controllers\PengeksporController;
 
-Route::get('/', [AkunController::class, 'index'])->name('login');
+Route::get('', [AkunController::class, 'index'])->name('login');
 
-Route::post('/', [AkunController::class, 'login']);
+Route::post('login', [AkunController::class, 'login'])->name('cobalogin');
 
-Route::post('/layout/popuplogout', [AkunController::class, 'logout'])->name('logout');
+Route::get('layout/popuplogout', [AkunController::class, 'logout'])->name('logout');
 
 Route::post('/sesi/registrasi', [PengeksporController::class,'regis'])->name('reg');
 
@@ -21,15 +22,22 @@ Route::view('/profile','pengekspor/profile');
 
 Route::view('/log','sesi/login');
 
-Route::view('daftar','pengekspor/daftardok');
+Route::match(['get', 'post'],'Dokumens', [DokumenController::class, 'dokumens']);
 
-Route::post('layout/popupdafdok', [DokumenController::class, 'tambahDok'])->name('tambahdok');
+Route::view('layout/popupdafdok','layout/popupdafdok')->name('tambahdokumen');
+
+Route::match(['get', 'post'],'tambahdokumen', [DokumenController::class, 'tambahDok'])->name('tambahdok');
 
 Route::view('/header', 'pengekspor/header')->name('header');
 
+// Route::get('layout/popuplogout', [AkunController::class, 'showName']);------
+
+Route::view('/entitas', 'pengekspor/entitas')->name("entitas");
+
+Route::post('header', [HeaderController::class, 'tambah']);
 // Menampilkan Saja
 
-Route::view('/entitas', 'entitas');
+
 Route::view('/dokumen', 'dokumenpen');
 Route::view('/pengangkut', 'pengangkut');
 Route::view('/kemasan', 'kemasan');
