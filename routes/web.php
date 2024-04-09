@@ -7,6 +7,7 @@ use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\EntitasController;
 use App\Http\Controllers\PengeksporController;
 
+
 Route::get('', [AkunController::class, 'index'])->name('login');
 
 Route::post('login', [AkunController::class, 'login'])->name('cobalogin');
@@ -39,6 +40,12 @@ Route::view('/entitas', 'pengekspor/entitas')->name('entitas');
 
 Route::post('entitas', [EntitasController::class, 'tambah']);
 
+Route::view('/popupbadanentitas', 'layout/popupbadanentitas')->name('badanentitas');
+
+Route::post('badanentitas', [EntitasController::class, 'tambahPemilik']);
+
+Route::delete('entitas/{seri}', [EntitasController::class, 'destroy'])->name('hapus.pemilik');
+
 Route::view('/dokumenpen1', 'pengekspor/dokumenpen')->name("dokumenpen");
 
 Route::view('/pengangkut1', 'pengekspor/pengangkut');
@@ -52,8 +59,6 @@ Route::view('/barang1', 'pengekspor/barang');
 Route::view('/pungutan1', 'pengekspor/pungutan');
 
 Route::view('/pernyataan1','pengekspor/pernyataan');
-
-Route::post('layout/popupbadanentitas', [PemilikBarangController::class, 'tambahPemilik']);
 
 // Menampilkan Saja
 

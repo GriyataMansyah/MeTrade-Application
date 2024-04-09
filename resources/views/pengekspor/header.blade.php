@@ -112,7 +112,6 @@ $Curah = \App\Models\Curah::all();
           <label for="jenis_ekspor">Jenis Ekspor</label>
           <select id="jenis_ekspor" name="jenis_ekspor">
             <option value=""></option>
-            <option value=""></option>
             <?php
             foreach ($JenisEkspor as $jen) {
                 ?>

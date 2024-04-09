@@ -8,6 +8,7 @@ use App\Models\Pembeli;
 use App\Models\Penerima;
 use App\Models\Eksportir;
 use Illuminate\Http\Request;
+use App\Models\PemilikBarang;
 use Illuminate\Support\Facades\Auth;
 
 class EntitasController extends Controller
@@ -71,6 +72,17 @@ class EntitasController extends Controller
         $PemilikBarang->no_identitas = $request->input('no_identitas');
         $PemilikBarang->alamat = $request->input('alamat');
         $PemilikBarang->nama = $request->input('nama');
-        $PemilikBarang -> save();
-}
+        $PemilikBarang ->save();
+
+        return redirect()->route('entitas');
+      }
+
+      public function destroy($seri)
+      {
+      $pemilik_barang = PemilikBarang::findOrFail($seri);
+      $pemilik_barang->delete();
+
+       return redirect()->route('entitas')->with('success', 'Data pemilik barang berhasil dihapus.');
+      }
+
 }

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PemilikBarang extends Model
 {
+    protected $primaryKey = 'seri';
+    
     public $timestamps = false;
 
     protected $table= "pemilik_barang";
