@@ -29,19 +29,7 @@
       </div> 
       <hr>
       <div class="offside">
-        <div class="container-fluid">
-          <div class="row hay1">
-            <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Header</a></div>
-            <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Entitas</a></div>
-            <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Dokumen</a></div>
-            <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Angkut</a></div>
-            <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Kemasan</a></div>
-            <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Transaksi</a></div>
-            <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Barang</a></div>
-            <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Pungutan</a></div>
-            <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Pernyataan</a></div>
-          </div>
-        </div>   
+        @include('layout.header1')
       </div>
       <hr class="container00 container-fluid">
       <div class="kotak0">
@@ -208,19 +196,7 @@
                 </div>
                   <hr>
                   <div class="offside2">
-                    <div class="container-fluid">
-                      <div class="row hayhay">
-                        <div class="col isi2"><a href="#" >Header</a></div>
-                        <div class="col isi2"><a href="#" >Entitas</a></div>
-                        <div class="col isi2"><a href="#" >Dokumen</a></div>
-                        <div class="col isi2"><a href="#" >Angkut</a></div>
-                        <div class="col isi2"><a href="#" >Kemasan</a></div>
-                        <div class="col isi2"><a href="#" >Transaksi</a></div>
-                        <div class="col isi2"><a href="#" >Barang</a></div>
-                        <div class="col isi2"><a href="#" >Pungutan</a></div>
-                        <div class="col isi2"><a href="#" >Pernyataan</a></div>
-                      </div>
-                    </div>   
+                   @include('layout.header2')
                   </div>
               <hr class="container00 container-fluid">
               <div class="kotak">

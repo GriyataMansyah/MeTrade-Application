@@ -29,11 +29,9 @@ Route::view('layout/popupdafdok','layout/popupdafdok')->name('tambahdokumen');
 
 Route::match(['get', 'post'],'tambahdokumen', [DokumenController::class, 'tambahDok'])->name('tambahdok');
 
+Route::view('/header1', 'pengekspor/header');
+
 Route::view('/header', 'pengekspor/header')->name('header');
-
-// Route::get('layout/popuplogout', [AkunController::class, 'showName']);------
-
-Route::view('/entitas', 'pengekspor/entitas')->name("entitas");
 
 Route::post('header', [HeaderController::class, 'tambah']);
 
@@ -41,16 +39,24 @@ Route::view('/entitas', 'pengekspor/entitas')->name('entitas');
 
 Route::post('entitas', [EntitasController::class, 'tambah']);
 
+Route::view('/dokumenpen1', 'pengekspor/dokumenpen')->name("dokumenpen");
 
-Route::view('/dokumenpen', 'pengekspor/dokumenpen')->name("dokumenpen");
+Route::view('/pengangkut1', 'pengekspor/pengangkut');
+
+Route::view('/kemasan1', 'pengekspor/kemasan');
+
+Route::view('/transaksi1', 'pengekspor/transaksi');
+
+Route::view('/barang1', 'pengekspor/barang');
+
+Route::view('/pungutan1', 'pengekspor/pungutan');
+
+Route::view('/pernyataan1','pengekspor/pernyataan');
+
+Route::post('layout/popupbadanentitas', [PemilikBarangController::class, 'tambahPemilik']);
 
 // Menampilkan Saja
 
 Route::view('1', 'petugas/datamaster');
 Route::view('/dokumen', 'dokumenpen');
-Route::view('/pengangkut', 'pengangkut');
-Route::view('/kemasan', 'kemasan');
-Route::view('/transaksi', 'transaksi');
-Route::view('/barang', 'barang');
-Route::view('/pungutan', 'pungutan');
-Route::view('/pernyataan','pernyataan');
+

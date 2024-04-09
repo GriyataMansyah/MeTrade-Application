@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Entitas extends Model
+class PemilikBarang extends Model
 {
     public $timestamps = false;
 
-    protected $table= "entitas";
+    protected $table= "pemilik_barang";
 
     protected $fillable = array(
-        "Entitas"
+        "no_identitas","nama","alamat"
     );
 }

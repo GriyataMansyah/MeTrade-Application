@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dokumen;
 use App\Models\Entitas;
 use App\Models\Pembeli;
 use App\Models\Penerima;
 use App\Models\Eksportir;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EntitasController extends Controller
 {
@@ -43,7 +45,32 @@ class EntitasController extends Controller
         $Penerima->alamat = $request->input('alamat_pen');
         $Penerima->negara = $request->input('negara_pen');
         $Penerima->save();
+
+        $id = Auth::id();
+        $id_dokumen = Dokumen::where('id_pengekspor', $id)->orderBy('id', 'desc')->value('id');
+        $id_eksportir = $id;
+        $Entitas = new Entitas;
+        $Entitas->entitas = "Entitas";
+        $Entitas->id_dokumen = $id_dokumen; 
+        $Entitas->id_eksportir = $id_eksportir; 
+        $Entitas->id_penerima = $Penerima->id;
+        $Entitas->id_pembeli = $Pembeli->id;
+        $Entitas->save();
     
         return redirect()->route('dokumenpen');
       }
+
+      public function tambahPemilik(Request $request){
+        $request->validate([
+          'no_identitas' => 'required',
+          'alamat' => 'required',
+          'nama' => 'required',
+      ]);
+      
+        $PemilikBarang = new PemilikBarang;
+        $PemilikBarang->no_identitas = $request->input('no_identitas');
+        $PemilikBarang->alamat = $request->input('alamat');
+        $PemilikBarang->nama = $request->input('nama');
+        $PemilikBarang -> save();
+}
 }
