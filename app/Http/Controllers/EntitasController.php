@@ -82,7 +82,7 @@ class EntitasController extends Controller
       $pemilik_barang = PemilikBarang::findOrFail($seri);
       $pemilik_barang->delete();
 
-       return redirect()->route('entitas')->with('success', 'Data pemilik barang berhasil dihapus.');
+       return redirect()->route('entitas');
       }
 
 }

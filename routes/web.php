@@ -6,6 +6,7 @@ use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\EntitasController;
 use App\Http\Controllers\PengeksporController;
+use App\Http\Controllers\DokumenPendukungController;
 
 
 Route::get('', [AkunController::class, 'index'])->name('login');
@@ -24,7 +25,7 @@ Route::view('/profile','pengekspor/profile');
 
 Route::view('/log','sesi/login');
 
-Route::match(['get', 'post'],'Dokumens', [DokumenController::class, 'dokumens']);
+Route::match(['get', 'post'],'Dokumens', [DokumenController::class, 'dokumens'])->name("dokumens");
 
 Route::view('layout/popupdafdok','layout/popupdafdok')->name('tambahdokumen');
 
@@ -36,6 +37,8 @@ Route::view('/header', 'pengekspor/header')->name('header');
 
 Route::post('header', [HeaderController::class, 'tambah']);
 
+Route::post('layout/popupdokumenpen', [DokumenPendukungController::class, 'tambah'])->name('tambahdokumenpendukung');
+
 Route::view('/entitas', 'pengekspor/entitas')->name('entitas');
 
 Route::post('entitas', [EntitasController::class, 'tambah']);
@@ -45,6 +48,10 @@ Route::view('/popupbadanentitas', 'layout/popupbadanentitas')->name('badanentita
 Route::post('badanentitas', [EntitasController::class, 'tambahPemilik']);
 
 Route::delete('entitas/{seri}', [EntitasController::class, 'destroy'])->name('hapus.pemilik');
+
+Route::delete('pengekspor/daftardok/{id}', [DokumenController::class, 'destroy'])->name('hapus.dokumen');
+
+Route::delete('pengekspor/dokumenpen/{id}', [DokumenPendukungController::class, 'destroy'])->name('hapus.dokumenpen');
 
 Route::view('/dokumenpen1', 'pengekspor/dokumenpen')->name("dokumenpen");
 

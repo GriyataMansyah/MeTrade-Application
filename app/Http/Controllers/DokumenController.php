@@ -37,4 +37,12 @@ class DokumenController extends Controller
         return redirect()->route('header');
     }
 
+    public function destroy($id)
+    {
+    $dokumen = Dokumen::findOrFail($id);
+    $dokumen->delete();
+
+     return redirect()->route('dokumens');
+    }
+
 }

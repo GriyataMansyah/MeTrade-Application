@@ -1,3 +1,6 @@
+<?php
+$Dokumen = \App\Models\DokumenPendukung::all();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,19 +32,7 @@
     </div> 
     <hr>
     <div class="offside">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Header</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Entitas</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Dokumen</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Angkut</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Kemasan</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Transaksi</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Barang</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Pungutan</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Pernyataan</a></div>
-        </div>
-      </div>   
+      @include('layout.header1')
     </div>
     <hr class="container00 container-fluid">
     <div class="kotak">
@@ -50,7 +41,7 @@
            <div class="kotakk">
       <div class="row">
         <div class="col-5">
-          <h5 class="bagian-bawah"> SARANA ANGKUT</h5>
+          <h5 class="bagian-bawah"> DOKUMEN LAMPIRAN</h5>
         </div>
         <div class="offset-2 col-5 text-end">
           <button type="button" class="btn btn-primary px-3"data-bs-toggle="modal" data-bs-target="#Modal">Tambah</button> 
@@ -74,23 +65,30 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($Dokumen as $dp)
                 <tr>
-                  <th scope="row" class="centered">1</th>
-                  <td class="centered">380 - Invoice</td>
-                  <td class="centered">INV</td>
-                  <td class="centered">28 - 01 - 2004</td>
-                  <td class="centered"></td>
-                  <td class="centered"></td>
-                  <td class="centered"></td>
-                  <td class="centered"></td>
+                  <td class="centered">{{ $dp->id}}</td>
+                  <td class="centered">{{ $dp->jenis}}</td>
+                  <td class="centered">{{ $dp->nomor}}</td>
+                  <td class="centered">{{ $dp->tanggal}}</td>
+                  <td class="centered">-</td>
+                  <td class="centered">-</td>
+                  <td class="centered">-</td>
+                  <td class="centered">-</td>
                   <td class="oe centered" >
-                    <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                  </svg></a>
+                    <form action="{{ route('hapus.dokumenpen', $dp->id) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                       </svg>
+                      </button>
+                  </form>
                 </td>
                 </tr>
-                
+                @endforeach
               </tbody>
             </table>    
         </div>
@@ -117,19 +115,7 @@
                 </div>
                   <hr>
                   <div class="offside2">
-                    <div class="container-fluid">
-                      <div class="row hayhay">
-                        <div class="col isi2"><a href="#" >Header</a></div>
-                        <div class="col isi2"><a href="#" >Entitas</a></div>
-                        <div class="col isi2"><a href="#" >Dokumen</a></div>
-                        <div class="col isi2"><a href="#" >Angkut</a></div>
-                        <div class="col isi2"><a href="#" >Kemasan</a></div>
-                        <div class="col isi2"><a href="#" >Transaksi</a></div>
-                        <div class="col isi2"><a href="#" >Barang</a></div>
-                        <div class="col isi2"><a href="#" >Pungutan</a></div>
-                        <div class="col isi2"><a href="#" >Pernyataan</a></div>
-                      </div>
-                    </div>   
+                    @include('layout.header2')
                   </div>
                   <hr class="container001 container-fluid">
            <div class="kotakk">
@@ -138,7 +124,7 @@
               <div class="kotakk">
          <div class="row">
            <div class="col-5">
-             <h5 class="bagian-bawah"> SARANA ANGKUT</h5>
+             <h5 class="bagian-bawah"> DOKUMEN LAMPIRAN</h5>
            </div>
            <div class="offset-2 col-5 text-end">
              <button type="button" class="btn btn-primary px-3"data-bs-toggle="modal" data-bs-target="#Modal">Tambah</button> 
