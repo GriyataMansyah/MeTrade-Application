@@ -28,5 +28,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PemilikBarangSeeder::class);
         $this->call(DataJenisDokumenSeeder::class);
         $this->call(DokumenPendukungSeeder::class);
+        $this->call(DataTempatPenimbunanSeeder::class);
+        $this->call(DataPelbuhanMuatAsalSeeder::class);
+        $this->call(DataPelabuhanBongkarSeeder::class);
+        $this->call(PelabuhanTujuanSeeder::class);
+        $this->call(LokasiPemeriksaanSeeder::class);
     }
 }

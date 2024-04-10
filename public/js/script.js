@@ -53,15 +53,8 @@ function updateInputValue() {
 }
 //------------------------
 function updateInputValue1() {
-  var selectElement = document.getElementById("batu");
-  var selectedOption = selectElement.options[selectElement.selectedIndex].value;
   var inputValueElement = document.getElementById("batu2");
-
-  if (selectedOption === "1") { 
-    inputValueElement.value = "STG - SINGAPURE ONE"; 
-  } else {
-    inputValueElement.value = "";
-  }
+  inputValueElement.value = "STG - SINGAPURE ONE"; 
 }
 //------------------------
 function updateInputValue2() {

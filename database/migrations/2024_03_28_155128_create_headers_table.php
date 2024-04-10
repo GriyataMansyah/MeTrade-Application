@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('headers', function (Blueprint $table) {
+            $table->increments("id");
             $table->Integer('id_dokumen')->unsigned();
             $table->foreign('id_dokumen')->references('id')->on('dokumens');    
-            $table->increments("id");
             $table->unsignedBigInteger('nomor_pengajuan');
             $table->string("kantor_muat_asal");
             $table->string("pelabuhan_muat_ekspor");

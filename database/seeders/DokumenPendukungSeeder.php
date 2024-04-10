@@ -22,7 +22,7 @@ class DokumenPendukungSeeder extends Seeder
         ]);
 
         DokumenPendukung::create([
-            "id_dokumen"=>"1",
+            "id_dokumen"=>"2",
             "id"=>'2',
             "jenis"=>"381 - VOICED",
             "nomor"=>"RA345",

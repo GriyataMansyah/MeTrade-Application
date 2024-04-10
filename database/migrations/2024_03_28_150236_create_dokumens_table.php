@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('dokumens', function (Blueprint $table) {
+            $table->increments("id");
             $table->Integer('id_pengekspor')->unsigned();
             $table->foreign('id_pengekspor')->references('id')->on('pengekspors');
 
             $table->Integer('id_petugas')->unsigned();
             $table->foreign('id_petugas')->references('id')->on('petugas');
 
-            $table->increments("id");
             $table->string("entitas");
             $table->string("jenis_pemberitahuan");
             $table->string("asal_brg");

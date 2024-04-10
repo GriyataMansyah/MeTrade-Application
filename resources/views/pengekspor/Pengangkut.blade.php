@@ -1,3 +1,10 @@
+<?php
+$DataTempatPenimbunan = \App\Models\DataTempatPenimbunan::all();
+$DataPelabuhanMuatAsal = \App\Models\DataPelabuhanMuatAsal::all();
+$PelabuhanBongkar = \App\Models\PelabuhanBongkar::all();
+$PelabuhanTujuan = \App\Models\PelabuhanTujuan::all();
+$LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,9 +59,12 @@
             <div class="col-sm-4">
                 <select id="input1" class="form-select ">
                   <option> </option>
-              <option value="1">GDI - GUDANG NEGARA</option>
-              <option value="2">GDS - GUDANG SWASTA</option>
-              <option value="3">GDP - GUDANG UMUM</option>
+                  <?php
+                  foreach ($DataTempatPenimbunan as $DTP) {
+                      ?>
+                      <option value="<?php echo $DTP->nama; ?>"><?php echo $DTP->nama; ?></option>
+                      <?php
+                  }?>
                 </select>
 
             </div>
@@ -63,12 +73,12 @@
             <div class="col-sm-4">
               <select id="input1" class="form-select ">
                 <option> </option>
-              <option value="1">KP TEMPAT PEMUATAN</option>
-              <option value="2">GUDANG EKSPORTIR</option>
-              <option value="3">TEMPAT LAIN YANG DI IZINKAN</option>
-              <option value="4">TPS</option>
-              <option value="5">TPP</option>
-              <option value="6">TPB</option>
+                <?php
+              foreach ($LokasiPemeriksaan as $D) {
+                  ?>
+                  <option value="<?php echo $D->nama; ?>"><?php echo $D->nama; ?></option>
+                  <?php
+              }?>
               </select>
             </div>          
         </div>
@@ -79,7 +89,12 @@
           <div class="col-sm-4">
             <select id="batu" class="form-select" onchange="updateInputValue1()">
               <option></option>
-              <option value="1">IDDAS - BATU AMPAR</option>
+              <?php
+              foreach ($DataPelabuhanMuatAsal as $A) {
+                  ?>
+                  <option value="<?php echo $A->nama; ?>"><?php echo $A->nama; ?></option>
+                  <?php
+              }?>
             </select>
           </div>
 
@@ -106,10 +121,13 @@
           <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Bongkar</label>
           <div class="col-sm-4">
             <select id="input1" class="form-select ">
-              <option></option>
-              <option value="1">BTH - HANDNADIM</option>
-              <option value="2">GLG - GALANG</option>
-              <option value="3">RMP - REMPANG </option>
+             <option></option>
+             <?php
+             foreach ($PelabuhanBongkar as $B) {
+                 ?>
+                 <option value="<?php echo $B->nama; ?>"><?php echo $B->nama; ?></option>
+                 <?php
+             }?>
             </select>
           </div>
           <div class="col-6"></div>
@@ -121,9 +139,12 @@
           <div class="col-sm-4">
             <select id="input1" class="form-select ">
               <option></option>
-              <option value="1">SG - SINGAPURA MENTARI</option>
-              <option value="2">SP - SINGACANDI</option>
-              <option value="3">SH - SINGAHANDE </option>
+              <?php
+              foreach ($PelabuhanTujuan as $C) {
+                  ?>
+                  <option value="<?php echo $C->nama; ?>"><?php echo $C->nama; ?></option>
+                  <?php
+              }?>
             </select>            
           </div>     
           <div class="col-6"></div>  
