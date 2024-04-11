@@ -4,6 +4,7 @@ $DataPelabuhanMuatAsal = \App\Models\DataPelabuhanMuatAsal::all();
 $PelabuhanBongkar = \App\Models\PelabuhanBongkar::all();
 $PelabuhanTujuan = \App\Models\PelabuhanTujuan::all();
 $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
+$SaranaAngkut = \App\Models\SaranaAngkut::all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,29 +36,18 @@ $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
     </div> 
     <hr>
     <div class="offside">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Header</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Entitas</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Dokumen</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Angkut</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Kemasan</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Transaksi</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Barang</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Pungutan</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Pernyataan</a></div>
-        </div>
-      </div>   
+    @include("layout.header1")
     </div>
     <hr class="container00 container-fluid">
     <div class="kotak">
       <div class="container-fluid  border border-1 ">
-        <form class="mt-4" id='formulir3' action="{{ url('/header')}}">
+        <form class="mt-4" id='formulir3' action="{{ route('tambahpengangkut')}}" method="post">
+          @csrf
           <div class="form-group row ">
 
             <label for="input1" class="col-sm-2 col-form-label">Tempat Penimbunan</label>
             <div class="col-sm-4">
-                <select id="input1" class="form-select ">
+                <select id="input1" class="form-select" name="tempat_penimbunan">
                   <option> </option>
                   <?php
                   foreach ($DataTempatPenimbunan as $DTP) {
@@ -71,7 +61,7 @@ $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
 
             <label for="input1" class="col-sm-2 col-form-label ">Lokasi Pemeriksaan</label>
             <div class="col-sm-4">
-              <select id="input1" class="form-select ">
+              <select id="input1" class="form-select" name="lokasi_pemeriksaan">
                 <option> </option>
                 <?php
               foreach ($LokasiPemeriksaan as $D) {
@@ -87,7 +77,7 @@ $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
 
           <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Muat Asal</label>
           <div class="col-sm-4">
-            <select id="batu" class="form-select" onchange="updateInputValue1()">
+            <select id="batu" class="form-select" onchange="updateInputValue1()" name="pelabuhan_muat_asal">
               <option></option>
               <?php
               foreach ($DataPelabuhanMuatAsal as $A) {
@@ -100,7 +90,7 @@ $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
 
           <label for="input1" class="col-sm-2 col-form-label ">Tanggal Periksa</label>
           <div class="col-sm-4">
-              <input type="date"  class="form-control" id="input1">
+              <input type="date"  class="form-control" id="input1" name="tanggal_periksa">
           </div>         
         </div>
         <!-- BARIS 3 -->
@@ -120,7 +110,7 @@ $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
         <div class="form-group row my-4">
           <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Bongkar</label>
           <div class="col-sm-4">
-            <select id="input1" class="form-select ">
+            <select id="input1" class="form-select" name="pelabuhan_bongkar">
              <option></option>
              <?php
              foreach ($PelabuhanBongkar as $B) {
@@ -137,7 +127,7 @@ $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
 
           <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Tujuan</label>
           <div class="col-sm-4">
-            <select id="input1" class="form-select ">
+            <select id="input1" class="form-select" name="pelabuhan_tujuan">
               <option></option>
               <?php
               foreach ($PelabuhanTujuan as $C) {
@@ -163,7 +153,7 @@ $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
         <div class="form-group row my-4">
           <label for="input1" class="col-sm-2 col-form-label">Tanggal Perkiraan Ekspor</label>
           <div class="col-sm-4">         
-              <input type="date" class="form-control" id="input1">
+              <input type="date" class="form-control" id="input1" name="tanggal_perkiraan_ekspor">
           </div> 
           <div class="col-6"></div>    
         </div>
@@ -194,19 +184,27 @@ $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
                 </tr>
               </thead>
               <tbody>
+                @foreach($SaranaAngkut as $S)
                 <tr>
-                  <th scope="row" class='centered'>1</th>
-                  <td class='centered'>Dokumen 1</td>
-                  <td class='centered'>NP-001</td>
-                  <td class='centered'>2024-03-14</td>
-                  <td class='centered'>Respon 1</td>
+                  <td class="centered">{{ $S->seri}}</td>
+                  <td class="centered">{{ $S->nama_sarana_angkut}}</td>
+                  <td class="centered">{{ $S->cara_pengangkutan}}</td>
+                  <td class="centered">{{ $S->nomor_voy}}</td>
+                  <td class="centered">{{ $S->bendera}}</td>
                   <td class="oe centered" >
-                    <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                  </svg></a>
+                    <form action="{{ route('hapusseri', $S->seri) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                       </svg>
+                      </button>
+                  </form>
                 </td>
                 </tr>
+                @endforeach
               </tbody>
             </table>    
         </div>
@@ -234,47 +232,39 @@ $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
                 </div>
                   <hr>
                   <div class="offside2">
-                    <div class="container-fluid">
-                      <div class="row hayhay">
-                        <div class="col isi2"><a href="#" >Header</a></div>
-                        <div class="col isi2"><a href="#" >Entitas</a></div>
-                        <div class="col isi2"><a href="#" >Dokumen</a></div>
-                        <div class="col isi2"><a href="#" >Angkut</a></div>
-                        <div class="col isi2"><a href="#" >Kemasan</a></div>
-                        <div class="col isi2"><a href="#" >Transaksi</a></div>
-                        <div class="col isi2"><a href="#" >Barang</a></div>
-                        <div class="col isi2"><a href="#" >Pungutan</a></div>
-                        <div class="col isi2"><a href="#" >Pernyataan</a></div>
-                      </div>
-                    </div>   
+                    @Include("layout.header2")  
                   </div>
                   <hr class="container001 container-fluid">
                   <div class="kotak2">
                     <div class="container-fluid  border border-1 ">
-                      <form class="mt-4" id='formulir3' action='{{ url('/header')}}'>
+                      <form class="mt-4" id='formulir3' action="{{ route('tambahpengangkut')}}" method="post">
+                        @csrf
                         <div class="form-group row ">
-                          <!-- label 1 -->
+              
                           <label for="input1" class="col-sm-2 col-form-label">Tempat Penimbunan</label>
                           <div class="col-sm-4">
-                              <select id="input1" class="form-select ">
+                              <select id="input1" class="form-select" name="tempat_penimbunan">
                                 <option> </option>
-                            <option value="1">GDI - GUDANG NEGARA</option>
-                            <option value="2">GDS - GUDANG SWASTA</option>
-                            <option value="3">GDP - GUDANG UMUM</option>
+                                <?php
+                                foreach ($DataTempatPenimbunan as $DTP) {
+                                    ?>
+                                    <option value="<?php echo $DTP->nama; ?>"><?php echo $DTP->nama; ?></option>
+                                    <?php
+                                }?>
                               </select>
               
                           </div>
               
                           <label for="input1" class="col-sm-2 col-form-label ">Lokasi Pemeriksaan</label>
                           <div class="col-sm-4">
-                            <select id="input1" class="form-select ">
+                            <select id="input1" class="form-select" name="lokasi_pemeriksaan">
                               <option> </option>
-                            <option value="1">KP TEMPAT PEMUATAN</option>
-                            <option value="2">GUDANG EKSPORTIR</option>
-                            <option value="3">TEMPAT LAIN YANG DI IZINKAN</option>
-                            <option value="4">TPS</option>
-                            <option value="5">TPP</option>
-                            <option value="6">TPB</option>
+                              <?php
+                            foreach ($LokasiPemeriksaan as $D) {
+                                ?>
+                                <option value="<?php echo $D->nama; ?>"><?php echo $D->nama; ?></option>
+                                <?php
+                            }?>
                             </select>
                           </div>          
                       </div>
@@ -283,15 +273,20 @@ $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
               
                         <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Muat Asal</label>
                         <div class="col-sm-4">
-                          <select id="batu" class="form-select" onchange="updateInputValue1()">
+                          <select id="batu" class="form-select" onchange="updateInputValue1()" name="pelabuhan_muat_asal">
                             <option></option>
-                            <option value="1">IDDAS - BATU AMPAR</option>
+                            <?php
+                            foreach ($DataPelabuhanMuatAsal as $A) {
+                                ?>
+                                <option value="<?php echo $A->nama; ?>"><?php echo $A->nama; ?></option>
+                                <?php
+                            }?>
                           </select>
-                        </div>~~
+                        </div>
               
                         <label for="input1" class="col-sm-2 col-form-label ">Tanggal Periksa</label>
                         <div class="col-sm-4">
-                            <input type="date"  class="form-control" id="input1"  >
+                            <input type="date"  class="form-control" id="input1" name="tanggal_periksa">
                         </div>         
                       </div>
                       <!-- BARIS 3 -->
@@ -299,23 +294,26 @@ $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
               
                         <label for="input1" class="col-sm-2 col-form-label " >Pelabuhan Muat Ekspor</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="batu2" readonly>
+                            <input type="text" class="form-control" id="batu2" disabled>
                         </div>
               
                         <label for="input1" class="col-sm-2 col-form-label ">Kantor Periksa</label>
                         <div class="col-sm-4">
-                          <input type="text" class="form-control" id="input1" value="KPBBC SINGAPURA" disabled>
+                          <input type="text" class="form-control" id="batu3" value="KPBBC SINGAPURA" disabled>
                         </div>     
                       </div>
                       <!-- BARIS 4 -->
                       <div class="form-group row my-4">
                         <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Bongkar</label>
                         <div class="col-sm-4">
-                          <select id="input1" class="form-select ">
-                            <option></option>
-                            <option value="1">BTH - HANDNADIM</option>
-                            <option value="2">GLG - GALANG</option>
-                            <option value="3">RMP - REMPANG </option>
+                          <select id="input1" class="form-select" name="pelabuhan_bongkar">
+                           <option></option>
+                           <?php
+                           foreach ($PelabuhanBongkar as $B) {
+                               ?>
+                               <option value="<?php echo $B->nama; ?>"><?php echo $B->nama; ?></option>
+                               <?php
+                           }?>
                           </select>
                         </div>
                         <div class="col-6"></div>
@@ -325,11 +323,14 @@ $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
               
                         <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Tujuan</label>
                         <div class="col-sm-4">
-                          <select id="input1" class="form-select ">
+                          <select id="input1" class="form-select" name="pelabuhan_tujuan">
                             <option></option>
-                            <option value="1">SG - SINGAPURA MENTARI</option>
-                            <option value="2">SP - SINGACANDI</option>
-                            <option value="3">SH - SINGAHANDE </option>
+                            <?php
+                            foreach ($PelabuhanTujuan as $C) {
+                                ?>
+                                <option value="<?php echo $C->nama; ?>"><?php echo $C->nama; ?></option>
+                                <?php
+                            }?>
                           </select>            
                         </div>     
                         <div class="col-6"></div>  
@@ -348,10 +349,11 @@ $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
                       <div class="form-group row my-4">
                         <label for="input1" class="col-sm-2 col-form-label">Tanggal Perkiraan Ekspor</label>
                         <div class="col-sm-4">         
-                            <input type="date" class="form-control" id="input1">
+                            <input type="date" class="form-control" id="input1" name="tanggal_perkiraan_ekspor">
                         </div> 
                         <div class="col-6"></div>    
                       </div>
+                      
                       </form>
                       <hr>
            <div class="kotakk">

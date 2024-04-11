@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run() 
     {
         $this->call(AkunSeeder::class);
         $this->call(PengeksporSeeder::class);
@@ -33,5 +33,9 @@ class DatabaseSeeder extends Seeder
         $this->call(DataPelabuhanBongkarSeeder::class);
         $this->call(PelabuhanTujuanSeeder::class);
         $this->call(LokasiPemeriksaanSeeder::class);
+        $this->call(NamaSaranaAngutSeeder::class);
+        $this->call(CaraPengangkutanSeeder::class);
+        $this->call(BenderaSeeder::class);
+        $this->call(SaranaAngkutSeeder::class);
     }
 }

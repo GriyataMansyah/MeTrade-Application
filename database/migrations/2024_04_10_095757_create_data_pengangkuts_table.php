@@ -16,7 +16,7 @@ return new class extends Migration
           $table->integer('id_dokumen')->unsigned();
           $table->foreign('id_dokumen')->references('id')->on('dokumens'); 
           $table->string("tempat_penimbunan");
-          $table->string("pelabuhan_maut_asal");
+          $table->string("pelabuhan_muat_asal");
           $table->string("pelabuhan_muat_ekspor");
           $table->string("pelabuhan_bongkar");
           $table->string("pelabuhan_tujuan");
