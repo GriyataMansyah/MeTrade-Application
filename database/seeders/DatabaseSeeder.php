@@ -36,6 +36,14 @@ class DatabaseSeeder extends Seeder
         $this->call(NamaSaranaAngutSeeder::class);
         $this->call(CaraPengangkutanSeeder::class);
         $this->call(BenderaSeeder::class);
-        $this->call(SaranaAngkutSeeder::class);
+        $this->call(SaranaAngkutSeeder::class); 
+        $this->call(JumlahKemasanSeeder::class);
+        $this->call(JenisKemasanSeeder::class);
+        $this->call(MerekKemasanSeeder::class);
+        $this->call(KemasanSeeder::class);
+        $this->call(UkuranPetiKemasSeeder::class);
+        $this->call(JenisPetiKemasSeeder::class); 
+        $this->call(TipePetiKemasSeeder::class);
+        $this->call(PetiKemasSeeder::class); 
     }
 }

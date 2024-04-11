@@ -1,3 +1,7 @@
+<?php
+$Kemasan = \App\Models\Kemasan::all();
+$PetiKemas = \App\Models\PetiKemas::all();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,32 +29,20 @@
         </svg>
         <p class="dalamputih">Muat Ulang</p>
       </div>
-      <div type="button" class="btn btn-primary drow"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
+      <a type="button" class="btn btn-primary drow" href="{{route('transaksi')}}"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
           fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
           <path
             d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z" />
           <path
             d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z" />
         </svg>
-        <p class="dalambiru" data-bs-toggle="modal" data-bs-target="#Modal">Lanjutkan</p>
-      </div>
+        <p class="dalambiru">Lanjutkan</p>
+      </a>
     </div>
   </div>
   <hr>
   <div class="offside">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Header</a></div>
-        <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Entitas</a></div>
-        <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Dokumen</a></div>
-        <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Angkut</a></div>
-        <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Kemasan</a></div>
-        <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Transaksi</a></div>
-        <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Barang</a></div>
-        <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Pungutan</a></div>
-        <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Pernyataan</a></div>
-      </div>
-    </div>
+    @include('layout.header1')
   </div>
   <hr class="container00 container-fluid">
   <div class="kotak">
@@ -88,17 +80,26 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <th scope="row" class='centered'>1</th>
-                          <td class='centered'>3</td>
-                          <td class='centered'>Tahan banting</td>
-                          <td class='centered'>SNI</td>
-                          <td class="oe centered" >
-                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                          </svg></a>
-                        </td>
-                        </tr>
+                          @foreach($Kemasan as $K)
+                  <tr>
+                  <td class="centered">{{ $K->seri}}</td>
+                  <td class="centered">{{ $K->jumlah}}</td>
+                  <td class="centered">{{ $K->jenis}}</td>
+                  <td class="centered">{{ $K->merek}}</td>
+                  <td class="oe centered" >
+                    <form action="{{ route('hapusaja', $K->seri) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                       </svg>
+                      </button>
+                  </form>
+                </td>
+                </tr>
+                @endforeach
                       </tbody>
                     </table>
                   </div>
@@ -135,19 +136,27 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row" class="centered">1</th>
-                        <td class="centered">Dokumen 1</td>
-                        <td class="centered">XL</td>
-                        <td class="centered">Kayu</td>
-                        <td class="centered">Anti Pecah</td>
-                        <td class="oe centered" >
-                          <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                          @foreach($PetiKemas as $PK)
+                  <tr>
+                  <td class="centered">{{ $PK->seri}}</td>
+                  <td class="centered">{{ $PK->nomor}}</td>
+                  <td class="centered">{{ $PK->ukuran}}</td>
+                  <td class="centered">{{ $PK->jenis}}</td>
+                  <td class="centered">{{ $PK->tipe}}</td>
+                  <td class="oe centered" >
+                    <form action="{{ route('hapuscok', $PK->seri) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                           <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                        </svg></a>
-                      </td>
-                      </tr>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                       </svg>
+                      </button>
+                  </form>
+                </td>
+                </tr>
+                @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -181,19 +190,7 @@
   </div>
   <hr>
   <div class="offside2">
-    <div class="container-fluid">
-      <div class="row hayhay">
-        <div class="col isi2"><a href="#">Header</a></div>
-        <div class="col isi2"><a href="#">Entitas</a></div>
-        <div class="col isi2"><a href="#">Dokumen</a></div>
-        <div class="col isi2"><a href="#">Angkut</a></div>
-        <div class="col isi2"><a href="#">Kemasan</a></div>
-        <div class="col isi2"><a href="#">Transaksi</a></div>
-        <div class="col isi2"><a href="#">Barang</a></div>
-        <div class="col isi2"><a href="#">Pungutan</a></div>
-        <div class="col isi2"><a href="#">Pernyataan</a></div>
-      </div>
-    </div>
+    @Include("layout.header2")
   </div>
   <hr class="container001 container-fluid">
   <div class="kotak2">
@@ -231,17 +228,26 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <th scope="row" class="centered">1</th>
-                          <td class="centered">3</td>
-                          <td class="centered">Tahan banting</td>
-                          <td class="centered">SNI</td>
-                          <td class="oe centered" >
-                            <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                          </svg></a>
-                        </td>
-                        </tr>
+                          @foreach($Kemasan as $K)
+                  <tr>
+                  <td class="centered">{{ $K->seri}}</td>
+                  <td class="centered">{{ $K->jumlah}}</td>
+                  <td class="centered">{{ $K->jenis}}</td>
+                  <td class="centered">{{ $K->merek}}</td>
+                  <td class="oe centered" >
+                    <form action="{{ route('hapusaja', $K->seri) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                       </svg>
+                      </button>
+                  </form>
+                </td>
+                </tr>
+                @endforeach
                       </tbody>
                     </table>
                   </div>
