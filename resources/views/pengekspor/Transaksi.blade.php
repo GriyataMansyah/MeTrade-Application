@@ -1,3 +1,9 @@
+<?php
+$Valuta = \App\Models\valuta::all();
+$CaraPenyerahan = \App\Models\CaraPenyerahan::all();
+$Asuransi = \App\Models\Asuransi::all();
+//-----Responsivenya Belum
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,19 +36,7 @@
     </div> 
     <hr>
     <div class="offside">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Header</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Entitas</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Dokumen</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Angkut</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Kemasan</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Transaksi</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Barang</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Pungutan</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Pernyataan</a></div>
-        </div>
-      </div>   
+     @include('layout.header1')  
     </div>
     <hr class="container00 container-fluid">
     <div class="kotak">
@@ -53,7 +47,9 @@
             <div class="col-sm-4">
                 <select id="rupiah1" class="form-select" onchange="updateInputValue()">
                   <option></option>
-              <option value="1">Rupiah</option>
+                  @foreach ($Valuta as $v)
+                      <option value="<?php echo $v->nama ?>"><?php echo $v->nama ?></option>
+                  @endforeach
                 </select>
             </div>
             <label for="input1" class="col-sm-2 col-form-label ">Nilai Maklan</label>
@@ -66,41 +62,39 @@
           <div class="col-sm-4">
             <input type="text" class="form-control" id="rupiah2" readonly>
           </div>
-          <label for="input1" class="col-sm-2 col-form-label ">Nilai Bea Keluar </label>
+          <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox"> PPh</label>
           <div class="col-sm-4">
-              <label>Rp 0,00</label>
-          </div>         
+            <input type="text" class="form-control" id="DATA2" disabled>
+          </div>       
         </div>
         <div class="form-group row my-4">
           <label for="input1" class="col-sm-2 col-form-label " >Cara Penyerahan</label>
           <div class="col-sm-4">
-            <select id="input1" class="form-select ">
+            <select id="input1" class="form-select">
                 <option value=""></option>
-                <option value="1">CFR - Cost and Freight</option>
-                <option value="2">CIF - Cost, Insurance and Freight</option>
-                <option value="3">CIP - Carriage and Insurance Paid To</option>
-                <option value="4">CPT - Carriage Paid To</option>
-                <option value="5">DAP - Delivered At Place</option>
-                <option value="6">DAT - Delivered At Terminal</option>
-                <option value="7">DDP - Delivered Duty Paid</option>
-                <option value="8">EXW - Ex Works</option>
-                <option value="9">FAS - Free Alongside Ship</option>    
+                @foreach ($CaraPenyerahan as $c)
+                <option value="<?php echo $c->nama ?>"><?php echo $c->nama ?></option>
+            @endforeach
             </select> 
           </div>
-          <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox"> PPh</label>
+          <label for="input1" class="col-sm-2 col-form-label ">Nilai Bea Keluar </label>
           <div class="col-sm-4">
-            <label>Rp 0,00</label>
-          </div>     
+            <input type="text" class="form-control" id="input1" disabled>
+          </div>  
         </div>
        <div class="form-group row my-4">
-        <label for="input1" class="col-sm-2 col-form-label">Nilai Ekspor</label>
+        <label for="input1" class="col-sm-2 col-form-label" >Nilai Ekspor</label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" id="input1" placeholder="Harga">
+          <select id="DATA" class="form-select" onchange="updateInputValue2()">
+            <option value=""></option>
+            <option value="50000000">Rp50.000.000</option>
+            <option value="250000000">Rp250.000.000</option>
+            <option value="500000000">Rp500.000.000</option>
+            <option value="5000000000">Rp5.000.000.000</option>
+            <option value="5000000000">Rp5.000.000.000.000</option>
+        </select> 
         </div>
-        <label for="input1" class="col-sm-2 col-form-label ">Nilai Bea Keluar </label>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" id="input1" disabled>
-        </div>         
+        <div class="col-6"></div>       
       </div>
       <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label">Freight</label>
@@ -114,8 +108,9 @@
         <div class="col-sm-2">
           <select id="input1" class="form-select ">
             <option value=""></option>
-            <option value="1">DALAM NEGERI</option>
-            <option value="2">LUAR NEGERI</option>   
+            @foreach ($Asuransi as $asu)
+            <option value="<?php echo $asu->nama ?>"><?php echo $asu->nama ?></option>
+        @endforeach  
         </select> 
         </div>
         <div class="col-sm-2">
@@ -200,19 +195,7 @@
                 </div>
                   <hr>
                   <div class="offside2">
-                    <div class="container-fluid">
-                      <div class="row hayhay">
-                        <div class="col isi2"><a href="#" >Header</a></div>
-                        <div class="col isi2"><a href="#" >Entitas</a></div>
-                        <div class="col isi2"><a href="#" >Dokumen</a></div>
-                        <div class="col isi2"><a href="#" >Pengangkut</a></div>
-                        <div class="col isi2"><a href="#" >Kemasan</a></div>
-                        <div class="col isi2"><a href="#" >Transaksi</a></div>
-                        <div class="col isi2"><a href="#" >Barang</a></div>
-                        <div class="col isi2"><a href="#" >Pungutan</a></div>
-                        <div class="col isi2"><a href="#" >Pernyataan</a></div>
-                      </div>
-                    </div>   
+                    @include('layout.header2')
                   </div>
                   <hr class="container001 container-fluid">
                   <div class="kotak2">

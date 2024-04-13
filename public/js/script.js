@@ -45,7 +45,7 @@ function updateInputValue() {
   var selectedOption = selectElement.options[selectElement.selectedIndex].value;
   var inputValueElement = document.getElementById("rupiah2");
 
-  if (selectedOption === "1") { 
+  if (selectedOption === "Rupiah") { 
     inputValueElement.value = "350.000,00"; 
   } else {
     inputValueElement.value = "";
@@ -86,4 +86,23 @@ divToRedirect.addEventListener('click', function() {
 //--------------------------
 function refreshPage() {
   location.reload();
+}
+//-------------------------
+function updateInputValue2() {
+  var selectElement = document.getElementById("DATA");
+  var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+  var inputValueElement = document.getElementById("DATA2");
+
+  if (selectedOption === "50000000") { 
+    inputValueElement.value = "Rp2.500.000."; 
+} else if (selectedOption === "250000000") {
+    inputValueElement.value = "Rp37.500.000.";
+} else if (selectedOption === "500000000") {
+    inputValueElement.value = "Rp125.000.000.";
+} else if (selectedOption === "5000000000") {
+    inputValueElement.value = "Rp1.500.000.000.";
+} else if (selectedOption === "5000000000000") {
+    inputValueElement.value = "Rp1.750.000.000.";
+}
+
 }

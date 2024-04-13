@@ -45,5 +45,8 @@ class DatabaseSeeder extends Seeder
         $this->call(JenisPetiKemasSeeder::class); 
         $this->call(TipePetiKemasSeeder::class);
         $this->call(PetiKemasSeeder::class); 
+        $this->call(ValutaSeeder::class); 
+        $this->call(CaraPenyerahanSeeder::class);
+        $this->call(AsuransiSeeder::class);
     }
 }
