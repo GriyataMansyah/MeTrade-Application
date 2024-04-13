@@ -6,6 +6,7 @@ use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\EntitasController;
 use App\Http\Controllers\KemasanController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PengeksporController;
 use App\Http\Controllers\DataPengangkutController;
 use App\Http\Controllers\DokumenPendukungController;
@@ -75,17 +76,23 @@ Route::delete('pengekspor/daftardok/{id}', [DokumenController::class, 'destroy']
 
 Route::delete('pengekspor/dokumenpen/{id}', [DokumenPendukungController::class, 'destroy'])->name('hapus.dokumenpen');
 
+Route::post('pengekspor/Transaksi', [TransaksiController::class, 'tambahtransaksi'])->name("tambahtransaksi");
+
+Route::post('layout/popuptransaksi', [TransaksiController::class, 'tambahbank'])->name("tambahbank");
+
 Route::view('/dokumenpen1', 'pengekspor/dokumenpen')->name("dokumenpen");
 
 Route::view('/kemasan1', 'pengekspor/kemasan')->name("kemasan");
 
 Route::view('/transaksi1', 'pengekspor/transaksi')->name('transaksi');
 
-Route::view('/barang1', 'pengekspor/barang');
+Route::view('/barang1', 'pengekspor/barang')->name('barang');
 
 Route::view('/pungutan1', 'pengekspor/pungutan');
 
 Route::view('/pernyataan1','pengekspor/pernyataan');
+
+Route::view('/P','pengekspor/PERCOBAAN');
 
 // Menampilkan Saja
 

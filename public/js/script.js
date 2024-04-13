@@ -104,5 +104,73 @@ function updateInputValue2() {
 } else if (selectedOption === "5000000000000") {
     inputValueElement.value = "Rp1.750.000.000.";
 }
+}
+//------------------------
+function hanyaAngka(evt) {
+  var charCode = (evt.which) ? evt.which : event.keyCode;
+  if (charCode >= 48 && charCode <= 57) {
+      return true;
+  }
+  return false;
+}
+//------------------------
+function updateInputValue3() {
+  // Ambil nilai NDPMB
+  var ndpmb = 350000;
 
+  // Ambil nilai Nilai Ekspor
+  var selectElement = document.getElementById("DATA");
+  var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+  var nilaiEkspor = selectedOption ? parseInt(selectedOption) : 0;
+
+  // Ambil nilai Freight
+  var freightInput = document.getElementById("freight");
+  var freight = freightInput.value ? parseFloat(freightInput.value) : 0;
+
+  // Ambil nilai Asuransi
+  var asuransiInput = document.getElementById("asuransi");
+  var asuransi = asuransiInput.value ? parseFloat(asuransiInput.value) : 0;
+
+  // Hitung total nilai
+  var totalNilai = ndpmb + nilaiEkspor + freight + asuransi;
+
+  // Tampilkan total nilai di elemen nilai bea cukai keluar
+  var nilaiBeaKeluarInput = document.getElementById("nilai_bea_keluar");
+  nilaiBeaKeluarInput.value = totalNilai.toLocaleString(); // Format nilai dengan toLocaleString()
+}
+//--------------------------
+function updatePphValue() {
+  // Ambil nilai opsi yang dipilih dari elemen select
+  var selectElement = document.getElementById("DATA");
+  var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+
+  // Tentukan nilai PPh berdasarkan opsi yang dipilih
+  var pph;
+  if (selectedOption === "50000000") {
+    pph = "2500000";
+  } else if (selectedOption === "250000000") {
+    pph = "37500000";
+  } else if (selectedOption === "500000000") {
+    pph = "125000000";
+  } else if (selectedOption === "5000000000") {
+    pph = "1500000000.";
+  } else if (selectedOption === "5000000000000") {
+    pph = "1750000000";
+  }
+
+   // Periksa apakah checkbox PPh dicentang
+   var pphCheckbox = document.getElementById("pphCheckbox");
+   if (pphCheckbox.checked) {
+     // Jika dicentang, tambahkan nilai PPh ke totalNilai
+     updateInputValue3(pph);
+   } else {
+     // Jika tidak dicentang, panggil updateInputValue3() tanpa nilai PPh
+     updateInputValue3(-(pph));
+   }
+
+   var pphCheckbox = document.getElementById("pphCheckbox");
+    pphCheckbox.addEventListener("click", function() {
+    updatePphValue();
+    });
+   
 }

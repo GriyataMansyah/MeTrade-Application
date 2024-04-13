@@ -48,5 +48,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ValutaSeeder::class); 
         $this->call(CaraPenyerahanSeeder::class);
         $this->call(AsuransiSeeder::class);
+        $this->call(BankSeeder::class);
+        $this->call(NamaBankSeeder::class);
     }
 }

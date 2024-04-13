@@ -2,7 +2,7 @@
 $Valuta = \App\Models\valuta::all();
 $CaraPenyerahan = \App\Models\CaraPenyerahan::all();
 $Asuransi = \App\Models\Asuransi::all();
-//-----Responsivenya Belum
+$NamaBank = \App\Models\NamaBank::all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,11 +41,12 @@ $Asuransi = \App\Models\Asuransi::all();
     <hr class="container00 container-fluid">
     <div class="kotak">
       <div class="container-fluid  border border-1 ">
-        <form class="mt-4" id="formulir4">
+        <form class="mt-4" id="formulir4" method="post" action="{{ route('tambahtransaksi')}}">
+          @csrf
           <div class="form-group row ">
             <label for="input1" class="col-sm-2 col-form-label">Valuta</label>
             <div class="col-sm-4">
-                <select id="rupiah1" class="form-select" onchange="updateInputValue()">
+                <select id="rupiah1" class="form-select" onchange="updateInputValue()" name="valuta">
                   <option></option>
                   @foreach ($Valuta as $v)
                       <option value="<?php echo $v->nama ?>"><?php echo $v->nama ?></option>
@@ -54,23 +55,23 @@ $Asuransi = \App\Models\Asuransi::all();
             </div>
             <label for="input1" class="col-sm-2 col-form-label ">Nilai Maklan</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="input1">
+                <input type="text" class="form-control" id="input1" name="nilai_maklan" id="nilai_maklan" onkeypress="return hanyaAngka(event)">
             </div>          
         </div>
         <div class="form-group row my-4">
           <label for="input1" class="col-sm-2 col-form-label">NDPMB</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="rupiah2" readonly>
+            <input type="text" class="form-control" id="rupiah2" name="NDPMB" id="ndpmb" readonly>
           </div>
-          <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox"> PPh</label>
+          <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox" id="pphCheckbox" onchange="updatePphValue()"> PPh</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="DATA2" disabled>
+            <input type="text" class="form-control" id="DATA2" name="pph" readonly>
           </div>       
         </div>
         <div class="form-group row my-4">
           <label for="input1" class="col-sm-2 col-form-label " >Cara Penyerahan</label>
           <div class="col-sm-4">
-            <select id="input1" class="form-select">
+            <select id="input1" class="form-select" name="cara_penyerahan">
                 <option value=""></option>
                 @foreach ($CaraPenyerahan as $c)
                 <option value="<?php echo $c->nama ?>"><?php echo $c->nama ?></option>
@@ -79,13 +80,13 @@ $Asuransi = \App\Models\Asuransi::all();
           </div>
           <label for="input1" class="col-sm-2 col-form-label ">Nilai Bea Keluar </label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="input1" disabled>
+            <input type="text" class="form-control" id="nilai_bea_keluar" name="nilai_bea_keluar" readonly>
           </div>  
         </div>
        <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label" >Nilai Ekspor</label>
         <div class="col-sm-4">
-          <select id="DATA" class="form-select" onchange="updateInputValue2()">
+          <select id="DATA" class="form-select" onchange="updateInputValue2()" name="nilai_ekspor" id="nilai_ekspor">
             <option value=""></option>
             <option value="50000000">Rp50.000.000</option>
             <option value="250000000">Rp250.000.000</option>
@@ -99,14 +100,14 @@ $Asuransi = \App\Models\Asuransi::all();
       <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label">Freight</label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" id="input1" placeholder="0,00">
+          <input type="text" class="form-control" name="freight" id="freight" onkeypress="return hanyaAngka(event)">
         </div>
         <div class="col-6"></div>
       </div>
       <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label">Asuransi</label>
         <div class="col-sm-2">
-          <select id="input1" class="form-select ">
+          <select id="input1" class="form-select" name="asuransi">
             <option value=""></option>
             @foreach ($Asuransi as $asu)
             <option value="<?php echo $asu->nama ?>"><?php echo $asu->nama ?></option>
@@ -114,21 +115,21 @@ $Asuransi = \App\Models\Asuransi::all();
         </select> 
         </div>
         <div class="col-sm-2">
-          <input type="text" class="form-control" id="input1" placeholder="Nominal Asuransi">
+          <input type="text" class="form-control" placeholder="Nominal Asuransi" name="nominal_asuransi" id="asuransi" oninput="updateInputValue3()" onkeypress="return hanyaAngka(event)">
         </div>
         <div class="col-6"></div>
       </div>
       <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label">Berat Kotor</label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" id="input1" placeholder="KG">
+          <input type="text" class="form-control" placeholder="KG" name="berat_kotor" id="berat_kotor" onkeypress="return hanyaAngka(event)">
         </div>
         <div class="col-6"></div>
       </div>
       <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label">Berat Bersih</label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" id="input1" placeholder="KG">
+          <input type="text" class="form-control" id="input1" placeholder="KG" name="berat_bersih" id="berat_bersih" onkeypress="return hanyaAngka(event)"> 
         </div>
         <div class="col-6"></div>
       </div>
@@ -200,96 +201,98 @@ $Asuransi = \App\Models\Asuransi::all();
                   <hr class="container001 container-fluid">
                   <div class="kotak2">
                     <div class="container-fluid  border border-1 ">
-                      <form class="mt-4" id="formulir4">
+                      <form class="mt-4" id="formulir4" method="post" action="{{ route('tambahtransaksi')}}">
+                        @csrf
                         <div class="form-group row ">
                           <label for="input1" class="col-sm-2 col-form-label">Valuta</label>
                           <div class="col-sm-4">
-                              <select id="rupiah1" class="form-select" onchange="updateInputValue()">
+                              <select id="rupiah1" class="form-select" onchange="updateInputValue()" name="valuta">
                                 <option></option>
-                            <option value="1">Rupiah</option>
+                                @foreach ($Valuta as $v)
+                                    <option value="<?php echo $v->nama ?>"><?php echo $v->nama ?></option>
+                                @endforeach
                               </select>
                           </div>
                           <label for="input1" class="col-sm-2 col-form-label ">Nilai Maklan</label>
                           <div class="col-sm-4">
-                              <input type="text" class="form-control" id="input1">
+                              <input type="text" class="form-control" id="input1" name="nilai_maklan" id="nilai_maklan" onkeypress="return hanyaAngka(event)">
                           </div>          
                       </div>
                       <div class="form-group row my-4">
                         <label for="input1" class="col-sm-2 col-form-label">NDPMB</label>
                         <div class="col-sm-4">
-                          <input type="text" class="form-control" id="rupiah2" readonly>
+                          <input type="text" class="form-control" id="rupiah2" name="NDPMB" id="ndpmb" readonly>
                         </div>
-                        <label for="input1" class="col-sm-2 col-form-label ">Nilai Bea Keluar </label>
+                        <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox" id="pphCheckbox" onchange="updatePphValue()"> PPh</label>
                         <div class="col-sm-4">
-                            <label>Rp 0,00</label>
-                        </div>         
+                          <input type="text" class="form-control" id="DATA2" name="pph" readonly>
+                        </div>       
                       </div>
                       <div class="form-group row my-4">
                         <label for="input1" class="col-sm-2 col-form-label " >Cara Penyerahan</label>
                         <div class="col-sm-4">
-                          <select id="input1" class="form-select ">
+                          <select id="input1" class="form-select" name="cara_penyerahan">
                               <option value=""></option>
-                              <option value="1">CFR - Cost and Freight</option>
-                              <option value="2">CIF - Cost, Insurance and Freight</option>
-                              <option value="3">CIP - Carriage and Insurance Paid To</option>
-                              <option value="4">CPT - Carriage Paid To</option>
-                              <option value="5">DAP - Delivered At Place</option>
-                              <option value="6">DAT - Delivered At Terminal</option>
-                              <option value="7">DDP - Delivered Duty Paid</option>
-                              <option value="8">EXW - Ex Works</option>
-                              <option value="9">FAS - Free Alongside Ship</option>    
+                              @foreach ($CaraPenyerahan as $c)
+                              <option value="<?php echo $c->nama ?>"><?php echo $c->nama ?></option>
+                          @endforeach
                           </select> 
                         </div>
-                        <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox"> PPh</label>
+                        <label for="input1" class="col-sm-2 col-form-label ">Nilai Bea Keluar </label>
                         <div class="col-sm-4">
-                          <label>Rp 0,00</label>
-                        </div>     
+                          <input type="text" class="form-control" id="nilai_bea_keluar" name="nilai_bea_keluar" readonly>
+                        </div>  
                       </div>
                      <div class="form-group row my-4">
-                      <label for="input1" class="col-sm-2 col-form-label">Nilai Ekspor</label>
+                      <label for="input1" class="col-sm-2 col-form-label" >Nilai Ekspor</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="input1" placeholder="Harga">
+                        <select id="DATA" class="form-select" onchange="updateInputValue2()" name="nilai_ekspor" id="nilai_ekspor">
+                          <option value=""></option>
+                          <option value="50000000">Rp50.000.000</option>
+                          <option value="250000000">Rp250.000.000</option>
+                          <option value="500000000">Rp500.000.000</option>
+                          <option value="5000000000">Rp5.000.000.000</option>
+                          <option value="5000000000">Rp5.000.000.000.000</option>
+                      </select> 
                       </div>
-                      <label for="input1" class="col-sm-2 col-form-label ">Nilai Bea Keluar </label>
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control" id="input1" disabled>
-                      </div>         
+                      <div class="col-6"></div>       
                     </div>
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label">Freight</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="input1" placeholder="0,00">
+                        <input type="text" class="form-control" name="freight" id="freight" onkeypress="return hanyaAngka(event)">
                       </div>
                       <div class="col-6"></div>
                     </div>
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label">Asuransi</label>
                       <div class="col-sm-2">
-                        <select id="input1" class="form-select ">
+                        <select id="input1" class="form-select" name="asuransi">
                           <option value=""></option>
-                          <option value="1">DALAM NEGERI</option>
-                          <option value="2">LUAR NEGERI</option>   
+                          @foreach ($Asuransi as $asu)
+                          <option value="<?php echo $asu->nama ?>"><?php echo $asu->nama ?></option>
+                      @endforeach  
                       </select> 
                       </div>
                       <div class="col-sm-2">
-                        <input type="text" class="form-control" id="input1" placeholder="Nominal Asuransi">
+                        <input type="text" class="form-control" placeholder="Nominal Asuransi" name="nominal_asuransi" id="asuransi" oninput="updateInputValue3()" onkeypress="return hanyaAngka(event)">
                       </div>
                       <div class="col-6"></div>
                     </div>
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label">Berat Kotor</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="input1" placeholder="KG">
+                        <input type="text" class="form-control" placeholder="KG" name="berat_kotor" id="berat_kotor" onkeypress="return hanyaAngka(event)">
                       </div>
                       <div class="col-6"></div>
                     </div>
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label">Berat Bersih</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="input1" placeholder="KG">
+                        <input type="text" class="form-control" id="input1" placeholder="KG" name="berat_bersih" id="berat_bersih" onkeypress="return hanyaAngka(event)"> 
                       </div>
                       <div class="col-6"></div>
-                    </div>
+                    </div></form>
                       <hr>
                       <div class="kotakk">
                         <div class="row">
@@ -334,8 +337,9 @@ $Asuransi = \App\Models\Asuransi::all();
       </div>
   </div>
 
-  @include('layout.popuptransaksi')
+ 
   @include('layout.sidebar')
+   @include('layout.popuptransaksi')
   @include('layout.footer')
   <script src={{ asset('js/script.js')}}></script>
 </body>

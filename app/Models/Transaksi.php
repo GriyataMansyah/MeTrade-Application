@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksi extends Model
 {
     use HasFactory;
-
-    public $timestamp = false;
+    
+    public $timestamps = false;
 
     protected $table = "transaksi";
 

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bank;
+use App\Models\Dokumen;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
-    public function tambah(Request $request){
+    public function tambahtransaksi(Request $request){
         $request->validate([
           'valuta' => 'required',
           'NDPMB' => 'required',
@@ -24,10 +27,12 @@ class TransaksiController extends Controller
       ]);
       
         $Transaksi = new Transaksi;
+        $id = Auth::id();
         $dokumen = Dokumen::where('id_pengekspor', $id)->latest('id')->first();
         $Transaksi->id_dokumen = $dokumen->id; 
         $Transaksi->valuta = $request->input('valuta');
         $Transaksi->NDPMB = $request->input('NDPMB');
+        $Transaksi->nilai_ekspor = $request->input('nilai_ekspor');
         $Transaksi->cara_penyerahan = $request->input('cara_penyerahan');
         $Transaksi->freight = $request->input('freight');
         $Transaksi->asuransi = $request->input('asuransi');
@@ -39,8 +44,20 @@ class TransaksiController extends Controller
         $Transaksi->nilai_bea_keluar = $request->input('nilai_bea_keluar');
         $Transaksi ->save();
     
-        return redirect()->route('entitas');
-
-        // -----------BELUM JALAN
+        return redirect()->route('barang');
       }
+
+      public function tambahbank(Request $request){
+        $request->validate([
+            'kode_bank' => 'required',
+            'nama_bank' => 'required',
+        ]);
+
+        $bank = new Bank;
+        $bank->kode_bank = $request->input('kode_bank');
+        $bank->nama_bank = $request->input('nama_bank');
+        $bank ->save();
+
+        return redirect()->route('transaksi');
+        }
 }
