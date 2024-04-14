@@ -60,4 +60,12 @@ class TransaksiController extends Controller
 
         return redirect()->route('transaksi');
         }
+
+      public function hapusbank($seri)
+        {
+        $dob= Bank::findOrFail($seri);
+        $dob->delete();
+    
+         return redirect()->route('transaksi');
+        }
 }

@@ -80,6 +80,8 @@ Route::post('pengekspor/Transaksi', [TransaksiController::class, 'tambahtransaks
 
 Route::post('layout/popuptransaksi', [TransaksiController::class, 'tambahbank'])->name("tambahbank");
 
+Route::delete('pengekspor/transaksi/{seri}', [TransaksiController::class, 'hapusbank'])->name('hapusbank');
+
 Route::view('/dokumenpen1', 'pengekspor/dokumenpen')->name("dokumenpen");
 
 Route::view('/kemasan1', 'pengekspor/kemasan')->name("kemasan");
@@ -88,7 +90,7 @@ Route::view('/transaksi1', 'pengekspor/transaksi')->name('transaksi');
 
 Route::view('/barang1', 'pengekspor/barang')->name('barang');
 
-Route::view('/pungutan1', 'pengekspor/pungutan');
+Route::view('/pungutan1', 'pengekspor/pungutan')->name('pungutan');
 
 Route::view('/pernyataan1','pengekspor/pernyataan');
 

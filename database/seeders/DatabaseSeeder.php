@@ -50,5 +50,10 @@ class DatabaseSeeder extends Seeder
         $this->call(AsuransiSeeder::class);
         $this->call(BankSeeder::class);
         $this->call(NamaBankSeeder::class);
+        $this->call(HSSeeder::class);
+        $this->call(KodeSeeder::class);
+        $this->call(DaerahAsalBarangSeeder::class);
+        $this->call(KodeSatuanSeeder::class);
+        $this->call(KodeKemasanSeeder::class);
     }
 }
