@@ -6,6 +6,7 @@ use App\Models\Barang;
 use App\Models\Lartas;
 use App\Models\Dokumen;
 use Illuminate\Http\Request;
+use App\Models\EntitasBarang;
 use Illuminate\Support\Facades\Auth;
 
 class BarangController extends Controller
@@ -79,6 +80,35 @@ class BarangController extends Controller
       {
       $docs = Lartas::findOrFail($seri);
       $docs->delete();
+  
+       return redirect()->route('barang1');
+      }
+
+
+      
+      public function tambahentitas(Request $Request){
+        $Request->validate([
+          'nomor_identitas' => 'required',
+          'nama' => 'required',
+          'alamat' => 'required',
+          'entitas' => 'required',
+      ]);
+
+
+        $B = new EntitasBarang;
+        $B->nomor_identitas = $Request->input('nomor_identitas');
+        $B->nama = $Request->input('nama');
+        $B->alamat = $Request->input('alamat');
+        $B->entitas = $Request->input('entitas');
+        $B ->save();
+  
+      return redirect()->route('barang1');
+      }
+
+      public function hapusentitas($seri)
+      {
+      $O = EntitasBarang::findOrFail($seri);
+      $O->delete();
   
        return redirect()->route('barang1');
       }

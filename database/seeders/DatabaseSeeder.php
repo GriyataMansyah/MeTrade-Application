@@ -59,5 +59,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DataFasilitasSeeder::class);
         $this->call(DataIzinSeeder::class);
         $this->call(LartasSeeder::class);
+        $this->call(EntitasBarangSeeder::class);
+        $this->call(DataEntitasSeeder::class);
     }
 }

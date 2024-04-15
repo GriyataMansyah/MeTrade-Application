@@ -2,8 +2,8 @@
 $DataJenisLartas = \App\Models\DataJenisLartas::all();
 $DataFasilitas = \App\Models\DataFasilitas::all();
 $DataIzin = \App\Models\DataIzin::all();
+$DataEntitas = \App\Models\DataEntitas::all();
 
-$UkuranPetiKemas = \App\Models\UkuranPetiKemas::all();
 $JenisPetiKemas = \App\Models\JenisPetiKemas::all();
 $TipePetiKemas = \App\Models\TipePetiKemas::all();
 ?>
@@ -39,7 +39,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary" >Nomor</p>
               </label>
               <div class="offset-1 col-8">
-                <input type="text" class="form-control" name="nomor">
+                <input type="text" class="form-control" name="nomor" onkeypress="return hanyaAngka(event)">
               </div>
             </div>
             <div class="form-group row mb-3">
@@ -109,62 +109,46 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header mb-3 " style="background-color: #DDFAFE;">
-          <h1 class="modal-title fs-5 " id="exampleModalLabel">Tambah Peti Kemas</h1>
+          <h1 class="modal-title fs-5 " id="exampleModalLabel">Entitas Barang</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="post" action="{{ route('tambahcok')}}">
+          <form method="post" action="{{ route('tambahentitas')}}">
             @csrf
             <div class="form-group row mb-3">
               <label class="control-label col-3 col-form-label">
-                <p class="h6 text-secondary">Nomor</p>
+                <p class="h6 text-secondary">Nomor Identitas</p>
               </label>
               <div class="offset-1 col-8">
-                <input type="text" class="form-control" name="nomor">
+                <input type="text" class="form-control" name="nomor_identitas" onkeypress="return hanyaAngka(event)">
               </div>
             </div>
             <div class="form-group row mb-3">
               <label class="control-label col-3 col-form-label">
-                <p class="h6 text-secondary">Ukuran</p>
+                <p class="h6 text-secondary">Nama</p>
               </label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="ukuran">
-                  <option> </option><?php
-                  foreach ($UkuranPetiKemas as $UPK) {
-                      ?>
-                      <option value="<?php echo $UPK->nama; ?>"><?php echo $UPK->nama; ?></option>
-                      <?php
-                  }?>
-
-                </select>
+                <input type="text" class="form-control" name="nama">
               </div>
             </div>
             <div class="form-group row mb-3">
               <label class="control-label col-3 col-form-label">
-                <p class="h6 text-secondary">Jenis</p>
+                <p class="h6 text-secondary">Alamat</p>
               </label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="jenis">
+                <input type="text" class="form-control" name="alamat">
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label class="control-label col-3 col-form-label">
+                <p class="h6 text-secondary">Entitas</p>
+              </label>
+              <div class="offset-1 col-8">
+                <select class="form-select" name="entitas">
                   <option></option><?php
-                  foreach ($JenisPetiKemas as $JPK) {
+                  foreach ($DataEntitas as $DE) {
                       ?>
-                      <option value="<?php echo $JPK->nama; ?>"><?php echo $JPK->nama; ?></option>
-                      <?php
-                  }?>
-
-                </select>
-              </div>
-            </div>
-            <div class="form-group row mb-3">
-              <label class="control-label col-3 col-form-label">
-                <p class="h6 text-secondary">Tipe</p>
-              </label>
-              <div class="offset-1 col-8">
-                <select class="form-select" name="tipe">
-                  <option></option><?php
-                  foreach ($TipePetiKemas as $TPK) {
-                      ?>
-                      <option value="<?php echo $TPK->nama; ?>"><?php echo $TPK->nama; ?></option>
+                      <option value="<?php echo $DE->nama; ?>"><?php echo $DE->nama; ?></option>
                       <?php
                   }?>
 

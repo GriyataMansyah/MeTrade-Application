@@ -5,6 +5,7 @@ $DaerahAsalBarang = \App\Models\DaerahAsalBarang::all();
 $KodeSatuan = \App\Models\KodeSatuan::all();
 $KodeKemasan = \App\Models\KodeKemasan::all();
 $Lartas= \App\Models\Lartas::all();
+$EntitasBarang = \App\Models\EntitasBarang::all();
 ?>
 {{-- RESPONSIVENYA BELOMMM --}}
 <!DOCTYPE html>
@@ -55,7 +56,7 @@ $Lartas= \App\Models\Lartas::all();
             </div>
             <label for="input1" class="col-sm-2 col-form-label ">Satuan</label>
             <div class="col-sm-2">
-              <input type="text" class="form-control" name="satuan">
+              <input type="text" class="form-control" name="satuan" onkeypress="return hanyaAngka(event)">
             </div>
             <div class="col-sm-2">
               <select id="input1" class="form-select" name="kode_satuan">
@@ -77,7 +78,7 @@ $Lartas= \App\Models\Lartas::all();
             </div>
             <label for="input1" class="col-sm-2 col-form-label ">Kemasan</label>
             <div class="col-sm-2">
-              <input type="text" class="form-control" id="input1" name="kemasan">
+              <input type="text" class="form-control" id="input1" name="kemasan" onkeypress="return hanyaAngka(event)">
             </div>
             <div class="col-sm-2">
               <select id="input1" class="form-select" name="kode_kemasan">
@@ -100,7 +101,7 @@ $Lartas= \App\Models\Lartas::all();
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Harga FOB</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" name="harga_fob">
+            <input type="text" class="form-control" name="harga_fob" onkeypress="return hanyaAngka(event)">
         </div>     
           </div>
           <div class="form-group row my-4">
@@ -110,7 +111,7 @@ $Lartas= \App\Models\Lartas::all();
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Volume</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" name="volume">
+            <input type="text" class="form-control" name="volume" onkeypress="return hanyaAngka(event)">
         </div>    
           </div>
            <div class="form-group row my-4">
@@ -120,7 +121,7 @@ $Lartas= \App\Models\Lartas::all();
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Berat Bersih (KG)</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" name="berat_bersih">
+            <input type="text" class="form-control" name="berat_bersih" onkeypress="return hanyaAngka(event)">
         </div>       
           </div>
            <div class="form-group row my-4">
@@ -130,13 +131,13 @@ $Lartas= \App\Models\Lartas::all();
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Harga Satuan FOB</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" name="harga_satuan_fob" readonly>
+              <input type="text" class="form-control" name="harga_satuan_fob" onkeypress="return hanyaAngka(event)">
           </div>
           </div>
           <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label ">Ukuran</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" placeholder="BOLEH DI KOSONGKAN" name="ukuran">
+              <input type="text" class="form-control" placeholder="BOLEH DI KOSONGKAN" name="ukuran" onkeypress="return hanyaAngka(event)">
           </div>   
           <div class="col-6"></div>      
           </div>
@@ -250,28 +251,27 @@ $Lartas= \App\Models\Lartas::all();
                         </tr>
                       </thead>
                       <tbody>
-                            {{-- @foreach($PetiKemas as $PK) --}}
+                            @foreach($EntitasBarang as $EB)
                     <tr>
-                    {{-- <td class="centered">{{}}</td> --}}
-                    <td class="centered"></td>
-                    <td class="centered"></td>
-                    <td class="centered"></td>
-                    <td class="centered"></td>
-                    <td class="centered"></td>
+                    <td class="centered">{{ $EB->seri}}</td>
+                    <td class="centered">{{ $EB->nomor_identitas}}</td>
+                    <td class="centered">{{ $EB->nama}}</td>
+                    <td class="centered">{{ $EB->alamat}}</td>
+                    <td class="centered">{{ $EB->entitas}}</td>
                     <td class="oe centered" >
-                      {{-- <form action="{{ route('hapuscok', $PK->seri) }}" method="POST"> --}}
+                      <form action="{{ route('hapusentitas', $EB->seri) }}" method="POST">
                         @csrf
-                        {{-- @method('DELETE') --}}
+                        @method('DELETE')
                         <button type="submit">
                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
                           <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                          </svg>
                         </button>
-                    {{-- </form> --}}
+                    </form>
                   </td>
                   </tr>
-                  {{-- @endforeach --}}
+                  @endforeach
                       </tbody>
                     </table>
                   </div>

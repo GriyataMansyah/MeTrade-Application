@@ -85,10 +85,14 @@ Route::delete('pengekspor/transaksi/{seri}', [TransaksiController::class, 'hapus
 
 Route::view('/popupbarang', 'layout/popupbarang')->name('popupbarang');
 
-Route::post('popupbarang', [BarangController::class, 'tambahlartas'])->name("tambahlartas");
+Route::post('popupbarang/tambahlartas', [BarangController::class, 'tambahlartas'])->name("tambahlartas");
 
 Route::delete('pengekspor/barang/{seri}', [BarangController::class, 'hapuslartas'])->name('hapuslartas');
 
+Route::post('popupbarang/tambahentitas', [BarangController::class, 'tambahentitas'])->name("tambahentitas");
+
+Route::delete('pengekspor/barang/delete/{seri}', [BarangController::class, 'hapusentitas'])->name('hapusentitas');
+//------------------------
 Route::view('/barang1', 'pengekspor/barang')->name('barang1');
 
 Route::post('/barang1', [BarangController::class, 'tambahbarang'])->name("tambahbarang");
