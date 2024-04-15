@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Lartas;
 use App\Models\Dokumen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,5 +51,35 @@ class BarangController extends Controller
         $dok -> save();
     
         return redirect()->route('pungutan');
+      }
+
+
+      public function tambahlartas(Request $Request){
+        $Request->validate([
+          'jenis' => 'required',
+          'nomor' => 'required',
+          'tanggal' => 'required',
+          'fasilitas' => 'required',
+          'izin' => 'required',
+      ]);
+
+
+        $A = new Lartas;
+        $A->jenis = $Request->input('jenis');
+        $A->nomor = $Request->input('nomor');
+        $A->tanggal = $Request->input('tanggal');
+        $A->fasilitas = $Request->input('fasilitas');
+        $A->izin = $Request->input('izin');
+        $A ->save();
+  
+      return redirect()->route('barang1');
+      }
+
+      public function hapuslartas($seri)
+      {
+      $docs = Lartas::findOrFail($seri);
+      $docs->delete();
+  
+       return redirect()->route('barang1');
       }
 }

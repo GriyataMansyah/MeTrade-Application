@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string("lartas");
             $table->string("kode");
             $table->string("uraian");
-            $table->string("mark");
-            $table->string("tipe");
-            $table->string("ukuran");
+            $table->string("mark")->nullable();
+            $table->string("tipe")->nullable();
+            $table->string("ukuran")->nullable();
             $table->string("negara_asal_barang");
             $table->string("daerah_asal_barang");
             $table->string("satuan");

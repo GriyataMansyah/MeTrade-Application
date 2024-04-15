@@ -55,5 +55,9 @@ class DatabaseSeeder extends Seeder
         $this->call(DaerahAsalBarangSeeder::class);
         $this->call(KodeSatuanSeeder::class);
         $this->call(KodeKemasanSeeder::class);
+        $this->call(DataJenisLartasSeeder::class);
+        $this->call(DataFasilitasSeeder::class);
+        $this->call(DataIzinSeeder::class);
+        $this->call(LartasSeeder::class);
     }
 }

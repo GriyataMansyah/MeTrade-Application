@@ -487,7 +487,7 @@ a {
 .table {
   width: 100%;
   height: 60vh;
-  background-color: red;
+  background-color: white;
 }
 
 .offside {
@@ -899,4 +899,9 @@ a {
     height:40px;
     margin-left: 5px;
     margin-right: 5px;
+  }
+
+  .centerweb {
+    display: flex;
+    justify-content: center;
   }
