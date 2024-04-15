@@ -44,7 +44,7 @@ class TransaksiController extends Controller
         $Transaksi->nilai_bea_keluar = $request->input('nilai_bea_keluar');
         $Transaksi ->save();
     
-        return redirect()->route('barang');
+        return redirect()->route('barang1');
       }
 
       public function tambahbank(Request $request){

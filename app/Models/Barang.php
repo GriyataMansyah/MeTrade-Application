@@ -9,7 +9,7 @@ class Barang extends Model
 {
     use HasFactory;
 
-    public $primarykey = 'seri';
+    public $primaryKey = 'seri';
 
     public $timestamps = false;
 

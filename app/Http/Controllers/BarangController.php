@@ -3,20 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Dokumen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BarangController extends Controller
 {
-    public function tambah(Request $request){
+    public function tambahbarang(Request $request){
         $request->validate([
           'HS' => 'required',
           'lartas' => 'required',
           'kode' => 'required',
           'uraian' => 'required',
-          'mark' => 'required',
-          'tipe' => 'required',
-          'ukuran' => 'required',
-          'negara_asal_barang' => 'required',
           'daerah_asal_barang' => 'required',
           'satuan' => 'required',
           'kode_satuan' => 'required',
@@ -39,7 +37,7 @@ class BarangController extends Controller
         $dok->mark = $request->filled('mark') ? $request->input('mark') : null;
         $dok->tipe = $request->filled('tipe') ? $request->input('tipe') : null;
         $dok->ukuran = $request->filled('ukuran') ? $request->input('ukuran') : null;
-        $dok->negara_asal_barang = $request->input('negara_asal_barang');
+        $dok->negara_asal_barang = "INDONESIA";
         $dok->daerah_asal_barang = $request->input('daerah_asal_barang');
         $dok->satuan = $request->input('satuan');
         $dok->kode_satuan = $request->input('kode_satuan');

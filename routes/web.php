@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\EntitasController;
@@ -82,13 +83,17 @@ Route::post('layout/popuptransaksi', [TransaksiController::class, 'tambahbank'])
 
 Route::delete('pengekspor/transaksi/{seri}', [TransaksiController::class, 'hapusbank'])->name('hapusbank');
 
+Route::view('/barang1', 'pengekspor/barang')->name('barang1');
+
+Route::post('/barang1', [BarangController::class, 'tambahbarang'])->name("tambahbarang");
+
 Route::view('/dokumenpen1', 'pengekspor/dokumenpen')->name("dokumenpen");
 
 Route::view('/kemasan1', 'pengekspor/kemasan')->name("kemasan");
 
 Route::view('/transaksi1', 'pengekspor/transaksi')->name('transaksi');
 
-Route::view('/barang1', 'pengekspor/barang')->name('barang');
+
 
 Route::view('/pungutan1', 'pengekspor/pungutan')->name('pungutan');
 

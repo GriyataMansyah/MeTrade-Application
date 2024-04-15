@@ -39,11 +39,12 @@ $KodeKemasan = \App\Models\KodeKemasan::all();
     </div>
     <hr class="container00 container-fluid">   
       <div class="kotakw">
-          <form class="mt-4" id="formulir5">
+          <form class="mt-4" id="formulir5" method="post" action="{{ route('tambahbarang')}}">
+            @csrf
           <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label">HS</label>
             <div class="col-sm-4">
-              <select id="input1" class="form-select" name="HS">
+              <select class="form-select" name="HS">
                 <option></option>
              @foreach ($HS as $A)
              <option value="{{ $A->nama }}">{{ $A->nama }}</option>
@@ -52,7 +53,7 @@ $KodeKemasan = \App\Models\KodeKemasan::all();
             </div>
             <label for="input1" class="col-sm-2 col-form-label ">Satuan</label>
             <div class="col-sm-2">
-              <input type="text" class="form-control" id="input1" name="satuan">
+              <input type="text" class="form-control" name="satuan">
             </div>
             <div class="col-sm-2">
               <select id="input1" class="form-select" name="kode_satuan">
@@ -97,50 +98,50 @@ $KodeKemasan = \App\Models\KodeKemasan::all();
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Harga FOB</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="input1" name="harga_fob">
+            <input type="text" class="form-control" name="harga_fob">
         </div>     
           </div>
           <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label ">Uraian</label>
             <div class="col-sm-4">
-              <textarea type="text" class="form-control" id="kode2" name="uraian" onlyread></textarea>
+              <textarea type="text" class="form-control" name="uraian"></textarea>
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Volume</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="input1" name="volume">
+            <input type="text" class="form-control" name="volume">
         </div>    
           </div>
            <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label ">Mark</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="input1" placeholder="BOLEH DI KOSONGKAN" name="mark"></input>
+              <input type="text" class="form-control" placeholder="BOLEH DI KOSONGKAN" name="mark"></input>
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Berat Bersih (KG)</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="input1" name="berat_bersih">
+            <input type="text" class="form-control" name="berat_bersih">
         </div>       
           </div>
            <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label ">Tipe</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="input1" placeholder="BOLEH DI KOSONGKAN" name="tipe"></input>
+              <input type="text" class="form-control"  placeholder="BOLEH DI KOSONGKAN" name="tipe"></input>
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Harga Satuan FOB</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="input1" name="harga_satuan_fob" readonly>
+              <input type="text" class="form-control" name="harga_satuan_fob" readonly>
           </div>
           </div>
           <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label ">Ukuran</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="input1" placeholder="BOLEH DI KOSONGKAN" name="ukuran">
+              <input type="text" class="form-control" placeholder="BOLEH DI KOSONGKAN" name="ukuran">
           </div>   
           <div class="col-6"></div>      
           </div>
           <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label">Negara Asal Barang</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="input1" value="INDONESIA" disabled>
+              <input type="text" class="form-control" value="INDONESIA" disabled>
             </div>  
             <div class="col-6"></div>       
           </div>
@@ -196,128 +197,120 @@ $KodeKemasan = \App\Models\KodeKemasan::all();
                   </div>
                   <hr class="container001 container-fluid">
                   <div class="kotakw">
-                    <form class="mt-4" id="formulir5">
-                      <div class="form-group row ">
-                        <label for="input1" class="col-sm-2 col-form-label">Seri</label>
-                        <div class="col-sm-4">
-                          <input type="text" class="form-control" id="input1" disabled>
-                        </div>
-                        <label for="input1" class="col-sm-2 col-form-label ">Satuan</label>
-                        <div class="col-sm-2">
-                          <input type="text" class="form-control" id="input1">
-                        </div>
-                        <div class="col-sm-2">
-                          <select id="input1" class="form-select ">
-                            <option></option>
-                          <option value="1">KG</option>
-                          <option value="2">HG</option>
-                          <option value="3">DaG</option>
-                          </select>
-                        </div>          
-                    </div>
+                    <form class="mt-4" id="formulir5" method="post" action="{{ route('tambahbarang')}}">
+                      @csrf
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label">HS</label>
                       <div class="col-sm-4">
-                        <select id="input1" class="form-select ">
+                        <select class="form-select" name="HS">
                           <option></option>
-                        <option value="1">1 - BIASA</option>
-                        <option value="2">2 - RADIASI</option>
-                        <option value="3">3 - ADIKTIF </option>
-                        <option value="4">4 - AKTIF</option>
-                        <option value="5">5 - PASIF</option>
-                        <option value="6">6 - LAINNYA </option>
+                       @foreach ($HS as $A)
+                       <option value="{{ $A->nama }}">{{ $A->nama }}</option>
+                       @endforeach
                         </select>
                       </div>
-                      <label for="input1" class="col-sm-2 col-form-label ">Kemasan</label>
+                      <label for="input1" class="col-sm-2 col-form-label ">Satuan</label>
                       <div class="col-sm-2">
-                        <input type="text" class="form-control" id="input1">
+                        <input type="text" class="form-control" name="satuan">
                       </div>
                       <div class="col-sm-2">
-                        <select id="input1" class="form-select ">
+                        <select id="input1" class="form-select" name="kode_satuan">
                           <option></option>
-                          <option value="1">WB</option>
-                          <option value="2">ST</option>
-                          <option value="3">PS</option>
+                          @foreach ($KodeSatuan as $KS)
+                          <option value="{{ $KS->nama }}">{{ $KS->nama }}</option>
+                          @endforeach
                         </select>
-                      </div>         
+                      </div>    
                     </div>
                     <div class="form-group row my-4">
-                      <label for="input1" class="col-sm-2 col-form-label " >Lartas</label>
+                      <label for="input1" class="col-sm-2 col-form-label ">Lartas</label>
                       <div class="col-sm-4">
-                        <select id="input1" class="form-select ">
+                        <select id="input1" class="form-select" name="lartas">
                           <option> </option>
                           <option value="1">LARTAS</option>
                           <option value="2">BUKAN LARTAS </option>
                         </select>
                       </div>
-                      <label for="input1" class="col-sm-2 col-form-label ">Harga FOB</label>
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control" id="input1">
-                    </div>  
+                      <label for="input1" class="col-sm-2 col-form-label ">Kemasan</label>
+                      <div class="col-sm-2">
+                        <input type="text" class="form-control" id="input1" name="kemasan">
+                      </div>
+                      <div class="col-sm-2">
+                        <select id="input1" class="form-select" name="kode_kemasan">
+                          <option></option>
+                          @foreach ($KodeKemasan as $KK)
+                          <option value="{{ $KK->nama }}">{{ $KK->nama }}</option>
+                          @endforeach
+                        </select>
+                      </div>  
                     </div>
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label ">Kode</label>
                       <div class="col-sm-4">
-                        <select id="kode" class="form-select" onchange="updateInputValue2()">
+                        <select id="kode" class="form-select" onchange="updateInputValue2()" name="kode">
                           <option> </option>
-                          <option value="1">WH</option>
-                          <option value="2">ST</option>
+                          @foreach ($DataKode as $DK)
+                          <option value="{{ $DK->nama }}">{{ $DK->nama }}</option>
+                          @endforeach
                         </select>
                     </div>  
-                      <label for="input1" class="col-sm-2 col-form-label ">Volume</label>
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control" id="input1">
-                    </div>         
+                    <label for="input1" class="col-sm-2 col-form-label ">Harga FOB</label>
+                    <div class="col-sm-4">
+                      <input type="text" class="form-control" name="harga_fob">
+                  </div>     
                     </div>
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label ">Uraian</label>
                       <div class="col-sm-4">
-                        <textarea type="text" class="form-control" id="kode2" onlyread></textarea>
+                        <textarea type="text" class="form-control" name="uraian"></textarea>
                     </div>  
-                      <label for="input1" class="col-sm-2 col-form-label ">Berat Bersih (KG)</label>
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control" id="input1">
-                    </div>         
+                    <label for="input1" class="col-sm-2 col-form-label ">Volume</label>
+                    <div class="col-sm-4">
+                      <input type="text" class="form-control" name="volume">
+                  </div>    
                     </div>
                      <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label ">Mark</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="input1" placeholder="BOLEH DI KOSONGKAN"></input>
+                        <input type="text" class="form-control" placeholder="BOLEH DI KOSONGKAN" name="mark"></input>
                     </div>  
-                      <label for="input1" class="col-sm-2 col-form-label ">Harga Satuan FOB</label>
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control" id="input1" disabled>
-                    </div>         
+                    <label for="input1" class="col-sm-2 col-form-label ">Berat Bersih (KG)</label>
+                    <div class="col-sm-4">
+                      <input type="text" class="form-control" name="berat_bersih">
+                  </div>       
                     </div>
                      <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label ">Tipe</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="input1" placeholder="BOLEH DI KOSONGKAN"></input>
+                        <input type="text" class="form-control"  placeholder="BOLEH DI KOSONGKAN" name="tipe"></input>
                     </div>  
-                    <div class="col-6"></div>
+                    <label for="input1" class="col-sm-2 col-form-label ">Harga Satuan FOB</label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" name="harga_satuan_fob" readonly>
+                    </div>
                     </div>
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label ">Ukuran</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="input1" placeholder="BOLEH DI KOSONGKAN">
+                        <input type="text" class="form-control" placeholder="BOLEH DI KOSONGKAN" name="ukuran">
                     </div>   
                     <div class="col-6"></div>      
                     </div>
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label">Negara Asal Barang</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="input1" value="INDONESIA" disabled>
+                        <input type="text" class="form-control" value="INDONESIA" disabled>
                       </div>  
                       <div class="col-6"></div>       
                     </div>
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label">Daerah Asal Barang</label>
                       <div class="col-sm-4">
-                        <select id="input1" class="form-select ">
+                        <select id="input1" class="form-select" name="daerah_asal_barang">
                           <option></option>
-                          <option value="1">SUMATRA</option>
-                          <option value="2">JAWA</option>
-                          <option value="3">KALIMANTAN</option>
+                          @foreach ($DaerahAsalBarang as $E)
+                          <option value="{{ $E->nama }}">{{ $E->nama }}</option>
+                          @endforeach
                         </select>
                       </div>         
                       <div class="col-6"></div>

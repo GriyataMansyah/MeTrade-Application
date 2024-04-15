@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string("tipe");
             $table->string("ukuran");
             $table->string("negara_asal_barang");
+            $table->string("daerah_asal_barang");
             $table->string("satuan");
             $table->string("kode_satuan");
             $table->string("kemasan");
