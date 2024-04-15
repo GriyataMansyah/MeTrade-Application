@@ -439,6 +439,124 @@ $EntitasBarang = \App\Models\EntitasBarang::all();
                     </div>
                     
                     </form>
+                    <div class="row centerweb">
+
+                      <table class="tabless col-6">
+                        <thead>
+                          <tr>
+                            <th class="th1a">
+                              <div class="position-relative">Dokumen Fasilitas / Lartas
+                                <button type="button"
+                                  class="btn btn-primary px-4  position-absolute top-50 end-0 translate-middle-y "
+                                  data-bs-toggle="modal" data-bs-target="#Modal">Tambah</button>
+                              </div>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="table-responsive">
+                                <table class="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th class="table-primary asta centered" scope="col">Seri</th>
+                                      <th class="table-primary asta  centered" scope="col">Jenis</th>
+                                      <th class="table-primary asta centered" scope="col">Nomor</th>
+                                      <th class="table-primary asta centered" scope="col">Tanggal</th>
+                                      <th class="table-primary asta centered" scope="col">Fasilitas</th>
+                                      <th class="table-primary asta centered" scope="col">Izin</th>
+                                      <th class="table-primary asta centered" scope="col"></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      @foreach($Lartas as $L)
+                             <td class="centered">{{ $L->seri }}</td>
+                             <td class="centered">{{ $L->jenis }}</td>
+                             <td class="centered">{{ $L->nomor }}</td>
+                             <td class="centered">{{ $L->tanggal }}</td>
+                             <td class="centered">{{ $L->fasilitas }}</td>
+                             <td class="centered">{{ $L->izin }}</td>
+                              <td class="oe centered" >
+                                <form action="{{ route('hapuslartas', $L->seri) }}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                   </svg>
+                                  </button>
+                              </form>
+                            </td>
+                            </tr>
+                            @endforeach
+                                  </tbody>
+                                </table>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+          
+                    <table class="tabless col-6">
+                      <thead>
+                        <tr>
+                          <th class="th1a">
+                            <div class="position-relative">Entitas Barang
+                              <button type="button" class="btn btn-primary px-4  position-absolute top-50 end-0 translate-middle-y "
+                                data-bs-toggle="modal" data-bs-target="#base">Tambah</button>
+                            </div>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="table-responsive">
+                              <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th class="table-primary asta centered" scope="col">Seri</th>
+                                    <th class="table-primary asta centered" scope="col">Nomor Identitas</th>
+                                    <th class="table-primary asta centered" scope="col">Nama</th>
+                                    <th class="table-primary asta centered" scope="col">Alamat</th>
+                                    <th class="table-primary asta centered" scope="col">Entitas</th>
+                                    <th class="table-primary asta centered" scope="col"></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                      @foreach($EntitasBarang as $EB)
+                              <tr>
+                              <td class="centered">{{ $EB->seri}}</td>
+                              <td class="centered">{{ $EB->nomor_identitas}}</td>
+                              <td class="centered">{{ $EB->nama}}</td>
+                              <td class="centered">{{ $EB->alamat}}</td>
+                              <td class="centered">{{ $EB->entitas}}</td>
+                              <td class="oe centered" >
+                                <form action="{{ route('hapusentitas', $EB->seri) }}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                   </svg>
+                                  </button>
+                              </form>
+                            </td>
+                            </tr>
+                            @endforeach
+                                </tbody>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+            
+                </div>
                 </div>
                  <div class="tambah2">
                   </div>

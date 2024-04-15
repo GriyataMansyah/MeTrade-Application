@@ -532,6 +532,14 @@ a {
   margin-left: 20px;
 }
 
+.kotakhaha {
+  width: 97%;
+  height: auto;
+  margin-top: 8px;
+  position: sticky;
+  margin-left: 20px;
+}
+
 .kotak0 {
   width: 97%;
   height: auto;
@@ -562,6 +570,15 @@ a {
   margin-top: 8px;
   position: sticky;
   border: 1px solid grey;
+  margin-left: 10px;
+
+}
+
+.kotak2haha {
+  width: 97%;
+  height: auto;
+  margin-top: 8px;
+  position: sticky;
   margin-left: 10px;
 
 }

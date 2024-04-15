@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('data_pengangkut', function (Blueprint $table) {
           $table->increments("id");
           $table->integer('id_dokumen')->unsigned();
-          $table->foreign('id_dokumen')->references('id')->on('dokumens'); 
+          $table->foreign('id_dokumen')->references('id')->on('dokumens')->onDelete('cascade'); 
           $table->string("tempat_penimbunan");
           $table->string("pelabuhan_muat_asal");
           $table->string("pelabuhan_muat_ekspor");

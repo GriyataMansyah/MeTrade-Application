@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bank;
 use App\Models\Dokumen;
+use App\Models\Pungutan;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,17 @@ class TransaksiController extends Controller
         $Transaksi->pph = $request->input('pph');
         $Transaksi->nilai_bea_keluar = $request->input('nilai_bea_keluar');
         $Transaksi ->save();
+
+        $baru = new Pungutan();
+        $id = Auth::id();
+        $dokumen = Dokumen::where('id_pengekspor', $id)->latest('id')->first();
+        $baru->id_dokumen = $dokumen->id;
+        $nilai_bea_keluar = $request->input('nilai_bea_keluar');
+        $availableColumns = ['pungutan', 'dibayar', 'ditanggung_pemerintah', 'ditunda', 'tidak_dipungut', 'dibebaskan', 'sudah_dilunasi'];
+        shuffle($availableColumns);
+        $randomColumn = array_shift($availableColumns);
+        $baru->$randomColumn = $nilai_bea_keluar;
+        $baru->save();
     
         return redirect()->route('barang1');
       }

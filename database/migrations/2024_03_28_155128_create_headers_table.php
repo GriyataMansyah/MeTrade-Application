@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('headers', function (Blueprint $table) {
             $table->increments("id");
             $table->Integer('id_dokumen')->unsigned();
-            $table->foreign('id_dokumen')->references('id')->on('dokumens');    
+            $table->foreign('id_dokumen')->references('id')->on('dokumens')->onDelete('cascade');    
             $table->unsignedBigInteger('nomor_pengajuan');
             $table->string("kantor_muat_asal");
             $table->string("pelabuhan_muat_ekspor");

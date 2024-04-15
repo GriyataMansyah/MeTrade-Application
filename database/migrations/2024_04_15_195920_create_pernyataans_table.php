@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('peti_kemas', function (Blueprint $table) {
-            $table->increments("seri");
+        Schema::create('pernyataan', function (Blueprint $table) {
+            $table->increments("Id");
             $table->integer('id_dokumen')->unsigned();
             $table->foreign('id_dokumen')->references('id')->on('dokumens')->onDelete('cascade'); 
-            $table->string("nomor");
-            $table->string("ukuran");
-            $table->string("jenis");
-            $table->string("tipe");
+            $table->string("tempat");
+            $table->date("tanggal");
+            $table->string("nama");
+            $table->string("jabatan");
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('peti_kemas');
+        Schema::dropIfExists('pernyataan');
     }
 };

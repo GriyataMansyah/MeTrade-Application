@@ -9,6 +9,7 @@ use App\Http\Controllers\EntitasController;
 use App\Http\Controllers\KemasanController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PengeksporController;
+use App\Http\Controllers\PernyataanController;
 use App\Http\Controllers\DataPengangkutController;
 use App\Http\Controllers\DokumenPendukungController;
 
@@ -92,10 +93,14 @@ Route::delete('pengekspor/barang/{seri}', [BarangController::class, 'hapuslartas
 Route::post('popupbarang/tambahentitas', [BarangController::class, 'tambahentitas'])->name("tambahentitas");
 
 Route::delete('pengekspor/barang/delete/{seri}', [BarangController::class, 'hapusentitas'])->name('hapusentitas');
-//------------------------
+
 Route::view('/barang1', 'pengekspor/barang')->name('barang1');
 
 Route::post('/barang1', [BarangController::class, 'tambahbarang'])->name("tambahbarang");
+
+Route::view('/pernyataan1','pengekspor/pernyataan')->name("pernyataan");
+
+Route::post('pernyataan', [PernyataanController::class, 'tambahpernyataan'])->name("tambahpernyataan");
 
 Route::view('/dokumenpen1', 'pengekspor/dokumenpen')->name("dokumenpen");
 
@@ -103,11 +108,7 @@ Route::view('/kemasan1', 'pengekspor/kemasan')->name("kemasan");
 
 Route::view('/transaksi1', 'pengekspor/transaksi')->name('transaksi');
 
-
-
 Route::view('/pungutan1', 'pengekspor/pungutan')->name('pungutan');
-
-Route::view('/pernyataan1','pengekspor/pernyataan');
 
 Route::view('/P','pengekspor/PERCOBAAN');
 

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kemasan', function (Blueprint $table) {
             $table->increments("seri");
             $table->integer('id_dokumen')->unsigned();
-            $table->foreign('id_dokumen')->references('id')->on('dokumens'); 
+            $table->foreign('id_dokumen')->references('id')->on('dokumens')->onDelete('cascade'); 
             $table->string("jumlah");
             $table->string("jenis");
             $table->string("merek");

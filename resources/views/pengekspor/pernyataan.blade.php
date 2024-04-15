@@ -28,28 +28,17 @@
     </div> 
     <hr>
     <div class="offside">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Header</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Entitas</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Dokumen</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Angkut</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Kemasan</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Transaksi</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Barang</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Pungutan</a></div>
-          <div class="col-md-1 mx-2 isi"><a href="#" class="ya">Pernyataan</a></div>
-        </div>
-      </div>   
+     @include("layout.header1")  
     </div>
     <hr class="container00 container-fluid">
-    <div class="kotak">
+    <div class="kotakhaha">
       <div class="kotakdalam">
         <p class="satu"><b>Dengan ini saya menyatakan bertanggung jawab atas kebenaran hal-hal yang diberitahuan dalam Pemberitahuan Ekspor Barang ini,serta bersedia dikenakan sanksi sesuai dengan ketentuan dibidang kepabeanan apabila terdapat kesalahan.</b></p>
       </div>
       <div class="row">
       <div class="col-6">
-        <form id="formulir6" action="{{url('/header')}}">
+        <form id="formulir6" method="post" action="{{ route('tambahpernyataan')}}">
+          @csrf
         <table class="tables">
           <thead >
             <tr>
@@ -61,12 +50,12 @@
               <td class="td1">
                 Tempat:<br><br>
                 <div class="input-group mb-3 input1">
-                  <input type="text" class="form-control " placeholder="Tempat" aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="text" class="form-control " placeholder="Tempat" aria-label="Username" aria-describedby="basic-addon1" name="tempat">
                 </div>
 
                 Tanggal:<br><br>
                 <div class="input-group mb-3 input1">
-                  <input type="date" class="form-control" placeholder="Tanggal" aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="date" class="form-control" placeholder="Tanggal" aria-label="Username" aria-describedby="basic-addon1" name="tanggal">
                 </div>
               </td>
             </tr>
@@ -85,12 +74,12 @@
               <td class="td1">
                 Nama:<br><br>
                 <div class="input-group mb-3 input1">
-                  <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama">
                 </div>
 
                 Jabatan:<br><br>
                 <div class="input-group mb-3 input1">
-                  <input type="text" class="form-control" placeholder="Jabatan" aria-label="Jabatab" aria-describedby="basic-addon1">
+                  <input type="text" class="form-control" placeholder="Jabatan" aria-label="Jabatab" aria-describedby="basic-addon1" name="jabatan">
                 </div>
               </td>
             </tr>
@@ -121,22 +110,10 @@
                 </div>
                   <hr>
                   <div class="offside2">
-                    <div class="container-fluid">
-                      <div class="row hayhay">
-                        <div class="col isi2"><a href="#" >Header</a></div>
-                        <div class="col isi2"><a href="#" >Entitas</a></div>
-                        <div class="col isi2"><a href="#" >Dokumen</a></div>
-                        <div class="col isi2"><a href="#" >Angkut</a></div>
-                        <div class="col isi2"><a href="#" >Kemasan</a></div>
-                        <div class="col isi2"><a href="#" >Transaksi</a></div>
-                        <div class="col isi2"><a href="#" >Barang</a></div>
-                        <div class="col isi2"><a href="#" >Pungutan</a></div>
-                        <div class="col isi2"><a href="#" >Pernyataan</a></div>
-                      </div>
-                    </div>   
+                    @include("layout.header2")    
                   </div>
                   <hr class="container001 container-fluid">
-                  <div class="kotak2">
+                  <div class="kotak2haha">
                     <div class="kotakdalam2">
                       <p class="satu"><b>Dengan ini saya menyatakan bertanggung jawab atas kebenaran hal-hal yang diberitahuan dalam Pemberitahuan Ekspor Barang ini,serta bersedia dikenakan sanksi sesuai dengan ketentuan dibidang kepabeanan apabila terdapat kesalahan.</b></p>
                     </div>
@@ -154,12 +131,12 @@
                             <td class="td1">
                               Tempat:<br><br>
                               <div class="input-group mb-3 input1">
-                                <input type="text" class="form-control " placeholder="Tempat" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control " placeholder="Tempat" aria-label="Username" aria-describedby="basic-addon1" name="tempat">
                               </div>
               
                               Tanggal:<br><br>
                               <div class="input-group mb-3 input1">
-                                <input type="date" class="form-control" placeholder="Tanggal" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="date" class="form-control" placeholder="Tanggal" aria-label="Username" aria-describedby="basic-addon1" name="tanggal">
                               </div>
                             </td>
                           </tr>
@@ -178,12 +155,12 @@
                             <td class="td1">
                               Nama:<br><br>
                               <div class="input-group mb-3 input1">
-                                <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama">
                               </div>
               
                               Jabatan:<br><br>
                               <div class="input-group mb-3 input1">
-                                <input type="text" class="form-control" placeholder="Jabatan" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" placeholder="Jabatan" aria-label="Username" aria-describedby="basic-addon1" name="jabatan">
                               </div>
                             </td>
                           </tr>
