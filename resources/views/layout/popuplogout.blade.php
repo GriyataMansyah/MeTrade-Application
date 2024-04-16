@@ -1,11 +1,17 @@
+<?php
+$loggedInUserId = Auth::id();
+$pengeksporData = \App\Models\pengekspor::where('id', $loggedInUserId)->get();
+?>
 <!-- INI POP UP LOG OUT -->
 <div class="popup position-absolute top-0 end-0 animate__animated animate__headShake" id="popup1">
+  @foreach ($pengeksporData as $A)
     <div class="col-12 patas">
       <img src="{{ asset('images/logo2.png')}}" class="hay">
       <a href="#">
-        <h2 class="teman">...</h2>
+        <h2 class="teman">{{ $A->nama}}</h2>
       </a>
     </div>
+    @endforeach
     <div class="col-12 pbawah">
       <a href="{{ url('/profile')}}" class="a4">
         <svg class="svg1" xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor"

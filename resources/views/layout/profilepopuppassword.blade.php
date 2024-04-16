@@ -9,6 +9,18 @@
         <div class="modal-body">
           <form >
             <div class="form-group row mb-3">
+              <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Password Lama</p></label>
+              <div class="offset-1 col-8">
+              <input type="text" class="form-control" >
+              </div>
+            </div>
+            <div class="form-group row mb-3">
+              <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Konfirmasi Password Lama</p></label>
+              <div class="offset-1 col-8">
+              <input type="text" class="form-control" >
+              </div>
+            </div>
+            <div class="form-group row mb-3">
               <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Password Baru</p></label>
               <div class="offset-1 col-8">
               <input type="text" class="form-control" >

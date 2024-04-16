@@ -41,6 +41,4 @@ class PengeksporController extends Controller
 
         return redirect()->to('/')->with('success', 'Pendaftaran berhasil, silakan masuk.');
     }
-
-    
 }

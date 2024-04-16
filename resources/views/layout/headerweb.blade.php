@@ -1,11 +1,16 @@
+<?php
+$loggedInUserId = Auth::id();
+$pengeksporData = \App\Models\pengekspor::where('id', $loggedInUserId)->get();
+?>
 <!-- INI HEADER -->
 <div class="d-none d-lg-block">
     <div class="row header animate__animated animate__fadeInDown">
-  
+      
+      @foreach ($pengeksporData as $A)
       <div class="col-12 letaktom">
-        <button class="a1 btn btn-secondary" onclick="muncul()">HI, <b>Teman-Teman</b></button>
+        <button class="a1 btn btn-secondary" onclick="muncul()">HI, <b>{{ $A->nama}}</b></button>
       </div>
-  
+      @endforeach
       <hr class="col-12 hrs">
       </hr>
   
