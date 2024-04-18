@@ -23,7 +23,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary">Jenis</p>
               </label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="jenis">
+                <select class="form-select" name="jenis" required>
                   <option> </option>
                   <?php
                   foreach ($DataJenisLartas as $JL) {
@@ -39,7 +39,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary" >Nomor</p>
               </label>
               <div class="offset-1 col-8">
-                <input type="text" class="form-control" name="nomor" onkeypress="return hanyaAngka(event)">
+                <input type="text" class="form-control" name="nomor" onkeypress="return hanyaAngka(event)" required>
               </div>
             </div>
             <div class="form-group row mb-3">
@@ -47,7 +47,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary">Tanggal</p>
               </label>
               <div class="offset-1 col-8">
-                <input type="date" class="form-control" name="tanggal">
+                <input type="date" class="form-control" name="tanggal" required>
               </div>
             </div>
             <div class="form-group row mb-3">
@@ -55,7 +55,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary">Fasilitas</p>
               </label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="fasilitas">
+                <select class="form-select" name="fasilitas" required>
                   <option> </option>
                   <?php
                   foreach ($DataFasilitas as $DF) {
@@ -71,7 +71,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary">Izin</p>
               </label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="izin">
+                <select class="form-select" name="izin" required>
                   <option> </option>
                   <?php
                   foreach ($DataIzin as $DI) {
@@ -120,7 +120,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary">Nomor Identitas</p>
               </label>
               <div class="offset-1 col-8">
-                <input type="text" class="form-control" name="nomor_identitas" onkeypress="return hanyaAngka(event)">
+                <input type="text" class="form-control" name="nomor_identitas" onkeypress="return hanyaAngka(event)" required>
               </div>
             </div>
             <div class="form-group row mb-3">
@@ -128,7 +128,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary">Nama</p>
               </label>
               <div class="offset-1 col-8">
-                <input type="text" class="form-control" name="nama">
+                <input type="text" class="form-control" name="nama" required>
               </div>
             </div>
             <div class="form-group row mb-3">
@@ -136,7 +136,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary">Alamat</p>
               </label>
               <div class="offset-1 col-8">
-                <input type="text" class="form-control" name="alamat">
+                <input type="text" class="form-control" name="alamat" required>
               </div>
             </div>
             <div class="form-group row mb-3">
@@ -144,7 +144,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary">Entitas</p>
               </label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="entitas">
+                <select class="form-select" name="entitas" required>
                   <option></option><?php
                   foreach ($DataEntitas as $DE) {
                       ?>

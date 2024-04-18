@@ -17,7 +17,7 @@ $Bendera = \App\Models\Bendera::all();
             <div class="form-group row mb-3">
               <label  class="control-label col-2 col-form-label"><p class="h6 text-secondary">Nama Sarana Angkut</p></label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="nama_sarana_angkut">
+                <select class="form-select" name="nama_sarana_angkut" required>
                     <option></option>
                     <?php
                     foreach ($NamaSaranaAngkut as $A) {
@@ -31,7 +31,7 @@ $Bendera = \App\Models\Bendera::all();
             <div class="form-group row mb-3">
               <label  class="control-label col-2 col-form-label"><p class="h6 text-secondary">Cara Pengangkutan</p></label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="cara_pengangkutan">
+                <select class="form-select" name="cara_pengangkutan" required>
                   <option> </option>
                   <?php
                   foreach ($CaraPengangkutan as $B) {
@@ -45,13 +45,13 @@ $Bendera = \App\Models\Bendera::all();
             <div class="form-group row mb-3">
               <label  class="control-label col-2 col-form-label"><p class="h6 text-secondary">Nomor Voy/Flight</p></label>
               <div class="offset-1 col-8">
-              <input type="text" class="form-control" name="nomor_voy">
+              <input type="text" class="form-control" name="nomor_voy" required>
               </div>
             </div>
             <div class="form-group row mb-3">
               <label  class="control-label col-2 col-form-label"><p class="h6 text-secondary">Bendera</p></label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="bendera">
+                <select class="form-select" name="bendera" required>
                   <option></option>
                   <?php
                   foreach ($Bendera as $C) {

@@ -26,7 +26,13 @@ Route::view('/regis','sesi/Registrasi');
 
 Route::get('akun/login', [AkunController::class, 'login'])->name('new.login');
 
-Route::view('/profile','pengekspor/profile');
+Route::view('/profile','pengekspor/profile')->name("profile");
+
+Route::post('layout/profilepopupemail', [PengeksporController::class, 'gantiemail'])->name('gantiemail');
+
+Route::post('layout/profilepopupphone', [PengeksporController::class, 'gantiphone'])->name('gantiphone');
+
+Route::post('layout/profilepopuppassword', [PengeksporController::class, 'gantipass'])->name('gantipass');
 
 Route::view('/log','sesi/login');
 

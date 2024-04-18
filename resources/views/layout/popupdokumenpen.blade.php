@@ -13,7 +13,7 @@
             <div class="form-group row mb-3">
               <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Jenis Dokumen</p></label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="jenis">
+                <select class="form-select" name="jenis" required>
                   <option></option>
                   <?php
                   foreach ($data as $d) {
@@ -27,13 +27,13 @@
             <div class="form-group row mb-3">
               <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Nomor Dokumen</p></label>
               <div class="offset-1 col-8">
-                <input type="text" class="form-control" name="nomor">
+                <input type="text" class="form-control" name="nomor" required>
               </div>
             </div>
             <div class="form-group row mb-3">
               <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Tanggal</p></label>
               <div class="offset-1 col-8">
-                <input type="date" class="form-control" name="tanggal">
+                <input type="date" class="form-control" name="tanggal" required>
               </div>
             </div>
             </div>

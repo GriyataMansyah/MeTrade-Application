@@ -172,5 +172,46 @@ function updatePphValue() {
     pphCheckbox.addEventListener("click", function() {
     updatePphValue();
     });
-   
+}
+//-----------------------------------------------
+function HapusDokumen() {
+  Swal.fire({
+      title: "Apakah Anda yakin ingin menghapus data ini?",
+      text: "Tindakan ini tidak dapat dikembalikan!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "PASTI!"
+  }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Berhasil!",
+          text: "Dokumen berhasil dihapus.",
+          icon: "success"
+      });
+          document.getElementById('pencet1').click();
+      }
+  });
+}
+//-----------------------------------------------
+function HapusDokumen2() {
+  Swal.fire({
+      title: "Apakah Anda yakin ingin menghapus data ini?",
+      text: "Tindakan ini tidak dapat dikembalikan!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "PASTI!"
+  }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Berhasil!",
+          text: "Dokumen berhasil dihapus.",
+          icon: "success"
+      });
+          document.getElementById('pencet2').click();
+      }
+  });
 }

@@ -16,6 +16,9 @@ $Bank = \App\Models\Bank::all();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <Link href={{ asset('css/style.css')}} rel="stylesheet">
     <link rel="icon" href="{{ asset('images/logo2.png')}}" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
 <body>
      @include('layout.headerweb')
@@ -159,24 +162,34 @@ $Bank = \App\Models\Bank::all();
                 </tr>
               </thead>
               <tbody>
-                @foreach ($Bank as $B)           
                 <tr>
+                  @if ($Bank->isEmpty())
+                      <td colspan="7" class="text-center">
+                          <img src="{{ asset("images/no.png")}}" alt="Empty Table Image">
+                          <p>Tidak ada data yang tersedia</p>
+                      </td>
+                  </tr>
+              @else
+                  @foreach ($Bank as $B)     
                     <td scope="row" class="centered">{{ $B->seri }}</td>
                     <td class="centered">{{ $B->kode_bank }}</td>
                     <td class="centered">{{ $B->nama_bank }}</td>
-                    <td class="oe centered">
+                    <td class="centered"><div onclick="HapusDokumen()" type="button"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                   </svg></div></td>
+                    {{-- TIDAK TERLIHAT --}}
+                    <td class="inv">
                       <form action="{{ route('hapusbank', $B->seri) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                         </svg>
+                        <button type="submit" id="pencet1">
                         </button>
                     </td>
+                    {{-- ------------------- --}}
                 </tr>
             @endforeach 
+            @endif
               </tbody>
             </table>    
         </div>
@@ -326,24 +339,34 @@ $Bank = \App\Models\Bank::all();
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  @foreach ($Bank as $B)           
                                   <tr>
+                                    @if ($Bank->isEmpty())
+                                        <td colspan="7" class="text-center">
+                                            <img src="{{ asset("images/no.png")}}" alt="Empty Table Image">
+                                            <p>Tidak ada data yang tersedia</p>
+                                        </td>
+                                    </tr>
+                                @else
+                                    @foreach ($Bank as $B)     
                                       <td scope="row" class="centered">{{ $B->seri }}</td>
                                       <td class="centered">{{ $B->kode_bank }}</td>
                                       <td class="centered">{{ $B->nama_bank }}</td>
-                                      <td class="oe centered">
+                                      <td class="centered"><div onclick="HapusDokumen()" type="button"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                      <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                     </svg></div></td>
+                                      {{-- TIDAK TERLIHAT --}}
+                                      <td class="inv">
                                         <form action="{{ route('hapusbank', $B->seri) }}" method="POST">
                                           @csrf
                                           @method('DELETE')
-                                          <button type="submit">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                                           </svg>
+                                          <button type="submit" id="pencet1">
                                           </button>
                                       </td>
+                                      {{-- ------------------- --}}
                                   </tr>
                               @endforeach 
+                              @endif
                                 </tbody>
                               </table>    
                           </div>

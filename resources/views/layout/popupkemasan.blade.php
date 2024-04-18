@@ -22,7 +22,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary">Jumlah</p>
               </label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="jumlah">
+                <select class="form-select" name="jumlah" required>
                   <option> </option>
                   <?php
                   foreach ($JumlahKemasan as $JK) {
@@ -38,7 +38,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary" >Jenis</p>
               </label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="jenis">
+                <select class="form-select" name="jenis" required>
                   <option></option><?php
                   foreach ($JenisKemasan as $JK2) {
                       ?>
@@ -53,7 +53,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary">Merek</p>
               </label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="merek">
+                <select class="form-select" name="merek" required> 
                   <option></option><?php
                   foreach ($MerekKemasan as $MK) {
                       ?>
@@ -100,7 +100,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary">Nomor</p>
               </label>
               <div class="offset-1 col-8">
-                <input type="text" class="form-control" name="nomor">
+                <input type="text" class="form-control" name="nomor" required>
               </div>
             </div>
             <div class="form-group row mb-3">
@@ -108,7 +108,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary">Ukuran</p>
               </label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="ukuran">
+                <select class="form-select" name="ukuran" required>
                   <option> </option><?php
                   foreach ($UkuranPetiKemas as $UPK) {
                       ?>
@@ -124,7 +124,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary">Jenis</p>
               </label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="jenis">
+                <select class="form-select" name="jenis" required>
                   <option></option><?php
                   foreach ($JenisPetiKemas as $JPK) {
                       ?>
@@ -140,7 +140,7 @@ $TipePetiKemas = \App\Models\TipePetiKemas::all();
                 <p class="h6 text-secondary">Tipe</p>
               </label>
               <div class="offset-1 col-8">
-                <select class="form-select" name="tipe">
+                <select class="form-select" name="tipe" required>
                   <option></option><?php
                   foreach ($TipePetiKemas as $TPK) {
                       ?>

@@ -20,6 +20,9 @@ $Curah = \App\Models\Curah::all();
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ asset('css/style.css')}}">
   <link rel="icon" href="{{ asset('images/logo2.png')}}" type="image/png">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
   
 </head>
 @include('layout.headerweb')
@@ -110,7 +113,7 @@ $Curah = \App\Models\Curah::all();
         
         <div class="form-group">
           <label for="jenis_ekspor">Jenis Ekspor</label>
-          <select id="jenis_ekspor" name="jenis_ekspor">
+          <select id="jenis_ekspor" name="jenis_ekspor" required>
             <option value=""></option>
             <?php
             foreach ($JenisEkspor as $jen) {
@@ -124,7 +127,7 @@ $Curah = \App\Models\Curah::all();
 
         <div class="form-group">
           <label for="kategori_ekspor">Kategori Ekspor</label>
-          <select id="kategori_ekspor" name="kategori_ekspor">
+          <select id="kategori_ekspor" name="kategori_ekspor" required>
             <option value=""></option>
             <?php
             foreach ($KategoriEkspor as $kat) {
@@ -139,7 +142,7 @@ $Curah = \App\Models\Curah::all();
 
         <div class="form-group">
           <label for="cara_dagang" >Cara Dagang</label>
-          <select id="cara_dagang" name="cara_dagang">
+          <select id="cara_dagang" name="cara_dagang" required>
             <option value=""></option>
             <?php
             foreach ($JenisDagang as $jd) {
@@ -153,7 +156,7 @@ $Curah = \App\Models\Curah::all();
 
         <div class="form-group">
           <label for="cara_bayar">Cara Bayar</label>
-          <select id="cara_bayar" name="cara_bayar">
+          <select id="cara_bayar" name="cara_bayar" required>
             <option value=""></option>
             <?php
             foreach ($CaraBayar as $cb) {
@@ -167,7 +170,7 @@ $Curah = \App\Models\Curah::all();
 
         <div class="form-group">
           <label for="komoditi">Komoditi</label>
-          <select id="komoditi" name="komoditi">
+          <select id="komoditi" name="komoditi" required>
             <option value=""></option>
             <?php
             foreach ($Komoditi as $ko) {
@@ -181,7 +184,7 @@ $Curah = \App\Models\Curah::all();
 
         <div class="form-group">
           <label for="curah">Curah</label>
-          <select id="curah" name="curah">
+          <select id="curah" name="curah" required>
             <option value=""></option>
             <?php
             foreach ($Curah as $cu) {
@@ -290,7 +293,7 @@ $Curah = \App\Models\Curah::all();
         
         <div class="form-group">
           <label for="jenis_ekspor">Jenis Ekspor</label>
-          <select id="jenis_ekspor" name="jenis_ekspor">
+          <select id="jenis_ekspor" name="jenis_ekspor" required>
             <option value=""></option>
             <?php
             foreach ($JenisEkspor as $jen) {
@@ -304,7 +307,7 @@ $Curah = \App\Models\Curah::all();
 
         <div class="form-group">
           <label for="kategori_ekspor">Kategori Ekspor</label>
-          <select id="kategori_ekspor" name="kategori_ekspor">
+          <select id="kategori_ekspor" name="kategori_ekspor" required>
             <option value=""></option>
             <?php
             foreach ($KategoriEkspor as $kat) {
@@ -319,7 +322,7 @@ $Curah = \App\Models\Curah::all();
 
         <div class="form-group">
           <label for="cara_dagang" >Cara Dagang</label>
-          <select id="cara_dagang" name="cara_dagang">
+          <select id="cara_dagang" name="cara_dagang" required>
             <option value=""></option>
             <?php
             foreach ($JenisDagang as $jd) {
@@ -333,7 +336,7 @@ $Curah = \App\Models\Curah::all();
 
         <div class="form-group">
           <label for="cara_bayar">Cara Bayar</label>
-          <select id="cara_bayar" name="cara_bayar">
+          <select id="cara_bayar" name="cara_bayar" required>
             <option value=""></option>
             <?php
             foreach ($CaraBayar as $cb) {
@@ -347,7 +350,7 @@ $Curah = \App\Models\Curah::all();
 
         <div class="form-group">
           <label for="komoditi">Komoditi</label>
-          <select id="komoditi" name="komoditi">
+          <select id="komoditi" name="komoditi" required>
             <option value=""></option>
             <?php
             foreach ($Komoditi as $ko) {
@@ -361,7 +364,7 @@ $Curah = \App\Models\Curah::all();
 
         <div class="form-group">
           <label for="curah">Curah</label>
-          <select id="curah" name="curah">
+          <select id="curah" name="curah" required>
             <option value=""></option>
             <?php
             foreach ($Curah as $cu) {

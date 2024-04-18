@@ -21,6 +21,10 @@ body {
   margin-top: -121px;
 }
 
+.inv{
+  display:none;
+}
+
 .logo {
   display: flex;
   flex-direction: row;
@@ -922,3 +926,11 @@ a {
     display: flex;
     justify-content: center;
   }
+
+  .text-center {
+    text-align: center;
+}
+
+td.text-center {
+    vertical-align: middle;
+}

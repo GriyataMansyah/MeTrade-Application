@@ -13,21 +13,21 @@
               <label  class="control-label col-3 col-form-label">
               <p class="h6 text-secondary">Nomor Identitas</p></label>
               <div class="offset-1 col-8">
-              <input type="text" class="form-control" name="no_identitas">
+              <input type="text" class="form-control" name="no_identitas" onkeypress="return hanyaAngka(event)" required>
               </div>
             </div>
             <div class="form-group row mb-3">
               <label  class="control-label col-3 col-form-label">
               <p class="h6 text-secondary">Alamat</p></label>
               <div class="offset-1 col-8">
-                <textarea type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="alamat"></textarea>
+                <textarea type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" name="alamat" required></textarea>
               </div>
             </div>
             <div class="form-group row mb-3">
               <label  class="control-label col-3 col-form-label">
               <p class="h6 text-secondary">Nama</p></label>
               <div class="offset-1 col-8">
-              <input type="text" class="form-control" name="nama">
+              <input type="text" class="form-control" name="nama" required>
               </div>
             </div>
             </div>    

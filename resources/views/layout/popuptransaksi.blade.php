@@ -12,13 +12,13 @@
                         <div class="form-group row mb-3">
                           <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Kode Bank</p></label>
                           <div class="offset-1 col-8">
-                          <input type="text" class="form-control" name="kode_bank">
+                          <input type="text" class="form-control" name="kode_bank" required>
                           </div>
                         </div>
                         <div class="form-group row mb-3">
                           <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Nama Bank</p></label>
                           <div class="offset-1 col-8">
-                            <select class="form-select" name="nama_bank">
+                            <select class="form-select" name="nama_bank" required>
                               <option> </option><?php
                               foreach ($NamaBank as $n) {
                                 ?>
