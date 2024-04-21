@@ -1,6 +1,7 @@
 <?php
-$loggedInUserId = Auth::id();
-$pengeksporData = \App\Models\pengekspor::where('id', $loggedInUserId)->get();
+    $Auth = Auth::id();
+    $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+    $pengeksporData = \App\Models\pengekspor::where('id', $loggedInUserId)->get();
 ?>
 <!-- INI POP UP LOG OUT -->
 <div class="popup position-absolute top-0 end-0 animate__animated animate__headShake" id="popup1">

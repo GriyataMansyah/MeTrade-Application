@@ -524,7 +524,6 @@ a {
 
 .ya {
   text-decoration: none;
-  padding-left: 120px;
 }
 
 .kotak {
@@ -640,10 +639,10 @@ a {
 }
 
 .hay1 {
-  width: 1597px;
+  width: 100%;
   height: 45px;
   margin-top: px;
-  margin-left: px;
+  margin-left: 12px;
   overflow-x: auto;
   overflow-y: hidden;
 }
@@ -933,4 +932,19 @@ a {
 
 td.text-center {
     vertical-align: middle;
+}
+
+.samping{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.kanan{
+  margin-left:4px;
+}
+
+.kiri{
+  margin-right:4px;
 }

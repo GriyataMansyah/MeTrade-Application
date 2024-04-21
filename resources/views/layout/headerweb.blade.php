@@ -1,6 +1,7 @@
 <?php
-$loggedInUserId = Auth::id();
-$pengeksporData = \App\Models\pengekspor::where('id', $loggedInUserId)->get();
+    $Auth = Auth::id();
+    $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+    $pengeksporData = \App\Models\pengekspor::where('id', $loggedInUserId)->get();
 ?>
 <!-- INI HEADER -->
 <div class="d-none d-lg-block">

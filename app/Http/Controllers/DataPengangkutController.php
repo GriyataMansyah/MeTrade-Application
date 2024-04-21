@@ -22,8 +22,9 @@ class DataPengangkutController extends Controller
       ]);
       
         $dok = new DataPengangkut;
-        $id = Auth::id();
-        $dokumen = Dokumen::where('id_pengekspor', $id)->latest('id')->first();
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
         $dok->id_dokumen = $dokumen->id; 
         $dok->tempat_penimbunan = $request->input('tempat_penimbunan');
         $dok->pelabuhan_muat_asal = $request->input('pelabuhan_muat_asal');

@@ -29,8 +29,9 @@ class BarangController extends Controller
       ]);
       
         $dok = new Barang;
-        $id = Auth::id();
-        $dokumen = Dokumen::where('id_pengekspor', $id)->latest('id')->first();
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
         $dok->id_dokumen = $dokumen->id; 
         $dok->HS = $request->input('HS');
         $dok->lartas = $request->input('lartas');

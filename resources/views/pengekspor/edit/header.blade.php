@@ -7,6 +7,7 @@ $JenisDagang = \App\Models\JenisDagang::all();
 $CaraBayar = \App\Models\CaraBayar::all();
 $Komoditi = \App\Models\Komoditi::all();
 $Curah = \App\Models\Curah::all();
+$Header = \App\Models\Header::all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +15,7 @@ $Curah = \App\Models\Curah::all();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
-  <title>Data Header</title>
+  <title>Data Header Update</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -27,6 +28,7 @@ $Curah = \App\Models\Curah::all();
 </head>
 @include('layout.headerweb')
 @include('layout.popuplogout')
+<?php $id = session('id_dokumen');?>
 
 <!-- INI BADANNYA -->
 <div class="d-none d-lg-block thisbody animate__animated animate__fadeIn">
@@ -40,39 +42,43 @@ $Curah = \App\Models\Curah::all();
         </svg>
         <p class="dalamputih">Muat Ulang</p>
       </div>
-      <button type="submit" value="submit" class="btn btn-primary drow" onclick="submitForm()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
+      <button type="submit" value="submit" class="btn btn-success drow" onclick="pertanyaan()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
           fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
           <path
             d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z" />
           <path
             d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z" />
         </svg>
-        <p class="dalambiru">Lanjutkan</p>
+        <p class="dalambiru">Update</p>
       </button>
     </div>
   </div>
   <hr>
   <div class="offside">
-   @include('layout.header1')
+   @include('layout.header3')
   </div>
   <hr class="container00 container-fluid">
   <div class="kotak">
     <div class="card-form">
       <div class="card-body">
-        <form id="formulir"  method="post"> 
-          @csrf
-
+        <form id="formulir"  method="post" action="{{route("headerupdatedata")}}"> 
+          @CSRF
 
         <div class="custom-form-group">
           <label>Nomor Pengajuan</label>
-          <input type="text" id="b" class="text" disabled>
+          @foreach ($Header->where('id_dokumen', $id) as $he)
+          <input type="text" value="{{$he->nomor_pengajuan}}" class="text" readonly>
+          @endforeach
         </div>
 
 
         <div class="form-group">
           <label for="kantor_pabean_muat_asal">Kantor Pabean Muat Asal</label>
           <select id="kantor_pabean_muat_asal" name="kantor_asal" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->kantor_muat_asal}}">{{$he->kantor_muat_asal}}</option>
+            @endforeach
+            
             <?php
             foreach ($kantor_muat_asal as $kantor) {
                 ?>
@@ -86,7 +92,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="pelabuhan_muat_ekspor">Pelabuhan Muat Ekspor</label>
           <select id="pelabuhan_muat_ekspor" name="pelabuhan_ekspor" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->pelabuhan_muat_ekspor}}">{{$he->pelabuhan_muat_ekspor}}</option>
+            @endforeach
             <?php
             foreach ($pelabuhan as $pel) {
                 ?>
@@ -100,7 +108,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="kantor_pabean_muat_ekspor">Kantor Pabean Muat Ekspor</label>
           <select type="text" id="kantor_pabean_muat_ekspor" name="kantor_ekspor" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->kantor_muat_ekspor}}">{{$he->kantor_muat_ekspor}}</option>
+            @endforeach
             <?php
             foreach ($pelabuhan as $pel) {
                 ?>
@@ -114,7 +124,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="jenis_ekspor">Jenis Ekspor</label>
           <select id="jenis_ekspor" name="jenis_ekspor" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->jenis_ekspor}}">{{$he->jenis_ekspor}}</option>
+            @endforeach
             <?php
             foreach ($JenisEkspor as $jen) {
                 ?>
@@ -128,7 +140,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="kategori_ekspor">Kategori Ekspor</label>
           <select id="kategori_ekspor" name="kategori_ekspor" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->kategori_ekspor}}">{{$he->kategori_ekspor}}</option>
+            @endforeach
             <?php
             foreach ($KategoriEkspor as $kat) {
                 ?>
@@ -143,7 +157,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="cara_dagang" >Cara Dagang</label>
           <select id="cara_dagang" name="cara_dagang" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->cara_dagang}}">{{$he->cara_dagang}}</option>
+            @endforeach
             <?php
             foreach ($JenisDagang as $jd) {
                 ?>
@@ -157,7 +173,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="cara_bayar">Cara Bayar</label>
           <select id="cara_bayar" name="cara_bayar" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->cara_bayar}}">{{$he->cara_bayar}}</option>
+            @endforeach
             <?php
             foreach ($CaraBayar as $cb) {
                 ?>
@@ -171,7 +189,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="komoditi">Komoditi</label>
           <select id="komoditi" name="komoditi" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->komoditi}}">{{$he->komoditi}}</option>
+            @endforeach
             <?php
             foreach ($Komoditi as $ko) {
                 ?>
@@ -185,7 +205,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="curah">Curah</label>
           <select id="curah" name="curah" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->curah}}">{{$he->curah}}</option>
+            @endforeach
             <?php
             foreach ($Curah as $cu) {
                 ?>
@@ -194,6 +216,7 @@ $Curah = \App\Models\Curah::all();
             }?>
           </select>
         </div>
+        <button class="inv" type="submit" value="submit" id="submit">
       </form>
       </div>
     </div>
@@ -220,39 +243,44 @@ $Curah = \App\Models\Curah::all();
         </svg>
         <p class="dalamputih">Muat Ulang</p>
       </div>
-      <button type="submit" class="btn btn-primary drow2" onclick="submitForm()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
+      <button type="submit" class="btn btn-success drow2" onclick="submitForm()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
           fill="currentColor" class="hoh1 bi bi-file-earmark-plus" viewBox="0 0 16 16">
           <path
             d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
           <path
             d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
         </svg>
-        <p class="dalambiru">Lanjutkan</p>
+        <p class="dalambiru">Update</p>
       </button>
     </div>
   </div>
   <hr>
   <div class="offside2">
-    @include('layout.header2')
+    @include('layout.header4')
   </div>
   <hr class="container001 container-fluid">
   <div class="kotak2">
     <div class="card-form">
       <div class="card-body">
-        <form id="formulir"  method="post"> 
-          @csrf
+        <form id="formulir"  method="post" action="{{ route("headerupdatedata")}}">  
+          @CSRF
 
 
         <div class="custom-form-group">
           <label>Nomor Pengajuan</label>
-          <input type="text" id="b" class="text" disabled>
+          @foreach ($Header->where('id', $id) as $he)
+          <input type="text" value="{{$he->nomor_pengajuan}}" class="text" readonly>
+          @endforeach
         </div>
 
 
         <div class="form-group">
           <label for="kantor_pabean_muat_asal">Kantor Pabean Muat Asal</label>
           <select id="kantor_pabean_muat_asal" name="kantor_asal" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->kantor_muat_asal}}">{{$he->kantor_muat_asal}}</option>
+            @endforeach
+            
             <?php
             foreach ($kantor_muat_asal as $kantor) {
                 ?>
@@ -266,7 +294,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="pelabuhan_muat_ekspor">Pelabuhan Muat Ekspor</label>
           <select id="pelabuhan_muat_ekspor" name="pelabuhan_ekspor" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->pelabuhan_muat_ekspor}}">{{$he->pelabuhan_muat_ekspor}}</option>
+            @endforeach
             <?php
             foreach ($pelabuhan as $pel) {
                 ?>
@@ -280,7 +310,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="kantor_pabean_muat_ekspor">Kantor Pabean Muat Ekspor</label>
           <select type="text" id="kantor_pabean_muat_ekspor" name="kantor_ekspor" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->kantor_muat_ekspor}}">{{$he->kantor_muat_ekspor}}</option>
+            @endforeach
             <?php
             foreach ($pelabuhan as $pel) {
                 ?>
@@ -294,7 +326,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="jenis_ekspor">Jenis Ekspor</label>
           <select id="jenis_ekspor" name="jenis_ekspor" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->jenis_ekspor}}">{{$he->jenis_ekspor}}</option>
+            @endforeach
             <?php
             foreach ($JenisEkspor as $jen) {
                 ?>
@@ -308,7 +342,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="kategori_ekspor">Kategori Ekspor</label>
           <select id="kategori_ekspor" name="kategori_ekspor" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->kategori_ekspor}}">{{$he->kategori_ekspor}}</option>
+            @endforeach
             <?php
             foreach ($KategoriEkspor as $kat) {
                 ?>
@@ -323,7 +359,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="cara_dagang" >Cara Dagang</label>
           <select id="cara_dagang" name="cara_dagang" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->cara_dagang}}">{{$he->cara_dagang}}</option>
+            @endforeach
             <?php
             foreach ($JenisDagang as $jd) {
                 ?>
@@ -337,7 +375,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="cara_bayar">Cara Bayar</label>
           <select id="cara_bayar" name="cara_bayar" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->cara_bayar}}">{{$he->cara_bayar}}</option>
+            @endforeach
             <?php
             foreach ($CaraBayar as $cb) {
                 ?>
@@ -351,7 +391,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="komoditi">Komoditi</label>
           <select id="komoditi" name="komoditi" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->komoditi}}">{{$he->komoditi}}</option>
+            @endforeach
             <?php
             foreach ($Komoditi as $ko) {
                 ?>
@@ -365,7 +407,9 @@ $Curah = \App\Models\Curah::all();
         <div class="form-group">
           <label for="curah">Curah</label>
           <select id="curah" name="curah" required>
-            <option value=""></option>
+            @foreach ($Header->where('id_dokumen', $id) as $he)
+            <option value="{{$he->curah}}">{{$he->curah}}</option>
+            @endforeach
             <?php
             foreach ($Curah as $cu) {
                 ?>
@@ -374,6 +418,7 @@ $Curah = \App\Models\Curah::all();
             }?>
           </select>
         </div>
+        <button class="inv" type="submit" value="submit" id="submit">
       </form>
       </div>
     </div>

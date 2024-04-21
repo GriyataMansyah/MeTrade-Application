@@ -1,15 +1,17 @@
 Ini Adalah Beberapa Bug Yang Terdapat Dalam Sistem :
 
-1. Tabel Ketika Kosong Make Header Nya Akan Menutupi Body Nya
+1. [FIX] Tabel Ketika Kosong Make Header Nya Akan Menutupi Body Nya
 2. Di Rumus Transaksi Fungsi JavaScript Sedikit Macet
 3. Di Sisi Responsive JavaScript Tidak Berjalan
 4. Beberapa Fungsi Di Controller Tidak Sesuai Dengan Class Diagram
 5. ERD Tidak Sesuai Dengan DataBase
-6. Belum Semua Input Memiliki SwwetAllert.
-7. Beberapa Inputan Belum Memilik Fungsi Required Pribadi
+6. [FIX] Belum Semua Input Memiliki SwwetAllert.
+7. [FIX] Beberapa Inputan Belum Memilik Fungsi Required Pribadi
 8. Ketika Data Kosong , Maunya Ada Alert Pemberitahuan
 7. Di Halaman Kemasan, Yang Kemasannya Tidak Mau Di Hapus (Keras KepalaKali)
-
+8. [FIX] Ketika Ganti Userrr ,Nama User Tidak Muncul 
+9. Dokumen Tetap Muncul Walau Ganti AKun
+10. Database Turunan Entitas Tidak BeRRelasi.
 
 
 

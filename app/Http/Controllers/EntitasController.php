@@ -46,13 +46,14 @@ class EntitasController extends Controller
         $Penerima->alamat = $request->input('alamat_pen');
         $Penerima->negara = $request->input('negara_pen');
         $Penerima->save();
-
-        $id = Auth::id();
-        $id_dokumen = Dokumen::where('id_pengekspor', $id)->orderBy('id', 'desc')->value('id');
-        $id_eksportir = $id;
+        
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
+        $id_eksportir = $loggedInUserId;
         $Entitas = new Entitas;
         $Entitas->entitas = "Entitas";
-        $Entitas->id_dokumen = $id_dokumen; 
+        $Entitas->id_dokumen = $dokumen->id; 
         $Entitas->id_eksportir = $id_eksportir; 
         $Entitas->id_penerima = $Penerima->id;
         $Entitas->id_pembeli = $Pembeli->id;

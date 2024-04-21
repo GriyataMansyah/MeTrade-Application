@@ -182,7 +182,7 @@ function HapusDokumen() {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "PASTI!"
+      confirmButtonText: "Yakin!"
   }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
@@ -203,7 +203,7 @@ function HapusDokumen2() {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "PASTI!"
+      confirmButtonText: "Yakin!"
   }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
@@ -215,3 +215,36 @@ function HapusDokumen2() {
       }
   });
 }
+//-----------------------------------------------
+function Edit() {
+    Swal.fire({
+        title: "Apakah Anda yakin ingin mengubah data ini?",
+        text: "Tindakan ini akan mengubah rincian data!",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yakin!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+          document.getElementById('edit').click();
+        }
+    });
+}
+//-----------------------------------------------
+function pertanyaan() {
+  Swal.fire({
+      title: "Apakah Anda yakin ingin mengubah data ini?",
+      text: "Tindakan ini akan mengubah rincian data!",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yakin!"
+  }).then((result) => {
+      if (result.isConfirmed) {
+        document.getElementById('submit').click();
+      }
+  });
+}
+

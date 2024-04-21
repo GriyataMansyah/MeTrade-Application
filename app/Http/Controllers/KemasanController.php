@@ -18,8 +18,9 @@ class KemasanController extends Controller
       ]);
       
         $dok = new Kemasan;
-        $id = Auth::id();
-        $dokumen = Dokumen::where('id_pengekspor', $id)->latest('id')->first();
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
         $dok->id_dokumen = $dokumen->id; 
         $dok->jumlah = $request->input('jumlah');
         $dok->jenis = $request->input('jenis');
@@ -46,8 +47,9 @@ class KemasanController extends Controller
       ]);
       
         $p = new PetiKemas;
-        $id = Auth::id();
-        $dokumen = Dokumen::where('id_pengekspor', $id)->latest('id')->first();
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
         $p->id_dokumen = $dokumen->id; 
         $p->nomor = $request->input('nomor');
         $p->ukuran = $request->input('ukuran');

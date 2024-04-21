@@ -18,8 +18,9 @@ class PernyataanController extends Controller
       ]);
       
         $p = new Pernyataan;
-        $id = Auth::id();
-        $dokumen = Dokumen::where('id_pengekspor', $id)->latest('id')->first();
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
         $p->id_dokumen = $dokumen->id; 
         $p->tempat = $request->input('tempat');
         $p->tanggal = $request->input('tanggal');

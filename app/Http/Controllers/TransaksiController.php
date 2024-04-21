@@ -28,8 +28,9 @@ class TransaksiController extends Controller
       ]);
       
         $Transaksi = new Transaksi;
-        $id = Auth::id();
-        $dokumen = Dokumen::where('id_pengekspor', $id)->latest('id')->first();
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
         $Transaksi->id_dokumen = $dokumen->id; 
         $Transaksi->valuta = $request->input('valuta');
         $Transaksi->NDPMB = $request->input('NDPMB');
@@ -46,8 +47,9 @@ class TransaksiController extends Controller
         $Transaksi ->save();
 
         $baru = new Pungutan();
-        $id = Auth::id();
-        $dokumen = Dokumen::where('id_pengekspor', $id)->latest('id')->first();
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
         $baru->id_dokumen = $dokumen->id;
         $nilai_bea_keluar = $request->input('nilai_bea_keluar');
         $availableColumns = ['pungutan', 'dibayar', 'ditanggung_pemerintah', 'ditunda', 'tidak_dipungut', 'dibebaskan', 'sudah_dilunasi'];

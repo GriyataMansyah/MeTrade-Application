@@ -118,6 +118,35 @@ Route::view('/pungutan1', 'pengekspor/pungutan')->name('pungutan');
 
 Route::view('/P','pengekspor/PERCOBAAN');
 
+Route::view('/editheader','pengekspor/edit/header')->name("headerv2");
+
+Route::post('editheader/{id}', [HeaderController::class, 'headerupdate'])->name("editheader");
+
+Route::post('headerv2', [HeaderController::class, 'updatedata']);
+
+Route::view('/editentitas','pengekspor/edit/entitas')->name("entitasv2");
+
+Route::post('pengekspor/edit/entitas', [HeaderController::class, 'headerupdatedata'])->name("headerupdatedata");
+
+Route::view('/editdokumenpen','pengekspor/edit/dokumenpen')->name("dokumenpenv2");
+
+Route::view('/editpengangkut','pengekspor/edit/Pengangkut')->name("angkutv2");
+
+Route::view('/editkemasan','pengekspor/edit/kemasan')->name("kemasanv2");
+
+Route::view('/edittransaksi','pengekspor/edit/transaksi')->name("transaksiv2");
+
+Route::view('/editbarang','pengekspor/edit/barang')->name("barangv2");
+
+Route::view('/editpungutan','pengekspor/edit/pungutan')->name("pungutanv2");
+
+Route::view('/editpernyataan','pengekspor/edit/pernyataan')->name("pernyataanv2");
+
+
+
+
+
+
 // Menampilkan Saja
 
 Route::view('1', 'petugas/datamaster');

@@ -17,8 +17,9 @@ class DokumenPendukungController extends Controller
       ]);
       
         $dok = new DokumenPendukung;
-        $id = Auth::id();
-        $dokumen = Dokumen::where('id_pengekspor', $id)->latest('id')->first();
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
         $dok->id_dokumen = $dokumen->id; 
         $dok->nomor = $request->input('nomor');
         $dok->jenis = $request->input('jenis');

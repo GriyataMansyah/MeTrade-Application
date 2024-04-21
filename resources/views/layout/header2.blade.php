@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row hayhay">
-      <div class="col isi2"><a href="{{ url('/header1')}}" >Header</a></div>
-      <div class="col isi2"><a href="{{ url('/entitas1')}}" >Entitas</a></div>
+      <div class="col isi2"><a href="{{ url('/header')}}" >Header</a></div>
+      <div class="col isi2"><a href="{{ url('/entitas')}}" >Entitas</a></div>
       <div class="col isi2"><a href="{{ url('/dokumenpen1')}}" >Dokumen</a></div>
       <div class="col isi2"><a href="{{ url('/pengangkut1')}}" >Angkut</a></div>
       <div class="col isi2"><a href="{{ url('/kemasan1')}}" >Kemasan</a></div>
@@ -12,4 +12,3 @@
     </div>
   </div>   
 
-  {{-- HALAMAN INI MASIH ERROR DAN BELUM DI PERBAIKI --}}
