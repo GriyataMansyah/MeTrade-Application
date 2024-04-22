@@ -14,7 +14,7 @@
 </head>
       @include('layout.headerweb')
       @include('layout.popuplogout')
-
+      <?php session()->forget('dokumen_id');?>
        <!-- INI BADANNYA -->
     <div class="d-none d-lg-block thisbody animate__animated animate__fadeIn">
       <div class="row">

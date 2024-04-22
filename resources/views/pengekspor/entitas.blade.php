@@ -358,7 +358,7 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
                           </tr>
                           @else
                           <tr>
-                          @foreach ($Pemilik_barang as $pemilik_barang)
+                            @foreach ($Pemilik_barang->where('id_dokumen', $id) as $pemilik_barang)
                           <th scope="row" class="centered">{{ $pemilik_barang->seri }}</th>
                           <td class="centered">{{ $pemilik_barang->no_identitas }}</td>
                           <td class="centered">{{ $pemilik_barang->alamat }}</td>

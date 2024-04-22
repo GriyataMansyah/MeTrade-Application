@@ -50,6 +50,10 @@ class DataPengangkutController extends Controller
       ]);
       
         $doc = new SaranaAngkut;
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
+        $doc->id_dokumen = $dokumen->id; 
         $doc->nama_sarana_angkut = $request->input('nama_sarana_angkut');
         $doc->cara_pengangkutan = $request->input('cara_pengangkutan');
         $doc->nomor_voy = $request->input('nomor_voy');

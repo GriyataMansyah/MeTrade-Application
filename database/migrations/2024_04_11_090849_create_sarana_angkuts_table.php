@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('sarana_angkut', function (Blueprint $table) {
             $table->increments("seri");
+            $table->Integer('id_dokumen')->unsigned();
+            $table->foreign('id_dokumen')->references('id')->on('dokumens')->onDelete('cascade'); 
             $table->string("nama_sarana_angkut");
             $table->string("cara_pengangkutan");
             $table->string("nomor_voy");

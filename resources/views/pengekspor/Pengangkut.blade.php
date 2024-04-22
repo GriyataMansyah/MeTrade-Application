@@ -23,6 +23,7 @@ $SaranaAngkut = \App\Models\SaranaAngkut::all();
 </head>
     @include('layout.headerweb')
     @include('layout.popuplogout')
+    <?php $id = session('dokumen_id');?>
        <!-- INI BADANNYA -->
     <div class="d-none d-lg-block thisbody animate__animated animate__fadeIn">
       <div class="row">
@@ -196,7 +197,8 @@ $SaranaAngkut = \App\Models\SaranaAngkut::all();
                       </td>
                   </tr>
                   @else
-                  @foreach($SaranaAngkut as $S)
+                  {{-- @foreach ($Pemilik_barang->where('id_dokumen', $id) as $pemilik_barang) --}}
+                  @foreach($SaranaAngkut->where('id_dokumen', $id) as $S)
                   <td class="centered">{{ $S->seri}}</td>
                   <td class="centered">{{ $S->nama_sarana_angkut}}</td>
                   <td class="centered">{{ $S->cara_pengangkutan}}</td>

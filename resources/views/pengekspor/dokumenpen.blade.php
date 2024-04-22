@@ -18,7 +18,7 @@ $Dokumen = \App\Models\DokumenPendukung::all();
 </head>
       @include('layout.headerweb')
       @include('layout.popuplogout')
-
+      <?php $id = session('dokumen_id');?>
        <!-- INI BADANNYA -->
     <div class="d-none d-lg-block thisbody animate__animated animate__fadeIn">
       <div class="row">
@@ -77,7 +77,8 @@ $Dokumen = \App\Models\DokumenPendukung::all();
                 </tr>
               @else
                 <tr>
-                  @foreach($Dokumen as $dp)
+                  {{-- @foreach ($Pemilik_barang->where('id_dokumen', $id) as $pemilik_barang) --}}
+                  @foreach($Dokumen->where('id_dokumen', $id) as $dp)
                   <td class="centered">{{ $dp->id}}</td>
                   <td class="centered">{{ $dp->jenis}}</td>
                   <td class="centered">{{ $dp->nomor}}</td>
@@ -170,7 +171,7 @@ $Dokumen = \App\Models\DokumenPendukung::all();
                   </tr>
                 @else
                   <tr>
-                    @foreach($Dokumen as $dp)
+                    @foreach($Dokumen->where('id_dokumen', $id) as $dp)
                     <td class="centered">{{ $dp->id}}</td>
                     <td class="centered">{{ $dp->jenis}}</td>
                     <td class="centered">{{ $dp->nomor}}</td>
