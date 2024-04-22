@@ -1,5 +1,8 @@
 <?php
 $Pemilik_barang = \App\Models\PemilikBarang::all();
+$Eksportir = App\Models\Eksportir::all();
+$Penerima = App\Models\Penerima::all();
+$Pembeli = App\Models\Pembeli::all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +21,7 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
 </head>
     @include('layout.headerweb')
     @include('layout.popuplogout')
+    <?php $id = session('id_dokumen');?>
        <!-- INI BADANNYA -->
        <div class="d-none d-lg-block thisbody animate__animated animate__fadeIn">
         <div class="row">
@@ -26,10 +30,10 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
           <div type="button" class="btn btn-outline-secondary drow" onclick="refreshPage()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
             <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
           </svg><p class="dalamputih">Muat Ulang</p></div>
-          <button type="submit" value="submit" class="btn btn-primary drow" onclick="submitForm2()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
+          <button type="submit" value="submit" class="btn btn-success drow" onclick="pertanyaan()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
             <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
             <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-          </svg><p class="dalambiru">Lanjutkan</p></button>
+          </svg><p class="dalambiru">Update</p></button>
         </div>
       </div> 
       <hr>
@@ -58,12 +62,16 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
   
                   Nama:<br><br>
                   <div class="input-group mb-3 input1">
-                    <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_ek">
+                    @foreach ($Eksportir->where('id_dokumen', $id) as $he)
+                    <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_ek" value="{{$he->nama}}">
+                    @endforeach
                   </div>
   
                   Alamat:<br><br>
                   <div class="input-group mb-3 input1">
-                    <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_ek"></textarea>
+                    @foreach ($Eksportir->where('id_dokumen', $id) as $he)
+                    <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_ek">{{$he->alamat}}</textarea>
+                    @endforeach
                   </div>
                 </td>
               </tr>
@@ -83,19 +91,21 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
                 <td class="td1">
                   Nama:<br><br>
                   <div class="input-group mb-3 input1">
-                    <input type="text" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pen">
+                    @foreach ($Penerima->where('id_dokumen', $id) as $he)
+                    <input type="text" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pen" value="{{$he->nama}}">
                   </div>
   
                   Alamat:<br><br>
                   <div class="input-group mb-3 input1">
-                    <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pen"></textarea>
+                    <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pen">{{$he->alamat}}</textarea>
                   </div>
   
                   Negara:<br><br>
                   <div class="input-group mb-3 input1">
                     <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pen">
-                      <option value=""></option>
+                      <option value="{{$he->negara}}">{{$he->negara}}</option>
                       <option value="SG - SINGAPURA">SG - SINGAPURA</option>
+                      @endforeach
                     </select>
                   </div>
                 </td>
@@ -115,21 +125,23 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
               <tbody>
                 <tr>
                   <td class="td1">
+                    @foreach ($Pembeli->where('id_dokumen', $id) as $he)
                     Nama:<br><br>
                     <div class="input-group mb-3 input1">
-                      <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pem">
+                      <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pem" value="{{$he->nama}}">
                     </div>
     
                     Alamat:<br><br>
                     <div class="input-group mb-3 input1">
-                      <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pem"></textarea>
+                      <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pem">{{$he->alamat}}</textarea>
                     </div>
     
                     Negara:<br><br>
                     <div class="input-group mb-3 input1">
                       <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pem">
-                        <option value=""></option>
+                        <option value="{{$he->negara}}">{{$he->negara}}</option>
                         <option value="SG - SINGAPURA">SG - SINGAPURA</option>
+                        @endforeach
                       </select>
                     </div>
                   </td>
@@ -210,10 +222,10 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
                       <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
                       <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
                     </svg><p class="dalamputih">Muat Ulang</p></div>
-                    <button type="submit" value="submit" class="btn btn-primary drow2" onclick="submitForm2()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="hoh1 bi bi-file-earmark-plus" viewBox="0 0 16 16">
+                    <button type="submit" value="submit" class="btn btn-success drow2" onclick="pertanyaan()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="hoh1 bi bi-file-earmark-plus" viewBox="0 0 16 16">
                       <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5"/>
                       <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/>
-                    </svg><p class="dalambiru">Lanjutkan</p></button>
+                    </svg><p class="dalambiru">Update</p></button>
                   </div>
                 </div>
                   <hr>
@@ -225,105 +237,113 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
                 <div class="row">
                 <div class="col-6">
                   <table class="tabless">
-                    <form id="formulir2" action="post">
+                    <form id="formulir2" method="post">
                       @csrf
-                    <thead>
-                      <tr>
-                        <th class="th1">Eksportir</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="td1">
-                          Nomor Identitas:<br><br>
-                          <div class="input-group mb-3 input1">
-                            <input type="text" id="b" class="form-control" aria-label="Username" aria-describedby="basic-addon1" disabled>
-                          </div>
+                    <table class="tabless">
+                      <thead>
+                        <tr>
+                          <th class="th1">Eksportir</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="td1">
+                            Nomor Identitas:<br><br>
+                            <div class="input-group mb-3 input1">
+                              <input type="text" id="b" class="form-control" aria-label="Username" aria-describedby="basic-addon1" disabled>
+                            </div>
+            
+                            Nama:<br><br>
+                            <div class="input-group mb-3 input1">
+                              @foreach ($Eksportir->where('id_dokumen', $id) as $he)
+                              <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_ek" value="{{$he->nama}}">
+                              @endforeach
+                            </div>
+            
+                            Alamat:<br><br>
+                            <div class="input-group mb-3 input1">
+                              @foreach ($Eksportir->where('id_dokumen', $id) as $he)
+                              <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_ek">{{$he->alamat}}</textarea>
+                              @endforeach
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- beda -->
+                  <div class="col-6">
+                    <table class="tabless">
+                      <thead>
+                        <tr>
+                          <th class="th1">Penerima</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="td1">
+                            Nama:<br><br>
+                            <div class="input-group mb-3 input1">
+                              @foreach ($Penerima->where('id_dokumen', $id) as $he)
+                              <input type="text" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pen" value="{{$he->nama}}">
+                            </div>
+            
+                            Alamat:<br><br>
+                            <div class="input-group mb-3 input1">
+                              <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pen">{{$he->alamat}}</textarea>
+                            </div>
+            
+                            Negara:<br><br>
+                            <div class="input-group mb-3 input1">
+                              <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pen">
+                                <option value="{{$he->negara}}">{{$he->negara}}</option>
+                                <option value="SG - SINGAPURA">SG - SINGAPURA</option>
+                                @endforeach
+                              </select>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div></div>
           
-                          Nama:<br><br>
-                          <div class="input-group mb-3 input1">
-                            <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_ek">
-                          </div>
-          
-                          Alamat:<br><br>
-                          <div class="input-group mb-3 input1">
-                            <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_ek"></textarea>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!-- beda -->
-                <div class="col-6">
-                  <table class="tabless">
-                    <thead>
-                      <tr>
-                        <th class="th1">Penerima</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="td1">
-                          Nama:<br><br>
-                          <div class="input-group mb-3 input1">
-                            <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pen">
-                          </div>
-          
-                          Alamat:<br><br>
-                          <div class="input-group mb-3 input1">
-                            <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pen"></textarea>
-                          </div>
-          
-                          Negara:<br><br>
-                          <div class="input-group mb-3 input1">
-                            <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pen">
-                              <option value=""></option>
-                              <option value="1">SG - SINGAPURA</option>
-                            </select>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <div class="row margin20">
-                <div class="col-6">
-                  <table class="tabless">
-                    <thead>
-                      <tr>
-                        <th class="th1">Pemilik Barang</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="td1">        
-                          Nama:<br><br>
-                          <div class="input-group mb-3 input1">
-                            <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pem">
-                          </div>
-          
-                          Alamat:<br><br>
-                          <div class="input-group mb-3 input1">
-                            <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pem"></textarea>
-                          </div>
-
-                          Negara:<br><br>
-                          <div class="input-group mb-3 input1">
-                            <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pem">
-                              <option value=""></option>
-                              <option value="1">SG - SINGAPURA</option>
-                            </select>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </form>
+                  <div class="row margin20">
+                    <div class="col-6">
+                      <table class="tabless">
+                        <thead>
+                          <tr>
+                            <th class="th1">Pembeli</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="td1">
+                              @foreach ($Pembeli->where('id_dokumen', $id) as $he)
+                              Nama:<br><br>
+                              <div class="input-group mb-3 input1">
+                                <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pem" value="{{$he->nama}}">
+                              </div>
+              
+                              Alamat:<br><br>
+                              <div class="input-group mb-3 input1">
+                                <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pem">{{$he->alamat}}</textarea>
+                              </div>
+              
+                              Negara:<br><br>
+                              <div class="input-group mb-3 input1">
+                                <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pem">
+                                  <option value="{{$he->negara}}">{{$he->negara}}</option>
+                                  <option value="SG - SINGAPURA">SG - SINGAPURA</option>
+                                  @endforeach
+                                </select>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </form>
             <br>
             <hr class='container'>
                 <div class="row arc">

@@ -75,9 +75,22 @@ function submitForm5() {
   document.getElementById("formulir5").submit();
 }
 // -------------------------
-function submitForm6() {
-  document.getElementById("formulir6").submit();
+function verifikasi() {
+  Swal.fire({
+    title: "Apakah data ini sudah disini dengan benar?",
+    text: "Harap perhatikan kembali!",
+    icon: "question",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yakin!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      document.getElementById("formulir6").submit();
+    }
+  });
 }
+
 //--------------------------
 var divToRedirect = document.getElementById('redirectDiv');
 divToRedirect.addEventListener('click', function() {

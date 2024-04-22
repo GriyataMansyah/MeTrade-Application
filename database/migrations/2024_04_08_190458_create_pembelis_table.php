@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('pembeli', function (Blueprint $table) {
             $table->increments("id");
+            $table->Integer('id_dokumen')->unsigned();
+            $table->foreign('id_dokumen')->references('id')->on('dokumens')->onDelete('cascade');   
             $table->string("nama");
             $table->string("alamat");
             $table->string("negara");

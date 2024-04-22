@@ -18,6 +18,7 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
 </head>
     @include('layout.headerweb')
     @include('layout.popuplogout')
+    <?php $id = session('dokumen_id');?>
        <!-- INI BADANNYA -->
        <div class="d-none d-lg-block thisbody animate__animated animate__fadeIn">
         <div class="row">
@@ -173,7 +174,7 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
                   </tr>
                   @else
                   <tr>
-                  @foreach ($Pemilik_barang as $pemilik_barang)
+                  @foreach ($Pemilik_barang->where('id_dokumen', $id) as $pemilik_barang)
                   <th scope="row" class="centered">{{ $pemilik_barang->seri }}</th>
                   <td class="centered">{{ $pemilik_barang->no_identitas }}</td>
                   <td class="centered">{{ $pemilik_barang->alamat }}</td>

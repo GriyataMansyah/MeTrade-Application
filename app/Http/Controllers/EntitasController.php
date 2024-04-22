@@ -28,7 +28,11 @@ class EntitasController extends Controller
         $Eksportir = new Eksportir;
         $part1 = mt_rand(100000, 999999);
         $part2 = mt_rand(100000, 999999);
-        $part3 = mt_rand(100000, 999999);
+        $part3 = mt_rand(100000, 999999); 
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
+        $Eksportir->id_dokumen = $dokumen->id;
         $nomor_pengajuan = $part1 . $part2 . $part3;
         $Eksportir->nomor_identitas= $nomor_pengajuan;
         $Eksportir->nama = $request->input('nama_ek');
@@ -36,12 +40,20 @@ class EntitasController extends Controller
         $Eksportir -> save();
 
         $Pembeli = new Pembeli;
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
+        $Pembeli->id_dokumen = $dokumen->id;
         $Pembeli->nama = $request->input('nama_pem');
         $Pembeli->alamat = $request->input('alamat_pem');
         $Pembeli->negara = $request->input('negara_pem');
         $Pembeli->save();
 
         $Penerima = new Penerima;
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
+        $Penerima->id_dokumen = $dokumen->id;
         $Penerima->nama = $request->input('nama_pen');
         $Penerima->alamat = $request->input('alamat_pen');
         $Penerima->negara = $request->input('negara_pen');
@@ -70,6 +82,10 @@ class EntitasController extends Controller
       ]);
       
         $PemilikBarang = new PemilikBarang;
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
+        $PemilikBarang->id_dokumen = $dokumen->id;
         $PemilikBarang->no_identitas = $request->input('no_identitas');
         $PemilikBarang->alamat = $request->input('alamat');
         $PemilikBarang->nama = $request->input('nama');

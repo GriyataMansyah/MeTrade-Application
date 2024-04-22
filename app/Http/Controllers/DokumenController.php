@@ -32,7 +32,8 @@ class DokumenController extends Controller
         $dokumen->jenis_dokumen = $request->jenis_dokumen;
         $dokumen->save();
 
-        Session::put('id_dokumen', $dokumen->id);
+        $dokumen = $dokumen->id;
+        $request->session()->put('dokumen_id', $dokumen);
 
         return redirect()->route('header');
     }
