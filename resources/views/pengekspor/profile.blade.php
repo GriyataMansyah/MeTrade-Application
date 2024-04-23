@@ -1,6 +1,6 @@
 <?php
 $loggedInUserId = Auth::id();
-$pengeksporData = \App\Models\pengekspor::where('id', $loggedInUserId)->get();
+$pengeksporData = \App\Models\pengekspor::where('id_akun', $loggedInUserId)->get();
 $akuns = \App\Models\Akun::where('id', $loggedInUserId)->get();
 ?>
 <!DOCTYPE html>

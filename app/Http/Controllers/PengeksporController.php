@@ -49,11 +49,11 @@ class PengeksporController extends Controller
             'email' => 'required',
         ]);
         
-        $id_pengguna = auth()->id();
-        $pengguna = Pengekspor::find($id_pengguna);
+        $id_pengguna = Auth::id();
+        $pengguna = \App\Models\pengekspor::where('id_akun', $id_pengguna)->first(); // Menggunakan first() untuk mengambil satu objek
         $pengguna->email = $request->input('email'); 
         $pengguna->save();
-        
+              
         Session::flash('success', 'Email Berhasil Di Ganti');
 
         return redirect()->route('profile');  
@@ -67,9 +67,9 @@ class PengeksporController extends Controller
             'no_hp' => 'required',
         ]);
         
-        $id_pengguna = auth()->id();
-        $pengguna = Pengekspor::find($id_pengguna);
-        $pengguna->email = $request->input('no_hp'); 
+        $id_pengguna = Auth::id();
+        $pengguna = \App\Models\pengekspor::where('id_akun', $id_pengguna)->first();
+        $pengguna->no_hp = $request->input('no_hp'); 
         $pengguna->save();
         
         Session::flash('success', 'No Handphone Berhasil Di Ganti');
@@ -86,8 +86,8 @@ class PengeksporController extends Controller
             'pass_baru' => 'required',
         ]);
         
-        $id_pengguna = auth()->id();
-        $pengguna = Pengekspor::find($id_pengguna);
+        $id_pengguna = Auth::id();
+        $pengguna = \App\Models\pengekspor::where('id_akun', $id_pengguna)->first();
         $pengguna2 = Akun::find($pengguna->id_akun);
         
         // Memeriksa apakah password lama sesuai
