@@ -64,12 +64,12 @@ $Pembeli = App\Models\Pembeli::all();
                   <div class="input-group mb-3 input1">
                     @foreach ($Eksportir->where('id_dokumen', $id) as $he)
                     <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_ek" value="{{$he->nama}}">
-                    @endforeach
+                   
                   </div>
   
                   Alamat:<br><br>
                   <div class="input-group mb-3 input1">
-                    @foreach ($Eksportir->where('id_dokumen', $id) as $he)
+                   
                     <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_ek">{{$he->alamat}}</textarea>
                     @endforeach
                   </div>
@@ -93,16 +93,20 @@ $Pembeli = App\Models\Pembeli::all();
                   <div class="input-group mb-3 input1">
                     @foreach ($Penerima->where('id_dokumen', $id) as $he)
                     <input type="text" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pen" value="{{$he->nama}}">
+                    @endforeach
                   </div>
   
                   Alamat:<br><br>
                   <div class="input-group mb-3 input1">
+                    @foreach ($Penerima->where('id_dokumen', $id) as $he)
                     <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pen">{{$he->alamat}}</textarea>
+                    @endforeach
                   </div>
   
                   Negara:<br><br>
                   <div class="input-group mb-3 input1">
                     <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pen">
+                      @foreach ($Penerima->where('id_dokumen', $id) as $he)
                       <option value="{{$he->negara}}">{{$he->negara}}</option>
                       <option value="SG - SINGAPURA">SG - SINGAPURA</option>
                       @endforeach
@@ -125,20 +129,24 @@ $Pembeli = App\Models\Pembeli::all();
               <tbody>
                 <tr>
                   <td class="td1">
-                    @foreach ($Pembeli->where('id_dokumen', $id) as $he)
                     Nama:<br><br>
                     <div class="input-group mb-3 input1">
+                      @foreach ($Pembeli->where('id_dokumen', $id) as $he)
                       <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pem" value="{{$he->nama}}">
+                      @endforeach
                     </div>
     
                     Alamat:<br><br>
                     <div class="input-group mb-3 input1">
+                      @foreach ($Pembeli->where('id_dokumen', $id) as $he)
                       <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pem">{{$he->alamat}}</textarea>
+                      @endforeach
                     </div>
     
                     Negara:<br><br>
                     <div class="input-group mb-3 input1">
                       <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pem">
+                        @foreach ($Pembeli->where('id_dokumen', $id) as $he)
                         <option value="{{$he->negara}}">{{$he->negara}}</option>
                         <option value="SG - SINGAPURA">SG - SINGAPURA</option>
                         @endforeach

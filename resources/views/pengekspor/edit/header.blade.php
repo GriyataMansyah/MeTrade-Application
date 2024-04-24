@@ -63,11 +63,12 @@ $Header = \App\Models\Header::all();
       <div class="card-body">
         <form id="formulir"  method="post" action="{{route("headerupdatedata")}}"> 
           @CSRF
-
+          
         <div class="custom-form-group">
           <label>Nomor Pengajuan</label>
           @foreach ($Header->where('id_dokumen', $id) as $he)
           <input type="text" value="{{$he->nomor_pengajuan}}" class="text" readonly>
+          <input type="hidden" name="id" value="{{ $he->id }}">
           @endforeach
         </div>
 

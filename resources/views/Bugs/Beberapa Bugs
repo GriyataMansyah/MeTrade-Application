@@ -12,6 +12,7 @@ Ini Adalah Beberapa Bug Yang Terdapat Dalam Sistem :
 8. [FIX] Ketika Ganti Userrr ,Nama User Tidak Muncul 
 9. Dokumen Tetap Muncul Walau Ganti AKun
 10. Database Turunan Entitas Tidak BeRRelasi.
+11. Terjadi Inkosistensi Data Pada Spesilisasi Entitas (Eksportir,Pembeli,Penerima) Cuman Pada Seri 1 Aja Si Aneh Anjir
 
 
 

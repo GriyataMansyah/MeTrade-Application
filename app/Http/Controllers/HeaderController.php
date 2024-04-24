@@ -59,21 +59,22 @@ class HeaderController extends Controller
     }
 
     
-    public function headerupdatedata(Request $request) {
-      $id = $request->input('id');
-      $header = Header::findOrFail($id);
-      $header->pelabuhan_muat_ekspor = $request->input('pelabuhan_ekspor');
-      $header->kantor_muat_asal = $request->input('kantor_asal');
-      $header->kantor_muat_ekspor = $request->input('kantor_ekspor');
-      $header->jenis_ekspor = $request->input('jenis_ekspor');
-      $header->kategori_ekspor = $request->input('kategori_ekspor');
-      $header->cara_dagang = $request->input('cara_dagang');
-      $header->cara_bayar = $request->input('cara_bayar');
-      $header->komoditi = $request->input('komoditi');
-      $header->curah = $request->input('curah');
-      $header->save();
-  
-      return redirect()->route('entitasv2');
-  }
+    public function headerupdatedata(Request $request)
+    {
+        $id = $request->input('id');
+        $header = Header::findOrFail($id);
+        $header->pelabuhan_muat_ekspor = $request->input('pelabuhan_ekspor');
+        $header->kantor_muat_asal = $request->input('kantor_asal');
+        $header->kantor_muat_ekspor = $request->input('kantor_ekspor');
+        $header->jenis_ekspor = $request->input('jenis_ekspor');
+        $header->kategori_ekspor = $request->input('kategori_ekspor');
+        $header->cara_dagang = $request->input('cara_dagang');
+        $header->cara_bayar = $request->input('cara_bayar');
+        $header->komoditi = $request->input('komoditi');
+        $header->curah = $request->input('curah');
+        $header->save();
+
+        return redirect()->route('entitasv2');
+    }
 
 }

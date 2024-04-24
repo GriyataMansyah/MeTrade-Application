@@ -41,6 +41,9 @@ class DokumenController extends Controller
     public function destroy($id)
     {
     $dokumen = Dokumen::findOrFail($id);
+    // $Auth = Auth::id();
+    // $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+    // $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
     $dokumen->delete();
 
      return redirect()->route('dokumens');
