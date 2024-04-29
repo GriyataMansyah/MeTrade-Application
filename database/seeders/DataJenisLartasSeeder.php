@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\DataMaster;
 use App\Models\DataJenisLartas;
 use Illuminate\Database\Seeder;
+use Database\Seeders\DataMasterSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DataJenisLartasSeeder extends Seeder
@@ -13,44 +15,56 @@ class DataJenisLartasSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(DataMasterSeeder::class);
+        $data = DataMaster::first();
         DataJenisLartas::create([
-            "nama"=>"ALAT TELEKOMUNIKASI"
+            "nama"=>"ALAT TELEKOMUNIKASI",
+            "id_data_master" => $data->id,
         ]);
 
         DataJenisLartas::create([
-            "nama"=>"OBAT"
+            "nama"=>"OBAT",
+            "id_data_master" => $data->id,
         ]);
 
         DataJenisLartas::create([
-            "nama"=>"KOMODITI CITES"
+            "nama"=>"KOMODITI CITES",
+            "id_data_master" => $data->id,
         ]);
 
         DataJenisLartas::create([
-            "nama"=>"KOMODITI WAJIB SNI"
+            "nama"=>"KOMODITI WAJIB SNI",
+            "id_data_master" => $data->id,
         ]);
 
         DataJenisLartas::create([
-            "nama"=>"BBM"
+            "nama"=>"BBM",
+            "id_data_master" => $data->id,
         ]);
 
         DataJenisLartas::create([
-            "nama"=>"BERAS"
+            "nama"=>"BERAS",
+            "id_data_master" => $data->id,
         ]);
 
         DataJenisLartas::create([
-            "nama"=>"BESI BAJA"
+            "nama"=>"BESI BAJA",
+            "id_data_master" => $data->id,
         ]);
 
         DataJenisLartas::create([
-            "nama"=>"SENJATA API"
+            "nama"=>"SENJATA API",
+            "id_data_master" => $data->id,
         ]);
 
         DataJenisLartas::create([
-            "nama"=>"BAHAN PANGAN"
+            "nama"=>"BAHAN PANGAN",
+            "id_data_master" => $data->id,
         ]);
 
         DataJenisLartas::create([
-            "nama"=>"LAINNYA"
+            "nama"=>"LAINNYA",
+            "id_data_master" => $data->id,
         ]);
     }
 }

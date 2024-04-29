@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('pelabuhan_tujuan', function (Blueprint $table) {
             $table->increments("id");
             $table->string("nama");
+            $table->integer('id_data_master')->unsigned();
+            $table->foreign('id_data_master')->references('id')->on('data_master')->onDelete('cascade'); 
         });
     }
 

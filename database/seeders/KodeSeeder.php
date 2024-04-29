@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\DataKode;
+use App\Models\DataMaster;
 use Illuminate\Database\Seeder;
+use Database\Seeders\DataMasterSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class KodeSeeder extends Seeder
@@ -13,36 +15,46 @@ class KodeSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(DataMasterSeeder::class);
+        $data = DataMaster::first();
         DataKode::create([
-            "nama"=>"HSD"
+            "nama"=>"HSD",
+            "id_data_master" => $data->id,
         ]);
 
         DataKode::create([
-            "nama"=>"MRF"
+            "nama"=>"MRF",
+            "id_data_master" => $data->id,
         ]);
 
         DataKode::create([
-            "nama"=>"CGF"
+            "nama"=>"CGF",
+            "id_data_master" => $data->id,
         ]);
 
         DataKode::create([
-            "nama"=>"UYT"
+            "nama"=>"UYT",
+            "id_data_master" => $data->id,
         ]);
 
         DataKode::create([
-            "nama"=>"JRE"
+            "nama"=>"JRE",
+            "id_data_master" => $data->id,
         ]);
 
         DataKode::create([
-            "nama"=>"JRT"
+            "nama"=>"JRT",
+            "id_data_master" => $data->id,
         ]);
 
         DataKode::create([
-            "nama"=>"QCR"
+            "nama"=>"QCR",
+            "id_data_master" => $data->id,
         ]);
 
         DataKode::create([
-            "nama"=>"KTE"
+            "nama"=>"KTE",
+            "id_data_master" => $data->id,
         ]);
     }
 }

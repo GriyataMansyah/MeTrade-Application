@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\DataMaster;
 use App\Models\DataFasilitas;
 use Illuminate\Database\Seeder;
+use Database\Seeders\DataMasterSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DataFasilitasSeeder extends Seeder
@@ -13,24 +15,31 @@ class DataFasilitasSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(DataMasterSeeder::class);
+        $data = DataMaster::first();
         DataFasilitas::create([
-            "nama"=>"Jalur Prioritas"
+            "nama"=>"Jalur Prioritas",
+            "id_data_master" => $data->id,
         ]);
 
         DataFasilitas::create([
-            "nama"=>"Jalur Hijau"
+            "nama"=>"Jalur Hijau",
+            "id_data_master" => $data->id,
         ]);
 
         DataFasilitas::create([
-            "nama"=>"Jalur Kuning"
+            "nama"=>"Jalur Kuning",
+            "id_data_master" => $data->id,
         ]);
 
         DataFasilitas::create([
-            "nama"=>"Jalur Merah"
+            "nama"=>"Jalur Merah",
+            "id_data_master" => $data->id,
         ]);
 
         DataFasilitas::create([
-            "nama"=>"Vooruitslag"
+            "nama"=>"Vooruitslag",
+            "id_data_master" => $data->id,
         ]);
     }
 }

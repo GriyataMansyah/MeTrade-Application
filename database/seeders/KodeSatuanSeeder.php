@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\DataMaster;
 use App\Models\KodeSatuan;
 use Illuminate\Database\Seeder;
+use Database\Seeders\DataMasterSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class KodeSatuanSeeder extends Seeder
@@ -13,32 +15,41 @@ class KodeSatuanSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(DataMasterSeeder::class);
+        $data = DataMaster::first();
         KodeSatuan::create([
-            "nama"=>"KG"
+            "nama"=>"KG",
+            "id_data_master" => $data->id,
         ]);
 
         KodeSatuan::create([
-            "nama"=>"HG"
+            "nama"=>"HG",
+            "id_data_master" => $data->id,
         ]);
 
         KodeSatuan::create([
-            "nama"=>"Dag"
+            "nama"=>"Dag",
+            "id_data_master" => $data->id,
         ]);
 
         KodeSatuan::create([
-            "nama"=>"MG"
+            "nama"=>"MG",
+            "id_data_master" => $data->id,
         ]);
 
         KodeSatuan::create([
-            "nama"=>"DG"
+            "nama"=>"DG",
+            "id_data_master" => $data->id,
         ]);
 
         KodeSatuan::create([
-            "nama"=>"CG"
+            "nama"=>"CG",
+            "id_data_master" => $data->id,
         ]);
 
         KodeSatuan::create([
-            "nama"=>"MG"
+            "nama"=>"MG",
+            "id_data_master" => $data->id,
         ]);
     }
 }

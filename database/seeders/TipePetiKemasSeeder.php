@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\DataMaster;
 use App\Models\TipePetiKemas;
 use Illuminate\Database\Seeder;
+use Database\Seeders\DataMasterSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TipePetiKemasSeeder extends Seeder
@@ -13,6 +15,8 @@ class TipePetiKemasSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(DataMasterSeeder::class);
+        $data = DataMaster::first();
         $opsi = [
             "1" => "1 - General/ Dry Cargo",
             "2" => "2 - Tunnel Type",
@@ -27,7 +31,8 @@ class TipePetiKemasSeeder extends Seeder
         
         foreach ($opsi as $nilai => $teks) {
             TipePetiKemas::create([
-                "nama" => $teks
+                "nama" => $teks,
+                "id_data_master" => $data->id,
             ]);
         }
         
