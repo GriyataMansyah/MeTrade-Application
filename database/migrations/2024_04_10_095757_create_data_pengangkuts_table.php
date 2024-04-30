@@ -15,14 +15,8 @@ return new class extends Migration
           $table->increments("id");
           $table->integer('id_dokumen')->unsigned();
           $table->foreign('id_dokumen')->references('id')->on('dokumens')->onDelete('cascade'); 
-          $table->string("tempat_penimbunan");
-          $table->string("pelabuhan_muat_asal");
-          $table->string("pelabuhan_muat_ekspor");
-          $table->string("pelabuhan_bongkar");
-          $table->string("pelabuhan_tujuan");
-          $table->string("negara_tujuan_ekspor");
-          $table->date("tanggal_perkiraan_ekspor");
-          $table->string("lokasi_pemeriksaan");
+          $table->integer('id_informasi_tempat')->unsigned();
+          $table->foreign('id_informasi_tempat')->references('id')->on('informasi_tempat')->onDelete('cascade'); 
           $table->date("tanggal_periksa");
           $table->string("kantor_periksa");
         });
@@ -36,3 +30,4 @@ return new class extends Migration
         Schema::dropIfExists('data_pengangkut');
     }
 };
+
