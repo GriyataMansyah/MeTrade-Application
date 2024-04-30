@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Barang extends Model
+class InformasiAsalBarang extends Model
 {
     use HasFactory;
 
-    public $primaryKey = 'seri';
-
     public $timestamps = false;
 
-    protected $table = "barang";
+    protected $table = "informasi_asal_barang";
 
     protected $fillable = array(
-      "id_dokumen","id_harga_kemasan"
+    "negara_asal_barang","daerah_asal_barang"
     );
 }

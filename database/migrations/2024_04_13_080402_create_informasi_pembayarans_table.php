@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('informasi_pembayaran', function (Blueprint $table) {
-            $table->id();
             $table->increments("id");
             $table->string("valuta");
             $table->string("NDPMB");

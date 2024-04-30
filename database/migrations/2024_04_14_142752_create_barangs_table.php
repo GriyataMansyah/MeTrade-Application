@@ -15,23 +15,13 @@ return new class extends Migration
             $table->increments("seri");
             $table->integer('id_dokumen')->unsigned();
             $table->foreign('id_dokumen')->references('id')->on('dokumens')->onDelete('cascade'); 
-            $table->string("HS");
-            $table->string("lartas");
-            $table->string("kode");
-            $table->string("uraian");
-            $table->string("mark")->nullable();
-            $table->string("tipe")->nullable();
-            $table->string("ukuran")->nullable();
-            $table->string("negara_asal_barang");
-            $table->string("daerah_asal_barang");
-            $table->string("satuan");
-            $table->string("kode_satuan");
-            $table->string("kemasan");
-            $table->string("kode_kemasan");
-            $table->string("harga_fob");
-            $table->string("volume");
-            $table->string("berat_bersih");
-            $table->string("harga_satuan_fob");
+            $table->integer('id_harga_kemasan')->unsigned();
+            $table->foreign('id_harga_kemasan')->references('id')->on('harga_kemasan')->onDelete('cascade'); 
+            $table->integer('id_informasi_asal_barang')->unsigned();
+            $table->foreign('id_informasi_asal_barang')->references('id')->on('informasi_asal_barang')->onDelete('cascade');
+            $table->integer('id_informasi_barang')->unsigned();
+            $table->foreign('id_informasi_barang')->references('id')->on('informasi_barang')->onDelete('cascade');  
+            
         });
     }
 
