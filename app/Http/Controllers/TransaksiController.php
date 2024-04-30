@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bank;
+use App\Models\Barang;
 use App\Models\Dokumen;
 use App\Models\Pungutan;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use App\Models\InformasiEkspor;
+use App\Models\InformasiPembayaran;
 use Illuminate\Support\Facades\Auth;
+use App\Models\InformasiPungutanBerat;
 
 class TransaksiController extends Controller
 {
@@ -26,24 +30,39 @@ class TransaksiController extends Controller
           'pph' => 'required',
           'nilai_bea_keluar' => 'required',
       ]);
-      
+
+        $Ex = new InformasiEkspor;
+        $Ex ->nilai_bea_keluar = $request->input('nilai_bea_keluar');
+        $Ex ->asuransi = $request->input('asuransi');
+        $Ex ->save();
+
+        $Pung = new InformasiPungutanBerat;
+        $Pung->berat_kotor = $request->input('berat_kotor');
+        $Pung->berat_bersih = $request->input('berat_bersih');
+        $Pung ->save();
+
+        $Ko = new InformasiPembayaran; 
+        $Ko->valuta = $request->input('valuta');
+        $Ko->NDPMB = $request->input('NDPMB');
+        $Ko->nilai_ekspor = $request->input('nilai_ekspor');
+        $Ko->cara_penyerahan = $request->input('cara_penyerahan');
+        $Ko->freight = $request->input('freight');
+        $Ko->nominal_asuransi = $request->input('nominal_asuransi');
+        $Ko->nilai_maklan = $request->input('nilai_maklan');
+        $Ko->pph = $request->input('pph');
+        $Ko ->save();
+
         $Transaksi = new Transaksi;
         $Auth = Auth::id();
         $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
         $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
+        $id_info_pungutan = $Pung->id;
+        $id_info_pembayaran = $Ko->id;
+        $id_info_ekspor = $Ex->id;
         $Transaksi->id_dokumen = $dokumen->id; 
-        $Transaksi->valuta = $request->input('valuta');
-        $Transaksi->NDPMB = $request->input('NDPMB');
-        $Transaksi->nilai_ekspor = $request->input('nilai_ekspor');
-        $Transaksi->cara_penyerahan = $request->input('cara_penyerahan');
-        $Transaksi->freight = $request->input('freight');
-        $Transaksi->asuransi = $request->input('asuransi');
-        $Transaksi->nominal_asuransi = $request->input('nominal_asuransi');
-        $Transaksi->berat_kotor = $request->input('berat_kotor');
-        $Transaksi->berat_bersih = $request->input('berat_bersih');
-        $Transaksi->nilai_maklan = $request->input('nilai_maklan');
-        $Transaksi->pph = $request->input('pph');
-        $Transaksi->nilai_bea_keluar = $request->input('nilai_bea_keluar');
+        $Transaksi->id_info_pungutan = $id_info_pungutan; 
+        $Transaksi->id_info_pembayaran =  $id_info_pembayaran; 
+        $Transaksi->id_info_ekspor = $id_info_ekspor; 
         $Transaksi ->save();
 
         $baru = new Pungutan();

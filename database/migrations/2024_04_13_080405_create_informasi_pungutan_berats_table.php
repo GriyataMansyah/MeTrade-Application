@@ -6,16 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
+ /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('data_tempat_penimbunan', function (Blueprint $table) {
+        Schema::create('Informasi_pungutan_berat', function (Blueprint $table) {
             $table->increments("id");
-            $table->string("nama");
-            $table->integer('id_data_master')->unsigned();
-            $table->foreign('id_data_master')->references('id')->on('data_master')->onDelete('cascade'); 
+            $table->string("berat_kotor");
+            $table->string("berat_bersih");
         });
     }
 
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_tempat_penimbunan');
+        Schema::dropIfExists('Informasi_pungutan_berat');
     }
-}; 
+};
