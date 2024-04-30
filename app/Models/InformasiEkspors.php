@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class header extends Model
+class InformasiEkspors extends Model
 {
+    use HasFactory;
+
     public $timestamps = false;
 
-    protected $table= "headers";
+    protected $table = "informasi_ekspors";
 
     protected $fillable = array(
-        "id_dokumen","nomor_pengajuan","kantor_muat_asal","pelabuhan_muat_ekspor","kantor_muat_ekspor","cara_bayar","komoditi","curah"
+        "jenis_ekspor","kategori_ekspor","cara_dagang"
     );
 }
-
-
