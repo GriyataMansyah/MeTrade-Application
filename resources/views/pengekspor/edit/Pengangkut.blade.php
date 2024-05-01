@@ -6,6 +6,7 @@ $PelabuhanTujuan = \App\Models\PelabuhanTujuan::all();
 $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
 $SaranaAngkut = \App\Models\SaranaAngkut::all();
 $Pengangkut = \App\Models\DataPengangkut::all();
+$InformasiTempat = \App\Models\InformasiTempat::all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,8 +54,8 @@ $Pengangkut = \App\Models\DataPengangkut::all();
             <label for="input1" class="col-sm-2 col-form-label">Tempat Penimbunan</label>
             <div class="col-sm-4">
                 <select id="input1" class="form-select" name="tempat_penimbunan">
-                  @foreach ($Pengangkut->where('id_dokumen', $id) as $he)
-                  <option>{{ $he->tempat_penimbunan}}</option>
+                  @foreach ($InformasiTempat->where('id', $id) as $ho)
+                  <option>{{ $ho->tempat_penimbunan}}</option>
                   @endforeach
                   <?php
                   foreach ($DataTempatPenimbunan as $DTP) {
@@ -69,8 +70,8 @@ $Pengangkut = \App\Models\DataPengangkut::all();
             <label for="input1" class="col-sm-2 col-form-label ">Lokasi Pemeriksaan</label>
             <div class="col-sm-4">
               <select id="input1" class="form-select" name="lokasi_pemeriksaan">
-                @foreach ($Pengangkut->where('id_dokumen', $id) as $he)
-                <option> {{ $he->lokasi_pemeriksaan}}</option>
+                @foreach ($InformasiTempat->where('id', $id) as $ho)
+                <option> {{ $ho->lokasi_pemeriksaan}}</option>
                 @endforeach
                 <?php
               foreach ($LokasiPemeriksaan as $D) {
@@ -87,8 +88,8 @@ $Pengangkut = \App\Models\DataPengangkut::all();
           <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Muat Asal</label>
           <div class="col-sm-4">
             <select id="batu" class="form-select" onchange="updateInputValue1()" name="pelabuhan_muat_asal">
-              @foreach ($Pengangkut->where('id_dokumen', $id) as $he)
-              <option>{{$he->pelabuhan_muat_asal}}</option>
+              @foreach ($InformasiTempat->where('id', $id) as $ho)
+              <option>{{$ho->pelabuhan_muat_asal}}</option>
               @endforeach
               <?php
               foreach ($DataPelabuhanMuatAsal as $A) {
@@ -111,8 +112,8 @@ $Pengangkut = \App\Models\DataPengangkut::all();
 
           <label for="input1" class="col-sm-2 col-form-label " >Pelabuhan Muat Ekspor</label>
           <div class="col-sm-4">
-            @foreach ($Pengangkut->where('id_dokumen', $id) as $he)
-              <input type="text" class="form-control" id="batu2" value="{{$he->pelabuhan_muat_ekspor}}" disabled>
+            @foreach ($InformasiTempat->where('id', $id) as $ho)
+              <input type="text" class="form-control" id="batu2" value="{{$ho->pelabuhan_muat_ekspor}}" disabled>
             @endforeach
           </div>
 
@@ -126,8 +127,8 @@ $Pengangkut = \App\Models\DataPengangkut::all();
           <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Bongkar</label>
           <div class="col-sm-4">
             <select id="input1" class="form-select" name="pelabuhan_bongkar">
-              @foreach ($Pengangkut->where('id_dokumen', $id) as $he)
-             <option>{{$he->pelabuhan_bongkar}}</option>
+              @foreach ($InformasiTempat->where('id', $id) as $ho)
+             <option>{{$ho->pelabuhan_bongkar}}</option>
              @endforeach
              <?php
              foreach ($PelabuhanBongkar as $B) {
@@ -145,8 +146,8 @@ $Pengangkut = \App\Models\DataPengangkut::all();
           <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Tujuan</label>
           <div class="col-sm-4">
             <select id="input1" class="form-select" name="pelabuhan_tujuan">
-              @foreach ($Pengangkut->where('id_dokumen', $id) as $he)
-              <option>{{$he->pelabuhan_tujuan}}</option>
+              @foreach ($InformasiTempat->where('id', $id) as $ho)
+              <option>{{$ho->pelabuhan_tujuan}}</option>
               @endforeach
               <?php
               foreach ($PelabuhanTujuan as $C) {
@@ -276,8 +277,8 @@ $Pengangkut = \App\Models\DataPengangkut::all();
                           <label for="input1" class="col-sm-2 col-form-label">Tempat Penimbunan</label>
                           <div class="col-sm-4">
                               <select id="input1" class="form-select" name="tempat_penimbunan">
-                                @foreach ($Pengangkut->where('id_dokumen', $id) as $he)
-                                <option>{{ $he->tempat_penimbunan}}</option>
+                                @foreach ($InformasiTempat->where('id', $id) as $ho)
+                                <option>{{ $ho->tempat_penimbunan}}</option>
                                 @endforeach
                                 <?php
                                 foreach ($DataTempatPenimbunan as $DTP) {
@@ -292,8 +293,8 @@ $Pengangkut = \App\Models\DataPengangkut::all();
                           <label for="input1" class="col-sm-2 col-form-label ">Lokasi Pemeriksaan</label>
                           <div class="col-sm-4">
                             <select id="input1" class="form-select" name="lokasi_pemeriksaan">
-                              @foreach ($Pengangkut->where('id_dokumen', $id) as $he)
-                              <option> {{ $he->lokasi_pemeriksaan}}</option>
+                              @foreach ($InformasiTempat->where('id', $id) as $ho)
+                              <option> {{ $ho->lokasi_pemeriksaan}}</option>
                               @endforeach
                               <?php
                             foreach ($LokasiPemeriksaan as $D) {
@@ -310,8 +311,8 @@ $Pengangkut = \App\Models\DataPengangkut::all();
                         <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Muat Asal</label>
                         <div class="col-sm-4">
                           <select id="batu" class="form-select" onchange="updateInputValue1()" name="pelabuhan_muat_asal">
-                            @foreach ($Pengangkut->where('id_dokumen', $id) as $he)
-                            <option>{{$he->pelabuhan_muat_asal}}</option>
+                            @foreach ($InformasiTempat->where('id', $id) as $ho)
+                            <option>{{$ho->pelabuhan_muat_asal}}</option>
                             @endforeach
                             <?php
                             foreach ($DataPelabuhanMuatAsal as $A) {
@@ -334,8 +335,8 @@ $Pengangkut = \App\Models\DataPengangkut::all();
               
                         <label for="input1" class="col-sm-2 col-form-label " >Pelabuhan Muat Ekspor</label>
                         <div class="col-sm-4">
-                          @foreach ($Pengangkut->where('id_dokumen', $id) as $he)
-                            <input type="text" class="form-control" id="batu2" value="{{$he->pelabuhan_muat_ekspor}}" disabled>
+                          @foreach ($InformasiTempat->where('id', $id) as $ho)
+                            <input type="text" class="form-control" id="batu2" value="{{$ho->pelabuhan_muat_ekspor}}" disabled>
                           @endforeach
                         </div>
               
@@ -349,8 +350,8 @@ $Pengangkut = \App\Models\DataPengangkut::all();
                         <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Bongkar</label>
                         <div class="col-sm-4">
                           <select id="input1" class="form-select" name="pelabuhan_bongkar">
-                            @foreach ($Pengangkut->where('id_dokumen', $id) as $he)
-                           <option>{{$he->pelabuhan_bongkar}}</option>
+                            @foreach ($InformasiTempat->where('id', $id) as $ho)
+                           <option>{{$ho->pelabuhan_bongkar}}</option>
                            @endforeach
                            <?php
                            foreach ($PelabuhanBongkar as $B) {
@@ -368,8 +369,8 @@ $Pengangkut = \App\Models\DataPengangkut::all();
                         <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Tujuan</label>
                         <div class="col-sm-4">
                           <select id="input1" class="form-select" name="pelabuhan_tujuan">
-                            @foreach ($Pengangkut->where('id_dokumen', $id) as $he)
-                            <option>{{$he->pelabuhan_tujuan}}</option>
+                            @foreach ($InformasiTempat->where('id', $id) as $ho)
+                            <option>{{$ho->pelabuhan_tujuan}}</option>
                             @endforeach
                             <?php
                             foreach ($PelabuhanTujuan as $C) {

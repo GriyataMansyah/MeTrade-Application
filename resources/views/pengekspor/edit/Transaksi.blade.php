@@ -5,6 +5,9 @@ $Asuransi = \App\Models\Asuransi::all();
 $NamaBank = \App\Models\NamaBank::all();
 $Bank = \App\Models\Bank::all();
 $Transaksi = \App\Models\Transaksi::all();
+$InformasiPungutanBerat = \App\Models\InformasiPungutanBerat::all();
+$InformasiPembayaran = \App\Models\InformasiPembayaran::all();
+$InformasiEkspor = \App\Models\InformasiEkspor::all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,8 +56,8 @@ $Transaksi = \App\Models\Transaksi::all();
             <label for="input1" class="col-sm-2 col-form-label">Valuta</label>
             <div class="col-sm-4">
                 <select id="rupiah1" class="form-select" onchange="updateInputValue()" name="valuta">
-                  @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-                  <option>{{$he->valuta}}</option>
+                  @foreach ($InformasiPembayaran->where('id', $id) as $b)
+                  <option>{{$b->valuta}}</option>
                   @endforeach
                   @foreach ($Valuta as $v)
                       <option value="<?php echo $v->nama ?>"><?php echo $v->nama ?></option>
@@ -63,20 +66,20 @@ $Transaksi = \App\Models\Transaksi::all();
             </div>
             <label for="input1" class="col-sm-2 col-form-label ">Nilai Maklan</label>
             <div class="col-sm-4">
-              @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-                <input type="text" class="form-control" id="input1" name="nilai_maklan" id="nilai_maklan" onkeypress="return hanyaAngka(event)" value="{{$he->nilai_maklan}}">
+              @foreach ($InformasiPembayaran->where('id', $id) as $c)
+                <input type="text" class="form-control" name="nilai_maklan" id="nilai_maklan" onkeypress="return hanyaAngka(event)" value="{{$c->nilai_maklan}}"></input>
               @endforeach
             </div>          
         </div>
         <div class="form-group row my-4">
           <label for="input1" class="col-sm-2 col-form-label">NDPMB</label>
-          <div class="col-sm-4">
-            @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-            <input type="text" class="form-control" id="rupiah2" name="NDPMB" id="ndpmb" value="{{$he->NDPMB}}" readonly>
+          <div class="col-sm-4"> 
+            @foreach ($InformasiPembayaran->where('id', $id) as $d)
+            <input type="text" class="form-control" id="rupiah2" name="NDPMB" id="ndpmb" value="{{$d->NDPMB}}" readonly>
           </div>
           <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox" id="pphCheckbox" onchange="updatePphValue()"> PPh</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="DATA2" name="pph" value="{{$he->pph}}" readonly>
+            <input type="text" class="form-control" id="DATA2" name="pph" value="{{$d->pph}}" readonly>
             @endforeach
           </div>       
         </div>
@@ -84,8 +87,8 @@ $Transaksi = \App\Models\Transaksi::all();
           <label for="input1" class="col-sm-2 col-form-label " >Cara Penyerahan</label>
           <div class="col-sm-4">
             <select id="input1" class="form-select" name="cara_penyerahan">
-              @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-                <option value="">{{$he->cara_penyerahan}}</option>
+              @foreach ($InformasiPembayaran->where('id', $id) as $f)
+                <option value="">{{$f->cara_penyerahan}}</option>
               @endforeach
                 @foreach ($CaraPenyerahan as $c)
                 <option value="<?php echo $c->nama ?>"><?php echo $c->nama ?></option>
@@ -94,8 +97,8 @@ $Transaksi = \App\Models\Transaksi::all();
           </div>
           <label for="input1" class="col-sm-2 col-form-label ">Nilai Bea Keluar </label>
           <div class="col-sm-4">
-            @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-            <input type="text" class="form-control" id="nilai_bea_keluar" name="nilai_bea_keluar" value="{{$he->nilai_bea_keluar}}" readonly>
+            @foreach ($InformasiEkspor->where('id', $id) as $g)
+            <input type="text" class="form-control" id="nilai_bea_keluar" name="nilai_bea_keluar" value="{{$g->nilai_bea_keluar}}" readonly>
             @endforeach
           </div>  
         </div>
@@ -103,8 +106,8 @@ $Transaksi = \App\Models\Transaksi::all();
         <label for="input1" class="col-sm-2 col-form-label" >Nilai Ekspor</label>
         <div class="col-sm-4">
           <select id="DATA" class="form-select" onchange="updateInputValue2()" name="nilai_ekspor" id="nilai_ekspor">
-            @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-            <option value="">{{$he->nilai_ekspor}}</option>
+            @foreach ($InformasiPembayaran->where('id', $id) as $h)
+            <option value="">{{$h->nilai_ekspor}}</option>
             @endforeach
             <option value="50000000">Rp50.000.000</option>
             <option value="250000000">Rp250.000.000</option>
@@ -118,8 +121,8 @@ $Transaksi = \App\Models\Transaksi::all();
       <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label">Freight</label>
         <div class="col-sm-4">
-          @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-          <input type="text" class="form-control" name="freight" id="freight" onkeypress="return hanyaAngka(event)" value="{{$he->freight}}">
+          @foreach ($InformasiPembayaran->where('id', $id) as $i)
+          <input type="text" class="form-control" name="freight" id="freight" onkeypress="return hanyaAngka(event)" value="{{$i->freight}}">
           @endforeach
         </div>
         <div class="col-6"></div>
@@ -128,8 +131,8 @@ $Transaksi = \App\Models\Transaksi::all();
         <label for="input1" class="col-sm-2 col-form-label">Asuransi</label>
         <div class="col-sm-2">
           <select id="input1" class="form-select" name="asuransi">
-            @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-            <option value="">{{$he->asuransi}}</option>
+            @foreach ($InformasiEkspor->where('id', $id) as $i)
+            <option value="">{{$i->asuransi}}</option>
             @endforeach
             @foreach ($Asuransi as $asu)
             <option value="<?php echo $asu->nama ?>"><?php echo $asu->nama ?></option>
@@ -137,8 +140,8 @@ $Transaksi = \App\Models\Transaksi::all();
         </select> 
         </div>
         <div class="col-sm-2">
-          @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-          <input type="text" class="form-control" placeholder="Nominal Asuransi" name="nominal_asuransi" id="asuransi" oninput="updateInputValue3()" onkeypress="return hanyaAngka(event)" value="{{$he->nominal_asuransi}}">
+          @foreach ($InformasiPembayaran->where('id', $id) as $j)
+          <input type="text" class="form-control" placeholder="Nominal Asuransi" name="nominal_asuransi" id="asuransi" oninput="updateInputValue3()" onkeypress="return hanyaAngka(event)" value="{{$j->nominal_asuransi}}">
           @endforeach
         </div>
         <div class="col-6"></div>
@@ -146,8 +149,8 @@ $Transaksi = \App\Models\Transaksi::all();
       <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label">Berat Kotor</label>
         <div class="col-sm-4">
-          @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-          <input type="text" class="form-control" placeholder="KG" name="berat_kotor" id="berat_kotor" onkeypress="return hanyaAngka(event)" value="{{$he->berat_kotor}}">
+          @foreach ($InformasiPungutanBerat->where('id', $id) as $a)
+          <input type="text" class="form-control" placeholder="KG" name="berat_kotor" id="berat_kotor" onkeypress="return hanyaAngka(event)" value="{{$a->berat_kotor}}">
           @endforeach
         </div>
         <div class="col-6"></div>
@@ -155,8 +158,8 @@ $Transaksi = \App\Models\Transaksi::all();
       <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label">Berat Bersih</label>
         <div class="col-sm-4">
-          @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-          <input type="text" class="form-control" id="input1" placeholder="KG" name="berat_bersih" id="berat_bersih" onkeypress="return hanyaAngka(event)" value="{{$he->berat_bersih}}"> 
+          @foreach ($InformasiPungutanBerat->where('id', $id) as $a)
+          <input type="text" class="form-control" id="input1" placeholder="KG" name="berat_bersih" id="berat_bersih" onkeypress="return hanyaAngka(event)" value="{{$a->berat_bersih}}"> 
           @endforeach
         </div>
         <div class="col-6"></div>
@@ -252,8 +255,8 @@ $Transaksi = \App\Models\Transaksi::all();
                           <label for="input1" class="col-sm-2 col-form-label">Valuta</label>
                           <div class="col-sm-4">
                               <select id="rupiah1" class="form-select" onchange="updateInputValue()" name="valuta">
-                                @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-                                <option>{{$he->valuta}}</option>
+                                @foreach ($InformasiPembayaran->where('id', $id) as $b)
+                                <option>{{$b->valuta}}</option>
                                 @endforeach
                                 @foreach ($Valuta as $v)
                                     <option value="<?php echo $v->nama ?>"><?php echo $v->nama ?></option>
@@ -262,20 +265,20 @@ $Transaksi = \App\Models\Transaksi::all();
                           </div>
                           <label for="input1" class="col-sm-2 col-form-label ">Nilai Maklan</label>
                           <div class="col-sm-4">
-                            @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-                              <input type="text" class="form-control" id="input1" name="nilai_maklan" id="nilai_maklan" onkeypress="return hanyaAngka(event)" value="{{$he->nilai_maklan}}">
+                            @foreach ($InformasiPembayaran->where('id', $id) as $c)
+                              <input type="text" class="form-control" name="nilai_maklan" id="nilai_maklan" onkeypress="return hanyaAngka(event)" value="{{$c->nilai_maklan}}"></input>
                             @endforeach
                           </div>          
                       </div>
                       <div class="form-group row my-4">
                         <label for="input1" class="col-sm-2 col-form-label">NDPMB</label>
-                        <div class="col-sm-4">
-                          @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-                          <input type="text" class="form-control" id="rupiah2" name="NDPMB" id="ndpmb" value="{{$he->NDPMB}}" readonly>
+                        <div class="col-sm-4"> 
+                          @foreach ($InformasiPembayaran->where('id', $id) as $d)
+                          <input type="text" class="form-control" id="rupiah2" name="NDPMB" id="ndpmb" value="{{$d->NDPMB}}" readonly>
                         </div>
                         <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox" id="pphCheckbox" onchange="updatePphValue()"> PPh</label>
                         <div class="col-sm-4">
-                          <input type="text" class="form-control" id="DATA2" name="pph" value="{{$he->pph}}" readonly>
+                          <input type="text" class="form-control" id="DATA2" name="pph" value="{{$d->pph}}" readonly>
                           @endforeach
                         </div>       
                       </div>
@@ -283,8 +286,8 @@ $Transaksi = \App\Models\Transaksi::all();
                         <label for="input1" class="col-sm-2 col-form-label " >Cara Penyerahan</label>
                         <div class="col-sm-4">
                           <select id="input1" class="form-select" name="cara_penyerahan">
-                            @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-                              <option value="">{{$he->cara_penyerahan}}</option>
+                            @foreach ($InformasiPembayaran->where('id', $id) as $f)
+                              <option value="">{{$f->cara_penyerahan}}</option>
                             @endforeach
                               @foreach ($CaraPenyerahan as $c)
                               <option value="<?php echo $c->nama ?>"><?php echo $c->nama ?></option>
@@ -293,8 +296,8 @@ $Transaksi = \App\Models\Transaksi::all();
                         </div>
                         <label for="input1" class="col-sm-2 col-form-label ">Nilai Bea Keluar </label>
                         <div class="col-sm-4">
-                          @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-                          <input type="text" class="form-control" id="nilai_bea_keluar" name="nilai_bea_keluar" value="{{$he->nilai_bea_keluar}}" readonly>
+                          @foreach ($InformasiEkspor->where('id', $id) as $g)
+                          <input type="text" class="form-control" id="nilai_bea_keluar" name="nilai_bea_keluar" value="{{$g->nilai_bea_keluar}}" readonly>
                           @endforeach
                         </div>  
                       </div>
@@ -302,8 +305,8 @@ $Transaksi = \App\Models\Transaksi::all();
                       <label for="input1" class="col-sm-2 col-form-label" >Nilai Ekspor</label>
                       <div class="col-sm-4">
                         <select id="DATA" class="form-select" onchange="updateInputValue2()" name="nilai_ekspor" id="nilai_ekspor">
-                          @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-                          <option value="">{{$he->nilai_ekspor}}</option>
+                          @foreach ($InformasiPembayaran->where('id', $id) as $h)
+                          <option value="">{{$h->nilai_ekspor}}</option>
                           @endforeach
                           <option value="50000000">Rp50.000.000</option>
                           <option value="250000000">Rp250.000.000</option>
@@ -317,8 +320,8 @@ $Transaksi = \App\Models\Transaksi::all();
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label">Freight</label>
                       <div class="col-sm-4">
-                        @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-                        <input type="text" class="form-control" name="freight" id="freight" onkeypress="return hanyaAngka(event)" value="{{$he->freight}}">
+                        @foreach ($InformasiPembayaran->where('id', $id) as $i)
+                        <input type="text" class="form-control" name="freight" id="freight" onkeypress="return hanyaAngka(event)" value="{{$i->freight}}">
                         @endforeach
                       </div>
                       <div class="col-6"></div>
@@ -327,8 +330,8 @@ $Transaksi = \App\Models\Transaksi::all();
                       <label for="input1" class="col-sm-2 col-form-label">Asuransi</label>
                       <div class="col-sm-2">
                         <select id="input1" class="form-select" name="asuransi">
-                          @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-                          <option value="">{{$he->asuransi}}</option>
+                          @foreach ($InformasiEkspor->where('id', $id) as $i)
+                          <option value="">{{$i->asuransi}}</option>
                           @endforeach
                           @foreach ($Asuransi as $asu)
                           <option value="<?php echo $asu->nama ?>"><?php echo $asu->nama ?></option>
@@ -336,8 +339,8 @@ $Transaksi = \App\Models\Transaksi::all();
                       </select> 
                       </div>
                       <div class="col-sm-2">
-                        @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-                        <input type="text" class="form-control" placeholder="Nominal Asuransi" name="nominal_asuransi" id="asuransi" oninput="updateInputValue3()" onkeypress="return hanyaAngka(event)" value="{{$he->nominal_asuransi}}">
+                        @foreach ($InformasiPembayaran->where('id', $id) as $j)
+                        <input type="text" class="form-control" placeholder="Nominal Asuransi" name="nominal_asuransi" id="asuransi" oninput="updateInputValue3()" onkeypress="return hanyaAngka(event)" value="{{$j->nominal_asuransi}}">
                         @endforeach
                       </div>
                       <div class="col-6"></div>
@@ -345,8 +348,8 @@ $Transaksi = \App\Models\Transaksi::all();
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label">Berat Kotor</label>
                       <div class="col-sm-4">
-                        @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-                        <input type="text" class="form-control" placeholder="KG" name="berat_kotor" id="berat_kotor" onkeypress="return hanyaAngka(event)" value="{{$he->berat_kotor}}">
+                        @foreach ($InformasiPungutanBerat->where('id', $id) as $a)
+                        <input type="text" class="form-control" placeholder="KG" name="berat_kotor" id="berat_kotor" onkeypress="return hanyaAngka(event)" value="{{$a->berat_kotor}}">
                         @endforeach
                       </div>
                       <div class="col-6"></div>
@@ -354,8 +357,8 @@ $Transaksi = \App\Models\Transaksi::all();
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label">Berat Bersih</label>
                       <div class="col-sm-4">
-                        @foreach ($Transaksi->where('id_dokumen', $id) as $he)
-                        <input type="text" class="form-control" id="input1" placeholder="KG" name="berat_bersih" id="berat_bersih" onkeypress="return hanyaAngka(event)" value="{{$he->berat_bersih}}"> 
+                        @foreach ($InformasiPungutanBerat->where('id', $id) as $a)
+                        <input type="text" class="form-control" id="input1" placeholder="KG" name="berat_bersih" id="berat_bersih" onkeypress="return hanyaAngka(event)" value="{{$a->berat_bersih}}"> 
                         @endforeach
                       </div>
                       <div class="col-6"></div>

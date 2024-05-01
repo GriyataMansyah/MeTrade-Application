@@ -7,6 +7,9 @@ $KodeKemasan = \App\Models\KodeKemasan::all();
 $Lartas= \App\Models\Lartas::all();
 $EntitasBarang = \App\Models\EntitasBarang::all();
 $Barang = \App\Models\Barang::all();
+$InformasiAsalBarang = \App\Models\InformasiAsalBarang::all();
+$InformasiBarang= \App\Models\InformasiBarang::all();
+$HargaKemasan= \App\Models\HargaKemasan::all();
 ?>
 {{-- RESPONSIVENYA BELOMMM --}}
 <!DOCTYPE html>
@@ -53,8 +56,8 @@ $Barang = \App\Models\Barang::all();
             <label for="input1" class="col-sm-2 col-form-label">HS</label>
             <div class="col-sm-4">
               <select class="form-select" name="HS">
-                @foreach ($Barang->where('id_dokumen', $id) as $he)
-                <option value="{{$he->HS}}">{{$he->HS}}</option>
+                @foreach ($InformasiBarang->where('id', $id) as $b)
+                <option value="{{$b->HS}}">{{$b->HS}}</option>
                 @endforeach
              @foreach ($HS as $A)
              <option value="{{ $A->nama }}">{{ $A->nama }}</option>
@@ -63,14 +66,14 @@ $Barang = \App\Models\Barang::all();
             </div>
             <label for="input1" class="col-sm-2 col-form-label ">Satuan</label>
             <div class="col-sm-2">
-              @foreach ($Barang->where('id_dokumen', $id) as $he)
-              <input type="text" class="form-control" name="satuan" onkeypress="return hanyaAngka(event)" value="{{$he->satuan}}">
+              @foreach ($InformasiBarang->where('id', $id) as $b)
+              <input type="text" class="form-control" name="satuan" onkeypress="return hanyaAngka(event)" value="{{$b->satuan}}">
               @endforeach
             </div>
             <div class="col-sm-2">
               <select id="input1" class="form-select" name="kode_satuan">
-                @foreach ($Barang->where('id_dokumen', $id) as $he)
-                <option value="$he->kode_satuan">{{$he->kode_satuan}}</option>
+                @foreach ($InformasiBarang->where('id', $id) as $b)
+                <option value="$he->kode_satuan">{{$b->kode_satuan}}</option>
                 @endforeach
                 @foreach ($KodeSatuan as $KS)
                 <option value="{{ $KS->nama }}">{{ $KS->nama }}</option>
@@ -82,8 +85,8 @@ $Barang = \App\Models\Barang::all();
             <label for="input1" class="col-sm-2 col-form-label ">Lartas</label>
             <div class="col-sm-4">
               <select id="input1" class="form-select" name="lartas">
-                @foreach ($Barang->where('id_dokumen', $id) as $he)
-                <option value="{{$he->lartas}}">{{$he->lartas}}</option>
+                @foreach ($InformasiBarang->where('id', $id) as $b)
+                <option value="{{$b->lartas}}">{{$b->lartas}}</option>
                 @endforeach
                 <option value="1">LARTAS</option>
                 <option value="2">BUKAN LARTAS </option>
@@ -91,14 +94,14 @@ $Barang = \App\Models\Barang::all();
             </div>
             <label for="input1" class="col-sm-2 col-form-label ">Kemasan</label>
             <div class="col-sm-2">
-              @foreach ($Barang->where('id_dokumen', $id) as $he)
-              <input type="text" class="form-control" id="input1" name="kemasan" onkeypress="return hanyaAngka(event)" value="{{$he->kemasan}}">
+              @foreach ($HargaKemasan->where('id', $id) as $f)
+              <input type="text" class="form-control" id="input1" name="kemasan" onkeypress="return hanyaAngka(event)" value="{{$f->kemasan}}">
               @endforeach
             </div>
             <div class="col-sm-2">
               <select id="input1" class="form-select" name="kode_kemasan">
-                @foreach ($Barang->where('id_dokumen', $id) as $he)
-                <option value="{{$he->kode_kemasan}}">{{$he->kode_kemasan}}</option>
+                @foreach ($InformasiBarang->where('id', $id) as $f)
+                <option value="{{$f->kode_kemasan}}">{{$f->kode_kemasan}}</option>
                 @endforeach
                 @foreach ($KodeKemasan as $KK)
                 <option value="{{ $KK->nama }}">{{ $KK->nama }}</option>
@@ -110,68 +113,68 @@ $Barang = \App\Models\Barang::all();
             <label for="input1" class="col-sm-2 col-form-label ">Kode</label>
             <div class="col-sm-4">
               <select id="kode" class="form-select" onchange="updateInputValue2()" name="kode">
-                @foreach ($Barang->where('id_dokumen', $id) as $he)
-                <option value="{{$he->kode}}">{{$he->kode}}</option>
+                @foreach ($InformasiBarang->where('id', $id) as $b)
+                <option value="{{$b->kode}}">{{$b->kode}}</option>
                 @endforeach
                 @foreach ($DataKode as $DK)
                 <option value="{{ $DK->nama }}">{{ $DK->nama }}</option>
                 @endforeach
               </select>
           </div>  
-          <label for="input1" class="col-sm-2 col-form-label ">Harga FOB</label>
+          <label for="input1" class="col-sm-2 col-form-label ">Harga FOB</label> 
           <div class="col-sm-4">
-            @foreach ($Barang->where('id_dokumen', $id) as $he)
-            <input type="text" class="form-control" name="harga_fob" onkeypress="return hanyaAngka(event)" value="{{$he->harga_fob}}">
+            @foreach ($HargaKemasan->where('id', $id) as $f)
+            <input type="text" class="form-control" name="harga_fob" onkeypress="return hanyaAngka(event)" value="{{$f->harga_fob}}">
             @endforeach
         </div>     
           </div>
           <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label ">Uraian</label>
             <div class="col-sm-4">
-              @foreach ($Barang->where('id_dokumen', $id) as $he)
-              <textarea class="form-control" name="uraian">{{$he->uraian}}</textarea>
+              @foreach ($InformasiBarang->where('id', $id) as $b)
+              <textarea class="form-control" name="uraian">{{$b->uraian}}</textarea>
               @endforeach   
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Volume</label>
           <div class="col-sm-4">
-            @foreach ($Barang->where('id_dokumen', $id) as $he)
-            <input type="text" class="form-control" name="volume" onkeypress="return hanyaAngka(event)" value="{{$he->volume}}">
+            @foreach ($HargaKemasan->where('id', $id) as $f)
+            <input type="text" class="form-control" name="volume" onkeypress="return hanyaAngka(event)" value="{{$f->volume}}">
             @endforeach
         </div>    
           </div>
            <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label ">Mark</label>
             <div class="col-sm-4">
-              @foreach ($Barang->where('id_dokumen', $id) as $he)
-              <input type="text" class="form-control" placeholder="BOLEH DI KOSONGKAN" name="mark" value="{{$he->mark}}"></input>
+              @foreach ($InformasiBarang->where('id', $id) as $b)
+              <input type="text" class="form-control" placeholder="BOLEH DI KOSONGKAN" name="mark" value="{{$b->mark}}"></input>
               @endforeach
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Berat Bersih (KG)</label>
           <div class="col-sm-4">
-            @foreach ($Barang->where('id_dokumen', $id) as $he)
-            <input type="text" class="form-control" name="berat_bersih" onkeypress="return hanyaAngka(event)" value="{{$he->berat_bersih}}">
+            @foreach ($HargaKemasan->where('id', $id) as $f)
+            <input type="text" class="form-control" name="berat_bersih" onkeypress="return hanyaAngka(event)" value="{{$f->berat_bersih}}">
             @endforeach
         </div>       
           </div>
            <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label ">Tipe</label>
             <div class="col-sm-4">
-              @foreach ($Barang->where('id_dokumen', $id) as $he)
-              <input type="text" class="form-control"  placeholder="BOLEH DI KOSONGKAN" name="tipe" value="{{$he->tipe}}"></input>
+              @foreach ($InformasiBarang->where('id', $id) as $b)
+              <input type="text" class="form-control"  placeholder="BOLEH DI KOSONGKAN" name="tipe" value="{{$b->tipe}}"></input>
               @endforeach
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Harga Satuan FOB</label>
             <div class="col-sm-4">
-              @foreach ($Barang->where('id_dokumen', $id) as $he)
-              <input type="text" class="form-control" name="harga_satuan_fob" onkeypress="return hanyaAngka(event)" value="{{$he->harga_satuan_fob}}">
+              @foreach ($HargaKemasan->where('id', $id) as $f)
+              <input type="text" class="form-control" name="harga_satuan_fob" onkeypress="return hanyaAngka(event)" value="{{$f->harga_satuan_fob}}">
               @endforeach
           </div>
           </div>
           <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label ">Ukuran</label>
             <div class="col-sm-4">
-              @foreach ($Barang->where('id_dokumen', $id) as $he)
-              <input type="text" class="form-control" placeholder="BOLEH DI KOSONGKAN" name="ukuran" onkeypress="return hanyaAngka(event)" value="{{$he->ukuran}}">
+              @foreach ($InformasiBarang->where('id', $id) as $b)
+              <input type="text" class="form-control" placeholder="BOLEH DI KOSONGKAN" name="ukuran" onkeypress="return hanyaAngka(event)" value="{{$b->ukuran}}">
               @endforeach
           </div>   
           <div class="col-6"></div>      
@@ -187,8 +190,8 @@ $Barang = \App\Models\Barang::all();
             <label for="input1" class="col-sm-2 col-form-label">Daerah Asal Barang</label>
             <div class="col-sm-4">
               <select id="input1" class="form-select" name="daerah_asal_barang">
-                @foreach ($Barang->where('id_dokumen', $id) as $he)
-                <option value="{{$he->daerah_asal_barang}}">{{$he->daerah_asal_barang}}</option>
+                @foreach ($InformasiAsalBarang->where('id', $id) as $a)
+                <option value="{{$a->daerah_asal_barang}}">{{$a->daerah_asal_barang}}</option>
                 @endforeach
                 @foreach ($DaerahAsalBarang as $E)
                 <option value="{{ $E->nama }}">{{ $E->nama }}</option>

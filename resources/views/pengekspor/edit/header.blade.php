@@ -8,6 +8,7 @@ $CaraBayar = \App\Models\CaraBayar::all();
 $Komoditi = \App\Models\Komoditi::all();
 $Curah = \App\Models\Curah::all();
 $Header = \App\Models\Header::all();
+$InformasiEkspors = \App\Models\InformasiEkspors::all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -125,8 +126,8 @@ $Header = \App\Models\Header::all();
         <div class="form-group">
           <label for="jenis_ekspor">Jenis Ekspor</label>
           <select id="jenis_ekspor" name="jenis_ekspor" required>
-            @foreach ($Header->where('id_dokumen', $id) as $he)
-            <option value="{{$he->jenis_ekspor}}">{{$he->jenis_ekspor}}</option>
+            @foreach ($InformasiEkspors->where('id', $id) as $ho)
+            <option value="{{$ho->jenis_ekspor}}">{{$ho->jenis_ekspor}}</option>
             @endforeach
             <?php
             foreach ($JenisEkspor as $jen) {
@@ -141,8 +142,8 @@ $Header = \App\Models\Header::all();
         <div class="form-group">
           <label for="kategori_ekspor">Kategori Ekspor</label>
           <select id="kategori_ekspor" name="kategori_ekspor" required>
-            @foreach ($Header->where('id_dokumen', $id) as $he)
-            <option value="{{$he->kategori_ekspor}}">{{$he->kategori_ekspor}}</option>
+            @foreach ($InformasiEkspors->where('id', $id) as $ho)
+            <option value="{{$ho->kategori_ekspor}}">{{$ho->kategori_ekspor}}</option>
             @endforeach
             <?php
             foreach ($KategoriEkspor as $kat) {
@@ -158,8 +159,8 @@ $Header = \App\Models\Header::all();
         <div class="form-group">
           <label for="cara_dagang" >Cara Dagang</label>
           <select id="cara_dagang" name="cara_dagang" required>
-            @foreach ($Header->where('id_dokumen', $id) as $he)
-            <option value="{{$he->cara_dagang}}">{{$he->cara_dagang}}</option>
+            @foreach ($InformasiEkspors->where('id', $id) as $ho)
+            <option value="{{$ho->cara_dagang}}">{{$ho->cara_dagang}}</option>
             @endforeach
             <?php
             foreach ($JenisDagang as $jd) {
@@ -263,14 +264,14 @@ $Header = \App\Models\Header::all();
   <div class="kotak2">
     <div class="card-form">
       <div class="card-body">
-        <form id="formulir"  method="post" action="{{ route("headerupdatedata")}}">  
+        <form id="formulir"  method="post" action="{{route("headerupdatedata")}}"> 
           @CSRF
-
-
+          
         <div class="custom-form-group">
           <label>Nomor Pengajuan</label>
-          @foreach ($Header->where('id', $id) as $he)
+          @foreach ($Header->where('id_dokumen', $id) as $he)
           <input type="text" value="{{$he->nomor_pengajuan}}" class="text" readonly>
+          <input type="hidden" name="id" value="{{ $he->id }}">
           @endforeach
         </div>
 
@@ -327,8 +328,8 @@ $Header = \App\Models\Header::all();
         <div class="form-group">
           <label for="jenis_ekspor">Jenis Ekspor</label>
           <select id="jenis_ekspor" name="jenis_ekspor" required>
-            @foreach ($Header->where('id_dokumen', $id) as $he)
-            <option value="{{$he->jenis_ekspor}}">{{$he->jenis_ekspor}}</option>
+            @foreach ($InformasiEkspors->where('id', $id) as $ho)
+            <option value="{{$ho->jenis_ekspor}}">{{$ho->jenis_ekspor}}</option>
             @endforeach
             <?php
             foreach ($JenisEkspor as $jen) {
@@ -343,8 +344,8 @@ $Header = \App\Models\Header::all();
         <div class="form-group">
           <label for="kategori_ekspor">Kategori Ekspor</label>
           <select id="kategori_ekspor" name="kategori_ekspor" required>
-            @foreach ($Header->where('id_dokumen', $id) as $he)
-            <option value="{{$he->kategori_ekspor}}">{{$he->kategori_ekspor}}</option>
+            @foreach ($InformasiEkspors->where('id', $id) as $ho)
+            <option value="{{$ho->kategori_ekspor}}">{{$ho->kategori_ekspor}}</option>
             @endforeach
             <?php
             foreach ($KategoriEkspor as $kat) {
@@ -360,8 +361,8 @@ $Header = \App\Models\Header::all();
         <div class="form-group">
           <label for="cara_dagang" >Cara Dagang</label>
           <select id="cara_dagang" name="cara_dagang" required>
-            @foreach ($Header->where('id_dokumen', $id) as $he)
-            <option value="{{$he->cara_dagang}}">{{$he->cara_dagang}}</option>
+            @foreach ($InformasiEkspors->where('id', $id) as $ho)
+            <option value="{{$ho->cara_dagang}}">{{$ho->cara_dagang}}</option>
             @endforeach
             <?php
             foreach ($JenisDagang as $jd) {

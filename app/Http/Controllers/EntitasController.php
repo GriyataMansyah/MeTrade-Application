@@ -66,7 +66,7 @@ class EntitasController extends Controller
         $Entitas = new Entitas;
         $Entitas->entitas = "Entitas";
         $Entitas->id_dokumen = $dokumen->id; 
-        $Entitas->id_eksportir = $id_eksportir; 
+        $Entitas->id_eksportir = $Eksportir->id; 
         $Entitas->id_penerima = $Penerima->id;
         $Entitas->id_pembeli = $Pembeli->id;
         $Entitas->save();
