@@ -76,4 +76,42 @@ class DataPengangkutController extends Controller
   
        return redirect()->route('pengangkut');
       }
+
+      public function editangkutan(Request $request){
+        $id = $request->input('id');
+        $bay = InformasiTempat::findOrFail($id); 
+        $bay->tempat_penimbunan = $request->input('tempat_penimbunan');
+        $bay->pelabuhan_muat_asal = $request->input('pelabuhan_muat_asal');
+        $bay->pelabuhan_bongkar = $request->input('pelabuhan_bongkar');
+        $bay->pelabuhan_tujuan = $request->input('pelabuhan_tujuan');
+        $bay->tanggal_perkiraan_ekspor = $request->input('tanggal_perkiraan_ekspor');
+        $bay->lokasi_pemeriksaan = $request->input('lokasi_pemeriksaan');
+        $bay->save();
+
+        $dok = DataPengangkut::findOrFail($id);  
+        $dok->tanggal_periksa = $request->input('tanggal_periksa');
+        $dok -> save();
+    
+        return redirect()->route('editkemasan');
+      }
+
+      public function modifangkutan(Request $request){
+        $id = $request->input('id');
+        $doc = new SaranaAngkut;
+        $doc->id_dokumen = $id; 
+        $doc->nama_sarana_angkut = $request->input('nama_sarana_angkut');
+        $doc->cara_pengangkutan = $request->input('cara_pengangkutan');
+        $doc->nomor_voy = $request->input('nomor_voy');
+        $doc->bendera = $request->input('bendera');
+        $doc->save();
+        return redirect()->route("editangkut");
+      }
+
+      public function hapus2($seri)
+      {
+      $docs = SaranaAngkut::findOrFail($seri);
+      $docs->delete();
+  
+       return redirect()->route('editangkut');
+      }
 }

@@ -1,4 +1,5 @@
 <?php
+$id = session('id_dokumen');
 $Valuta = \App\Models\valuta::all();
 $CaraPenyerahan = \App\Models\CaraPenyerahan::all();
 $Asuransi = \App\Models\Asuransi::all();
@@ -8,6 +9,7 @@ $Transaksi = \App\Models\Transaksi::all();
 $InformasiPungutanBerat = \App\Models\InformasiPungutanBerat::all();
 $InformasiPembayaran = \App\Models\InformasiPembayaran::all();
 $InformasiEkspor = \App\Models\InformasiEkspor::all();
+$Bank2 = $Bank->where('id_dokumen', $id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +29,6 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
 <body>
      @include('layout.headerweb')
     @include('layout.popuplogout')
-    <?php $id = session('id_dokumen');?>
 
        <!-- INI BADANNYA -->
     <div class="d-none d-lg-block thisbody animate__animated animate__fadeIn">
@@ -50,14 +51,15 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
     <hr class="container00 container-fluid">
     <div class="kotak">
       <div class="container-fluid  border border-1 ">
-        <form class="mt-4" id="formulir4" method="post" action="{{ route('tambahtransaksi')}}">
+        <form class="mt-4" id="formulir4" method="post" action="{{ route('tambahtransaksi2')}}">
           @csrf
           <div class="form-group row ">
             <label for="input1" class="col-sm-2 col-form-label">Valuta</label>
             <div class="col-sm-4">
+              <input type="text" name="id" class="inv" value="{{$id}}"></input>
                 <select id="rupiah1" class="form-select" onchange="updateInputValue()" name="valuta">
                   @foreach ($InformasiPembayaran->where('id', $id) as $b)
-                  <option>{{$b->valuta}}</option>
+                  <option value="{{$b->valuta}}">{{$b->valuta}}</option>
                   @endforeach
                   @foreach ($Valuta as $v)
                       <option value="<?php echo $v->nama ?>"><?php echo $v->nama ?></option>
@@ -88,7 +90,7 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
           <div class="col-sm-4">
             <select id="input1" class="form-select" name="cara_penyerahan">
               @foreach ($InformasiPembayaran->where('id', $id) as $f)
-                <option value="">{{$f->cara_penyerahan}}</option>
+                <option value="{{$f->cara_penyerahan}}">{{$f->cara_penyerahan}}</option>
               @endforeach
                 @foreach ($CaraPenyerahan as $c)
                 <option value="<?php echo $c->nama ?>"><?php echo $c->nama ?></option>
@@ -107,7 +109,7 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
         <div class="col-sm-4">
           <select id="DATA" class="form-select" onchange="updateInputValue2()" name="nilai_ekspor" id="nilai_ekspor">
             @foreach ($InformasiPembayaran->where('id', $id) as $h)
-            <option value="">{{$h->nilai_ekspor}}</option>
+            <option value="{{$h->nilai_ekspor}}">{{$h->nilai_ekspor}}</option>
             @endforeach
             <option value="50000000">Rp50.000.000</option>
             <option value="250000000">Rp250.000.000</option>
@@ -130,9 +132,9 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
       <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label">Asuransi</label>
         <div class="col-sm-2">
-          <select id="input1" class="form-select" name="asuransi">
+          <select class="form-select" name="asuransi">
             @foreach ($InformasiEkspor->where('id', $id) as $i)
-            <option value="">{{$i->asuransi}}</option>
+            <option value="{{$i->asuransi}}">{{$i->asuransi}}</option>
             @endforeach
             @foreach ($Asuransi as $asu)
             <option value="<?php echo $asu->nama ?>"><?php echo $asu->nama ?></option>
@@ -164,7 +166,7 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
         </div>
         <div class="col-6"></div>
       </div>
-      
+      <input class="inv" type="submit" id="submit">
         </form>
         <hr>
            <div class="kotakk">
@@ -197,7 +199,7 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
                       </td>
                   </tr>
               @else
-                  @foreach ($Bank as $B)     
+                  @foreach ($Bank2 as $B)     
                     <td scope="row" class="centered">{{ $B->seri }}</td>
                     <td class="centered">{{ $B->kode_bank }}</td>
                     <td class="centered">{{ $B->nama_bank }}</td>
@@ -207,7 +209,7 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
                    </svg></div></td>
                     {{-- TIDAK TERLIHAT --}}
                     <td class="inv">
-                      <form action="{{ route('hapusbank', $B->seri) }}" method="POST">
+                      <form action="{{ route('hapusbank2', $B->seri) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" id="pencet1">
@@ -249,14 +251,15 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
                   <hr class="container001 container-fluid">
                   <div class="kotak2">
                     <div class="container-fluid  border border-1 ">
-                      <form class="mt-4" id="formulir4" method="post" action="{{ route('tambahtransaksi')}}">
+                      <form class="mt-4" id="formulir4" method="post" action="{{ route('tambahtransaksi2')}}">
                         @csrf
+                        <input type="text" name="id" class="inv" value="{{$id}}"></input>
                         <div class="form-group row ">
                           <label for="input1" class="col-sm-2 col-form-label">Valuta</label>
                           <div class="col-sm-4">
                               <select id="rupiah1" class="form-select" onchange="updateInputValue()" name="valuta">
                                 @foreach ($InformasiPembayaran->where('id', $id) as $b)
-                                <option>{{$b->valuta}}</option>
+                                <option value="{{$b->valuta}}">{{$b->valuta}}</option>
                                 @endforeach
                                 @foreach ($Valuta as $v)
                                     <option value="<?php echo $v->nama ?>"><?php echo $v->nama ?></option>
@@ -287,7 +290,7 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
                         <div class="col-sm-4">
                           <select id="input1" class="form-select" name="cara_penyerahan">
                             @foreach ($InformasiPembayaran->where('id', $id) as $f)
-                              <option value="">{{$f->cara_penyerahan}}</option>
+                              <option value="{{$f->cara_penyerahan}}">{{$f->cara_penyerahan}}</option>
                             @endforeach
                               @foreach ($CaraPenyerahan as $c)
                               <option value="<?php echo $c->nama ?>"><?php echo $c->nama ?></option>
@@ -306,7 +309,7 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
                       <div class="col-sm-4">
                         <select id="DATA" class="form-select" onchange="updateInputValue2()" name="nilai_ekspor" id="nilai_ekspor">
                           @foreach ($InformasiPembayaran->where('id', $id) as $h)
-                          <option value="">{{$h->nilai_ekspor}}</option>
+                          <option value="{{$h->nilai_ekspor}}">{{$h->nilai_ekspor}}</option>
                           @endforeach
                           <option value="50000000">Rp50.000.000</option>
                           <option value="250000000">Rp250.000.000</option>
@@ -331,7 +334,7 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
                       <div class="col-sm-2">
                         <select id="input1" class="form-select" name="asuransi">
                           @foreach ($InformasiEkspor->where('id', $id) as $i)
-                          <option value="">{{$i->asuransi}}</option>
+                          <option value="{{$i->asuransi}}">{{$i->asuransi}}</option>
                           @endforeach
                           @foreach ($Asuransi as $asu)
                           <option value="<?php echo $asu->nama ?>"><?php echo $asu->nama ?></option>
@@ -363,7 +366,7 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
                       </div>
                       <div class="col-6"></div>
                     </div>
-                    
+                    <input class="inv" type="submit" id="submit">
                       </form>
                       <hr>
                       <div class="kotakk">
@@ -396,7 +399,7 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
                                         </td>
                                     </tr>
                                 @else
-                                    @foreach ($Bank as $B)     
+                                    @foreach ($Bank2 as $B)     
                                       <td scope="row" class="centered">{{ $B->seri }}</td>
                                       <td class="centered">{{ $B->kode_bank }}</td>
                                       <td class="centered">{{ $B->nama_bank }}</td>
@@ -406,7 +409,7 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
                                      </svg></div></td>
                                       {{-- TIDAK TERLIHAT --}}
                                       <td class="inv">
-                                        <form action="{{ route('hapusbank', $B->seri) }}" method="POST">
+                                        <form action="{{ route('hapusbank2', $B->seri) }}" method="POST">
                                           @csrf
                                           @method('DELETE')
                                           <button type="submit" id="pencet1">
@@ -428,7 +431,7 @@ $InformasiEkspor = \App\Models\InformasiEkspor::all();
 
  
   @include('layout.sidebar')
-   @include('layout.popuptransaksi')
+   @include('layout.popuptransaksi2')
   @include('layout.footer')
   <script src={{ asset('js/script.js')}}></script>
 </body>

@@ -67,4 +67,45 @@ class KemasanController extends Controller
   
        return redirect()->route('kemasan');
       }
+
+      public function modifkemasan(Request $request){
+        $id = $request->input('id');
+        $dok = new Kemasan;
+        $dok->id_dokumen = $id; 
+        $dok->jumlah = $request->input('jumlah');
+        $dok->jenis = $request->input('jenis');
+        $dok->merek = $request->input('merek');
+        $dok -> save();
+
+        return redirect()->route("editkemasan");
+      }
+
+      public function modifpetikemas(Request $request){
+        $id = $request->input('id');
+        $p = new PetiKemas;
+        $p->id_dokumen = $id; 
+        $p->nomor = $request->input('nomor');
+        $p->ukuran = $request->input('ukuran');
+        $p->jenis = $request->input('jenis');
+        $p->tipe = $request->input('tipe');
+        $p->save();
+
+        return redirect()->route("editkemasan");
+      }
+
+      public function hapu2($seri)
+      {
+      $do= Kemasan::findOrFail($seri);
+      $do->delete();
+  
+       return redirect()->route('editkemasan');
+      }
+
+      public function hapuspetikemas2($seri)
+      {
+      $dob= PetiKemas::findOrFail($seri);
+      $dob->delete();
+  
+       return redirect()->route('editkemasan');
+      }
 }

@@ -16,6 +16,6 @@ class Bank extends Model
     protected $table="bank";
 
     protected $fillable=array(
-        "kode_bank","nama_bank"
+        "id_dokumen","kode_bank","nama_bank"
     );
 }

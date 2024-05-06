@@ -1,8 +1,10 @@
 <?php
+$id = session('id_dokumen');
 $Pemilik_barang = \App\Models\PemilikBarang::all();
 $Eksportir = App\Models\Eksportir::all();
 $Penerima = App\Models\Penerima::all();
 $Pembeli = App\Models\Pembeli::all();
+$Pemilik_barang2 = $Pemilik_barang->where('id_dokumen', $id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +23,6 @@ $Pembeli = App\Models\Pembeli::all();
 </head>
     @include('layout.headerweb')
     @include('layout.popuplogout')
-    <?php $id = session('id_dokumen');?>
        <!-- INI BADANNYA -->
        <div class="d-none d-lg-block thisbody animate__animated animate__fadeIn">
         <div class="row">
@@ -44,7 +45,7 @@ $Pembeli = App\Models\Pembeli::all();
       <div class="kotak0">
         <div class="row">
         <div class="col-6">
-          <form id="formulir2" method="post">
+          <form id="formulir"  method="post" action="{{ route('entitasupdatedata')}}">
             @csrf
           <table class="tabless">
             <thead>
@@ -57,6 +58,7 @@ $Pembeli = App\Models\Pembeli::all();
                 <td class="td1">
                   Nomor Identitas:<br><br>
                   <div class="input-group mb-3 input1">
+                    <input type="text" name="id" class="inv" value="{{$id}}">
                     <input type="text" id="b" class="form-control" aria-label="Username" aria-describedby="basic-addon1" disabled>
                   </div>
   
@@ -156,8 +158,9 @@ $Pembeli = App\Models\Pembeli::all();
                 </tr>
               </tbody>
             </table>
-          </div>
+          </div> <button class="inv" type="submit" id="submit">
         </div>
+       
       </form>
       <br>
      <hr class='container'>
@@ -193,7 +196,7 @@ $Pembeli = App\Models\Pembeli::all();
                   </tr>
                   @else
                   <tr>
-                  @foreach ($Pemilik_barang as $pemilik_barang)
+                  @foreach ($Pemilik_barang2 as $pemilik_barang)
                   <th scope="row" class="centered">{{ $pemilik_barang->seri }}</th>
                   <td class="centered">{{ $pemilik_barang->no_identitas }}</td>
                   <td class="centered">{{ $pemilik_barang->alamat }}</td>
@@ -204,7 +207,7 @@ $Pembeli = App\Models\Pembeli::all();
                  </svg></div</td>
                   {{-- TIDAK TERLIHAT --}}
                   <td class="inv">
-                    <form action="{{ route('hapus.pemilik', $pemilik_barang->seri) }}" method="POST">
+                    <form action="{{ route('hapus.pemilik2', $pemilik_barang->seri) }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" id="pencet1">
@@ -245,7 +248,7 @@ $Pembeli = App\Models\Pembeli::all();
                 <div class="row">
                 <div class="col-6">
                   <table class="tabless">
-                    <form id="formulir2" method="post">
+                    <form id="formulir2" method="post" action="{{ route('entitasupdatedata')}}">
                       @csrf
                     <table class="tabless">
                       <thead>
@@ -258,6 +261,7 @@ $Pembeli = App\Models\Pembeli::all();
                           <td class="td1">
                             Nomor Identitas:<br><br>
                             <div class="input-group mb-3 input1">
+                              <input type="text" class="inv" name="id" value="{{$id}}">
                               <input type="text" id="b" class="form-control" aria-label="Username" aria-describedby="basic-addon1" disabled>
                             </div>
             
@@ -350,6 +354,7 @@ $Pembeli = App\Models\Pembeli::all();
                         </tbody>
                       </table>
                     </div>
+                    <button class="inv" type="submit" id="submit">
                   </div>
                 </form>
             <br>
@@ -385,7 +390,7 @@ $Pembeli = App\Models\Pembeli::all();
                           </tr>
                           @else
                           <tr>
-                          @foreach ($Pemilik_barang as $pemilik_barang)
+                          @foreach ($Pemilik_barang2 as $pemilik_barang)
                           <th scope="row" class="centered">{{ $pemilik_barang->seri }}</th>
                           <td class="centered">{{ $pemilik_barang->no_identitas }}</td>
                           <td class="centered">{{ $pemilik_barang->alamat }}</td>
@@ -396,7 +401,7 @@ $Pembeli = App\Models\Pembeli::all();
                          </svg></div</td>
                           {{-- TIDAK TERLIHAT --}}
                           <td class="inv">
-                            <form action="{{ route('hapus.pemilik', $pemilik_barang->seri) }}" method="POST">
+                            <form action="{{ route('hapus.pemilik2', $pemilik_barang->seri) }}" method="POST">
                               @csrf
                               @method('DELETE')
                               <button type="submit" id="pencet1">
@@ -412,7 +417,7 @@ $Pembeli = App\Models\Pembeli::all();
                   </div>
               </div>
             </div></div>
-            @include('layout.popupbadanentitas')
+            @include('layout.popupbadanentitas2')
             @include('layout.sidebar') 
             @include('layout.footer')
             

@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('bank', function (Blueprint $table) {
             $table->increments("seri");
+            $table->integer('id_dokumen')->unsigned();
+            $table->foreign('id_dokumen')->references('id')->on('dokumens')->onDelete('cascade'); 
             $table->string("kode_bank");
             $table->string("nama_bank");
         });

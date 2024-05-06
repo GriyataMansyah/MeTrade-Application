@@ -36,4 +36,25 @@ class DokumenPendukungController extends Controller
   
        return redirect()->route('dokumenpen');
       }
+
+      public function modifdokumenpen(Request $request){
+        $id = $request->input('id');
+        $dok = new DokumenPendukung;
+        $dok->id_dokumen = $id; 
+        $dok->nomor = $request->input('nomor');
+        $dok->jenis = $request->input('jenis');
+        $dok->tanggal = $request->input('tanggal');
+        $dok -> save();
+
+        return redirect()->route("editdokumenpen");
+      }
+
+      public function destroy2($id)
+      {
+      $dokumenpen = DokumenPendukung::findOrFail($id);
+      $dokumenpen->delete();
+  
+       return redirect()->route('editdokumenpen');
+      }
+      
 }

@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('dokumens', function (Blueprint $table) {
             $table->increments("id");
             $table->Integer('id_pengekspor')->unsigned();
-            $table->foreign('id_pengekspor')->references('id')->on('pengekspors');
+            $table->foreign('id_pengekspor')->references('id')->on('pengekspors')->onDelete('restrict');
 
             $table->Integer('id_petugas')->unsigned();
-            $table->foreign('id_petugas')->references('id')->on('petugas');
+            $table->foreign('id_petugas')->references('id')->on('petugas')->onDelete('restrict');
 
             $table->string("entitas");
             $table->string("jenis_pemberitahuan");

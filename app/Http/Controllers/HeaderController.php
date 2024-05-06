@@ -57,13 +57,16 @@ class HeaderController extends Controller
       return view('pengekspor.header');
     }
 
+    public function tampilkaneditheader(){
+      return view('pengekspor/edit/header');
+    }
 
     public function headerupdate($id){
       session(['id_dokumen' => $id]);
-      return redirect()->route("headerv2");
+      // return redirect()->route("headerv2");
+      return $this->tampilkaneditheader();
     }
 
-    
     public function headerupdatedata(Request $request)
     {
         $id = $request->input('id');
@@ -71,15 +74,18 @@ class HeaderController extends Controller
         $header->pelabuhan_muat_ekspor = $request->input('pelabuhan_ekspor');
         $header->kantor_muat_asal = $request->input('kantor_asal');
         $header->kantor_muat_ekspor = $request->input('kantor_ekspor');
-        $header->jenis_ekspor = $request->input('jenis_ekspor');
-        $header->kategori_ekspor = $request->input('kategori_ekspor');
-        $header->cara_dagang = $request->input('cara_dagang');
         $header->cara_bayar = $request->input('cara_bayar');
         $header->komoditi = $request->input('komoditi');
         $header->curah = $request->input('curah');
         $header->save();
 
-        return redirect()->route('entitasv2');
+        $InformasiEkspors = InformasiEkspors::findOrFail($id);
+        $InformasiEkspors->jenis_ekspor = $request->input('jenis_ekspor');
+        $InformasiEkspors->kategori_ekspor = $request->input('kategori_ekspor');
+        $InformasiEkspors->cara_dagang = $request->input('cara_dagang');
+        $InformasiEkspors->save();
+
+        return view('pengekspor/edit/entitas');
     }
 
 }

@@ -102,4 +102,51 @@ class EntitasController extends Controller
       return redirect()->route('entitas');
       }
 
+      public function headerupdate($id){
+        session(['id_dokumen' => $id]);
+        return redirect()->route("entitasv2");
+      }
+
+      public function entitasupdatedata(Request $request)
+      {
+        $id = $request->input('id');
+        $Eksportir = Eksportir::findOrFail($id); 
+        $Eksportir->nama = $request->input('nama_ek');
+        $Eksportir->alamat = $request->input('alamat_ek');
+        $Eksportir -> save();
+  
+        $Pembeli = Pembeli::findOrFail($id); 
+        $Pembeli->nama = $request->input('nama_pem');
+        $Pembeli->alamat = $request->input('alamat_pem');
+        $Pembeli->negara = $request->input('negara_pem');
+        $Pembeli->save();
+  
+        $Penerima = Penerima::findOrFail($id);
+        $Penerima->nama = $request->input('nama_pen');
+        $Penerima->alamat = $request->input('alamat_pen');
+        $Penerima->negara = $request->input('negara_pen');
+        $Penerima->save();
+
+        return view('pengekspor/edit/dokumenpen');
+      }
+     
+      public function modifentitas(Request $request){
+        $id = $request->input('id');
+        $PemilikBarang = new PemilikBarang;
+        $PemilikBarang->id_dokumen = $id;
+        $PemilikBarang->no_identitas = $request->input('no_identitas');
+        $PemilikBarang->alamat = $request->input('alamat');
+        $PemilikBarang->nama = $request->input('nama');
+        $PemilikBarang ->save();
+
+        return redirect()->route("editentitas");
+      }
+
+      public function destroy2($seri)
+      {
+      $pemilik_barang = PemilikBarang::findOrFail($seri);
+      $pemilik_barang->delete();
+
+      return redirect()->route('editentitas');
+      }
 }

@@ -1,4 +1,5 @@
 <?php
+$id = session('id_dokumen');
 $HS = \App\Models\HS::all();
 $DataKode = \App\Models\DataKode::all();
 $DaerahAsalBarang = \App\Models\DaerahAsalBarang::all();
@@ -29,7 +30,7 @@ $HargaKemasan= \App\Models\HargaKemasan::all();
 </head>
     @include('layout.headerweb')
     @include('layout.popuplogout')
-    <?php $id = session('id_dokumen');?>
+    
        <!-- INI BADANNYA -->
     <div class="d-none d-lg-block thisbody animate__animated animate__fadeIn">
       <div class="row">
@@ -50,8 +51,9 @@ $HargaKemasan= \App\Models\HargaKemasan::all();
     </div>
     <hr class="container00 container-fluid">   
       <div class="kotakw">
-          <form class="mt-4" id="formulir5" method="post" action="{{ route('tambahbarang')}}">
+          <form class="mt-4" id="formulir5" method="post" action="{{ route('tambahbarang2')}}">
             @csrf
+            <input type="text" name="id" class="inv" value="{{$id}}">
           <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label">HS</label>
             <div class="col-sm-4">
@@ -200,6 +202,7 @@ $HargaKemasan= \App\Models\HargaKemasan::all();
             </div>         
             <div class="col-6"></div>
           </div>
+          <input type="submit" class="inv" id="submit">
           
           </form>
           
@@ -369,8 +372,9 @@ $HargaKemasan= \App\Models\HargaKemasan::all();
                   </div>
                   <hr class="container001 container-fluid">
                   <div class="kotakw">
-                    <form class="mt-4" id="formulir5" method="post" action="{{ route('tambahbarang')}}">
+                    <form class="mt-4" id="formulir5" method="post" action="{{ route('tambahbarang2')}}">
                       @csrf
+                      <input type="text" name="id" class="inv" value="{{$id}}">
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label">HS</label>
                       <div class="col-sm-4">
@@ -519,7 +523,7 @@ $HargaKemasan= \App\Models\HargaKemasan::all();
                       </div>         
                       <div class="col-6"></div>
                     </div>
-                    
+                    <input type="submit" class="inv" id="submit">
                     </form>
                     <div class="row centerweb">
 

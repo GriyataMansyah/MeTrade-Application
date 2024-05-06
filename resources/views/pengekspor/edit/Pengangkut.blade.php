@@ -1,4 +1,5 @@
 <?php
+$id = session('id_dokumen');
 $DataTempatPenimbunan = \App\Models\DataTempatPenimbunan::all();
 $DataPelabuhanMuatAsal = \App\Models\DataPelabuhanMuatAsal::all();
 $PelabuhanBongkar = \App\Models\PelabuhanBongkar::all();
@@ -7,6 +8,8 @@ $LokasiPemeriksaan = \App\Models\LokasiPemeriksaan::all();
 $SaranaAngkut = \App\Models\SaranaAngkut::all();
 $Pengangkut = \App\Models\DataPengangkut::all();
 $InformasiTempat = \App\Models\InformasiTempat::all();
+$SaranaAngkut2 = $SaranaAngkut->where('id_dokumen', $id);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +28,6 @@ $InformasiTempat = \App\Models\InformasiTempat::all();
 </head>
     @include('layout.headerweb')
     @include('layout.popuplogout')
-    <?php $id = session('id_dokumen');?>
        <!-- INI BADANNYA -->
     <div class="d-none d-lg-block thisbody animate__animated animate__fadeIn">
       <div class="row">
@@ -47,9 +49,10 @@ $InformasiTempat = \App\Models\InformasiTempat::all();
     <hr class="container00 container-fluid">
     <div class="kotak">
       <div class="container-fluid  border border-1 ">
-        <form class="mt-4" id='formulir3' action="{{ route('tambahpengangkut')}}" method="post">
+        <form class="mt-4" id='formulir3' action="{{ route('editangkut2')}}" method="post">
           @csrf
           <div class="form-group row ">
+            <input type="inv" name="id" class="inv" value="{{$id}}">
 
             <label for="input1" class="col-sm-2 col-form-label">Tempat Penimbunan</label>
             <div class="col-sm-4">
@@ -173,13 +176,14 @@ $InformasiTempat = \App\Models\InformasiTempat::all();
         <div class="form-group row my-4">
           <label for="input1" class="col-sm-2 col-form-label">Tanggal Perkiraan Ekspor</label>
           <div class="col-sm-4">        
-            @foreach ($Pengangkut->where('id_dokumen', $id) as $he) 
-              <input type="date" class="form-control" id="input1" name="tanggal_perkiraan_ekspor" value="{{$he->tanggal_perkiraan_ekspor}}">
+            @foreach ($InformasiTempat->where('id', $id) as $he) 
+              <input type="date" class="form-control" name="tanggal_perkiraan_ekspor" value="{{$he->tanggal_perkiraan_ekspor}}">
             @endforeach
           </div> 
           <div class="col-6"></div>    
+          <button class="inv" type="submit" value="submit" id="submit">
         </div>
-        
+
         </form>
         <hr>
            <div class="kotakk">
@@ -215,7 +219,7 @@ $InformasiTempat = \App\Models\InformasiTempat::all();
                       </td>
                   </tr>
                   @else
-                  @foreach($SaranaAngkut as $S)
+                  @foreach($SaranaAngkut2 as $S)
                   <td class="centered">{{ $S->seri}}</td>
                   <td class="centered">{{ $S->nama_sarana_angkut}}</td>
                   <td class="centered">{{ $S->cara_pengangkutan}}</td>
@@ -227,7 +231,7 @@ $InformasiTempat = \App\Models\InformasiTempat::all();
                  </svg></div></td>
                   {{-- TIDAK TERLIHAT --}}
                   <td class="inv" >
-                    <form action="{{ route('hapusseri', $S->seri) }}" method="POST">
+                    <form action="{{ route('hapusseri2', $S->seri) }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" id="pencet1">
@@ -270,10 +274,10 @@ $InformasiTempat = \App\Models\InformasiTempat::all();
                   <hr class="container001 container-fluid">
                   <div class="kotak2">
                     <div class="container-fluid  border border-1 ">
-                      <form class="mt-4" id='formulir3' action="{{ route('tambahpengangkut')}}" method="post">
+                      <form class="mt-4" id='formulir3' action="{{ route('editangkut2')}}" method="post">
                         @csrf
                         <div class="form-group row ">
-              
+                          <input type="inv" name="id" class="inv" value="{{$id}}">
                           <label for="input1" class="col-sm-2 col-form-label">Tempat Penimbunan</label>
                           <div class="col-sm-4">
                               <select id="input1" class="form-select" name="tempat_penimbunan">
@@ -396,13 +400,14 @@ $InformasiTempat = \App\Models\InformasiTempat::all();
                       <div class="form-group row my-4">
                         <label for="input1" class="col-sm-2 col-form-label">Tanggal Perkiraan Ekspor</label>
                         <div class="col-sm-4">        
-                          @foreach ($Pengangkut->where('id_dokumen', $id) as $he) 
+                          @foreach ($InformasiTempat->where('id', $id) as $he) 
                             <input type="date" class="form-control" id="input1" name="tanggal_perkiraan_ekspor" value="{{$he->tanggal_perkiraan_ekspor}}">
                           @endforeach
                         </div> 
                         <div class="col-6"></div>    
+                        <button class="inv" type="submit" value="submit" id="submit">
                       </div>
-                      
+             
                       </form>
                       <hr>
            <div class="kotakk">
@@ -438,7 +443,7 @@ $InformasiTempat = \App\Models\InformasiTempat::all();
                       </td>
                   </tr>
                   @else
-                  @foreach($SaranaAngkut as $S)
+                  @foreach($SaranaAngkut2 as $S)
                   <td class="centered">{{ $S->seri}}</td>
                   <td class="centered">{{ $S->nama_sarana_angkut}}</td>
                   <td class="centered">{{ $S->cara_pengangkutan}}</td>
@@ -450,7 +455,7 @@ $InformasiTempat = \App\Models\InformasiTempat::all();
                  </svg></div></td>
                   {{-- TIDAK TERLIHAT --}}
                   <td class="inv" >
-                    <form action="{{ route('hapusseri', $S->seri) }}" method="POST">
+                    <form action="{{ route('hapusseri2', $S->seri) }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" id="pencet1">
@@ -471,7 +476,7 @@ $InformasiTempat = \App\Models\InformasiTempat::all();
       </div>
   </div>
 
-  @include('layout.popuppengangkut')
+  @include('layout.popuppengangkut2')
   @include('layout.sidebar')
   @include('layout.footer')
   <script src="{{ asset('js/script.js')}}"></script>

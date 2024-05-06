@@ -130,4 +130,47 @@ class BarangController extends Controller
   
        return redirect()->route('barang1');
       }
+
+
+      public function tambahbarang2(Request $request){
+      
+        $id = $request->input('id');
+    
+        $HaMa = HargaKemasan::findOrFail($id); 
+        $HaMa->kemasan = $request->input('kemasan');
+        $HaMa->harga_fob = $request->input('harga_fob');
+        $HaMa->volume = $request->input('volume');
+        $HaMa->berat_bersih = $request->input('berat_bersih');
+        $HaMa->harga_satuan_fob = $request->input('harga_satuan_fob');
+        $HaMa ->save();
+        
+        $Info = InformasiAsalBarang::findOrFail($id); 
+        $Info->daerah_asal_barang = $request->input('daerah_asal_barang');
+        $Info->save();
+
+        $InBa = InformasiBarang::findOrFail($id); 
+        $InBa->HS = $request->input('HS');
+        $InBa->lartas = $request->input('lartas');
+        $InBa->kode = $request->input('kode');
+        $InBa->uraian = $request->input('uraian');
+        $InBa->mark = $request->filled('mark') ? $request->input('mark') : null;
+        $InBa->tipe = $request->filled('tipe') ? $request->input('tipe') : null;
+        $InBa->ukuran = $request->filled('ukuran') ? $request->input('ukuran') : null;
+        $InBa->satuan = $request->input('satuan');
+        $InBa->kode_satuan = $request->input('kode_satuan');
+        $InBa->kode_kemasan = $request->input('kode_kemasan');
+        $InBa->save();
+
+        $dok = Barang::findOrFail($id); 
+        $dok->seri = $id; 
+        $id_harga_kemasan = $HaMa->id;
+        $id_informasi_asal_barang = $Info->id;
+        $id_informasi_barang =  $InBa->id;
+        $dok->id_harga_kemasan = $id_harga_kemasan;
+        $dok->id_informasi_asal_barang = $id_informasi_asal_barang;
+        $dok->id_informasi_barang = $id_informasi_barang;
+        $dok ->save();
+    
+        return redirect()->route('editpungutan');
+      }
 }

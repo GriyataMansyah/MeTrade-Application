@@ -1,6 +1,9 @@
 <?php
+$id = session('id_dokumen');
 $Kemasan = \App\Models\Kemasan::all();
 $PetiKemas = \App\Models\PetiKemas::all();
+$PetiKemasPengguna = $PetiKemas->where('id_dokumen', $id);
+$KemasanPengguna = $Kemasan->where('id_dokumen', $id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +35,7 @@ $PetiKemas = \App\Models\PetiKemas::all();
         </svg>
         <p class="dalamputih">Muat Ulang</p>
       </div>
-      <a type="button" class="btn btn-success drow"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
+      <a type="button" class="btn btn-success drow" href="{{route('edittransaksi')}}"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
           fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
           <path
             d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z" />
@@ -91,7 +94,7 @@ $PetiKemas = \App\Models\PetiKemas::all();
                               </td>
                           </tr>
                       @else
-                          @foreach($Kemasan as $K)
+                          @foreach($KemasanPengguna as $K)
                   <td class="centered">{{ $K->seri}}</td>
                   <td class="centered">{{ $K->jumlah}}</td>
                   <td class="centered">{{ $K->jenis}}</td>
@@ -102,7 +105,7 @@ $PetiKemas = \App\Models\PetiKemas::all();
                  </svg></div></td>
                   {{-- TIDAK TERLIHAT --}}
                   <td class="inv" >
-                    <form action="{{ route('hapusaja', $K->seri) }}" method="POST">
+                    <form action="{{ route('hapusaja2', $K->seri) }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" id="pencet1">
@@ -158,7 +161,7 @@ $PetiKemas = \App\Models\PetiKemas::all();
                         </td>
                     </tr>
                   @else
-                    @foreach($PetiKemas as $PK)
+                    @foreach($PetiKemasPengguna as $PK)
                   <td class="centered">{{ $PK->seri}}</td>
                   <td class="centered">{{ $PK->nomor}}</td>
                   <td class="centered">{{ $PK->ukuran}}</td>
@@ -170,7 +173,7 @@ $PetiKemas = \App\Models\PetiKemas::all();
                  </svg></div></td>
                   {{-- TIDAK TERLIHAT --}}
                   <td class="inv" >
-                    <form action="{{ route('hapuscok', $PK->seri) }}" method="POST">
+                    <form action="{{ route('hapuscok2', $PK->seri) }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" id="pencet2">
@@ -201,7 +204,7 @@ $PetiKemas = \App\Models\PetiKemas::all();
   <div class="row">
     <h5 class="ha5 col-8 ">BC 3.0 PEMBERITAHUAN EKSPOR BARANG</h5>
     <div class="col-4 drow1">
-      <a type="button" class="btn btn-success drow2"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
+      <a type="button" class="btn btn-success drow2" href="{{route('edittransaksi')}}"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
           fill="currentColor" class="hoh1 bi bi-file-earmark-plus" viewBox="0 0 16 16">
           <path
             d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
@@ -260,7 +263,7 @@ $PetiKemas = \App\Models\PetiKemas::all();
                               </td>
                           </tr>
                       @else
-                          @foreach($Kemasan as $K)
+                          @foreach($KemasanPengguna as $K)
                   <td class="centered">{{ $K->seri}}</td>
                   <td class="centered">{{ $K->jumlah}}</td>
                   <td class="centered">{{ $K->jenis}}</td>
@@ -271,7 +274,7 @@ $PetiKemas = \App\Models\PetiKemas::all();
                  </svg></div></td>
                   {{-- TIDAK TERLIHAT --}}
                   <td class="inv" >
-                    <form action="{{ route('hapusaja', $K->seri) }}" method="POST">
+                    <form action="{{ route('hapusaja2', $K->seri) }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" id="pencet1">
@@ -319,6 +322,7 @@ $PetiKemas = \App\Models\PetiKemas::all();
                     </thead>
                     <tbody>   
                       <tr>
+                        {{-- @if ($PetiKemas->isEmpty()) --}}
                         @if ($PetiKemas->isEmpty())
                         <tr>
                             <td colspan="7" class="text-center">
@@ -327,7 +331,7 @@ $PetiKemas = \App\Models\PetiKemas::all();
                             </td>
                         </tr>
                       @else
-                        @foreach($PetiKemas as $PK)
+                        @foreach($PetiKemasPengguna as $PK)
                       <td class="centered">{{ $PK->seri}}</td>
                       <td class="centered">{{ $PK->nomor}}</td>
                       <td class="centered">{{ $PK->ukuran}}</td>
@@ -339,7 +343,7 @@ $PetiKemas = \App\Models\PetiKemas::all();
                      </svg></div></td>
                       {{-- TIDAK TERLIHAT --}}
                       <td class="inv" >
-                        <form action="{{ route('hapuscok', $PK->seri) }}" method="POST">
+                        <form action="{{ route('hapuscok2', $PK->seri) }}" method="POST">
                           @csrf
                           @method('DELETE')
                           <button type="submit" id="pencet2">
@@ -364,7 +368,7 @@ $PetiKemas = \App\Models\PetiKemas::all();
   <div class="tambah2">
   </div>
 </div>
-@include('layout.popupkemasan')
+@include('layout.popupkemasan2')
 @include('layout.sidebar')
 @include('layout.footer')
 <script src="{{ asset('js/script.js')}}"></script>
