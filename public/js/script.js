@@ -260,4 +260,14 @@ function pertanyaan() {
       }
   });
 }
+//-----------------------------------------------
+// function printPage(event) {
+//   event.preventDefault();
+//   var url = this.getAttribute("href");
+//   var newWindow = window.open(url, "_blank");
 
+//   // Tunggu sampai halaman dimuat
+//   newWindow.onload = function() {
+//       newWindow.print();
+//   };
+// }

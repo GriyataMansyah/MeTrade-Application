@@ -12,7 +12,7 @@
             <div class="form-group row mb-3">
               <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">Nomor Baru</p></label>
               <div class="offset-1 col-8">
-              <input type="text" class="form-control" name="no_hp" onkeypress="return hanyaAngka(event)">
+              <input type="text" class="form-control" name="no_hp" onkeypress="return hanyaAngka(event)" required>
               </div>
             </div>
             </div>

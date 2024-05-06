@@ -1,5 +1,6 @@
 <?php 
 $pernyataan = \App\Models\pernyataan::all();
+$id = session('id_dokumen');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,7 @@ $pernyataan = \App\Models\pernyataan::all();
 </head>
       @include('layout.headerweb')
       @include('layout.popuplogout')
-      <?php $id = session('id_dokumen');?>
+    
 
        <!-- INI BADANNYA -->
     <div class="d-none d-lg-block thisbody animate__animated animate__fadeIn">
@@ -44,7 +45,7 @@ $pernyataan = \App\Models\pernyataan::all();
       </div>
       <div class="row">
       <div class="col-6">
-        <form id="formulir6" method="post" action="{{ route('tambahpernyataan')}}">
+        <form id="formulir6" method="post" action="{{ route('tambahpernyataan2')}}">
           @csrf
         <table class="tables">
           <thead >
@@ -58,6 +59,7 @@ $pernyataan = \App\Models\pernyataan::all();
                 Tempat:<br><br>
                 <div class="input-group mb-3 input1">
                   @foreach ($pernyataan->where('id_dokumen', $id) as $he)
+                  <input type="text" name="id" class="inv" value="{{$id}}">
                   <input type="text" class="form-control " placeholder="Tempat" aria-label="Username" aria-describedby="basic-addon1" name="tempat" value="{{$he->tempat}}">
                   @endforeach
                 </div>
@@ -100,6 +102,7 @@ $pernyataan = \App\Models\pernyataan::all();
             </tr>
           </tbody>
         </table>
+        <input type="submit" class="inv" id="submit">
       </form>
       </div>
     </div>
@@ -134,7 +137,7 @@ $pernyataan = \App\Models\pernyataan::all();
                     </div>
                     <div class="row">
                     <div class="col-6">
-                      <form id="formulir6" method="post" action="{{ route('tambahpernyataan')}}">
+                      <form id="formulir6" method="post" action="{{ route('tambahpernyataan2')}}">
                         @csrf
                       <table class="tables">
                         <thead >
@@ -148,6 +151,7 @@ $pernyataan = \App\Models\pernyataan::all();
                               Tempat:<br><br>
                               <div class="input-group mb-3 input1">
                                 @foreach ($pernyataan->where('id_dokumen', $id) as $he)
+                                <input type="text" name="id" class="inv" value="{{$id}}">
                                 <input type="text" class="form-control " placeholder="Tempat" aria-label="Username" aria-describedby="basic-addon1" name="tempat" value="{{$he->tempat}}">
                                 @endforeach
                               </div>
@@ -190,6 +194,7 @@ $pernyataan = \App\Models\pernyataan::all();
                           </tr>
                         </tbody>
                       </table>
+                      <input type="submit" class="inv" id="submit">
                     </form>
                     </div>
                   </div>

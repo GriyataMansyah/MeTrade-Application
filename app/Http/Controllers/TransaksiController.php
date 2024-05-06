@@ -147,12 +147,15 @@ class TransaksiController extends Controller
             $Transaksi->id_info_ekspor = $id_info_ekspor; 
             $Transaksi ->save();
     
-            $baru = Pungutan::findOrFail($id); 
+            $dob= Pungutan::where('id', $id)->delete();
+
+            $baru = new Pungutan();
+            $baru->id = $id;
+            $baru->id_dokumen = $id;
             $nilai_bea_keluar = $request->input('nilai_bea_keluar');
             $availableColumns = ['pungutan', 'dibayar', 'ditanggung_pemerintah', 'ditunda', 'tidak_dipungut', 'dibebaskan', 'sudah_dilunasi'];
             shuffle($availableColumns);
             $randomColumn = array_shift($availableColumns);
-            unset($baru->$randomColumn);
             $baru->$randomColumn = $nilai_bea_keluar;
             $baru->save();
             

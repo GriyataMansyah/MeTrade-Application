@@ -68,7 +68,10 @@ $Dokumen = \App\Models\Dokumen::whereIn('id', $Dokumen1)->get();
                 $Headers = \App\Models\Header::where('id_dokumen', $dok->id)->get();
                 ?>
                 @foreach ($Headers as $h)
-                <td class="centered">{{ $h->nomor_pengajuan}}</td> 
+                <td class="centered">
+                  <a onclick="print()" href="{{route('output')}}" target="_blank">{{ $h->nomor_pengajuan}}</a>
+                  {{-- YANG RESPONSIVE BELUM YAK --}}
+                </td> 
                 @endforeach
                 
                 <td class="centered">Belum Di Proses</td>

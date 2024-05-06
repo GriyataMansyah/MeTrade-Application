@@ -126,6 +126,8 @@ Route::view('/pernyataan1','pengekspor/pernyataan')->name("pernyataan");
 
 Route::post('pernyataan', [PernyataanController::class, 'tambahpernyataan'])->name("tambahpernyataan");
 
+Route::post('/editpernyataan', [PernyataanController::class, 'tambahpernyataan2'])->name("tambahpernyataan2");
+
 Route::view('/dokumenpen1', 'pengekspor/dokumenpen')->name("dokumenpen");
 
 Route::view('/kemasan1', 'pengekspor/kemasan')->name("kemasan");
@@ -209,4 +211,5 @@ Route::view('/editdata/pernyataan', 'pengekspor/edit/pernyataan')->name('editper
 
 Route::view('1', 'petugas/datamaster');
 Route::view('/dokumen', 'dokumenpen');
+Route::view('/output', '/pengekspor/output')->name('output');
 

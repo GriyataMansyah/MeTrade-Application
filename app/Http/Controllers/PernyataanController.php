@@ -30,4 +30,25 @@ class PernyataanController extends Controller
     
         return redirect("Dokumens");
       }
+
+
+      public function tambahpernyataan2(Request $request){
+        $request->validate([
+          'tempat' => "required",
+          'tanggal' => 'required',
+          'nama' => 'required',
+          'jabatan' => 'required',
+      ]);
+      
+        $id = $request->input('id');
+        $p = Pernyataan::findOrFail($id); 
+        $p->id_dokumen = $id; 
+        $p->tempat = $request->input('tempat');
+        $p->tanggal = $request->input('tanggal');
+        $p->nama = $request->input('nama');
+        $p->jabatan = $request->input('jabatan');
+        $p->save();
+    
+        return redirect("Dokumens");
+      }
 }

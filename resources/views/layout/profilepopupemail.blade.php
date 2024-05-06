@@ -13,7 +13,7 @@
                             <div class="form-group row mb-3">
                               <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">E-mail Baru</p></label>
                               <div class="offset-1 col-8">
-                              <input type="text" class="form-control" name="email">
+                              <input type="email" class="form-control" name="email" required>
                               </div>
                             </div>
                             </div>
