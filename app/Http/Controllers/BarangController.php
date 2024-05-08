@@ -85,6 +85,10 @@ class BarangController extends Controller
 
         $A = new Lartas;
         $A->jenis = $Request->input('jenis');
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
+        $A->id_dokumen = $dokumen->id; 
         $A->nomor = $Request->input('nomor');
         $A->tanggal = $Request->input('tanggal');
         $A->fasilitas = $Request->input('fasilitas');
@@ -115,6 +119,10 @@ class BarangController extends Controller
 
         $B = new EntitasBarang;
         $B->nomor_identitas = $Request->input('nomor_identitas');
+        $Auth = Auth::id();
+        $loggedInUserId =  \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+        $dokumen = Dokumen::where('id_pengekspor', $loggedInUserId)->latest('id')->first();
+        $B->id_dokumen = $dokumen->id; 
         $B->nama = $Request->input('nama');
         $B->alamat = $Request->input('alamat');
         $B->entitas = $Request->input('entitas');

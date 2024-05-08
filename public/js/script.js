@@ -261,13 +261,50 @@ function pertanyaan() {
   });
 }
 //-----------------------------------------------
-// function printPage(event) {
-//   event.preventDefault();
-//   var url = this.getAttribute("href");
-//   var newWindow = window.open(url, "_blank");
+function saveFormValues() {
+  var form = document.getElementById('myForm');
+  var inputs = form.getElementsByTagName('input');
+  
+  for (var i = 0; i < inputs.length; i++) {
+    localStorage.setItem(inputs[i].id, inputs[i].value);
+  }
+}
 
-//   // Tunggu sampai halaman dimuat
-//   newWindow.onload = function() {
-//       newWindow.print();
-//   };
-// }
+// Function to restore form values from Local Storage
+function restoreFormValues() {
+  var form = document.getElementById('myForm');
+  var inputs = form.getElementsByTagName('input');
+  
+  for (var i = 0; i < inputs.length; i++) {
+    var storedValue = localStorage.getItem(inputs[i].id);
+    if (storedValue !== null) {
+      inputs[i].value = storedValue;
+    }
+  }
+}
+
+// Function to clear form values from Local Storage
+function clearFormValues() {
+  var form = document.getElementById('myForm');
+  var inputs = form.getElementsByTagName('input');
+  
+  for (var i = 0; i < inputs.length; i++) {
+    localStorage.removeItem(inputs[i].id);
+  }
+}
+
+// Restore form values when the page loads
+window.onload = function() {
+  restoreFormValues();
+};
+
+// Save form values when navigating away from the page
+window.onbeforeunload = function() {
+  saveFormValues();
+};
+
+// Clear form values when the form is submitted
+document.getElementById('myForm').addEventListener('submit', function() {
+  clearFormValues();
+});
+//-------------------------------------------

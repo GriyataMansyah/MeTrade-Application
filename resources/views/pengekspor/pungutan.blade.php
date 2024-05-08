@@ -1,4 +1,7 @@
-<?php $Pungutan = \App\Models\Pungutan::all(); ?>
+<?php 
+$Pungutan = \App\Models\Pungutan::all();
+$id = session('dokumen_id');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +29,7 @@
         <a class="btn btn-primary drow" href="{{ url('/pernyataan1')}}"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
           <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
           <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-        </svg><p class="dalambiru">Lanjutkan</p></a>
+        </svg><p class="dalambiru0">Lanjutkan</p></a>
       </div>
     </div> 
     <hr>
@@ -62,7 +65,8 @@
                       </td>
                   </tr>
               @else
-                  @foreach ($Pungutan as $a)
+                  {{-- @foreach ($Pungutan as $a) --}}
+                  @foreach($Pungutan->where('id_dokumen', $id) as $a)
                   <td class="centered">{{ $a->pungutan }}</td>
                   <td class="centered">{{ $a->dibayar }}</td>
                   <td class="centered">{{ $a->ditanggung_pemerintah }}</td>
@@ -94,7 +98,7 @@
                     <a href="{{ url('/pernyataan1')}}" class="btn btn-primary drow2"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="hoh1 bi bi-file-earmark-plus" viewBox="0 0 16 16">
                       <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5"/>
                       <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/>
-                    </svg><p class="dalambiru">Lanjutkan</p></a>
+                    </svg><p class="dalambiru02">Lanjutkan</p></a>
                   </div>
                 </div>
                   <hr>
@@ -121,17 +125,27 @@
                             </tr>
                           </thead>
                           <tbody>
-                            @foreach ($Pungutan as $a)
-                <tr>
-                  <td class="centered">{{ $a->pungutan }}</td>
-                  <td class="centered">{{ $a->dibayar }}</td>
-                  <td class="centered">{{ $a->ditanggung_pemerintah }}</td>
-                  <td class="centered">{{ $a->ditunda }}</td>
-                  <td class="centered">{{ $a->tidak_dipungut }}</td>
-                  <td class="centered">{{ $a->dibebaskan }}</td>
-                  <td class="centered">{{ $a->sudah_dilunasi }}</td>
-                </tr>
-                 @endforeach  
+                            <tr>
+                              @if ($Pungutan->isEmpty())
+                              <tr>
+                                  <td colspan="7" class="text-center">
+                                      <img src="{{ asset("images/no.png")}}" alt="Empty Table Image">
+                                      <p>Tidak ada data yang tersedia</p>
+                                  </td>
+                              </tr>
+                          @else
+                              {{-- @foreach ($Pungutan as $a) --}}
+                              @foreach($Pungutan->where('id_dokumen', $id) as $a)
+                              <td class="centered">{{ $a->pungutan }}</td>
+                              <td class="centered">{{ $a->dibayar }}</td>
+                              <td class="centered">{{ $a->ditanggung_pemerintah }}</td>
+                              <td class="centered">{{ $a->ditunda }}</td>
+                              <td class="centered">{{ $a->tidak_dipungut }}</td>
+                              <td class="centered">{{ $a->dibebaskan }}</td>
+                              <td class="centered">{{ $a->sudah_dilunasi }}</td>
+                            </tr>
+                             @endforeach
+                             @endif
                           </tbody>
                         </table>    
                     </div>

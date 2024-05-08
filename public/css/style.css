@@ -472,6 +472,30 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* padding-top: 11px; */
+}
+
+.dalambiru0 {
+  margin-left: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 11px;
+}
+
+.dalambiru01 {
+  margin-left: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.dalambiru02 {
+  margin-left: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-top: 11px;
 }
 
@@ -640,7 +664,7 @@ a {
 
 .hay1 {
   width: 100%;
-  height: 45px;
+  height: auto;
   margin-top: px;
   margin-left: 12px;
   overflow-x: auto;

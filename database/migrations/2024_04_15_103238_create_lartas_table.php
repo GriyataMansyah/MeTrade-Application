@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('lartas', function (Blueprint $table) {
             $table->increments("seri");
+            $table->integer('id_dokumen')->unsigned();
+            $table->foreign('id_dokumen')->references('id')->on('dokumens')->onDelete('cascade');
             $table->string("jenis");
             $table->string("nomor");
             $table->date("tanggal");
