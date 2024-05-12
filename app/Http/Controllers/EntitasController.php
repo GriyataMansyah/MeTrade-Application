@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EntitasController extends Controller
 {
-  private function tambahDataEntitas(Request $request){
+    public function tambahDataEntitas(Request $request){
         $request->validate([
           'nama_ek' => 'required',
           'alamat_ek' => 'required',
@@ -74,7 +74,7 @@ class EntitasController extends Controller
         return redirect()->route('dokumenpen');
       }
 
-      private function tambahDataPemilik(Request $request){
+      public function tambahDataPemilik(Request $request){
         $request->validate([
           'no_identitas' => 'required',
           'alamat' => 'required',
@@ -94,7 +94,7 @@ class EntitasController extends Controller
         return redirect()->route('entitas');
       }
 
-      private function hapusDataPemilik($seri)
+      public function hapusDataPemilik($seri)
       {
       $pemilik_barang = PemilikBarang::findOrFail($seri);
       $pemilik_barang->delete();
@@ -102,12 +102,12 @@ class EntitasController extends Controller
       return redirect()->route('entitas');
       }
 
-      private function headerupdate($id){
+      public function headerupdate($id){
         session(['id_dokumen' => $id]);
         return redirect()->route("entitasv2");
       }
 
-      private function editDataEntitas(Request $request)
+      public function editDataEntitas(Request $request)
       {
         $id = $request->input('id');
         $Eksportir = Eksportir::findOrFail($id); 
@@ -130,7 +130,7 @@ class EntitasController extends Controller
         return view('pengekspor/edit/dokumenpen');
       }
      
-      private function editDataPemilik(Request $request){
+      public function editDataPemilik(Request $request){
         $id = $request->input('id');
         $PemilikBarang = new PemilikBarang;
         $PemilikBarang->id_dokumen = $id;
@@ -142,7 +142,7 @@ class EntitasController extends Controller
         return redirect()->route("editentitas");
       }
 
-      private function hapusEditDataPemilik($seri)
+      public function hapusEditDataPemilik($seri)
       {
       $pemilik_barang = PemilikBarang::findOrFail($seri);
       $pemilik_barang->delete();

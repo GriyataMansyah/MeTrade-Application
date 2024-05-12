@@ -15,7 +15,7 @@ use App\Models\InformasiPungutanBerat;
 
 class TransaksiController extends Controller
 {
-  private function tambahtransaksi(Request $request){
+    public function tambahtransaksi(Request $request){
         $request->validate([
           'valuta' => 'required',
           'NDPMB' => 'required',
@@ -80,7 +80,7 @@ class TransaksiController extends Controller
         return redirect()->route('barang1');
       }
 
-      private function tambahbank(Request $request){
+      public function tambahbank(Request $request){
         $request->validate([
             'kode_bank' => 'required',
             'nama_bank' => 'required',
@@ -98,7 +98,7 @@ class TransaksiController extends Controller
         return redirect()->route('transaksi');
         }
 
-        private function hapusbank($seri)
+      public function hapusbank($seri)
         {
         $dob= Bank::findOrFail($seri);
         $dob->delete();
@@ -106,7 +106,7 @@ class TransaksiController extends Controller
          return redirect()->route('transaksi');
         }
 
-        private function hapusEditBank($seri)
+        public function hapusEditBank($seri)
           {
           $dob= Bank::findOrFail($seri);
           $dob->delete();
@@ -114,7 +114,7 @@ class TransaksiController extends Controller
            return redirect()->route('edittransaksi');
           }
 
-          private function tambahEditTransaksi(Request $request){
+          public function tambahEditTransaksi(Request $request){
             $id = $request->input('id');
             $Ex = InformasiEkspor::findOrFail($id); 
             $Ex ->nilai_bea_keluar = $request->input('nilai_bea_keluar');
@@ -162,7 +162,7 @@ class TransaksiController extends Controller
             return redirect()->route('editbarang');
           }
 
-          private function tambahEditBank(Request $request){
+          public function tambahEditBank(Request $request){
             $id = $request->input('id');
             $bank = new Bank;
             $bank->id_dokumen = $id; 

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 class AkunController extends Controller
 {
     // FUNCTION UNTUK LOG IN
-    private function login(Request $request)
+    public function login(Request $request)
     {
         $credentials = $request->only('username', 'password');
 
@@ -30,7 +30,7 @@ class AkunController extends Controller
     }
 
     // FUNCTION UNTUK LOG OUT
-    private function logout()
+    public function logout()
     {
     Auth::logout();
     return redirect('log');

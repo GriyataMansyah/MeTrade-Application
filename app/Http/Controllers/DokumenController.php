@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 
 class DokumenController extends Controller
 {
-    private function tambahDokumen(Request $request)
+    public function tambahDokumen(Request $request)
     {
         $dokumen = new Dokumen;
         $id_petugas = Petugas::first()->id;
@@ -34,7 +34,7 @@ class DokumenController extends Controller
         return redirect()->route('header');
     }
 
-    private function hapusDokumen($id)
+    public function hapusDokumen($id)
     {
     $dokumen = Dokumen::findOrFail($id);
     $dokumen->delete();
@@ -42,7 +42,7 @@ class DokumenController extends Controller
      return redirect()->route('dokumens');
     }
 
-    private function tampilkanDaftarDokumen(){
+    public function tampilkanDaftarDokumen(){
         return view('pengekspor.daftardok');
    }
 }

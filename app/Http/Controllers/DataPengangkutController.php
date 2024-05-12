@@ -12,7 +12,7 @@ use App\Models\InformasiTempat;
 
 class DataPengangkutController extends Controller
 {
-     private function tambahDataPengangkut(Request $request){
+    public function tambahDataPengangkut(Request $request){
         $request->validate([
           'tempat_penimbunan' => 'required',
           'lokasi_pemeriksaan' => 'required',
@@ -47,7 +47,7 @@ class DataPengangkutController extends Controller
         return redirect()->route('kemasan');
       }
 
-      private function tambahSaranaAngkut(Request $request){
+      public function tambahSaranaAngkut(Request $request){
         $request->validate([
           'nama_sarana_angkut' => 'required',
           'cara_pengangkutan' => 'required',
@@ -69,7 +69,7 @@ class DataPengangkutController extends Controller
         return redirect()->route('pengangkut');
       }
 
-      private function hapus($seri)
+      public function hapus($seri)
       {
       $docs = SaranaAngkut::findOrFail($seri);
       $docs->delete();
@@ -77,7 +77,7 @@ class DataPengangkutController extends Controller
        return redirect()->route('pengangkut');
       }
 
-      private function editangkutan(Request $request){
+      public function editangkutan(Request $request){
         $id = $request->input('id');
         $bay = InformasiTempat::findOrFail($id); 
         $bay->tempat_penimbunan = $request->input('tempat_penimbunan');
@@ -95,7 +95,7 @@ class DataPengangkutController extends Controller
         return redirect()->route('editkemasan');
       }
 
-      private function editSaranaAngkut(Request $request){
+      public function editSaranaAngkut(Request $request){
         $id = $request->input('id');
         $doc = new SaranaAngkut;
         $doc->id_dokumen = $id; 
@@ -107,7 +107,7 @@ class DataPengangkutController extends Controller
         return redirect()->route("editangkut");
       }
 
-      private function hapusSaranaAngkut($seri)
+      public function hapusSaranaAngkut($seri)
       {
       $docs = SaranaAngkut::findOrFail($seri);
       $docs->delete();

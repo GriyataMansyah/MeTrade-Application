@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class KemasanController extends Controller
 {
-  private function tambahkemasan(Request $request){
+    public function tambahkemasan(Request $request){
         $request->validate([
           'jumlah' => 'required',
           'jenis' => 'required',
@@ -30,7 +30,7 @@ class KemasanController extends Controller
         return redirect()->route('kemasan');
       }
 
-      private function hapusKemasan($seri)
+    public function hapusKemasan($seri)
       {
       $do= Kemasan::findOrFail($seri);
       $do->delete();
@@ -38,7 +38,7 @@ class KemasanController extends Controller
        return redirect()->route('kemasan');
       }
 
-      private function tambahpetikemas(Request $request){
+    public function tambahpetikemas(Request $request){
         $request->validate([
           'nomor' => "required",
           'ukuran' => 'required',
@@ -60,7 +60,7 @@ class KemasanController extends Controller
         return redirect()->route('kemasan');
       }
 
-      private function hapuspetikemas($seri)
+    public function hapuspetikemas($seri)
       {
       $dob= PetiKemas::findOrFail($seri);
       $dob->delete();
@@ -68,7 +68,7 @@ class KemasanController extends Controller
        return redirect()->route('kemasan');
       }
 
-      private function editKemasan(Request $request){
+      public function editKemasan(Request $request){
         $id = $request->input('id');
         $dok = new Kemasan;
         $dok->id_dokumen = $id; 
@@ -80,7 +80,7 @@ class KemasanController extends Controller
         return redirect()->route("editkemasan");
       }
 
-      private function editPetiKemas(Request $request){
+      public function editPetiKemas(Request $request){
         $id = $request->input('id');
         $p = new PetiKemas;
         $p->id_dokumen = $id; 
@@ -93,7 +93,7 @@ class KemasanController extends Controller
         return redirect()->route("editkemasan");
       }
 
-      private function hapusEditKemasan($seri)
+      public function hapusEditKemasan($seri)
       {
       $do= Kemasan::findOrFail($seri);
       $do->delete();
@@ -101,7 +101,7 @@ class KemasanController extends Controller
        return redirect()->route('editkemasan');
       }
 
-      private function hapusEditPetiKemas($seri)
+      public function hapusEditPetiKemas($seri)
       {
       $dob= PetiKemas::findOrFail($seri);
       $dob->delete();
