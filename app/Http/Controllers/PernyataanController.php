@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PernyataanController extends Controller
 {
-    public function tambahpernyataan(Request $request){
+  private function tambahpernyataan(Request $request){
         $request->validate([
           'tempat' => "required",
           'tanggal' => 'required',
@@ -32,7 +32,7 @@ class PernyataanController extends Controller
       }
 
 
-      public function tambahEditPernyataan(Request $request){
+      private function tambahEditPernyataan(Request $request){
         $request->validate([
           'tempat' => "required",
           'tanggal' => 'required',

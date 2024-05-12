@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class BarangController extends Controller
 {
-    public function tambahbarang(Request $request){
+  private function tambahbarang(Request $request){
         $request->validate([
           'HS' => 'required',
           'lartas' => 'required',
@@ -73,7 +73,7 @@ class BarangController extends Controller
       }
 
 
-      public function tambahlartas(Request $Request){
+      private function tambahlartas(Request $Request){
         $Request->validate([
           'jenis' => 'required',
           'nomor' => 'required',
@@ -98,7 +98,7 @@ class BarangController extends Controller
       return redirect()->route('barang1');
       }
 
-      public function hapuslartas($seri)
+      private function hapuslartas($seri)
       {
       $docs = Lartas::findOrFail($seri);
       $docs->delete();
@@ -108,7 +108,7 @@ class BarangController extends Controller
 
 
       
-      public function tambahentitas(Request $Request){
+      private function tambahentitas(Request $Request){
         $Request->validate([
           'nomor_identitas' => 'required',
           'nama' => 'required',
@@ -131,7 +131,7 @@ class BarangController extends Controller
       return redirect()->route('barang1');
       }
 
-      public function hapusentitas($seri)
+      private function hapusentitas($seri)
       {
       $O = EntitasBarang::findOrFail($seri);
       $O->delete();
@@ -140,7 +140,7 @@ class BarangController extends Controller
       }
 
 
-      public function editBarang(Request $request){
+      private function editBarang(Request $request){
       
         $id = $request->input('id');
     

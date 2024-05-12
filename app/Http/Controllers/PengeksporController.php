@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 
 class PengeksporController extends Controller
 {
-    public function registrasi(Request $request)
+    private function registrasi(Request $request)
     {
         $password = $request->input('password');
         $confirmedPassword = $request->input('confirmedPassword');
@@ -43,7 +43,7 @@ class PengeksporController extends Controller
         return redirect()->to('/')->with('success', 'Pendaftaran berhasil, silakan masuk.');
     }
 
-    public function gantiemail(Request $request)
+    private function gantiemail(Request $request)
     {
         $request->validate([
             'email' => 'required',
@@ -61,7 +61,7 @@ class PengeksporController extends Controller
     }
 
     
-    public function gantiNomorHp(Request $request)
+    private function gantiNomorHp(Request $request)
     {
         $request->validate([
             'no_hp' => 'required',
@@ -79,7 +79,7 @@ class PengeksporController extends Controller
     }
 
 
-    public function gantiPassword(Request $request)
+    private function gantiPassword(Request $request)
     {
         $request->validate([
             'pass_lama' => 'required',
