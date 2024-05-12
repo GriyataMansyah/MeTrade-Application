@@ -14,13 +14,13 @@ use App\Http\Controllers\DataPengangkutController;
 use App\Http\Controllers\DokumenPendukungController;
 
 
-Route::get('', [AkunController::class, 'index'])->name('login');
+Route::get('', [AkunController::class, 'tampilkanHalamanLogin'])->name('login');
 
 Route::post('login', [AkunController::class, 'login'])->name('cobalogin');
 
 Route::get('layout/popuplogout', [AkunController::class, 'logout'])->name('logout');
 
-Route::post('/sesi/registrasi', [PengeksporController::class,'regis'])->name('reg');
+Route::post('/sesi/registrasi', [PengeksporController::class,'registrasi'])->name('reg');
 
 Route::view('/regis','sesi/Registrasi');
 
@@ -30,81 +30,81 @@ Route::view('/profile','pengekspor/profile')->name("profile");
 
 Route::post('layout/profilepopupemail', [PengeksporController::class, 'gantiemail'])->name('gantiemail');
 
-Route::post('layout/profilepopupphone', [PengeksporController::class, 'gantiphone'])->name('gantiphone');
+Route::post('layout/profilepopupphone', [PengeksporController::class, 'gantiNomorHp'])->name('gantiphone');
 
-Route::post('layout/profilepopuppassword', [PengeksporController::class, 'gantipass'])->name('gantipass');
+Route::post('layout/profilepopuppassword', [PengeksporController::class, 'gantiPassword'])->name('gantipass');
 
 Route::view('/log','sesi/login');
 
-Route::match(['get', 'post'],'Dokumens', [DokumenController::class, 'dokumens'])->name("dokumens");
+Route::match(['get', 'post'],'Dokumens', [DokumenController::class, 'tampilkanDaftarDokumen'])->name("dokumens");
 
 Route::view('layout/popupdafdok','layout/popupdafdok')->name('tambahdokumen');
 
-Route::match(['get', 'post'],'tambahdokumen', [DokumenController::class, 'tambahDok'])->name('tambahdok');
+Route::match(['get', 'post'],'tambahdokumen', [DokumenController::class, 'tambahDokumen'])->name('tambahdok');
 
 Route::view('/php', 'pengekspor/header');
 
 Route::view('/header', 'pengekspor/header')->name('header');
 
-Route::post('header', [HeaderController::class, 'tambah']);
+Route::post('header', [HeaderController::class, 'tambahDataHeader']);
 
 Route::view('popuppengangkut', 'layout/popuppengangkut')->name("poppengangkut");
 
-Route::post('poppengangkut', [DataPengangkutController::class, 'tambahpengangkut'])->name('tambahpengangkut1');
+Route::post('poppengangkut', [DataPengangkutController::class, 'tambahSaranaAngkut'])->name('tambahpengangkut1');
 
 Route::delete('pengekspor/Pengangkut/{seri}', [DataPengangkutController::class, 'hapus'])->name('hapusseri');
 
-Route::delete('pengekspor/editpengangkut/{seri}', [DataPengangkutController::class, 'hapus2'])->name('hapusseri2');
+Route::delete('pengekspor/editpengangkut/{seri}', [DataPengangkutController::class, 'hapusSaranaAngkut'])->name('hapusseri2');
 
-Route::post('layout/popupdokumenpen', [DokumenPendukungController::class, 'tambah'])->name('tambahdokumenpendukung');
+Route::post('layout/popupdokumenpen', [DokumenPendukungController::class, 'tambahDokumenPendukung'])->name('tambahdokumenpendukung');
 
 Route::view('/entitas', 'pengekspor/entitas')->name('entitas');
 
-Route::post('entitas', [EntitasController::class, 'tambah']);
+Route::post('entitas', [EntitasController::class, 'tambahDataEntitas']);
 
 Route::view('/popupbadanentitas', 'layout/popupbadanentitas')->name('badanentitas');
 
-Route::post('badanentitas', [EntitasController::class, 'tambahPemilik']);
+Route::post('badanentitas', [EntitasController::class, 'tambahDataPemilik']);
 
 Route::view('/pengangkut1', 'pengekspor/Pengangkut')->name("pengangkut");
 
-Route::post('pengangkut', [DataPengangkutController::class, 'tambah'])->name("tambahpengangkut");
+Route::post('pengangkut', [DataPengangkutController::class, 'tambahDataPengangkut'])->name("tambahpengangkut");
 
 Route::view('popupkemasan', 'layout/popupkemasan')->name("popupkemasan");
 
 Route::post('popupkemasan/tambahkemasan', [KemasanController::class, 'tambahkemasan'])->name("tambahkemasan");
 
-Route::delete('pengekspor/kemasan/{seri}', [KemasanController::class, 'hapus'])->name('hapusaja');
+Route::delete('pengekspor/kemasan/{seri}', [KemasanController::class, 'hapusKemasan'])->name('hapusaja');
 
-Route::delete('pengekspor/editkemasan/{seri}', [KemasanController::class, 'hapus2'])->name('hapusaja2');
+Route::delete('pengekspor/editkemasan/{seri}', [KemasanController::class, 'hapusEditKemasan'])->name('hapusaja2');
 
 Route::post('popupkemasan/tambahpetikemas', [KemasanController::class, 'tambahpetikemas'])->name("tambahcok");
 
 Route::delete('pengekspor/kemasan-petikemas/{seri}', [KemasanController::class, 'hapuspetikemas'])->name('hapuscok');
 
-Route::delete('pengekspor/editkemasan-petikemas/{seri}', [KemasanController::class, 'hapuspetikemas2'])->name('hapuscok2');
+Route::delete('pengekspor/editkemasan-petikemas/{seri}', [KemasanController::class, 'hapusEditPetiKemas'])->name('hapuscok2');
 
-Route::delete('entitas/{seri}', [EntitasController::class, 'destroy'])->name('hapus.pemilik');
+Route::delete('entitas/{seri}', [EntitasController::class, 'hapusDataPemilik'])->name('hapus.pemilik');
 
-Route::delete('editentitas/{seri}', [EntitasController::class, 'destroy2'])->name('hapus.pemilik2');
+Route::delete('editentitas/{seri}', [EntitasController::class, 'hapusEditDataPemilik'])->name('hapus.pemilik2');
 
-Route::delete('pengekspor/daftardok/{id}', [DokumenController::class, 'destroy'])->name('hapus.dokumen');
+Route::delete('pengekspor/daftardok/{id}', [DokumenController::class, 'hapusDokumen'])->name('hapus.dokumen');
 
-Route::delete('pengekspor/dokumenpen/{id}', [DokumenPendukungController::class, 'destroy'])->name('hapus.dokumenpen');
+Route::delete('pengekspor/dokumenpen/{id}', [DokumenPendukungController::class, 'hapusDokumenPendukung'])->name('hapus.dokumenpen');
 
-Route::delete('pengekspor/editdokumenpen/{id}', [DokumenPendukungController::class, 'destroy2'])->name('hapus.dokumenpen2');
+Route::delete('pengekspor/editdokumenpen/{id}', [DokumenPendukungController::class, 'hapusEditDokumenPendukung'])->name('hapus.dokumenpen2');
 
 Route::post('pengekspor/Transaksi', [TransaksiController::class, 'tambahtransaksi'])->name("tambahtransaksi");
 
-Route::post('pengekspor/edittransaksi', [TransaksiController::class, 'tambahtransaksi2'])->name("tambahtransaksi2");
+Route::post('pengekspor/edittransaksi', [TransaksiController::class, 'tambahEditTransaksi'])->name("tambahtransaksi2");
 
 Route::post('layout/popuptransaksi', [TransaksiController::class, 'tambahbank'])->name("tambahbank");
 
-Route::post('layout/editpopuptransaksi', [TransaksiController::class, 'tambahbank2'])->name("tambahbank2");
+Route::post('layout/editpopuptransaksi', [TransaksiController::class, 'tambahEditBank'])->name("tambahbank2");
 
 Route::delete('pengekspor/transaksi/{seri}', [TransaksiController::class, 'hapusbank'])->name('hapusbank');
 
-Route::delete('pengekspor/edittransaksi/{seri}', [TransaksiController::class, 'hapusbank2'])->name('hapusbank2');
+Route::delete('pengekspor/edittransaksi/{seri}', [TransaksiController::class, 'hapusEditBank'])->name('hapusbank2');
 
 Route::view('/popupbarang', 'layout/popupbarang')->name('popupbarang');
 
@@ -120,13 +120,13 @@ Route::view('/barang1', 'pengekspor/barang')->name('barang1');
 
 Route::post('/barang1', [BarangController::class, 'tambahbarang'])->name("tambahbarang");
 
-Route::post('/editbarang', [BarangController::class, 'tambahbarang2'])->name("tambahbarang2");
+Route::post('/editbarang', [BarangController::class, 'editBarang'])->name("tambahbarang2");
 
 Route::view('/pernyataan1','pengekspor/pernyataan')->name("pernyataan");
 
 Route::post('pernyataan', [PernyataanController::class, 'tambahpernyataan'])->name("tambahpernyataan");
 
-Route::post('/editpernyataan', [PernyataanController::class, 'tambahpernyataan2'])->name("tambahpernyataan2");
+Route::post('/editpernyataan', [PernyataanController::class, 'tambahEditPernyataan'])->name("tambahpernyataan2");
 
 Route::view('/dokumenpen1', 'pengekspor/dokumenpen')->name("dokumenpen");
 
@@ -139,28 +139,28 @@ Route::view('/pungutan1', 'pengekspor/pungutan')->name('pungutan');
 Route::view('/P','pengekspor/PERCOBAAN');
 
 //Menuju Ke Edit Dokumen (Header)
-Route::post('editheader/{id}', [HeaderController::class, 'headerupdate'])->name("editheader");
+Route::post('editheader/{id}', [HeaderController::class, 'tampilkanEditDataHeader'])->name("editheader");
 
 //Menuju Ke Edit Entitas
-Route::post('/editdata/entitas', [HeaderController::class, 'headerupdatedata'])->name("headerupdatedata");
+Route::post('/editdata/entitas', [HeaderController::class, 'editDataHeader'])->name("headerupdatedata");
 
 //NAMBAH Ke Table Di Entitas (Modif)
-Route::post('/editdata/modif/entitas', [EntitasController::class, 'modifentitas'])->name("modifentitas");
+Route::post('/editdata/modif/entitas', [EntitasController::class, 'editDataPemilik'])->name("modifentitas");
 
 //Menuju Ke Edit Dokumen Pendukung
-Route::post('/editdata/dokumenpen', [EntitasController::class, 'entitasupdatedata'])->name("entitasupdatedata");
+Route::post('/editdata/dokumenpen', [EntitasController::class, 'editDataEntitas'])->name("entitasupdatedata");
 
 //NAMBAH Ke Table Di DokumenPen (Modif)
-Route::post('/editdata/modif/dokumenpen', [DokumenPendukungController::class, 'modifdokumenpen'])->name("modifdokumenpen");
+Route::post('/editdata/modif/dokumenpen', [DokumenPendukungController::class, 'editDokumenPendukung'])->name("modifdokumenpen");
 
 //NAMBAH Ke Table Di Angkutan (Modif)
-Route::post('/editdata/modif/angkutan', [DataPengangkutController::class, 'modifangkutan'])->name("modifangkutan");
+Route::post('/editdata/modif/angkutan', [DataPengangkutController::class, 'editSaranaAngkut'])->name("modifangkutan");
 
 //NAMBAH Ke Table Di KEMASAN (Modif)
-Route::post('/editdata/modif/kemasan', [KemasanController::class, 'modifkemasan'])->name("modifkemasan");
+Route::post('/editdata/modif/kemasan', [KemasanController::class, 'editKemasan'])->name("modifkemasan");
 
 //NAMBAH Ke Table Di KEMASAN (Modif)
-Route::post('/editdata/modif/petikemas', [KemasanController::class, 'modifpetikemas'])->name("modifpetikemas");
+Route::post('/editdata/modif/petikemas', [KemasanController::class, 'editPetiKemas'])->name("modifpetikemas");
 
 //Menuju Ke Edit Kemasan
 Route::post('/editdata/Kemasan', [DataPengangkutController::class, 'editangkutan'])->name("editangkut2");

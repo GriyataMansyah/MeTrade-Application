@@ -32,7 +32,7 @@ class PernyataanController extends Controller
       }
 
 
-      public function tambahpernyataan2(Request $request){
+      public function tambahEditPernyataan(Request $request){
         $request->validate([
           'tempat' => "required",
           'tanggal' => 'required',

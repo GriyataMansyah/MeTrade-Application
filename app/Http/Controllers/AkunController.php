@@ -36,7 +36,7 @@ class AkunController extends Controller
     return redirect('log');
     }
 
-    public function index()
+    public function tampilkanHalamanLogin()
     {
         return view('sesi.login');
     }

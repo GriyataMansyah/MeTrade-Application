@@ -106,7 +106,7 @@ class TransaksiController extends Controller
          return redirect()->route('transaksi');
         }
 
-        public function hapusbank2($seri)
+        public function hapusEditBank($seri)
           {
           $dob= Bank::findOrFail($seri);
           $dob->delete();
@@ -114,7 +114,7 @@ class TransaksiController extends Controller
            return redirect()->route('edittransaksi');
           }
 
-          public function tambahtransaksi2(Request $request){
+          public function tambahEditTransaksi(Request $request){
             $id = $request->input('id');
             $Ex = InformasiEkspor::findOrFail($id); 
             $Ex ->nilai_bea_keluar = $request->input('nilai_bea_keluar');
@@ -162,7 +162,7 @@ class TransaksiController extends Controller
             return redirect()->route('editbarang');
           }
 
-          public function tambahbank2(Request $request){
+          public function tambahEditBank(Request $request){
             $id = $request->input('id');
             $bank = new Bank;
             $bank->id_dokumen = $id; 

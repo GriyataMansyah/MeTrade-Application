@@ -12,7 +12,7 @@ use App\Models\InformasiTempat;
 
 class DataPengangkutController extends Controller
 {
-    public function tambah(Request $request){
+    public function tambahDataPengangkut(Request $request){
         $request->validate([
           'tempat_penimbunan' => 'required',
           'lokasi_pemeriksaan' => 'required',
@@ -47,7 +47,7 @@ class DataPengangkutController extends Controller
         return redirect()->route('kemasan');
       }
 
-      public function tambahpengangkut(Request $request){
+      public function tambahSaranaAngkut(Request $request){
         $request->validate([
           'nama_sarana_angkut' => 'required',
           'cara_pengangkutan' => 'required',
@@ -95,7 +95,7 @@ class DataPengangkutController extends Controller
         return redirect()->route('editkemasan');
       }
 
-      public function modifangkutan(Request $request){
+      public function editSaranaAngkut(Request $request){
         $id = $request->input('id');
         $doc = new SaranaAngkut;
         $doc->id_dokumen = $id; 
@@ -107,7 +107,7 @@ class DataPengangkutController extends Controller
         return redirect()->route("editangkut");
       }
 
-      public function hapus2($seri)
+      public function hapusSaranaAngkut($seri)
       {
       $docs = SaranaAngkut::findOrFail($seri);
       $docs->delete();

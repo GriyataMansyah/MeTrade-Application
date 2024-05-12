@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class DokumenPendukungController extends Controller
 {
-    public function tambah(Request $request){
+    public function tambahDokumenPendukung(Request $request){
         $request->validate([
           'nomor' => 'required',
           'jenis' => 'required',
@@ -29,7 +29,7 @@ class DokumenPendukungController extends Controller
         return redirect()->route('dokumenpen');
       }
 
-      public function destroy($id)
+      public function hapusDokumenPendukung($id)
       {
       $dokumenpen = DokumenPendukung::findOrFail($id);
       $dokumenpen->delete();
@@ -37,7 +37,7 @@ class DokumenPendukungController extends Controller
        return redirect()->route('dokumenpen');
       }
 
-      public function modifdokumenpen(Request $request){
+      public function editDokumenPendukung(Request $request){
         $id = $request->input('id');
         $dok = new DokumenPendukung;
         $dok->id_dokumen = $id; 
@@ -49,7 +49,7 @@ class DokumenPendukungController extends Controller
         return redirect()->route("editdokumenpen");
       }
 
-      public function destroy2($id)
+      public function hapusEditDokumenPendukung($id)
       {
       $dokumenpen = DokumenPendukung::findOrFail($id);
       $dokumenpen->delete();

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EntitasController extends Controller
 {
-    public function tambah(Request $request){
+    public function tambahDataEntitas(Request $request){
         $request->validate([
           'nama_ek' => 'required',
           'alamat_ek' => 'required',
@@ -74,7 +74,7 @@ class EntitasController extends Controller
         return redirect()->route('dokumenpen');
       }
 
-      public function tambahPemilik(Request $request){
+      public function tambahDataPemilik(Request $request){
         $request->validate([
           'no_identitas' => 'required',
           'alamat' => 'required',
@@ -94,7 +94,7 @@ class EntitasController extends Controller
         return redirect()->route('entitas');
       }
 
-      public function destroy($seri)
+      public function hapusDataPemilik($seri)
       {
       $pemilik_barang = PemilikBarang::findOrFail($seri);
       $pemilik_barang->delete();
@@ -107,7 +107,7 @@ class EntitasController extends Controller
         return redirect()->route("entitasv2");
       }
 
-      public function entitasupdatedata(Request $request)
+      public function editDataEntitas(Request $request)
       {
         $id = $request->input('id');
         $Eksportir = Eksportir::findOrFail($id); 
@@ -130,7 +130,7 @@ class EntitasController extends Controller
         return view('pengekspor/edit/dokumenpen');
       }
      
-      public function modifentitas(Request $request){
+      public function editDataPemilik(Request $request){
         $id = $request->input('id');
         $PemilikBarang = new PemilikBarang;
         $PemilikBarang->id_dokumen = $id;
@@ -142,7 +142,7 @@ class EntitasController extends Controller
         return redirect()->route("editentitas");
       }
 
-      public function destroy2($seri)
+      public function hapusEditDataPemilik($seri)
       {
       $pemilik_barang = PemilikBarang::findOrFail($seri);
       $pemilik_barang->delete();

@@ -30,7 +30,7 @@ class KemasanController extends Controller
         return redirect()->route('kemasan');
       }
 
-    public function hapus($seri)
+    public function hapusKemasan($seri)
       {
       $do= Kemasan::findOrFail($seri);
       $do->delete();
@@ -68,7 +68,7 @@ class KemasanController extends Controller
        return redirect()->route('kemasan');
       }
 
-      public function modifkemasan(Request $request){
+      public function editKemasan(Request $request){
         $id = $request->input('id');
         $dok = new Kemasan;
         $dok->id_dokumen = $id; 
@@ -80,7 +80,7 @@ class KemasanController extends Controller
         return redirect()->route("editkemasan");
       }
 
-      public function modifpetikemas(Request $request){
+      public function editPetiKemas(Request $request){
         $id = $request->input('id');
         $p = new PetiKemas;
         $p->id_dokumen = $id; 
@@ -93,7 +93,7 @@ class KemasanController extends Controller
         return redirect()->route("editkemasan");
       }
 
-      public function hapu2($seri)
+      public function hapusEditKemasan($seri)
       {
       $do= Kemasan::findOrFail($seri);
       $do->delete();
@@ -101,7 +101,7 @@ class KemasanController extends Controller
        return redirect()->route('editkemasan');
       }
 
-      public function hapuspetikemas2($seri)
+      public function hapusEditPetiKemas($seri)
       {
       $dob= PetiKemas::findOrFail($seri);
       $dob->delete();

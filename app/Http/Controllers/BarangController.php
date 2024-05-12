@@ -140,7 +140,7 @@ class BarangController extends Controller
       }
 
 
-      public function tambahbarang2(Request $request){
+      public function editBarang(Request $request){
       
         $id = $request->input('id');
     

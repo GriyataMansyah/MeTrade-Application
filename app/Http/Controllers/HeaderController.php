@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class HeaderController extends Controller
 {
     
-  public function tambah(Request $request){
+  public function tambahDataHeader(Request $request){
     $request->validate([
       'pelabuhan_ekspor' => 'required',
       'kantor_asal' => 'required',
@@ -61,13 +61,13 @@ class HeaderController extends Controller
       return view('pengekspor/edit/header');
     }
 
-    public function headerupdate($id){
+    public function tampilkanEditDataHeader($id){
       session(['id_dokumen' => $id]);
       // return redirect()->route("headerv2");
       return $this->tampilkaneditheader();
     }
 
-    public function headerupdatedata(Request $request)
+    public function editDataHeader(Request $request)
     {
         $id = $request->input('id');
         $header = Header::findOrFail($id);
