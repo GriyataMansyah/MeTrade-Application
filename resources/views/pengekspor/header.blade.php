@@ -40,7 +40,7 @@ $Curah = \App\Models\Curah::all();
         </svg>
         <p class="dalamputih">Muat Ulang</p>
       </div>
-      <button type="submit" value="submit" class="btn btn-primary drow" onclick="submitForm()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
+      <button type="submit" value="submit" class="btn btn-primary drow" onclick="submitFormHeader()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
           fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
           <path
             d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z" />
@@ -220,7 +220,7 @@ $Curah = \App\Models\Curah::all();
         </svg>
         <p class="dalamputih">Muat Ulang</p>
       </div>
-      <button type="submit" class="btn btn-primary drow2" onclick="submitForm()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
+      <button type="submit" class="btn btn-primary drow2" onclick="submitFormHeader()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
           fill="currentColor" class="hoh1 bi bi-file-earmark-plus" viewBox="0 0 16 16">
           <path
             d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />

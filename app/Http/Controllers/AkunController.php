@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\Session;
 class AkunController extends Controller
 {
     // FUNCTION UNTUK LOG IN
-    public function index()
-    {
-        return view('sesi.login');
-    }
-
     public function login(Request $request)
     {
         $credentials = $request->only('username', 'password');
@@ -39,6 +34,11 @@ class AkunController extends Controller
     {
     Auth::logout();
     return redirect('log');
+    }
+
+    public function index()
+    {
+        return view('sesi.login');
     }
 }
 

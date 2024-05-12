@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row hay1">
-      <div class="col isi"><a href="{{ url('/header')}}" >Header</a></div>
+      <div class="col isi"><a href="{{ url('/header')}}" onclick="goToHeader()">Header</a></div>
       <div class="col isi"><a href="{{ url('/entitas')}}" >Entitas</a></div>
       <div class="col isi"><a href="{{ url('/dokumenpen1')}}" >Dokumen</a></div>
       <div class="col isi"><a href="{{ url('/pengangkut1')}}" >Angkut</a></div>

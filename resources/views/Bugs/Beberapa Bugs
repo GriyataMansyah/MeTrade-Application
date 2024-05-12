@@ -16,10 +16,11 @@ Ini Adalah Beberapa Bug Yang Terdapat Dalam Sistem :
 12. [FITUR] Di Transaksi Ketika Nambah Data Bank Lebih Dari 1 Maka Akan Terhapus Sendiri.
 13. Ketika Halaman DI Refresh Value Yang Belum Di Simpan Akan Hilang.
 14. [FIX]Tombol "Lanjut" Dan "Update" Tulisannya Menurun Sendiri, tanpa di sentuh.
-15. Tabel Kemasan Dan Peti Kemas Bermasalah (Value Nyangkut).
-16. Tabel Transaksi->Bank Devisa Bermasalah (Value Nyangkut).
-17. Tabel Barang->Lartas, Entitas Bermasalah (Value Nyangut).
-18. Tabel Pungutan Bermasalah (Value Nyangkut).
+15. [FIX]Tabel Kemasan Dan Peti Kemas Bermasalah (Value Nyangkut).
+16. [FIX]Tabel Transaksi->Bank Devisa Bermasalah (Value Nyangkut).
+17. [FIX]Tabel Barang->Lartas, Entitas Bermasalah (Value Nyangut).
+18. [FIX]Tabel Pungutan Bermasalah (Value Nyangkut).
+19. Kolom Dokumen Ketika Di Hapus Mengikuti Increments.
 
 
 
