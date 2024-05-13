@@ -34,7 +34,7 @@ $EntitasBarang = \App\Models\EntitasBarang::all();
         <div type="button" class="btn btn-outline-secondary drow" onclick="refreshPage()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
           <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
         </svg><p class="dalamputih">Muat Ulang</p></div>
-        <button type="submit" value="submit" onclick="submitForm5()" class="btn btn-primary drow"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
+        <button type="submit" value="submit" onclick="submitFormBarang()" class="btn btn-primary drow"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
           <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
           <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
         </svg><p class="dalambiru">Lanjutkan</p></button>
@@ -51,7 +51,7 @@ $EntitasBarang = \App\Models\EntitasBarang::all();
           <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label">HS</label>
             <div class="col-sm-4">
-              <select class="form-select" name="HS">
+              <select class="form-select" name="HS" id="HS">
                 <option></option>
              @foreach ($HS as $A)
              <option value="{{ $A->nama }}">{{ $A->nama }}</option>
@@ -60,10 +60,10 @@ $EntitasBarang = \App\Models\EntitasBarang::all();
             </div>
             <label for="input1" class="col-sm-2 col-form-label ">Satuan</label>
             <div class="col-sm-2">
-              <input type="text" class="form-control" name="satuan" onkeypress="return hanyaAngka(event)">
+              <input type="text" class="form-control" name="satuan" id="satuan" onkeypress="return hanyaAngka(event)">
             </div>
             <div class="col-sm-2">
-              <select id="input1" class="form-select" name="kode_satuan">
+              <select class="form-select" name="kode_satuan" id="kode_satuan">
                 <option></option>
                 @foreach ($KodeSatuan as $KS)
                 <option value="{{ $KS->nama }}">{{ $KS->nama }}</option>
@@ -74,7 +74,7 @@ $EntitasBarang = \App\Models\EntitasBarang::all();
           <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label ">Lartas</label>
             <div class="col-sm-4">
-              <select id="input1" class="form-select" name="lartas">
+              <select id="lartas" class="form-select" name="lartas">
                 <option> </option>
                 <option value="1">LARTAS</option>
                 <option value="2">BUKAN LARTAS </option>
@@ -82,10 +82,10 @@ $EntitasBarang = \App\Models\EntitasBarang::all();
             </div>
             <label for="input1" class="col-sm-2 col-form-label ">Kemasan</label>
             <div class="col-sm-2">
-              <input type="text" class="form-control" id="input1" name="kemasan" onkeypress="return hanyaAngka(event)">
+              <input type="text" class="form-control" id="kemasan" name="kemasan" onkeypress="return hanyaAngka(event)">
             </div>
             <div class="col-sm-2">
-              <select id="input1" class="form-select" name="kode_kemasan">
+              <select id="kode_kemasan" class="form-select" name="kode_kemasan">
                 <option></option>
                 @foreach ($KodeKemasan as $KK)
                 <option value="{{ $KK->nama }}">{{ $KK->nama }}</option>
@@ -105,57 +105,61 @@ $EntitasBarang = \App\Models\EntitasBarang::all();
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Harga FOB</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" name="harga_fob" onkeypress="return hanyaAngka(event)">
+            <input type="text" class="form-control" name="harga_fob" id="harga_fob" onkeypress="return hanyaAngka(event)">
         </div>     
           </div>
           <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label ">Uraian</label>
             <div class="col-sm-4">
-              <textarea type="text" class="form-control" name="uraian"></textarea>
+              <textarea type="text" class="form-control" name="uraian" id="uraian"></textarea>
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Volume</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" name="volume" onkeypress="return hanyaAngka(event)">
+            <input type="text" class="form-control" name="volume" id="volume" onkeypress="return hanyaAngka(event)">
         </div>    
           </div>
            <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label ">Mark</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" placeholder="BOLEH DI KOSONGKAN" name="mark"></input>
+              <input type="text" class="form-control" placeholder="BOLEH DI KOSONGKAN" name="mark" id="mark"></input>
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Berat Bersih (KG)</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" name="berat_bersih" onkeypress="return hanyaAngka(event)">
+            <input type="text" class="form-control" name="berat_bersih" id="berat_bersih2" onkeypress="return hanyaAngka(event)">
         </div>       
           </div>
            <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label ">Tipe</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control"  placeholder="BOLEH DI KOSONGKAN" name="tipe"></input>
+              <input type="text" class="form-control"  placeholder="BOLEH DI KOSONGKAN" name="tipe" id="tipe"></input>
           </div>  
           <label for="input1" class="col-sm-2 col-form-label ">Harga Satuan FOB</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" name="harga_satuan_fob" onkeypress="return hanyaAngka(event)">
+              <input type="text" class="form-control" name="harga_satuan_fob" id="harga_satuan_fob" onkeypress="return hanyaAngka(event)">
           </div>
           </div>
           <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label ">Ukuran</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" placeholder="BOLEH DI KOSONGKAN" name="ukuran" onkeypress="return hanyaAngka(event)">
+              <input type="text" class="form-control" placeholder="BOLEH DI KOSONGKAN" name="ukuran" id="ukuran" onkeypress="return hanyaAngka(event)">
           </div>   
           <div class="col-6"></div>      
           </div>
           <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label">Negara Asal Barang</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" value="INDONESIA" disabled>
+              <select class="form-select" id="negara_asal">
+                <option></option>
+                <option value="INDONESIA">INDONESIA</option>
+              </select>
+              {{-- DARI INPUT DI GANTI KE SELECT --}}
             </div>  
             <div class="col-6"></div>       
           </div>
           <div class="form-group row my-4">
             <label for="input1" class="col-sm-2 col-form-label">Daerah Asal Barang</label>
             <div class="col-sm-4">
-              <select id="input1" class="form-select" name="daerah_asal_barang">
+              <select id="daerah_asal_barang" class="form-select" name="daerah_asal_barang">
                 <option></option>
                 @foreach ($DaerahAsalBarang as $E)
                 <option value="{{ $E->nama }}">{{ $E->nama }}</option>

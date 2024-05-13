@@ -27,7 +27,7 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
           <div type="button" class="btn btn-outline-secondary drow" onclick="refreshPage()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
             <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
           </svg><p class="dalamputih">Muat Ulang</p></div>
-          <button type="submit" value="submit" class="btn btn-primary drow" onclick="submitForm2()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
+          <button type="submit" value="submit" class="btn btn-primary drow" onclick="submitFormEntitas()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
             <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
             <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
           </svg><p class="dalambiru">Lanjutkan</p></button>
@@ -59,12 +59,12 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
   
                   Nama:<br><br>
                   <div class="input-group mb-3 input1">
-                    <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_ek">
+                    <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_ek" id="nama_ek">
                   </div>
   
                   Alamat:<br><br>
                   <div class="input-group mb-3 input1">
-                    <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_ek"></textarea>
+                    <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_ek" id="alamat_ek"></textarea>
                   </div>
                 </td>
               </tr>
@@ -84,17 +84,17 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
                 <td class="td1">
                   Nama:<br><br>
                   <div class="input-group mb-3 input1">
-                    <input type="text" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pen">
+                    <input type="text" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pen" id="nama_pen">
                   </div>
   
                   Alamat:<br><br>
                   <div class="input-group mb-3 input1">
-                    <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pen"></textarea>
+                    <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pen" id="alamat_pen"></textarea>
                   </div>
   
                   Negara:<br><br>
                   <div class="input-group mb-3 input1">
-                    <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pen">
+                    <select class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pen" id="negara_pen">
                       <option value=""></option>
                       <option value="SG - SINGAPURA">SG - SINGAPURA</option>
                     </select>
@@ -118,17 +118,17 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
                   <td class="td1">
                     Nama:<br><br>
                     <div class="input-group mb-3 input1">
-                      <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pem">
+                      <input type="text" class="form-control " placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="nama_pem" id="nama_pem">
                     </div>
     
                     Alamat:<br><br>
                     <div class="input-group mb-3 input1">
-                      <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pem"></textarea>
+                      <textarea type="text" class="form-control" placeholder="Alamat" aria-label="Username" aria-describedby="basic-addon1" name="alamat_pem" id="alamat_pem"></textarea>
                     </div>
     
                     Negara:<br><br>
                     <div class="input-group mb-3 input1">
-                      <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pem">
+                      <select class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pem" id="negara_pem">
                         <option value=""></option>
                         <option value="SG - SINGAPURA">SG - SINGAPURA</option>
                       </select>

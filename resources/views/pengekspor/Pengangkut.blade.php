@@ -32,7 +32,7 @@ $SaranaAngkut = \App\Models\SaranaAngkut::all();
         <div type="button" class="btn btn-outline-secondary drow" onclick="refreshPage()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
           <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
         </svg><p class="dalamputih">Muat Ulang</p></div>
-        <button type="submit" value='submit' onclick="submitForm3()" class="btn btn-primary drow"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
+        <button type="submit" value='submit' onclick="submitFormAngkut()" class="btn btn-primary drow"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
           <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
           <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
         </svg><p class="dalambiru">Lanjutkan</p></button>
@@ -51,7 +51,7 @@ $SaranaAngkut = \App\Models\SaranaAngkut::all();
 
             <label for="input1" class="col-sm-2 col-form-label">Tempat Penimbunan</label>
             <div class="col-sm-4">
-                <select id="input1" class="form-select" name="tempat_penimbunan">
+                <select id="tempat_penimbunan" class="form-select" name="tempat_penimbunan">
                   <option> </option>
                   <?php
                   foreach ($DataTempatPenimbunan as $DTP) {
@@ -65,7 +65,7 @@ $SaranaAngkut = \App\Models\SaranaAngkut::all();
 
             <label for="input1" class="col-sm-2 col-form-label ">Lokasi Pemeriksaan</label>
             <div class="col-sm-4">
-              <select id="input1" class="form-select" name="lokasi_pemeriksaan">
+              <select id="lokasi_pemeriksaan" class="form-select" name="lokasi_pemeriksaan">
                 <option> </option>
                 <?php
               foreach ($LokasiPemeriksaan as $D) {
@@ -81,7 +81,7 @@ $SaranaAngkut = \App\Models\SaranaAngkut::all();
 
           <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Muat Asal</label>
           <div class="col-sm-4">
-            <select id="batu" class="form-select" onchange="updateInputValue1()" name="pelabuhan_muat_asal">
+            <select id="pelabuhan_muat_asal" class="form-select" onchange="updateInputValue1()" name="pelabuhan_muat_asal">
               <option></option>
               <?php
               foreach ($DataPelabuhanMuatAsal as $A) {
@@ -94,7 +94,7 @@ $SaranaAngkut = \App\Models\SaranaAngkut::all();
 
           <label for="input1" class="col-sm-2 col-form-label ">Tanggal Periksa</label>
           <div class="col-sm-4">
-              <input type="date"  class="form-control" id="input1" name="tanggal_periksa">
+              <input type="date"  class="form-control" id="tanggal_periksa" name="tanggal_periksa">
           </div>         
         </div>
         <!-- BARIS 3 -->
@@ -114,7 +114,7 @@ $SaranaAngkut = \App\Models\SaranaAngkut::all();
         <div class="form-group row my-4">
           <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Bongkar</label>
           <div class="col-sm-4">
-            <select id="input1" class="form-select" name="pelabuhan_bongkar">
+            <select id="pelabuhan_bongkar" class="form-select" name="pelabuhan_bongkar">
              <option></option>
              <?php
              foreach ($PelabuhanBongkar as $B) {
@@ -131,7 +131,7 @@ $SaranaAngkut = \App\Models\SaranaAngkut::all();
 
           <label for="input1" class="col-sm-2 col-form-label">Pelabuhan Tujuan</label>
           <div class="col-sm-4">
-            <select id="input1" class="form-select" name="pelabuhan_tujuan">
+            <select id="pelabuhan_tujuan" class="form-select" name="pelabuhan_tujuan">
               <option></option>
               <?php
               foreach ($PelabuhanTujuan as $C) {
@@ -157,7 +157,7 @@ $SaranaAngkut = \App\Models\SaranaAngkut::all();
         <div class="form-group row my-4">
           <label for="input1" class="col-sm-2 col-form-label">Tanggal Perkiraan Ekspor</label>
           <div class="col-sm-4">         
-              <input type="date" class="form-control" id="input1" name="tanggal_perkiraan_ekspor">
+              <input type="date" class="form-control" id="tanggal_perkiraan_ekspor" name="tanggal_perkiraan_ekspor">
           </div> 
           <div class="col-6"></div>    
         </div>

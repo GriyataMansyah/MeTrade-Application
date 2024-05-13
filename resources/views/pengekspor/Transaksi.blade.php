@@ -33,7 +33,7 @@ $Bank = \App\Models\Bank::all();
         <div type="button" class="btn btn-outline-secondary drow" onclick="refreshPage()"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
           <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
         </svg><p class="dalamputih">Muat Ulang</p></div>
-        <button type="submit" value="submit" onclick="submitForm4()" class="btn btn-primary drow"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
+        <button type="submit" value="submit" onclick="submitFormTransaksi()" class="btn btn-primary drow"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
           <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
           <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
         </svg><p class="dalambiru">Lanjutkan</p></button>
@@ -60,13 +60,13 @@ $Bank = \App\Models\Bank::all();
             </div>
             <label for="input1" class="col-sm-2 col-form-label ">Nilai Maklan</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="input1" name="nilai_maklan" id="nilai_maklan" onkeypress="return hanyaAngka(event)">
+                <input type="text" class="form-control" name="nilai_maklan" id="nilai_maklan" onkeypress="return hanyaAngka(event)">
             </div>          
         </div>
         <div class="form-group row my-4">
           <label for="input1" class="col-sm-2 col-form-label">NDPMB</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="rupiah2" name="NDPMB" id="ndpmb" readonly>
+            <input type="text" class="form-control" id="rupiah2" name="NDPMB" readonly>
           </div>
           <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox" id="pphCheckbox" onchange="updatePphValue()"> PPh</label>
           <div class="col-sm-4">
@@ -76,7 +76,7 @@ $Bank = \App\Models\Bank::all();
         <div class="form-group row my-4">
           <label for="input1" class="col-sm-2 col-form-label " >Cara Penyerahan</label>
           <div class="col-sm-4">
-            <select id="input1" class="form-select" name="cara_penyerahan">
+            <select id="cara_penyerahan" class="form-select" name="cara_penyerahan">
                 <option value=""></option>
                 @foreach ($CaraPenyerahan as $c)
                 <option value="<?php echo $c->nama ?>"><?php echo $c->nama ?></option>
@@ -91,7 +91,7 @@ $Bank = \App\Models\Bank::all();
        <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label" >Nilai Ekspor</label>
         <div class="col-sm-4">
-          <select id="DATA" class="form-select" onchange="updateInputValue2()" name="nilai_ekspor" id="nilai_ekspor">
+          <select id="DATA" class="form-select" onchange="updateInputValue2()" name="nilai_ekspor">
             <option value=""></option>
             <option value="50000000">Rp50.000.000</option>
             <option value="250000000">Rp250.000.000</option>
@@ -134,7 +134,7 @@ $Bank = \App\Models\Bank::all();
       <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label">Berat Bersih</label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" id="input1" placeholder="KG" name="berat_bersih" id="berat_bersih" onkeypress="return hanyaAngka(event)"> 
+          <input type="text" class="form-control" placeholder="KG" name="berat_bersih" id="berat_bersih" onkeypress="return hanyaAngka(event)"> 
         </div>
         <div class="col-6"></div>
       </div>

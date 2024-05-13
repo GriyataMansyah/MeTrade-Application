@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Pengekspor;
 use App\Models\Petugas;
 use Illuminate\Support\Facades\Session;
-
+use Illuminate\Support\Facades\DB;
 
 class DokumenController extends Controller
 {
@@ -36,10 +36,16 @@ class DokumenController extends Controller
 
     public function hapusDokumen($id)
     {
-    $dokumen = Dokumen::findOrFail($id);
-    $dokumen->delete();
-
-     return redirect()->route('dokumens');
+        // Menonaktifkan pembatalan referensi (foreign key constraint) sementara
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+    
+        // Menghapus baris dari tabel "dokumens" dengan memaksa penghapusan
+        Dokumen::where('id', $id)->forceDelete();
+    
+        // Mengaktifkan kembali pembatalan referensi (foreign key constraint)
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+    
+        return redirect()->route('dokumens');
     }
 
     public function tampilkanDaftarDokumen(){

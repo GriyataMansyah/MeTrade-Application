@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
+<body>
       @include('layout.headerweb')
       @include('layout.popuplogout')
       <?php session()->forget('dokumen_id');?>
@@ -97,6 +98,7 @@
     
   </div>
               <!-- INI ADALAH BADAN RESPONSIVE -->
+      
               <div class="d-block d-lg-none thisbody2 animate__animated animate__fadeIn">
                 <div class="row">
                   <h5 class="ha5 col-8 ">BC 3.0 PEMBERITAHUAN EKSPOR BARANG</h5>

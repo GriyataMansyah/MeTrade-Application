@@ -22,7 +22,8 @@ Ini Adalah Beberapa Bug Yang Terdapat Dalam Sistem :
 18. [FIX]Tabel Pungutan Bermasalah (Value Nyangkut).
 19. Kolom Dokumen Ketika Di Hapus Mengikuti Increments.
 20. [FIX]DataBase Admin Terjadi Inkonsistensi Sebanyak 20 Lebih.
-21. []Ketika Form Belum Di Submit, Valuee Di Halaman Yang Beda Tidak Muncul
+21. [PROGRESS]Ketika Form Belum Di Submit, Valuee Di Halaman Yang Beda Tidak Muncul
+22. [21] Dari Sisi ResponSive !!!
 
 
 
