@@ -16,52 +16,23 @@
     document.getElementById("formulir").submit();
   }
   //------------------
+  window.addEventListener('load', function() {
+    goToHeader();
+});
 
   //-------------------
   function goToHeader() {
-    // Mencegah navigasi langsung
-    event.preventDefault();
-
-    // Mengirim permintaan AJAX untuk memuat ulang halaman
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "{{ url('/header')}}", true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            // Memuat kembali nilai-nilai dari localStorage setelah halaman dimuat kembali
-            var response = xhr.responseText;
-            document.getElementById('pageContent').innerHTML = response;
-            loadStoredValues(); // Memuat ulang nilai-nilai input
-        }
-    };
-    xhr.send();
+    document.getElementById('kantor_pabean_muat_asal').value = localStorage.getItem('kantor_pabean_muat_asal') || '';
+    document.getElementById('pelabuhan_muat_ekspor').value = localStorage.getItem('pelabuhan_muat_ekspor') || '';
+    document.getElementById('kantor_pabean_muat_ekspor').value = localStorage.getItem('kantor_pabean_muat_ekspor') || '';
+    document.getElementById('jenis_ekspor').value = localStorage.getItem('jenis_ekspor') || '';
+    document.getElementById('kategori_ekspor').value = localStorage.getItem('kategori_ekspor') || '';
+    document.getElementById('cara_dagang').value = localStorage.getItem('cara_dagang') || '';
+    document.getElementById('cara_bayar').value = localStorage.getItem('cara_bayar') || '';
+    document.getElementById('komoditi').value = localStorage.getItem('komoditi') || '';
+    document.getElementById('curah').value = localStorage.getItem('curah') || '';
 }
 
-// Memuat kembali nilai-nilai dari localStorage setelah halaman dimuat kembali
-function loadStoredValues() {
-    document.getElementById('kantor_pabean_muat_asal').value = localStorage.getItem('kantor_pabean_muat_asal');
-    document.getElementById('pelabuhan_muat_ekspor').value = localStorage.getItem('pelabuhan_muat_ekspor');
-    document.getElementById('kantor_pabean_muat_ekspor').value = localStorage.getItem('kantor_pabean_muat_ekspor');
-    document.getElementById('jenis_ekspor').value = localStorage.getItem('jenis_ekspor');
-    document.getElementById('kategori_ekspor').value = localStorage.getItem('kategori_ekspor');
-    document.getElementById('cara_dagang').value = localStorage.getItem('cara_dagang');
-    document.getElementById('cara_bayar').value = localStorage.getItem('cara_bayar');
-    document.getElementById('komoditi').value = localStorage.getItem('komoditi');
-    document.getElementById('curah').value = localStorage.getItem('curah');
-}
-
-
-// Memuat kembali nilai-nilai dari localStorage setelah halaman dimuat kembali
-window.onload = function() {
-    document.getElementById('kantor_pabean_muat_asal').value = localStorage.getItem('kantor_pabean_muat_asal');
-    document.getElementById('pelabuhan_muat_ekspor').value = localStorage.getItem('pelabuhan_muat_ekspor');
-    document.getElementById('kantor_pabean_muat_ekspor').value = localStorage.getItem('kantor_pabean_muat_ekspor');
-    document.getElementById('jenis_ekspor').value = localStorage.getItem('jenis_ekspor');
-    document.getElementById('kategori_ekspor').value = localStorage.getItem('kategori_ekspor');
-    document.getElementById('cara_dagang').value = localStorage.getItem('cara_dagang');
-    document.getElementById('cara_bayar').value = localStorage.getItem('cara_bayar');
-    document.getElementById('komoditi').value = localStorage.getItem('komoditi');
-    document.getElementById('curah').value = localStorage.getItem('curah');
-};
   // ------------------
   window.onload = function () {
     generateRandomNumber();

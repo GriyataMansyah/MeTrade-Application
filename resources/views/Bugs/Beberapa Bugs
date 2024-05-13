@@ -21,6 +21,8 @@ Ini Adalah Beberapa Bug Yang Terdapat Dalam Sistem :
 17. [FIX]Tabel Barang->Lartas, Entitas Bermasalah (Value Nyangut).
 18. [FIX]Tabel Pungutan Bermasalah (Value Nyangkut).
 19. Kolom Dokumen Ketika Di Hapus Mengikuti Increments.
+20. [FIX]DataBase Admin Terjadi Inkonsistensi Sebanyak 20 Lebih.
+21. []Ketika Form Belum Di Submit, Valuee Di Halaman Yang Beda Tidak Muncul
 
 
 

@@ -13,12 +13,19 @@ class PetugasSeeder extends Seeder
      */
     public function run(): void
     {
-        Petugas::create([
-            "id_akun"=>"2",
-            "nama" => "Admin",
-            "npwp" => "84732947vsdg",
-            "no_hp" => "9876543456",
-            "email" => "Admin@Gmail.com"
-        ]);
+        // Periksa apakah data petugas dengan id_akun tertentu sudah ada
+        $existingPetugas = Petugas::where('id_akun', '2')->first();
+    
+        // Jika tidak ada data yang ditemukan, maka tambahkan data baru
+        if (!$existingPetugas) {
+            Petugas::create([
+                "id_akun"=>"2",
+                "nama" => "Admin",
+                "npwp" => "84732947vsdg",
+                "no_hp" => "9876543456",
+                "email" => "Admin@Gmail.com"
+            ]);
+        }
     }
+    
 }
