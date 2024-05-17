@@ -47,7 +47,7 @@
                 <tr>
                   <th class="centered" scope="row">3</th>
                   <td class="centered">Data Transaksi</td>
-                  <td class="centered"><a href="#"><button type="button" class="btn btn-primary" tpye="submit">Kelola</button></a></td>
+                  <td class="centered"><a href="{{route('dataMasterTransaksi')}}"><button type="button" class="btn btn-primary" tpye="submit">Kelola</button></a></td>
                 </tr>
       
                 <tr>
@@ -99,7 +99,7 @@
                           <tr>
                             <th class="centered" scope="row">3</th>
                             <td class="centered">Data Transaksi</td>
-                            <td class="centered" ><a href="#"><button type="button" class="btn btn-primary" tpye="submit">Kelola</button></a></td>
+                            <td class="centered" ><a href="{{route('dataMasterTransaksi')}}"><button type="button" class="btn btn-primary" tpye="submit">Kelola</button></a></td>
                           </tr>
                 
                           <tr>

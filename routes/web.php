@@ -263,6 +263,19 @@ Route::post('/edit/tambahdata/LokasiPemeriksaaan', [PetugasController::class, 't
 
 Route::post('/edit/hapusdata/LokasiPemeriksaaan', [PetugasController::class, 'hapusLokasiPemeriksaan'])->name("hapusLokasiPemeriksaan");
 
+Route::post('/edit/tambahdata/Valuta', [PetugasController::class, 'tambahValuta'])->name("tambahValuta");
+
+Route::post('/edit/hapusdata/Valuta', [PetugasController::class, 'hapusValuta'])->name("hapusValuta");
+
+Route::post('/edit/tambahdata/CaraPenyerahan', [PetugasController::class, 'tambahCaraPenyerahan'])->name("tambahCaraPenyerahan");
+
+Route::post('/edit/hapusdata/CaraPenyerahan', [PetugasController::class, 'hapusCaraPenyerahan'])->name("hapusCaraPenyerahan");
+
+Route::post('/edit/tambahdata/Asuransi', [PetugasController::class, 'tambahAsuransi'])->name("tambahAsuransi");
+
+Route::post('/edit/hapusdata/Asuransi', [PetugasController::class, 'hapusAsuransi'])->name("hapusAsuransi");
+
+
 
 
 

@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Curah;
+use App\Models\Valuta;
 use App\Models\petugas;
+use App\Models\Asuransi;
 use App\Models\Komoditi;
 use App\Models\CaraBayar;
 use App\Models\JenisDagang;
 use App\Models\JenisEkspor;
 use Illuminate\Http\Request;
+use App\Models\CaraPenyerahan;
 use App\Models\KantorMuatAsal;
 use App\Models\KategoriEkspor;
 use App\Models\PelabuhanTujuan;
@@ -555,6 +558,129 @@ public function tambahLokasiPemeriksaan(Request $request)
     session()->flash('success', 'Data berhasil dihapus.');
 
     return redirect()->route('dataMasterPengangkut');
+}
+
+// ------------------------------- VALUTA ----------------------------------
+public function tambahValuta(Request $request)
+{
+    $request->validate([
+        'tambahValuta' => 'required',
+    ]);
+    
+    $id_pengguna = Auth::id();
+    $pengguna = Petugas::where('id_akun', $id_pengguna)->first();
+   
+    $p = new Valuta;
+    $p->nama = $request->input('tambahValuta');
+    $p->id_data_master = $pengguna->id;
+    $p->save();
+          
+    session()->flash('success', 'Data berhasil ditambahkan.');
+
+    return redirect()->route('dataMasterTransaksi');  
+}
+
+    public function hapusValuta(Request $request)
+{
+    $request->validate([
+        'hapusValuta' => 'required',
+    ]);
+
+    $namaKantorMuatAsal = $request->input('hapusValuta');
+    
+    $kantorMuatAsal = Valuta::where('nama', $namaKantorMuatAsal)->first();
+    
+    if (!$kantorMuatAsal) {
+        return redirect()->route('dataMasterHeader')->withErrors(['Data tidak ditemukan']);
+    }
+
+    $kantorMuatAsal->delete();
+
+    session()->flash('success', 'Data berhasil dihapus.');
+
+    return redirect()->route('dataMasterTransaksi');
+}
+
+// ------------------------------- CARA PENYERAHAN ----------------------------------
+public function tambahCaraPenyerahan(Request $request)
+{
+    $request->validate([
+        'tambahCaraPenyerahan' => 'required',
+    ]);
+    
+    $id_pengguna = Auth::id();
+    $pengguna = Petugas::where('id_akun', $id_pengguna)->first();
+   
+    $p = new CaraPenyerahan;
+    $p->nama = $request->input('tambahCaraPenyerahan');
+    $p->id_data_master = $pengguna->id;
+    $p->save();
+          
+    session()->flash('success', 'Data berhasil ditambahkan.');
+
+    return redirect()->route('dataMasterTransaksi');  
+}
+
+    public function hapusCaraPenyerahan(Request $request)
+{
+    $request->validate([
+        'hapusCaraPenyerahan' => 'required',
+    ]);
+
+    $namaKantorMuatAsal = $request->input('hapusCaraPenyerahan');
+    
+    $kantorMuatAsal = CaraPenyerahan::where('nama', $namaKantorMuatAsal)->first();
+    
+    if (!$kantorMuatAsal) {
+        return redirect()->route('dataMasterHeader')->withErrors(['Data tidak ditemukan']);
+    }
+
+    $kantorMuatAsal->delete();
+
+    session()->flash('success', 'Data berhasil dihapus.');
+
+    return redirect()->route('dataMasterTransaksi');
+}
+
+// ------------------------------- ASURANSI ----------------------------------
+public function tambahAsuransi(Request $request)
+{
+    $request->validate([
+        'tambahAsuransi' => 'required',
+    ]);
+    
+    $id_pengguna = Auth::id();
+    $pengguna = Petugas::where('id_akun', $id_pengguna)->first();
+   
+    $p = new Asuransi;
+    $p->nama = $request->input('tambahAsuransi');
+    $p->id_data_master = $pengguna->id;
+    $p->save();
+          
+    session()->flash('success', 'Data berhasil ditambahkan.');
+
+    return redirect()->route('dataMasterTransaksi');  
+}
+
+    public function hapusAsuransi(Request $request)
+{
+    $request->validate([
+        'hapusAsuransi' => 'required',
+    ]);
+
+    $namaKantorMuatAsal = $request->input('hapusAsuransi');
+    
+    $kantorMuatAsal = Asuransi::where('nama', $namaKantorMuatAsal)->first();
+    
+    if (!$kantorMuatAsal) {
+        return redirect()->route('dataMasterHeader')->withErrors(['Data tidak ditemukan']);
+    }
+
+    $kantorMuatAsal->delete();
+
+    session()->flash('success', 'Data berhasil dihapus.');
+
+    return redirect()->route('dataMasterTransaksi');
 }
 
 
