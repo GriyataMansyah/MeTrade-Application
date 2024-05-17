@@ -16,7 +16,14 @@ $akuns = \App\Models\Akun::where('id', $loggedInUserId)->get();
     <link href="{{ asset('images/logo2.png')}}" rel="icon">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    <script>
+      window.addEventListener('load', function() {
+          localStorage.clear();
+      window.addEventListener('load', function() {
+          sessionStorage.clear();
+      });
+      });
+  </script>
 </head>
   @include("layout.headerweb")
   @include("layout.popuplogout")

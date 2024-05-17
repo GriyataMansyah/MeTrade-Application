@@ -303,6 +303,17 @@ a {
   margin-right: 18px;
 }
 
+.popuppetugas {
+  display: none;
+  background-color: white;
+  width: 385px;
+  height: auto;
+  z-index: 3;
+  margin-top: 60px;
+  margin-right: 18px;
+  padding-bottom: 20px;
+}
+
 .patas {
   background-color: yellow;
   height: 100px;
@@ -465,6 +476,8 @@ a {
   display: flex;
   flex-direction: row;
   margin-top: 15px;
+  align-items: center;
+  justify-content: center;
 }
 
 .dalambiru {
@@ -556,6 +569,14 @@ a {
   margin-top: 8px;
   position: sticky;
   border: 1px solid grey;
+  margin-left: 20px;
+}
+
+.kotakpetugas {
+  width: 100%;
+  height: auto;
+  margin-top: 8px;
+  position: sticky;
   margin-left: 20px;
 }
 
@@ -971,4 +992,9 @@ td.text-center {
 
 .kiri{
   margin-right:4px;
+}
+
+.buttonkembali{
+  width:100%;
+  margin-right: 20px;
 }

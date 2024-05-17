@@ -1,5 +1,5 @@
 <?php
-$kantor_muat_asal = \App\Models\kantor_muat_asal::all();
+$kantor_muat_asal = \App\Models\KantorMuatAsal::all();
 $pelabuhan = \App\Models\PelabuhanMuatEkspor::all();
 $JenisEkspor = \App\Models\JenisEkspor::all();
 $KategoriEkspor = \App\Models\KategoriEkspor::all();
@@ -22,7 +22,6 @@ $Curah = \App\Models\Curah::all();
   <link rel="icon" href="{{ asset('images/logo2.png')}}" type="image/png">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
   
 </head>
 @include('layout.headerweb')
@@ -391,4 +390,42 @@ $Curah = \App\Models\Curah::all();
 @include('layout.footer')
 
 <script src="{{ asset('js/script.js') }}"></script>
+{{-- <script>
+  // Fungsi untuk menyimpan data ke sessionStorage
+  const saveDataToSessionStorage = (select) => {
+      sessionStorage.setItem(select.id, select.value);
+  };
+
+  // Fungsi untuk mengisi ulang data dari sessionStorage saat halaman dimuat
+  const loadDataFromSessionStorage = (select) => {
+      const savedValue = sessionStorage.getItem(select.id);
+      if (savedValue) {
+          select.value = savedValue;
+      }
+  };
+
+  // Referensi ke semua select
+  const selects = document.querySelectorAll('select');
+
+  // Menyimpan data setiap kali ada perubahan pada select
+  selects.forEach(select => {
+      select.addEventListener('change', () => {
+          saveDataToSessionStorage(select);
+      });
+  });
+
+  // Mengisi ulang data dari sessionStorage saat halaman dimuat
+  window.addEventListener('load', () => {
+      selects.forEach(select => {
+          loadDataFromSessionStorage(select);
+      });
+  });
+
+  // Menangani peristiwa submit formulir
+  const form = document.getElementById('formulir');
+  form.addEventListener('submit', () => {
+      // Hapus data dari sessionStorage setelah formulir disubmit
+      sessionStorage.clear();
+  });
+</script> --}}
 </body>

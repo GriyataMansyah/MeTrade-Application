@@ -391,4 +391,43 @@ $Pemilik_barang = \App\Models\PemilikBarang::all();
             
 
             <script src="{{ asset('js/script.js') }}"></script>
+            <script>
+              // Fungsi untuk menyimpan data ke sessionStorage
+        const saveDataToSessionStorage = (element) => {
+            sessionStorage.setItem(element.id, element.value);
+        };
+
+        // Fungsi untuk mengisi ulang data dari sessionStorage saat halaman dimuat
+        const loadDataFromSessionStorage = (element) => {
+            const savedValue = sessionStorage.getItem(element.id);
+            if (savedValue) {
+                element.value = savedValue;
+            }
+        };
+
+        // Referensi ke formulir dan semua elemen input, textarea, dan select
+        const form = document.getElementById('formulir2');
+        const formElements = form.querySelectorAll('input, textarea, select');
+
+        // Menyimpan data setiap kali ada perubahan pada elemen input, textarea, atau select
+        formElements.forEach(element => {
+            element.addEventListener('input', () => {
+                saveDataToSessionStorage(element);
+            });
+        });
+
+        // Mengisi ulang data dari sessionStorage saat halaman dimuat
+        window.addEventListener('load', () => {
+            formElements.forEach(element => {
+                loadDataFromSessionStorage(element);
+            });
+        });
+
+        // Menangani peristiwa submit formulir
+        form.addEventListener('submit', () => {
+            // Hapus data dari sessionStorage setelah formulir disubmit
+            sessionStorage.clear();
+        });
+              
+          </script>
 </body>

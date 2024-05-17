@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class kantor_muat_asal extends Model
+class KantorMuatAsal extends Model
 {
     use HasFactory;
 

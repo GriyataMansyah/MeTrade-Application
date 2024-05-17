@@ -7,6 +7,7 @@ use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\EntitasController;
 use App\Http\Controllers\KemasanController;
+use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PengeksporController;
 use App\Http\Controllers\PernyataanController;
@@ -176,6 +177,16 @@ Route::view('/editdata/barang', 'pengekspor/edit/barang')->name('editbarang');
 Route::view('/editdata/pungutan', 'pengekspor/edit/pungutan')->name('editpungutan');
 Route::view('/editdata/pernyataan', 'pengekspor/edit/pernyataan')->name('editpernyataan');
 
+Route::view('/petugas/dataMaster', 'petugas/dataMastermas')->name('dataMaster');
+
+Route::view('/petugas/dataMasterHeader', 'petugas/dataMasterHeader')->name('dataMasterHeader');
+
+Route::view('/petugas/dataMasterBarang', 'petugas/dataMasterBarang')->name('dataMasterBarang');
+
+Route::view('/petugas/dataMasterTransaksi', 'petugas/dataMasterTransaksi')->name('dataMasterTransaksi');
+
+Route::view('/petugas/dataMasterPengangkut', 'petugas/dataMasterPengangkut')->name('dataMasterPengangkut');
+
 // Route::view('/editheader','pengekspor/edit/header')->name("headerv2");
 
 // Route::post('headerv2', [HeaderController::class, 'updatedata']);
@@ -199,6 +210,59 @@ Route::view('/editdata/pernyataan', 'pengekspor/edit/pernyataan')->name('editper
 // Route::view('/editpungutan','pengekspor/edit/pungutan')->name("pungutanv2");
 
 // Route::view('/editpernyataan','pengekspor/edit/pernyataan')->name("pernyataanv2");
+
+Route::post('/edit/tambahdata/kantorpabeanmuatasal', [PetugasController::class, 'tambahKantorPabeanMuatAsal'])->name("tambahKantorPabeanMuatAsal");
+
+Route::post('/edit/hapusdata/kantorpabeanmuatasal', [PetugasController::class, 'hapusKantorPabeanMuatAsal'])->name("hapusKantorPabeanMuatAsal");
+
+Route::post('/edit/tambahdata/PelabuhanMuatEkspor', [PetugasController::class, 'tambahPelabuhanMuatEkspor'])->name("tambahPelabuhanMuatEkspor");
+
+Route::post('/edit/hapusdata/PelabuhanMuatEkspor', [PetugasController::class, 'hapusPelabuhanMuatEkspor'])->name("hapusPelabuhanMuatEkspor");
+
+Route::post('/edit/tambahdata/JenisEkspor', [PetugasController::class, 'tambahJenisEkspor'])->name("tambahJenisEkspor");
+
+Route::post('/edit/hapusdata/JenisEkspor', [PetugasController::class, 'hapusJenisEkspor'])->name("hapusJenisEkspor");
+
+Route::post('/edit/tambahdata/KategoriEkspor', [PetugasController::class, 'tambahKategoriEkspor'])->name("tambahKategoriEkspor");
+
+Route::post('/edit/hapusdata/KategoriEkspor', [PetugasController::class, 'hapusKategoriEkspor'])->name("hapusKategoriEkspor");
+
+Route::post('/edit/tambahdata/CaraDagang', [PetugasController::class, 'tambahCaraDagang'])->name("tambahCaraDagang");
+
+Route::post('/edit/hapusdata/CaraDagang', [PetugasController::class, 'hapusCaraDagang'])->name("hapusCaraDagang");
+
+Route::post('/edit/tambahdata/CaraBayar', [PetugasController::class, 'tambahCaraBayar'])->name("tambahCaraBayar");
+
+Route::post('/edit/hapusdata/CaraBayar', [PetugasController::class, 'hapusCaraBayar'])->name("hapusCaraBayar");
+
+Route::post('/edit/tambahdata/Komoditi', [PetugasController::class, 'tambahKomoditi'])->name("tambahKomoditi");
+
+Route::post('/edit/hapusdata/Komoditi', [PetugasController::class, 'hapusKomoditi'])->name("hapusKomoditi");
+
+Route::post('/edit/tambahdata/Curah', [PetugasController::class, 'tambahCurah'])->name("tambahCurah");
+
+Route::post('/edit/hapusdata/Curah', [PetugasController::class, 'hapusCurah'])->name("hapusCurah");
+
+Route::post('/edit/tambahdata/TempatPenimbunan', [PetugasController::class, 'tambahTempatPenimbunan'])->name("tambahTempatPenimbunan");
+
+Route::post('/edit/hapusdata/TempatPenimbunan', [PetugasController::class, 'hapusTempatPenimbunan'])->name("hapusTempatPenimbunan");
+
+Route::post('/edit/tambahdata/PelabuhanMuatAsal', [PetugasController::class, 'tambahPelabuhanMuatAsal'])->name("tambahPelabuhanMuatAsal");
+
+Route::post('/edit/hapusdata/PelabuhanMuatAsal', [PetugasController::class, 'hapusPelabuhanMuatAsal'])->name("hapusPelabuhanMuatAsal");
+
+Route::post('/edit/tambahdata/PelabuhanBongkar', [PetugasController::class, 'tambahPelabuhanBongkar'])->name("tambahPelabuhanBongkar");
+
+Route::post('/edit/hapusdata/PelabuhanBongkar', [PetugasController::class, 'hapusPelabuhanBongkar'])->name("hapusPelabuhanBongkar");
+
+Route::post('/edit/tambahdata/PelabuhanTujuan', [PetugasController::class, 'tambahPelabuhanTujuan'])->name("tambahPelabuhanTujuan");
+
+Route::post('/edit/hapusdata/PelabuhanTujuan', [PetugasController::class, 'hapusPelabuhanTujuan'])->name("hapusPelabuhanTujuan");
+
+Route::post('/edit/tambahdata/LokasiPemeriksaaan', [PetugasController::class, 'tambahLokasiPemeriksaan'])->name("tambahLokasiPemeriksaan");
+
+Route::post('/edit/hapusdata/LokasiPemeriksaaan', [PetugasController::class, 'hapusLokasiPemeriksaan'])->name("hapusLokasiPemeriksaan");
+
 
 
 

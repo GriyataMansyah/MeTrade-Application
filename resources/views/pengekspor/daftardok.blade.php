@@ -16,6 +16,14 @@ $Dokumen = \App\Models\Dokumen::whereIn('id', $Dokumen1)->get();
     <link href="{{ asset('css/style.css')}}" rel="stylesheet">
     <link href="{{ asset('images/logo2.png')}}" rel="icon">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      window.addEventListener('load', function() {
+          localStorage.clear();
+      });
+      window.addEventListener('load', function() {
+          sessionStorage.clear();
+      });
+  </script>
 </head>
 <body onload="clearLocalStorage()">
     @include('layout.headerweb')
