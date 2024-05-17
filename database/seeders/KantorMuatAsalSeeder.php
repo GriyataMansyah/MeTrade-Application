@@ -6,7 +6,7 @@ use App\Models\DataMaster;
 use App\Models\JenisEkspor;
 use Illuminate\Database\Seeder;
 use Database\Seeders\DataMasterSeeder;
-use App\Models\kantor_muat_asal as KantorMuatAsal; 
+use App\Models\KantorMuatAsal; 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class KantorMuatAsalSeeder extends Seeder 
