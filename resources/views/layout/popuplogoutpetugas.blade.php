@@ -14,7 +14,7 @@
     </div>
     @endforeach
     <div class="col-12 pbawah">
-      {{-- <a href="{{ url('/profile')}}" class="a4">
+      <a href="{{ route('ProfilePetugas')}}" class="a4">
         <svg class="svg1" xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor"
           class="bi bi-person-square" viewBox="0 0 16 16">
           <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
@@ -25,7 +25,7 @@
           <p class="p0">My Profile</p>
           <p class="p01">Acount Settings And More</p>
         </div>  
-      </a> --}}
+      </a>
       <br>
       <hr class="h0">
         <a type="submit" href="{{ route('logout')}}" class="yebtn btn btn-outline-danger">Log Out</a> 

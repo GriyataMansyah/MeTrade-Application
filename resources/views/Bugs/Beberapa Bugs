@@ -1,35 +1,29 @@
-Ini Adalah Beberapa Bug Yang Terdapat Dalam Sistem :
-
-1. [FIX] Tabel Ketika Kosong Make Header Nya Akan Menutupi Body Nya
-2. Di Rumus Transaksi Fungsi JavaScript Sedikit Macet
-3. Di Sisi Responsive JavaScript Tidak Berjalan
-4. Beberapa Fungsi Di Controller Tidak Sesuai Dengan Class Diagram
-5. [FIX] ERD Tidak Sesuai Dengan DataBase
-6. [FIX] Belum Semua Input Memiliki SwwetAllert.
-7. [FIX] Beberapa Inputan Belum Memilik Fungsi Required Pribadi
-8. ---
-7. Di Halaman Kemasan, Yang Kemasannya Tidak Mau Di Hapus (Keras KepalaKali)
-8. [FIX] Ketika Ganti Userrr ,Nama User Tidak Muncul 
-9. [FIX] Dokumen Tetap Muncul Walau Ganti AKun
-10. [FIX] Database Turunan Entitas Tidak BeRRelasi.
-11. [FIX] Terjadi Inkosistensi Data Pada Spesilisasi Entitas (Eksportir,Pembeli,Penerima).
-12. [FITUR] Di Transaksi Ketika Nambah Data Bank Lebih Dari 1 Maka Akan Terhapus Sendiri.
-13. Ketika Halaman DI Refresh Value Yang Belum Di Simpan Akan Hilang.
-14. [FIX]Tombol "Lanjut" Dan "Update" Tulisannya Menurun Sendiri, tanpa di sentuh.
-15. [FIX]Tabel Kemasan Dan Peti Kemas Bermasalah (Value Nyangkut).
-16. [FIX]Tabel Transaksi->Bank Devisa Bermasalah (Value Nyangkut).
-17. [FIX]Tabel Barang->Lartas, Entitas Bermasalah (Value Nyangut).
-18. [FIX]Tabel Pungutan Bermasalah (Value Nyangkut).
-19. Kolom Dokumen Ketika Di Hapus Mengikuti Increments.
-20. [FIX]DataBase Admin Terjadi Inkonsistensi Sebanyak 20 Lebih.
-21. [PROGRESS]Ketika Form Belum Di Submit, Valuee Di Halaman Yang Beda Tidak Muncul
-22. Valuta Tidak Di Setel Ke Mata Uang Lain
+[PROBLEM] :
+1. Di Rumus Transaksi Fungsi JavaScript Sedikit Macet
+2. Di Sisi Responsive JavaScript Tidak Berjalan
+3. Beberapa Fungsi Di Controller Tidak Sesuai Dengan Class Diagram
+4. Di Halaman Kemasan, Yang Kemasannya Tidak Mau Di Hapus (Keras KepalaKali)
+5. Ketika Halaman DI Refresh Value Yang Belum Di Simpan Akan Hilang.
+6. Kolom Dokumen Ketika Di Hapus Mengikuti Increments.
+7. Ketika Form Belum Di Submit, Valuee Di Halaman Yang Beda Tidak Muncul
+8. Valuta Tidak Di Setel Ke Mata Uang Lain
+9. Data Master HS Tidak Bisa DI Hapus Bersama Teman Temannya (DatMaster BARANG).
 
 
 
-Library Yang Di Pake
- 1. Sweet Alert
- 2. Boostrap
- 3. Boostrap Icon
- 4. Axion
- 5. Laravel
+[FIXXED] :
+1. Tabel Ketika Kosong Make Header Nya Akan Menutupi Body Nya
+2. ERD Tidak Sesuai Dengan DataBase
+3. Belum Semua Input Memiliki SwwetAllert.
+4. Beberapa Inputan Belum Memilik Fungsi Required Pribadi
+5. Tombol "Lanjut" Dan "Update" Tulisannya Menurun Sendiri, tanpa di sentuh.
+6. Tabel Kemasan Dan Peti Kemas Bermasalah (Value Nyangkut).
+7. Tabel Transaksi->Bank Devisa Bermasalah (Value Nyangkut).
+8. Tabel Barang->Lartas, Entitas Bermasalah (Value Nyangut).
+9. DataBase Admin Terjadi Inkonsistensi Sebanyak 20 Lebih.
+10. [FITUR] Di Transaksi Ketika Nambah Data Bank Lebih Dari 1 Maka Akan Terhapus Sendiri.
+11. Tabel Pungutan Bermasalah (Value Nyangkut).
+12. Ketika Ganti Userrr ,Nama User Tidak Muncul 
+13. Dokumen Tetap Muncul Walau Ganti AKun
+14. Database Turunan Entitas Tidak BeRRelasi.
+15. Terjadi Inkosistensi Data Pada Spesilisasi Entitas (Eksportir,Pembeli,Penerima).

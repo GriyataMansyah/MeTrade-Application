@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
-    <title>Dashboard</title>
+    <title>Data Master Transaksi</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -31,7 +31,7 @@
        <!-- INI BADANNYA -->
        <div class="d-none d-lg-block thisbody animate__animated animate__fadeIn">
         <div class="row">
-          <h5 class="ha5 col-9">DATA MASTER HEADER</h5>
+          <h5 class="ha5 col-9">DATA MASTER TRANSAKSI</h5>
           <div class="col-3 drow1">
             <a class="btn btn-secondary buttonkembali" href="{{route('dataMaster')}}">Kembali</a>
           </div>
@@ -80,7 +80,7 @@
       <!-- INI ADALAH BADAN RESPONSIVE -->
       <div class="d-block d-lg-none thisbody2 animate__animated animate__fadeIn">
         <div class="row">
-          <h5 class="ha5 col-8 ">DATA MASTER HEADER</h5>
+          <h5 class="ha5 col-8 ">DATA MASTER TRANSAKSI</h5>
           <div class="col-4 drow1">
               <a class="btn btn-secondary buttonkembali" href="{{route('dataMaster')}}">Kembali</a>
           </div>

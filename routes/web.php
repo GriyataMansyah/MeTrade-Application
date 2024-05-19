@@ -275,6 +275,22 @@ Route::post('/edit/tambahdata/Asuransi', [PetugasController::class, 'tambahAsura
 
 Route::post('/edit/hapusdata/Asuransi', [PetugasController::class, 'hapusAsuransi'])->name("hapusAsuransi");
 
+Route::post('/edit/tambahdata/HS', [PetugasController::class, 'tambahHS'])->name("tambahHS");
+
+Route::post('/edit/hapusdata/HS', [PetugasController::class, 'hapusHS'])->name("hapusHS");
+
+Route::post('/edit/tambahdata/Lartas', [PetugasController::class, 'tambahLartas'])->name("tambahLartas");
+
+Route::post('/edit/hapusdata/Lartas', [PetugasController::class, 'hapusLartas'])->name("hapusLartas");
+
+Route::post('/edit/tambahdata/KodeSatuan', [PetugasController::class, 'tambahKodeSatuan'])->name("tambahKodeSatuan");
+
+Route::post('/edit/hapusdata/KodeSatuan', [PetugasController::class, 'hapusKodeSatuan'])->name("hapusKodeSatuan");
+
+Route::post('/edit/tambahdata/KodeKemasan', [PetugasController::class, 'tambahKodeKemasan'])->name("tambahKodeKemasan");
+
+Route::post('/edit/hapusdata/KodeKemasan', [PetugasController::class, 'hapusKodeKemasan'])->name("hapusKodeKemasan");
+
 
 
 
@@ -289,4 +305,6 @@ Route::post('/edit/hapusdata/Asuransi', [PetugasController::class, 'hapusAsurans
 Route::view('1', 'petugas/datamaster');
 Route::view('/dokumen', 'dokumenpen');
 Route::view('/output', '/pengekspor/output')->name('output');
+
+Route::view('/petugas/profile', 'petugas/profile')->name('ProfilePetugas');
 

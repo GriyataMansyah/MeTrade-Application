@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HS;
 use App\Models\Curah;
 use App\Models\Valuta;
 use App\Models\petugas;
 use App\Models\Asuransi;
 use App\Models\Komoditi;
 use App\Models\CaraBayar;
+use App\Models\KodeSatuan;
 use App\Models\JenisDagang;
 use App\Models\JenisEkspor;
+use App\Models\Kodekemasan;
 use Illuminate\Http\Request;
 use App\Models\CaraPenyerahan;
 use App\Models\KantorMuatAsal;
 use App\Models\KategoriEkspor;
+use App\Models\DataJenisLartas;
 use App\Models\PelabuhanTujuan;
 use App\Models\PelabuhanBongkar;
 use App\Models\LokasiPemeriksaan;
@@ -682,6 +686,174 @@ public function tambahAsuransi(Request $request)
 
     return redirect()->route('dataMasterTransaksi');
 }
+
+// ------------------------------- HS ----------------------------------
+public function tambahHS(Request $request)
+{
+    $request->validate([
+        'tambahHS' => 'required',
+    ]);
+    
+    $id_pengguna = Auth::id();
+    $pengguna = Petugas::where('id_akun', $id_pengguna)->first();
+   
+    $p = new HS;
+    $p->nama = $request->input('tambahHS');
+    $p->id_data_master = $pengguna->id;
+    $p->save();
+          
+    session()->flash('success', 'Data berhasil ditambahkan.');
+
+    return redirect()->route('dataMasterBarang');  
+}
+
+public function hapusHS(Request $request)
+{
+    $request->validate([
+        'hapusHS' => 'required',
+    ]);
+
+    $namaKantorMuatAsal = $request->input('hapusHS');
+    
+    $kantorMuatAsal = HS::where('nama', $namaKantorMuatAsal)->first();
+    
+    if (!$kantorMuatAsal) {
+        return redirect()->route('dataMasterBarang')->withErrors(['Data tidak ditemukan']);
+    }
+
+    $kantorMuatAsal->delete();
+
+    session()->flash('success', 'Data berhasil dihapus.');
+
+    return redirect()->route('dataMasterBarang');
+}
+
+
+// ------------------------------- Lartas ----------------------------------
+public function tambahLartas(Request $request)
+{
+    $request->validate([
+        'tambahLartas' => 'required',
+    ]);
+    
+    $id_pengguna = Auth::id();
+    $pengguna = Petugas::where('id_akun', $id_pengguna)->first();
+   
+    $p = new DataJenisLartas;
+    $p->nama = $request->input('tambahLartas');
+    $p->id_data_master = $pengguna->id;
+    $p->save();
+          
+    session()->flash('success', 'Data berhasil ditambahkan.');
+
+    return redirect()->route('dataMasterBarang');  
+}
+
+    public function hapusLartas(Request $request)
+{
+    $request->validate([
+        'hapusLartas' => 'required',
+    ]);
+
+    $namaKantorMuatAsal = $request->input('hapusLartas');
+    
+    $kantorMuatAsal = DataJenisLartas::where('nama', $namaKantorMuatAsal)->first();
+    
+    if (!$kantorMuatAsal) {
+        return redirect()->route('dataMasterBarang')->withErrors(['Data tidak ditemukan']);
+    }
+
+    $kantorMuatAsal->delete();
+
+    session()->flash('success', 'Data berhasil dihapus.');
+
+    return redirect()->route('dataMasterBarang');
+}
+
+// ------------------------------- KODE SATUAN ----------------------------------
+public function tambahKodeSatuan(Request $request)
+{
+    $request->validate([
+        'tambahKodeSatuan' => 'required',
+    ]);
+    
+    $id_pengguna = Auth::id();
+    $pengguna = Petugas::where('id_akun', $id_pengguna)->first();
+   
+    $p = new KodeSatuan;
+    $p->nama = $request->input('tambahKodeSatuan');
+    $p->id_data_master = $pengguna->id;
+    $p->save();
+          
+    session()->flash('success', 'Data berhasil ditambahkan.');
+
+    return redirect()->route('dataMasterBarang');  
+}
+
+    public function hapusKodeSatuan(Request $request)
+{
+    $request->validate([
+        'hapusKodeSatuan' => 'required',
+    ]);
+
+    $namaKantorMuatAsal = $request->input('hapusKodeSatuan');
+    
+    $kantorMuatAsal = KodeSatuan::where('nama', $namaKantorMuatAsal)->first();
+    
+    if (!$kantorMuatAsal) {
+        return redirect()->route('dataMasterBarang')->withErrors(['Data tidak ditemukan']);
+    }
+
+    $kantorMuatAsal->delete();
+
+    session()->flash('success', 'Data berhasil dihapus.');
+
+    return redirect()->route('dataMasterBarang');
+}
+
+// ------------------------------- KODE KEMASAN ----------------------------------
+public function tambahKodeKemasan(Request $request)
+{
+    $request->validate([
+        'tambahKodeKemasan' => 'required',
+    ]);
+    
+    $id_pengguna = Auth::id();
+    $pengguna = Petugas::where('id_akun', $id_pengguna)->first();
+   
+    $p = new Kodekemasan;
+    $p->nama = $request->input('tambahKodeKemasan');
+    $p->id_data_master = $pengguna->id;
+    $p->save();
+          
+    session()->flash('success', 'Data berhasil ditambahkan.');
+
+    return redirect()->route('dataMasterBarang');  
+}
+
+    public function hapusKodeKemasan(Request $request)
+{
+    $request->validate([
+        'hapusKodeKemasan' => 'required',
+    ]);
+
+    $namaKantorMuatAsal = $request->input('hapusKodeKemasan');
+    
+    $kantorMuatAsal = Kodekemasan::where('nama', $namaKantorMuatAsal)->first();
+    
+    if (!$kantorMuatAsal) {
+        return redirect()->route('dataMasterBarang')->withErrors(['Data tidak ditemukan']);
+    }
+
+    $kantorMuatAsal->delete();
+
+    session()->flash('success', 'Data berhasil dihapus.');
+
+    return redirect()->route('dataMasterBarang');
+}
+
+
+
 
 
 
