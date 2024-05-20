@@ -7,8 +7,6 @@
 6. Kolom Dokumen Ketika Di Hapus Mengikuti Increments.
 7. Ketika Form Belum Di Submit, Valuee Di Halaman Yang Beda Tidak Muncul
 8. Valuta Tidak Di Setel Ke Mata Uang Lain
-9. Data Master HS Tidak Bisa DI Hapus Bersama Teman Temannya (DatMaster BARANG).
-
 
 
 [FIXXED] :
@@ -27,3 +25,4 @@
 13. Dokumen Tetap Muncul Walau Ganti AKun
 14. Database Turunan Entitas Tidak BeRRelasi.
 15. Terjadi Inkosistensi Data Pada Spesilisasi Entitas (Eksportir,Pembeli,Penerima).
+16. Data Master HS Tidak Bisa DI Hapus Bersama Teman Temannya (DatMaster BARANG).

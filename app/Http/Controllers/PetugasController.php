@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HS;
+use App\Models\Akun;
 use App\Models\Curah;
 use App\Models\Valuta;
 use App\Models\petugas;
@@ -25,6 +26,7 @@ use App\Models\PelabuhanMuatEkspor;
 use App\Models\DataTempatPenimbunan;
 use Illuminate\Support\Facades\Auth;
 use App\Models\DataPelabuhanMuatAsal;
+use Illuminate\Support\Facades\Session;
 
 class PetugasController extends Controller
 {
@@ -715,13 +717,13 @@ public function hapusHS(Request $request)
 
     $namaKantorMuatAsal = $request->input('hapusHS');
     
-    $kantorMuatAsal = HS::where('nama', $namaKantorMuatAsal)->first();
+    $kantorMuatAsal = HS::where('nama', $namaKantorMuatAsal);
     
     if (!$kantorMuatAsal) {
         return redirect()->route('dataMasterBarang')->withErrors(['Data tidak ditemukan']);
     }
 
-    $kantorMuatAsal->delete();
+    $kantorMuatAsal->Delete();
 
     session()->flash('success', 'Data berhasil dihapus.');
 
@@ -757,7 +759,7 @@ public function tambahLartas(Request $request)
 
     $namaKantorMuatAsal = $request->input('hapusLartas');
     
-    $kantorMuatAsal = DataJenisLartas::where('nama', $namaKantorMuatAsal)->first();
+    $kantorMuatAsal = DataJenisLartas::where('nama', $namaKantorMuatAsal);
     
     if (!$kantorMuatAsal) {
         return redirect()->route('dataMasterBarang')->withErrors(['Data tidak ditemukan']);
@@ -798,7 +800,7 @@ public function tambahKodeSatuan(Request $request)
 
     $namaKantorMuatAsal = $request->input('hapusKodeSatuan');
     
-    $kantorMuatAsal = KodeSatuan::where('nama', $namaKantorMuatAsal)->first();
+    $kantorMuatAsal = KodeSatuan::where('nama', $namaKantorMuatAsal);
     
     if (!$kantorMuatAsal) {
         return redirect()->route('dataMasterBarang')->withErrors(['Data tidak ditemukan']);
@@ -839,7 +841,7 @@ public function tambahKodeKemasan(Request $request)
 
     $namaKantorMuatAsal = $request->input('hapusKodeKemasan');
     
-    $kantorMuatAsal = Kodekemasan::where('nama', $namaKantorMuatAsal)->first();
+    $kantorMuatAsal = Kodekemasan::where('nama', $namaKantorMuatAsal);
     
     if (!$kantorMuatAsal) {
         return redirect()->route('dataMasterBarang')->withErrors(['Data tidak ditemukan']);
@@ -852,13 +854,77 @@ public function tambahKodeKemasan(Request $request)
     return redirect()->route('dataMasterBarang');
 }
 
+// ---------------------- PERUBAHAN DATA -------------------------------------
+public function gantiemail(Request $request)
+{
+    $request->validate([
+        'email' => 'required',
+    ]);
+    
+    $id_pengguna = Auth::id();
+    $pengguna = Petugas::where('id_akun', $id_pengguna)->first(); 
+    $pengguna->email = $request->input('email'); 
+    $pengguna->save();
+          
+    Session::flash('success', 'Email Berhasil Di Ganti');
+
+    return redirect()->route('ProfilePetugas');  
+    
+}
 
 
+public function gantiNomorHp(Request $request)
+{
+    $request->validate([
+        'no_hp' => 'required',
+    ]);
+    
+    $id_pengguna = Auth::id();
+    $pengguna = \App\Models\Petugas::where('id_akun', $id_pengguna)->first();
+    $pengguna->no_hp = $request->input('no_hp'); 
+    $pengguna->save();
+    
+    Session::flash('success', 'No Handphone Berhasil Di Ganti');
+
+    return redirect()->route('ProfilePetugas');  
+    
+}
 
 
-
-
-
-
+public function gantiPassword(Request $request)
+{
+    $request->validate([
+        'pass_lama' => 'required',
+        'pass_baru' => 'required',
+    ]);
+    
+    $id_pengguna = Auth::id();
+    $pengguna = \App\Models\Petugas::where('id_akun', $id_pengguna)->first();
+    $pengguna2 = Akun::find($pengguna->id_akun);
+    
+    // Memeriksa apakah password lama sesuai
+    if (!\Hash::check($request->input('pass_lama'), $pengguna2->password)) {
+        Session::flash('error', 'Password Lama Tidak Valid');
+        return redirect()->route('profile');
+    }
+    
+    // Memperbarui password dengan password baru
+    $pengguna2->password = bcrypt($request->input('pass_baru'));
+    $pengguna2->save();
+    
+    Session::flash('success', 'Password berhasil diubah.');
+    
+    return redirect()->route('ProfilePetugas');
+    
+}
 
 }
+
+
+
+
+
+
+
+
+

@@ -50,7 +50,7 @@ class PengeksporController extends Controller
         ]);
         
         $id_pengguna = Auth::id();
-        $pengguna = \App\Models\pengekspor::where('id_akun', $id_pengguna)->first(); // Menggunakan first() untuk mengambil satu objek
+        $pengguna = \App\Models\pengekspor::where('id_akun', $id_pengguna)->first(); 
         $pengguna->email = $request->input('email'); 
         $pengguna->save();
               

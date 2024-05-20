@@ -97,7 +97,43 @@
           <div class="container-fluid">
             <div class="row">
               <table class="table tabeldata">
-           ...
+                <thead>
+                  <tr>
+                    <th class="centered" scope="col">Id</th>
+                    <th class="centered" scope="col">Data</th>
+                    <th class="centered" scope="col">Tambah</th>
+                    <th class="centered" scope="col">Hapus</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th class="centered" scope="row">1</th>
+                    <td class="centered">HS</td>
+                    <td class="centered"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#35">Tambah</button></td>
+                    <td class="centered"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#36">Hapus</button></td>
+                  </tr>
+        
+                  <tr>
+                    <th class="centered" scope="row">2</th>
+                    <td class="centered" >Lartas</td>
+                    <td class="centered" ><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#37">Tambah</button></td>
+                    <td class="centered"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#38">Hapus</button></td>
+                  </tr>
+        
+                  <tr>
+                    <th class="centered" scope="row">3</th>
+                    <td class="centered">Kode Satuan</td>
+                    <td class="centered"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#41">Tambah</button></td>
+                    <td class="centered"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#42">Hapus</button></td>
+                  </tr>
+        
+                  <tr>
+                    <th class="centered" scope="row">4</th>
+                    <td class="centered" >Kode Kemasan</td>
+                    <td class="centered" ><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#43">Tambah</button></td>
+                    <td class="centered"><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#44">Hapus</button></td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>

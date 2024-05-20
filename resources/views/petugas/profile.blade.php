@@ -25,8 +25,8 @@ $akuns = \App\Models\Akun::where('id', $loggedInUserId)->get();
       });
   </script>
 </head>
-  @include("layout.headerweb")
-  @include("layout.popuplogout")
+  @include("layout.headerwebpetugas")
+  @include("layout.popuplogoutpetugas")
   @if(Session::has('success'))
   <script>
   Swal.fire({
@@ -250,10 +250,10 @@ $akuns = \App\Models\Akun::where('id', $loggedInUserId)->get();
               </div>
             </div>
 
-    @include('layout.profilepopuppassword')
-    @include('layout.profilepopupemail')
-    @include('layout.profilepopupphone')   
-    @include('layout.sidebar')
+    @include('layout.profilepopuppasswordPETUGAS')
+    @include('layout.profilepopupemailPETUGAS')
+    @include('layout.profilepopupphonePETUGAS')   
+    @include('layout.sidebarpetugas')
     @include('layout.footer')
     <script src="{{ asset('js/script.js')}}"></script>
 </body>

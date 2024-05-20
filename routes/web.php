@@ -14,6 +14,7 @@ use App\Http\Controllers\PernyataanController;
 use App\Http\Controllers\DataPengangkutController;
 use App\Http\Controllers\DokumenPendukungController;
 
+// ->middleware('protect.route')
 
 Route::get('', [AkunController::class, 'tampilkanHalamanLogin'])->name('login');
 
@@ -290,6 +291,13 @@ Route::post('/edit/hapusdata/KodeSatuan', [PetugasController::class, 'hapusKodeS
 Route::post('/edit/tambahdata/KodeKemasan', [PetugasController::class, 'tambahKodeKemasan'])->name("tambahKodeKemasan");
 
 Route::post('/edit/hapusdata/KodeKemasan', [PetugasController::class, 'hapusKodeKemasan'])->name("hapusKodeKemasan");
+
+Route::post('/edit/ProfilePetugas/Email', [PetugasController::class, 'gantiemail'])->name("gantiemail");
+
+Route::post('/edit/ProfilePetugas/NomorHP', [PetugasController::class, 'gantiNomorHp'])->name("gantiNomorHp2");
+
+Route::post('/edit/ProfilePetugas/Password', [PetugasController::class, 'gantiPassword'])->name("gantiPassword2");
+
 
 
 
