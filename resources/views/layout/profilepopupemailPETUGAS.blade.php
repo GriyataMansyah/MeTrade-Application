@@ -8,7 +8,7 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                          <form method="post" action="{{route('gantiemail')}}">
+                          <form method="post" action="{{route('gantiemail2')}}">
                             @csrf
                             <div class="form-group row mb-3">
                               <label  class="control-label col-3 col-form-label"><p class="h6 text-secondary">E-mail Baru</p></label>

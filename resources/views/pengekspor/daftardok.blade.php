@@ -23,6 +23,35 @@ $Dokumen = \App\Models\Dokumen::whereIn('id', $Dokumen1)->get();
       window.addEventListener('load', function() {
           sessionStorage.clear();
       });
+    
+        function printKucing() {
+            // Muat konten halaman kucing menggunakan AJAX
+            fetch('{{ route('output') }}')
+                .then(response => response.text())
+                .then(data => {
+                    // Buat iframe tersembunyi
+                    const iframe = document.createElement('iframe');
+                    iframe.style.position = 'absolute';
+                    iframe.style.width = '0';
+                    iframe.style.height = '0';
+                    iframe.style.border = 'none';
+                    document.body.appendChild(iframe);
+
+                    // Masukkan konten ke dalam iframe
+                    iframe.contentDocument.open();
+                    iframe.contentDocument.write(data);
+                    iframe.contentDocument.close();
+
+                    // Cetak konten dalam iframe
+                    iframe.contentWindow.print();
+
+                    // Hapus iframe setelah pencetakan selesai
+                    iframe.contentWindow.onafterprint = function() {
+                        document.body.removeChild(iframe);
+                    };
+                });
+        }
+ 
   </script>
 </head>
 <body onload="clearLocalStorage()">
@@ -78,7 +107,7 @@ $Dokumen = \App\Models\Dokumen::whereIn('id', $Dokumen1)->get();
                 ?>
                 @foreach ($Headers as $h)
                 <td class="centered">
-                  <a onclick="print()" href="{{route('output')}}" target="_blank">{{ $h->nomor_pengajuan}}</a>
+                  <div type='button' onclick="printKucing()">{{ $h->nomor_pengajuan}}</div>
                   {{-- YANG RESPONSIVE BELUM YAK --}}
                 </td> 
                 @endforeach

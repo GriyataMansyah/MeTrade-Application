@@ -1,5 +1,5 @@
 <?php
-$kantor_muat_asal = \App\Models\kantor_muat_asal::all();
+$kantor_muat_asal = \App\Models\KantorMuatAsal::all();
 $pelabuhan = \App\Models\PelabuhanMuatEkspor::all();
 $JenisEkspor = \App\Models\JenisEkspor::all();
 $KategoriEkspor = \App\Models\KategoriEkspor::all();

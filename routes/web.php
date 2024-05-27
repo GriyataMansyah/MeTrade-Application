@@ -292,7 +292,7 @@ Route::post('/edit/tambahdata/KodeKemasan', [PetugasController::class, 'tambahKo
 
 Route::post('/edit/hapusdata/KodeKemasan', [PetugasController::class, 'hapusKodeKemasan'])->name("hapusKodeKemasan");
 
-Route::post('/edit/ProfilePetugas/Email', [PetugasController::class, 'gantiemail'])->name("gantiemail");
+Route::post('/edit/ProfilePetugas/Email', [PetugasController::class, 'gantiemail'])->name("gantiemail2");
 
 Route::post('/edit/ProfilePetugas/NomorHP', [PetugasController::class, 'gantiNomorHp'])->name("gantiNomorHp2");
 
