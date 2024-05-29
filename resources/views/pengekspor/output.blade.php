@@ -43,7 +43,11 @@ $HargaKemasan = \App\Models\HargaKemasan::where('id', $Barang->id_harga_kemasan)
 
 $InformasiAsalBarang = \App\Models\InformasiAsalBarang::where('id', $Barang->id_harga_kemasan)->first();
 
+$InformasiBarang = \App\Models\InformasiBarang::where('id', $Barang->id_harga_kemasan)->first(); 
 
+$HargaKemasan = \App\Models\HargaKemasan::where('id', $Barang->id_harga_kemasan)->first(); 
+
+$Bank = \App\Models\Bank::where('seri', $account3->id)->first(); 
 
 
 ?>
@@ -147,11 +151,9 @@ $InformasiAsalBarang = \App\Models\InformasiAsalBarang::where('id', $Barang->id_
 
             <td colspan="4" style="line-height: 0.4;">
                 <h5>H. KOLOM KHUSUS BEA DAN CUKAI</h5>
-                <p>1. Nomor Pendaftaran    :</p>
-                <p>Tanggal  :</p>
-                <p>2. Nomor BC.1.1    :</p>
-                <p>Tanggal  :</p>
-                <p>Pos/Sub Pos  :</p>
+                <p>1. Nomor Pendaftaran    :   {{ $Header->nomor_pengajuan }}</p>
+                <p>2. Nomor BC 3.0    : {{ $account3->id }}</p>
+                <p>3. Pos/Sub Pos  : - </p>
             </td>
         </tr>
 
@@ -232,10 +234,11 @@ $InformasiAsalBarang = \App\Models\InformasiAsalBarang::where('id', $Barang->id_
  
          <tr>
              <td colspan="3" rowspan="3" style="line-height: 0.4;">
-                 <p>27. Nomor & Tgl Invoice    :</p>
-                 <p>28. Nomor & Tgl Packing List  :</p>
-                 <p>29. Jenis, Nomor & Tgl Dokumen lainnya  :</p>
-                 <p>    Kantor Bea Cukai pendaftaran  :</p>
+                 <p>27. Nomor & Tgl Invoice    : BAC.039-24-2 & 12 Juni 2024</p>
+                 {{-- TODAY --}}
+                 <p>28. Nomor & Tgl Packing List  :BAC 029-24-2 & {{ \Carbon\Carbon::parse($InformasiTempat->tanggal_perkiraan_ekspor)->format('d-m-Y') }} </p>
+                 <p>29. Jenis, Nomor & Tgl Dokumen lainnya  : - </p>
+                 <p>    Kantor Bea Cukai pendaftaran  : {{ $Header->kantor_muat_asal }} </p>
              </td>
  
              <td colspan="4"style="line-height: 0.4;">
@@ -255,7 +258,7 @@ $InformasiAsalBarang = \App\Models\InformasiAsalBarang::where('id', $Barang->id_
          </tr>
 
          <td colspan="3" style="line-height: 0.4;">
-            <p>33. Bank Devisa Hasil Ekspor    :</p>
+            <p>33. Bank Devisa Hasil Ekspor    :{{ $Bank->nama_bank }} </p>
             <p>34. Jenis Valuta  :   {{ $InformasiPembayaran->valuta }}</p>
             <p>35. Nilai Ekspor  : {{ $InformasiPembayaran->nilai_ekspor }}</p>
         </td>
@@ -304,18 +307,18 @@ $InformasiAsalBarang = \App\Models\InformasiAsalBarang::where('id', $Barang->id_
             </td>
 
             <td>46. Perizinan Ekspor </td>
-            <td>47. HE barang dan tarif BK pada tanggal Pendaftaran </td>
-            <td>48. Jumlah dan jenis sat, berat bersih(kg), volume(m3)  </td>
+            <td>47. HS barang dan tarif BK pada tanggal Pendaftaran </td>
+            <td>48. Jumlah, jenis sat, berat bersih(kg), dan volume(m3)  </td>
             <td><p>49. Negara Asal Barang </p>
                 <p>50. Daerah Asal Barang </p>
             </td>
             <td>51. Jumlah nilai FOB  </td>
         </tr>
-        <td style="height: 30px;"></td>
-        <td style="height: 30px;"></td>
-        <td style="height: 30px;"></td>
-        <td style="height: 30px;"></td>
-        <td style="height: 30px;"></td>
+        <td style="height: 30px;">1</td>
+        <td style="height: 30px;">{{ $InformasiBarang->HS }},{{ $InformasiBarang->uraian }} dan {{ $InformasiBarang->kode }}{{ $InformasiBarang->merk }}, {{ $InformasiBarang->tipe }}, {{ $InformasiBarang->ukuran }} </td>
+        <td style="height: 30px;">Perizinan Eksportir</td>
+        <td style="height: 30px;">{{ $InformasiBarang->HS }}, dan {{ $InformasiPembayaran->nilai_ekspor }}</td> 
+        <td style="height: 30px;">{{ $InformasiBarang->lartas }}, {{ $InformasiBarang->kode }}, {{ $InformasiPungutanBerat->berat_bersih }}, dan {{ $HargaKemasan->volume }}</td>
         <td style="height: 30px;">{{ $InformasiAsalBarang->negara_asal_barang }}<br><Br>{{ $InformasiAsalBarang->daerah_asal_barang }}</td>
         <td style="height: 30px;">{{ $HargaKemasan->harga_satuan_fob }}</td>
 
@@ -337,12 +340,13 @@ $InformasiAsalBarang = \App\Models\InformasiAsalBarang::where('id', $Barang->id_
                 <p>Dengan ini saya menyatakan bertanggungjawan atas kebenaran hal-hal yang diberitahukan dalam Pemberitahuan Ekspor barang ini,
                     serta bersedia dikenakan sanksi sesuai dengan ketentuan di bidang kepabeanan apabila terdapat kesalahan.
                 </p> <br>
-                <p style="text-align: right; padding-right: 6rem;">
-                    ...................Tanggal...................
+                <p style="text-align: right; padding-right: 8rem;">
+                    Batam, 12 Juni 2024
+                    {{-- TODAY --}}
                 </p><br><br><br>
 
                 <p style="text-align: right; padding-right: 8rem;">
-                    (.............................)
+                    (..............................)
                 </p>
             </td>
         </tr>
