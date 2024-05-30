@@ -1,4 +1,6 @@
 <?php
+$id = session('id_dokumen');
+$Header = \App\Models\header::all();
 $kantor_muat_asal = \App\Models\KantorMuatAsal::all();
 $pelabuhan = \App\Models\PelabuhanMuatEkspor::all();
 $JenisEkspor = \App\Models\JenisEkspor::all();
@@ -7,9 +9,10 @@ $JenisDagang = \App\Models\JenisDagang::all();
 $CaraBayar = \App\Models\CaraBayar::all();
 $Komoditi = \App\Models\Komoditi::all();
 $Curah = \App\Models\Curah::all();
-$Header = \App\Models\Header::all();
 $InformasiEkspors = \App\Models\InformasiEkspors::all();
+$headerid = $Header->where('id_dokumen', $id)->first();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +32,6 @@ $InformasiEkspors = \App\Models\InformasiEkspors::all();
 </head>
 @include('layout.headerweb')
 @include('layout.popuplogout')
-<?php $id = session('id_dokumen');?>
 
 <!-- INI BADANNYA -->
 <div class="d-none d-lg-block thisbody animate__animated animate__fadeIn">
@@ -75,149 +77,159 @@ $InformasiEkspors = \App\Models\InformasiEkspors::all();
 
 
         <div class="form-group">
-          <label for="kantor_pabean_muat_asal">Kantor Pabean Muat Asal</label>
-          <select id="kantor_pabean_muat_asal" name="kantor_asal" required>
+          <label for="kantor_asal">Kantor Pabean Muat Asal</label>
+          <select name="kantor_asal" class="form-control @error('kantor_asal') is-invalid @enderror">
+              @foreach ($Header->where('id_dokumen', $id) as $he)
+                  <option value="{{ $he->kantor_muat_asal }}" selected>{{ $he->kantor_muat_asal }}</option>
+              @endforeach
+              @foreach ($kantor_muat_asal as $kantor)
+                  <option value="{{ $kantor->nama }}" {{ (old('kantor_asal') == $kantor->nama) ? 'selected' : '' }}>
+                      {{ $kantor->nama }}
+                  </option>
+              @endforeach
+          </select>
+          @error('kantor_asal')
+              <div class="invalid-feedback">{{ $message }}</div>
+          @enderror
+      </div>
+      
+
+      <div class="form-group">
+        <label for="kantor_asal">Pelabuhan Muat Ekspor</label>
+        <select name="pelabuhan_ekspor" class="form-control @error('pelabuhan_ekspor') is-invalid @enderror">
             @foreach ($Header->where('id_dokumen', $id) as $he)
-            <option value="{{$he->kantor_muat_asal}}">{{$he->kantor_muat_asal}}</option>
+                <option value="{{ $he->pelabuhan_muat_ekspor }}" selected>{{ $he->pelabuhan_muat_ekspor }}</option>
             @endforeach
-            
-            <?php
-            foreach ($kantor_muat_asal as $kantor) {
-                ?>
-                <option value="<?php echo $kantor->nama; ?>"><?php echo $kantor->nama; ?></option>
-                <?php
-            }?>
+            @foreach ($pelabuhan as $kantor)
+                <option value="{{ $kantor->nama }}" {{ old('pelabuhan_ekspor') == $kantor->nama ? 'selected' : '' }}>
+                    {{ $kantor->nama }}
+                </option>
+            @endforeach
         </select>
-        </div>
+        @error('pelabuhan_ekspor')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
 
+    <div class="form-group">
+      <label for="kantor_pabean_muat_ekspor">Kantor Pabean Muat Ekspor</label>
+      <select name="kantor_ekspor" class="form-control @error('kantor_ekspor') is-invalid @enderror">
+          @foreach ($Header->where('id_dokumen', $id) as $he)
+              <option value="{{ $he->kantor_muat_ekspor }}" selected>{{ $he->kantor_muat_ekspor }}</option>
+          @endforeach
+          @foreach ($pelabuhan as $kantor)
+              <option value="{{ $kantor->nama }}" {{ old('kantor_ekspor') == $kantor->nama ? 'selected' : '' }}>
+                  {{ $kantor->nama }}
+              </option>
+          @endforeach
+      </select>
+      @error('kantor_ekspor')
+          <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
+  </div>
 
-        <div class="form-group">
-          <label for="pelabuhan_muat_ekspor">Pelabuhan Muat Ekspor</label>
-          <select id="pelabuhan_muat_ekspor" name="pelabuhan_ekspor" required>
-            @foreach ($Header->where('id_dokumen', $id) as $he)
-            <option value="{{$he->pelabuhan_muat_ekspor}}">{{$he->pelabuhan_muat_ekspor}}</option>
-            @endforeach
-            <?php
-            foreach ($pelabuhan as $pel) {
-                ?>
-                <option value="<?php echo $pel->nama; ?>"><?php echo $pel->nama; ?></option>
-                <?php
-            }?>
-          </select>
-        </div>
+  <div class="form-group">
+    <label for="jenis_ekspor">Jenis Ekspor</label>
+    <select name="jenis_ekspor" class="form-control @error('jenis_ekspor') is-invalid @enderror">
+        @foreach ($InformasiEkspors->where('id_dokumen', $id) as $he)
+            <option value="{{ $he->jenis_ekspor }}" selected>{{ $he->jenis_ekspor }}</option>
+        @endforeach
+        @foreach ($JenisEkspor as $kantor)
+            <option value="{{ $kantor->nama }}" {{ old('jenis_ekspor') == $kantor->nama ? 'selected' : '' }}>
+                {{ $kantor->nama }}
+            </option>
+        @endforeach
+    </select>
+    @error('jenis_ekspor')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
 
+<div class="form-group">
+  <label for="kategori_ekspor">Kategori Ekspor</label>
+  <select name="kategori_ekspor" class="form-control @error('kategori_ekspor') is-invalid @enderror">
+      @foreach ($InformasiEkspors->where('id_dokumen', $id) as $he)
+          <option value="{{ $he->kategori_ekspor }}" selected>{{ $he->kategori_ekspor }}</option>
+      @endforeach
+      @foreach ($KategoriEkspor as $kantor)
+          <option value="{{ $kantor->nama }}" {{ old('kategori_ekspor') == $kantor->nama ? 'selected' : '' }}>
+              {{ $kantor->nama }}
+          </option>
+      @endforeach
+  </select>
+  @error('kategori_ekspor')
+      <div class="invalid-feedback">{{ $message }}</div>
+  @enderror
+</div>
 
-        <div class="form-group">
-          <label for="kantor_pabean_muat_ekspor">Kantor Pabean Muat Ekspor</label>
-          <select type="text" id="kantor_pabean_muat_ekspor" name="kantor_ekspor" required>
-            @foreach ($Header->where('id_dokumen', $id) as $he)
-            <option value="{{$he->kantor_muat_ekspor}}">{{$he->kantor_muat_ekspor}}</option>
-            @endforeach
-            <?php
-            foreach ($pelabuhan as $pel) {
-                ?>
-                <option value="<?php echo $pel->nama; ?>"><?php echo $pel->nama; ?></option>
-                <?php
-            }?>
-          </select>
-        </div>
+<div class="form-group">
+  <label for="cara_dagang">Cara Dagang</label>
+  <select name="cara_dagang" class="form-control @error('cara_dagang') is-invalid @enderror">
+      @foreach ($InformasiEkspors->where('id_dokumen', $id) as $he)
+          <option value="{{ $he->cara_dagang }}" selected>{{ $he->cara_dagang }}</option>
+      @endforeach
+      @foreach ($JenisDagang as $kantor)
+          <option value="{{ $kantor->nama }}" {{ old('cara_dagang') == $kantor->nama ? 'selected' : '' }}>
+              {{ $kantor->nama }}
+          </option>
+      @endforeach
+  </select>
+  @error('cara_dagang')
+      <div class="invalid-feedback">{{ $message }}</div>
+  @enderror
+</div>
 
-        
-        <div class="form-group">
-          <label for="jenis_ekspor">Jenis Ekspor</label>
-          <select id="jenis_ekspor" name="jenis_ekspor" required>
-            @foreach ($InformasiEkspors->where('id', $id) as $ho)
-            <option value="{{$ho->jenis_ekspor}}">{{$ho->jenis_ekspor}}</option>
-            @endforeach
-            <?php
-            foreach ($JenisEkspor as $jen) {
-                ?>
-                <option value="<?php echo $jen->nama; ?>"><?php echo $jen->nama; ?></option>
-                <?php
-            }?>
-          </select>
-        </div>
-
-
-        <div class="form-group">
-          <label for="kategori_ekspor">Kategori Ekspor</label>
-          <select id="kategori_ekspor" name="kategori_ekspor" required>
-            @foreach ($InformasiEkspors->where('id', $id) as $ho)
-            <option value="{{$ho->kategori_ekspor}}">{{$ho->kategori_ekspor}}</option>
-            @endforeach
-            <?php
-            foreach ($KategoriEkspor as $kat) {
-                ?>
-                <option value="<?php echo $kat->nama; ?>"><?php echo $kat->nama; ?></option>
-                <?php
-            }?>
+<div class="form-group">
+  <label for="cara_bayar">Cara Bayar</label>
+  <select name="cara_bayar" class="form-control @error('cara_bayar') is-invalid @enderror">
+      @foreach ($Header->where('id_dokumen', $id) as $he)
+          <option value="{{ $he->cara_bayar }}" selected>{{ $he->cara_bayar }}</option>
+      @endforeach
+      @foreach ($JenisDagang as $kantor)
+          <option value="{{ $kantor->nama }}" {{ old('cara_bayar') == $kantor->nama ? 'selected' : '' }}>
+              {{ $kantor->nama }}
+          </option>
+      @endforeach
+  </select>
+  @error('cara_bayar')
+      <div class="invalid-feedback">{{ $message }}</div>
+  @enderror
+</div>
     
-          </select>
-        </div>
+<div class="form-group">
+  <label for="komoditi">Komoditi</label>
+  <select name="komoditi" class="form-control @error('komoditi') is-invalid @enderror">
+      @foreach ($Header->where('id_dokumen', $id) as $he)
+          <option value="{{ $he->komoditi }}" selected>{{ $he->komoditi }}</option>
+      @endforeach
+      @foreach ($Komoditi as $kantor)
+          <option value="{{ $kantor->nama }}" {{ old('komoditi') == $kantor->nama ? 'selected' : '' }}>
+              {{ $kantor->nama }}
+          </option>
+      @endforeach
+  </select>
+  @error('komoditi')
+      <div class="invalid-feedback">{{ $message }}</div>
+  @enderror
+</div>
 
-
-        <div class="form-group">
-          <label for="cara_dagang" >Cara Dagang</label>
-          <select id="cara_dagang" name="cara_dagang" required>
-            @foreach ($InformasiEkspors->where('id', $id) as $ho)
-            <option value="{{$ho->cara_dagang}}">{{$ho->cara_dagang}}</option>
-            @endforeach
-            <?php
-            foreach ($JenisDagang as $jd) {
-                ?>
-                <option value="<?php echo $jd->nama; ?>"><?php echo $jd->nama; ?></option>
-                <?php
-            }?>
-          </select>
-        </div>
-
-
-        <div class="form-group">
-          <label for="cara_bayar">Cara Bayar</label>
-          <select id="cara_bayar" name="cara_bayar" required>
-            @foreach ($Header->where('id_dokumen', $id) as $he)
-            <option value="{{$he->cara_bayar}}">{{$he->cara_bayar}}</option>
-            @endforeach
-            <?php
-            foreach ($CaraBayar as $cb) {
-                ?>
-                <option value="<?php echo $cb->nama; ?>"><?php echo $cb->nama; ?></option>
-                <?php
-            }?>
-          </select>
-        </div>
-
-
-        <div class="form-group">
-          <label for="komoditi">Komoditi</label>
-          <select id="komoditi" name="komoditi" required>
-            @foreach ($Header->where('id_dokumen', $id) as $he)
-            <option value="{{$he->komoditi}}">{{$he->komoditi}}</option>
-            @endforeach
-            <?php
-            foreach ($Komoditi as $ko) {
-                ?>
-                <option value="<?php echo $ko->nama; ?>"><?php echo $ko->nama; ?></option>
-                <?php
-            }?>
-          </select>
-        </div>
-
-
-        <div class="form-group">
-          <label for="curah">Curah</label>
-          <select id="curah" name="curah" required>
-            @foreach ($Header->where('id_dokumen', $id) as $he)
-            <option value="{{$he->curah}}">{{$he->curah}}</option>
-            @endforeach
-            <?php
-            foreach ($Curah as $cu) {
-                ?>
-                <option value="<?php echo $cu->nama; ?>"><?php echo $cu->nama; ?></option>
-                <?php
-            }?>
-          </select>
-        </div>
+<div class="form-group">
+  <label for="curah">Curah</label>
+  <select name="curah" class="form-control @error('curah') is-invalid @enderror">
+      @foreach ($Header->where('id_dokumen', $id) as $he)
+          <option value="{{ $he->curah }}" selected>{{ $he->curah }}</option>
+      @endforeach
+      @foreach ($Curah as $kantor)
+          <option value="{{ $kantor->nama }}" {{ old('curah') == $kantor->nama ? 'selected' : '' }}>
+              {{ $kantor->nama }}
+          </option>
+      @endforeach
+  </select>
+  @error('curah')
+      <div class="invalid-feedback">{{ $message }}</div>
+  @enderror
+</div>
+      
         <button class="inv" type="submit" value="submit" id="submit">
       </form>
       </div>

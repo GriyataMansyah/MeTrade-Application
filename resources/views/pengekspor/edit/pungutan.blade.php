@@ -1,4 +1,7 @@
-<?php $Pungutan = \App\Models\Pungutan::all(); ?>
+<?php 
+$id = session('id_dokumen');
+$Pungutan = \App\Models\Pungutan::all(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,7 +65,7 @@
                       </td>
                   </tr>
               @else
-                  @foreach ($Pungutan as $a)
+                  @foreach ($Pungutan->where('id_dokumen', $id) as $a)
                   <td class="centered">{{ $a->pungutan }}</td>
                   <td class="centered">{{ $a->dibayar }}</td>
                   <td class="centered">{{ $a->ditanggung_pemerintah }}</td>
