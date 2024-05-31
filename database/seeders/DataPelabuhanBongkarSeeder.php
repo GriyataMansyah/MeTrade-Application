@@ -18,17 +18,17 @@ class DataPelabuhanBongkarSeeder extends Seeder
         $this->call(DataMasterSeeder::class);
         $data = DataMaster::first();
         PelabuhanBongkar::create([
-            "nama"=>'BTH - BATAM',
+            "nama"=>'POS - Port Of Singapore',
             "id_data_master" => $data->id,
         ]);
 
         PelabuhanBongkar::create([
-            "nama"=>'GLG - GALANG',
+            "nama"=>'JP - Jurong Port',
             "id_data_master" => $data->id,
         ]);
 
         PelabuhanBongkar::create([
-            "nama"=>'RMB - REMPANG',
+            "nama"=>'KH - Keppel Harbour',
             "id_data_master" => $data->id,
         ]);
     }

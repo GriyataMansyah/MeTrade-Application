@@ -17,19 +17,36 @@ class NamaBankSeeder extends Seeder
     {
         $this->call(DataMasterSeeder::class);
         $data = DataMaster::first();
-        NamaBank::create([
-            "nama"=>"BCA",
-            "id_data_master" => $data->id,
-        ]);
 
         NamaBank::create([
-            "nama"=>"BNI",
-            "id_data_master" => $data->id,
-        ]);
-
-        NamaBank::create([
-            "nama"=>"BRI",
-            "id_data_master" => $data->id,
-        ]);
+                "nama"=>"Bank of Singapore",
+                "id_data_master" => $data->id,
+            ]);
+            NamaBank::create([
+                "nama"=>"Development Bank of Singapore",
+                "id_data_master" => $data->id,
+            ]);
+            NamaBank::create([
+                "nama"=>"Oversea-Chinese Banking Corporation",
+                "id_data_master" => $data->id,
+            ]);
+            NamaBank::create([
+                "nama"=>"United Overseas Bank",
+                "id_data_master" => $data->id,
+            ]);
+            NamaBank::create([
+                "nama"=>"Citibank Singapore",
+                "id_data_master" => $data->id,
+            ]);
+            NamaBank::create([
+                "nama"=>"Standard Chartered",
+                "id_data_master" => $data->id,
+            ]);
+            NamaBank::create([
+                "nama"=>"HSBC Singapore",
+                "id_data_master" => $data->id,
+            ]);
+            
+        
     }
 }

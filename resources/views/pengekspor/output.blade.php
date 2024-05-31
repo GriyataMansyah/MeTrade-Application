@@ -143,10 +143,10 @@ $Bank = \App\Models\Bank::where('seri', $account3->id)->first();
                 <h5>A.  Kantor Pabean</h5>
                 <p>1. Kantor Pabean Pemuatan    : {{ $Header->kantor_muat_asal }}</p>
                 <p>2. Kantor Pabean Ekspor  : {{ $Header->kantor_muat_ekspor }}</p>
-                <h5>B.  Jenis Ekspor    : {{ $InformasiEkspors->jenis_ekspor }}</h5>
-                <h5>C.  Kategori Ekspor   : {{ $InformasiEkspors->kategori_ekspor }}</h5>
-                <h5>D.  Cara Perdagangan    :  {{ $InformasiEkspors->cara_dagang }}</h5>
-                <h5>E.  Cara Pembayaran    : {{ $Header->cara_bayar }}</h5>
+                <h5>B.  Jenis Ekspor    : {{ $InformasiEkspors->jenis_ekspor ?? "" }}</h5>
+                <h5>C.  Kategori Ekspor   : {{ $InformasiEkspors->kategori_ekspor ?? ""}}</h5>
+                <h5>D.  Cara Perdagangan    :  {{ $InformasiEkspors->cara_dagang ?? "" }}</h5>
+                <h5>E.  Cara Pembayaran    : {{ $Header->cara_bayar ?? "" }}</h5>
             </td>
 
             <td colspan="4" style="line-height: 0.4;">
@@ -214,7 +214,7 @@ $Bank = \App\Models\Bank::where('seri', $account3->id)->first();
                  <p>17. Cara Pengangkutan    :    {{ $SaranaAngkut->cara_pengangkutan }} </p>
                  <p>18. Nama & Bendera Sarana Pengangkutan  :  {{ $SaranaAngkut->bendera }} </p>
                  <p>19. No. Pengangkut (Voy/Flight/Nopol)  :   {{ $SaranaAngkut->nomor_voy }}</p>
-                 <p>20. Tanggal Perkiraan Ekspor  :   {{ \Carbon\Carbon::parse($InformasiTempat->tanggal_perkiraan_ekspor)->format('d-m-Y') }}</p>
+                 <p>20. Tanggal Perkiraan Ekspor  :   {{ \Carbon\Carbon::parse($InformasiTempat->tanggal_perkiraan_ekspor ?? "")->format('d-m-Y') }}</p>
              </td>
  
              <td colspan="4" style="line-height: 0.4;">

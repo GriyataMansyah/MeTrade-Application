@@ -51,7 +51,7 @@ $Bank = \App\Models\Bank::all();
           <div class="form-group row ">
             <label for="input1" class="col-sm-2 col-form-label">Valuta</label>
             <div class="col-sm-4">
-                <select id="rupiah1" class="form-select" onchange="updateInputValue()" name="valuta">
+                <select id="rupiah1" class="form-select" name="valuta">
                   <option></option>
                   @foreach ($Valuta as $v)
                       <option value="<?php echo $v->nama ?>"><?php echo $v->nama ?></option>
@@ -66,11 +66,11 @@ $Bank = \App\Models\Bank::all();
         <div class="form-group row my-4">
           <label for="input1" class="col-sm-2 col-form-label">NDPMB</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="rupiah2" name="NDPMB" readonly>
+            <input type="text" class="form-control" id="rupiah2" name="NDPMB" onkeypress="return hanyaAngka(event)">
           </div>
-          <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox" id="pphCheckbox" onchange="updatePphValue()"> PPh</label>
+          <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox" id="pphCheckbox"> PPh</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="DATA2" name="pph" readonly>
+            <input type="text" class="form-control" id="DATA2" name="pph" onkeypress="return hanyaAngka(event)">
           </div>       
         </div>
         <div class="form-group row my-4">
@@ -85,27 +85,28 @@ $Bank = \App\Models\Bank::all();
           </div>
           <label for="input1" class="col-sm-2 col-form-label ">Nilai Bea Keluar </label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="nilai_bea_keluar" name="nilai_bea_keluar" readonly>
+            <input type="text" class="form-control" id="nilai_bea_keluar" name="nilai_bea_keluar" onkeypress="return hanyaAngka(event)">
           </div>  
         </div>
        <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label" >Nilai Ekspor</label>
         <div class="col-sm-4">
-          <select id="DATA" class="form-select" onchange="updateInputValue2()" name="nilai_ekspor">
+          <input id="DATA" class="form-control" name="nilai_ekspor" onkeypress="return hanyaAngka(event)">
+          {{-- <select id="DATA" class="form-select" onchange="updateInputValue2()" name="nilai_ekspor">
             <option value=""></option>
             <option value="50000000">Rp50.000.000</option>
             <option value="250000000">Rp250.000.000</option>
             <option value="500000000">Rp500.000.000</option>
             <option value="5000000000">Rp5.000.000.000</option>
             <option value="5000000000">Rp5.000.000.000.000</option>
-        </select> 
+        </select>  --}}
         </div>
         <div class="col-6"></div>       
       </div>
       <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label">Freight</label>
         <div class="col-sm-4">
-          <input type="text" class="form-control" name="freight" id="freight" onkeypress="return hanyaAngka(event)">
+          <input type="text" class="form-control" name="freight" id="freight">
         </div>
         <div class="col-6"></div>
       </div>
@@ -244,11 +245,11 @@ $Bank = \App\Models\Bank::all();
                       <div class="form-group row my-4">
                         <label for="input1" class="col-sm-2 col-form-label">NDPMB</label>
                         <div class="col-sm-4">
-                          <input type="text" class="form-control" id="rupiah2" name="NDPMB" id="ndpmb" readonly>
+                          <input type="text" class="form-control" id="rupiah2" name="NDPMB" id="ndpmb" onkeypress="return hanyaAngka(event)">
                         </div>
-                        <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox" id="pphCheckbox" onchange="updatePphValue()"> PPh</label>
+                        <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox" id="pphCheckbox"> PPh</label>
                         <div class="col-sm-4">
-                          <input type="text" class="form-control" id="DATA2" name="pph" readonly>
+                          <input type="text" class="form-control" id="DATA2" name="pph" onkeypress="return hanyaAngka(event)">
                         </div>       
                       </div>
                       <div class="form-group row my-4">
@@ -263,27 +264,28 @@ $Bank = \App\Models\Bank::all();
                         </div>
                         <label for="input1" class="col-sm-2 col-form-label ">Nilai Bea Keluar </label>
                         <div class="col-sm-4">
-                          <input type="text" class="form-control" id="nilai_bea_keluar" name="nilai_bea_keluar" readonly>
+                          <input type="text" class="form-control" id="nilai_bea_keluar" name="nilai_bea_keluar" onkeypress="return hanyaAngka(event)">
                         </div>  
                       </div>
                      <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label" >Nilai Ekspor</label>
                       <div class="col-sm-4">
-                        <select id="DATA" class="form-select" onchange="updateInputValue2()" name="nilai_ekspor" id="nilai_ekspor">
+                        <input id="DATA" class="form-control" name="nilai_ekspor" id="nilai_ekspor" onkeypress="return hanyaAngka(event)">
+                        {{-- <select id="DATA" class="form-select" onchange="updateInputValue2()" name="nilai_ekspor" id="nilai_ekspor">
                           <option value=""></option>
                           <option value="50000000">Rp50.000.000</option>
                           <option value="250000000">Rp250.000.000</option>
                           <option value="500000000">Rp500.000.000</option>
                           <option value="5000000000">Rp5.000.000.000</option>
                           <option value="5000000000">Rp5.000.000.000.000</option>
-                      </select> 
+                      </select>  --}}
                       </div>
                       <div class="col-6"></div>       
                     </div>
                     <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label">Freight</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" name="freight" id="freight" onkeypress="return hanyaAngka(event)">
+                        <input type="text" class="form-control" name="freight" id="freight">
                       </div>
                       <div class="col-6"></div>
                     </div>
