@@ -106,14 +106,19 @@ $Pemilik_barang2 = $Pemilik_barang->where('id_dokumen', $id);
                   </div>
   
                   Negara:<br><br>
-                  <div class="input-group mb-3 input1">
-                    <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pen">
-                      @foreach ($Penerima->where('id_dokumen', $id) as $he)
-                      <option value="{{$he->negara}}">{{$he->negara}}</option>
-                      <option value="SG - SINGAPURA">SG - SINGAPURA</option>
-                      @endforeach
-                    </select>
-                  </div>
+                <div class="form-group">
+      <select name="kantor_ekspor" class="form-control @error('kantor_ekspor') is-invalid @enderror">
+          @foreach ($Penerima->where('id_dokumen', $id) as $he)
+              <option value="{{ $he->negara }}" selected>{{ $he->negara }}</option>
+          @endforeach
+              <option value="SG - SINGAPURA">
+                SG - SINGAPURA 
+              </option>
+      </select>
+      @error('kantor_ekspor')
+          <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
+  </div>
                 </td>
               </tr>
             </tbody>
@@ -146,14 +151,19 @@ $Pemilik_barang2 = $Pemilik_barang->where('id_dokumen', $id);
                     </div>
     
                     Negara:<br><br>
-                    <div class="input-group mb-3 input1">
-                      <select id="kantor_pabean_muat_asal" class="form-control" placeholder="Nama" aria-label="Username" aria-describedby="basic-addon1" name="negara_pem">
-                        @foreach ($Pembeli->where('id_dokumen', $id) as $he)
-                        <option value="{{$he->negara}}">{{$he->negara}}</option>
-                        <option value="SG - SINGAPURA">SG - SINGAPURA</option>
-                        @endforeach
+                    <div class="form-group">
+                      <select name="kantor_ekspor" class="form-control @error('kantor_ekspor') is-invalid @enderror">
+                          @foreach ($Pembeli->where('id_dokumen', $id) as $he)
+                              <option value="{{ $he->negara }}" selected>{{ $he->negara }}</option>
+                          @endforeach
+                              <option value="SG - SINGAPURA">
+                                SG - SINGAPURA 
+                              </option>
                       </select>
-                    </div>
+                      @error('kantor_ekspor')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                      @enderror
+                  </div>
                   </td>
                 </tr>
               </tbody>

@@ -57,14 +57,9 @@ $Bank2 = $Bank->where('id_dokumen', $id);
             <label for="input1" class="col-sm-2 col-form-label">Valuta</label>
             <div class="col-sm-4">
               <input type="text" name="id" class="inv" value="{{$id}}"></input>
-                <select id="rupiah1" class="form-select" onchange="updateInputValue()" name="valuta">
-                  @foreach ($InformasiPembayaran->where('id', $id) as $b)
-                  <option value="{{$b->valuta}}">{{$b->valuta}}</option>
-                  @endforeach
-                  @foreach ($Valuta as $v)
-                      <option value="<?php echo $v->nama ?>"><?php echo $v->nama ?></option>
-                  @endforeach
-                </select>
+              @foreach ($InformasiPembayaran->where('id', $id) as $b)
+              <input class="form-control" name="valuta" value="{{$b->valuta}}">
+          @endforeach          
             </div>
             <label for="input1" class="col-sm-2 col-form-label ">Nilai Maklan</label>
             <div class="col-sm-4">
@@ -77,11 +72,11 @@ $Bank2 = $Bank->where('id_dokumen', $id);
           <label for="input1" class="col-sm-2 col-form-label">NDPMB</label>
           <div class="col-sm-4"> 
             @foreach ($InformasiPembayaran->where('id', $id) as $d)
-            <input type="text" class="form-control" id="rupiah2" name="NDPMB" id="ndpmb" value="{{$d->NDPMB}}" readonly>
+            <input type="text" class="form-control" id="rupiah2" name="NDPMB" id="ndpmb" value="{{$d->NDPMB}}" onkeypress="return hanyaAngka(event)">
           </div>
           <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox" id="pphCheckbox" onchange="updatePphValue()"> PPh</label>
           <div class="col-sm-4">
-            <input type="text" class="form-control" id="DATA2" name="pph" value="{{$d->pph}}" readonly>
+            <input type="text" class="form-control" id="DATA2" name="pph" value="{{$d->pph}}" onkeypress="return hanyaAngka(event)" >
             @endforeach
           </div>       
         </div>
@@ -100,23 +95,16 @@ $Bank2 = $Bank->where('id_dokumen', $id);
           <label for="input1" class="col-sm-2 col-form-label ">Nilai Bea Keluar </label>
           <div class="col-sm-4">
             @foreach ($InformasiEkspor->where('id', $id) as $g)
-            <input type="text" class="form-control" id="nilai_bea_keluar" name="nilai_bea_keluar" value="{{$g->nilai_bea_keluar}}" readonly>
+            <input type="text" class="form-control" id="nilai_bea_keluar" name="nilai_bea_keluar" value="{{$g->nilai_bea_keluar}}" onkeypress="return hanyaAngka(event)" >
             @endforeach
           </div>  
         </div>
        <div class="form-group row my-4">
         <label for="input1" class="col-sm-2 col-form-label" >Nilai Ekspor</label>
         <div class="col-sm-4">
-          <select id="DATA" class="form-select" onchange="updateInputValue2()" name="nilai_ekspor" id="nilai_ekspor">
-            @foreach ($InformasiPembayaran->where('id', $id) as $h)
-            <option value="{{$h->nilai_ekspor}}">{{$h->nilai_ekspor}}</option>
-            @endforeach
-            <option value="50000000">Rp50.000.000</option>
-            <option value="250000000">Rp250.000.000</option>
-            <option value="500000000">Rp500.000.000</option>
-            <option value="5000000000">Rp5.000.000.000</option>
-            <option value="5000000000">Rp5.000.000.000.000</option>
-        </select> 
+          @foreach ($InformasiPembayaran->where('id', $id) as $h)
+          <input id="DATA" class="form-control" name="nilai_ekspor" id="nilai_ekspor" onkeypress="return hanyaAngka(event)" value="{{$h->nilai_ekspor}}">
+          @endforeach
         </div>
         <div class="col-6"></div>       
       </div>
@@ -124,7 +112,7 @@ $Bank2 = $Bank->where('id_dokumen', $id);
         <label for="input1" class="col-sm-2 col-form-label">Freight</label>
         <div class="col-sm-4">
           @foreach ($InformasiPembayaran->where('id', $id) as $i)
-          <input type="text" class="form-control" name="freight" id="freight" onkeypress="return hanyaAngka(event)" value="{{$i->freight}}">
+          <input type="text" class="form-control" name="freight" id="freight" value="{{$i->freight}}">
           @endforeach
         </div>
         <div class="col-6"></div>
@@ -257,14 +245,9 @@ $Bank2 = $Bank->where('id_dokumen', $id);
                         <div class="form-group row ">
                           <label for="input1" class="col-sm-2 col-form-label">Valuta</label>
                           <div class="col-sm-4">
-                              <select id="rupiah1" class="form-select" onchange="updateInputValue()" name="valuta">
-                                @foreach ($InformasiPembayaran->where('id', $id) as $b)
-                                <option value="{{$b->valuta}}">{{$b->valuta}}</option>
-                                @endforeach
-                                @foreach ($Valuta as $v)
-                                    <option value="<?php echo $v->nama ?>"><?php echo $v->nama ?></option>
-                                @endforeach
-                              </select>
+                            @foreach ($InformasiPembayaran->where('id', $id) as $b)
+                            <input class="form-control" name="valuta" value="{{$b->valuta}}">
+                        @endforeach   
                           </div>
                           <label for="input1" class="col-sm-2 col-form-label ">Nilai Maklan</label>
                           <div class="col-sm-4">
@@ -277,11 +260,11 @@ $Bank2 = $Bank->where('id_dokumen', $id);
                         <label for="input1" class="col-sm-2 col-form-label">NDPMB</label>
                         <div class="col-sm-4"> 
                           @foreach ($InformasiPembayaran->where('id', $id) as $d)
-                          <input type="text" class="form-control" id="rupiah2" name="NDPMB" id="ndpmb" value="{{$d->NDPMB}}" readonly>
+                          <input type="text" class="form-control" id="rupiah2" name="NDPMB" id="ndpmb" value="{{$d->NDPMB}}" onkeypress="return hanyaAngka(event)">
                         </div>
-                        <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox" id="pphCheckbox" onchange="updatePphValue()"> PPh</label>
+                        <label for="input1" class="col-sm-2 col-form-label "><input type="checkbox" id="pphCheckbox"> PPh</label>
                         <div class="col-sm-4">
-                          <input type="text" class="form-control" id="DATA2" name="pph" value="{{$d->pph}}" readonly>
+                          <input type="text" class="form-control" id="DATA2" name="pph" value="{{$d->pph}}" onkeypress="return hanyaAngka(event)" >
                           @endforeach
                         </div>       
                       </div>
@@ -300,23 +283,16 @@ $Bank2 = $Bank->where('id_dokumen', $id);
                         <label for="input1" class="col-sm-2 col-form-label ">Nilai Bea Keluar </label>
                         <div class="col-sm-4">
                           @foreach ($InformasiEkspor->where('id', $id) as $g)
-                          <input type="text" class="form-control" id="nilai_bea_keluar" name="nilai_bea_keluar" value="{{$g->nilai_bea_keluar}}" readonly>
+                          <input type="text" class="form-control" id="nilai_bea_keluar" name="nilai_bea_keluar" value="{{$g->nilai_bea_keluar}}" onkeypress="return hanyaAngka(event)" >
                           @endforeach
                         </div>  
                       </div>
                      <div class="form-group row my-4">
                       <label for="input1" class="col-sm-2 col-form-label" >Nilai Ekspor</label>
                       <div class="col-sm-4">
-                        <select id="DATA" class="form-select" onchange="updateInputValue2()" name="nilai_ekspor" id="nilai_ekspor">
-                          @foreach ($InformasiPembayaran->where('id', $id) as $h)
-                          <option value="{{$h->nilai_ekspor}}">{{$h->nilai_ekspor}}</option>
-                          @endforeach
-                          <option value="50000000">Rp50.000.000</option>
-                          <option value="250000000">Rp250.000.000</option>
-                          <option value="500000000">Rp500.000.000</option>
-                          <option value="5000000000">Rp5.000.000.000</option>
-                          <option value="5000000000">Rp5.000.000.000.000</option>
-                      </select> 
+                        @foreach ($InformasiPembayaran->where('id', $id) as $h)
+                        <input id="DATA" class="form-control" name="nilai_ekspor" id="nilai_ekspor" onkeypress="return hanyaAngka(event)" value="{{$h->nilai_ekspor}}">
+                        @endforeach
                       </div>
                       <div class="col-6"></div>       
                     </div>
@@ -324,7 +300,7 @@ $Bank2 = $Bank->where('id_dokumen', $id);
                       <label for="input1" class="col-sm-2 col-form-label">Freight</label>
                       <div class="col-sm-4">
                         @foreach ($InformasiPembayaran->where('id', $id) as $i)
-                        <input type="text" class="form-control" name="freight" id="freight" onkeypress="return hanyaAngka(event)" value="{{$i->freight}}">
+                        <input type="text" class="form-control" name="freight" id="freight" value="{{$i->freight}}">
                         @endforeach
                       </div>
                       <div class="col-6"></div>
