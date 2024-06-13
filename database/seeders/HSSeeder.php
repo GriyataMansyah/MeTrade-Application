@@ -76,54 +76,94 @@ public function run(): void
         $this->call(DataMasterSeeder::class);
         $data = DataMaster::first();
         HS::create([
-            "nama"=>"1 - Binatang Hidup Dan Produk Dari Binatang",
+            "nama"=>"05010000 - Rambut manusia, tidak dikerjakan, dicuci atau digosok maupun tidak; sisa rambut manusia",
             "id_data_master" => $data->id,
         ]);
 
         HS::create([
-            "nama"=>"2 - Produk Sayuran, Baik Yang Bisa Di Makan atau tidak",
+            "nama"=>"05021000 - Bulu dan bulu kasar serta sisanya dari babi, babi ternak atau babi hutan",
             "id_data_master" => $data->id,
         ]);
         
         HS::create([
-            "nama"=>"3 - Lemak Dan Minyak Hewani Dan Nabati Yang Terbuat dari padanya",
+            "nama"=>"050510 - Bulu unggas dari jenis yang digunakan untuk bahan pengisi bulu halus",
             "id_data_master" => $data->id,
         ]);
         
         HS::create([
-            "nama"=>"4 - Produk Minuman, Minuman Keras, Cuka Dan Tembakau",
+            "nama"=>"05051010 - Bulu Bebebk",
             "id_data_master" => $data->id,
         ]);
 
         HS::create([
-            "nama"=>"5 - Produk Mineral",
+            "nama"=>"05051090 - Bulu unggas dari jenis yang digunakan untuk bahan pengisi bulu halus (Lainnya)",
             "id_data_master" => $data->id,
         ]);
 
         HS::create([
-            "nama"=>"6 - Produk Mineral ",
+            "nama"=>"05061000 - Osein dan tulang dikerjakan dengan asam ",
             "id_data_master" => $data->id,
         ]);
 
         HS::create([
-            "nama"=>"7 - Produk Kimia",
+            "nama"=>"05069000 - Osein dan tulang dikerjakan dengan asam (Lainnya)",
             "id_data_master" => $data->id,
         ]);
 
         HS::create([
-            "nama"=>"8 - Plastik Dan Produk Dari Plastik Dan Karet",
+            "nama"=>"05071000 - Gading, Bubuk Gading Dan Sisanya.",
             "id_data_master" => $data->id,
         ]);
 
         HS::create([
-            "nama"=>"9 - Jangkat Dan Kulit",
+            "nama"=>"05079020 - Tempurung Kura - Kura",
             "id_data_master" => $data->id,
         ]);
 
         HS::create([
-            "nama"=>"10 - Barang ",
+            "nama"=>"05080020 - Cangkang moluska, krustasea atau enchinodermata ",
             "id_data_master" => $data->id,
         ]);    
+
+        HS::create([
+            "nama"=>"05111000 - Mani Dari Binatang Jenis Lembu ",
+            "id_data_master" => $data->id,
+        ]); 
+
+        HS::create([
+            "nama"=>"051191 - Produk dari ikan atau krustasea, moluska atau invertebrata air lainnya; binatang mati",
+            "id_data_master" => $data->id,
+        ]); 
+
+        HS::create([
+            "nama"=>"05119110 - Telur Dan Sperma",
+            "id_data_master" => $data->id,
+        ]); 
+
+        HS::create([
+            "nama"=>"05119120 - Telur Artemia",
+            "id_data_master" => $data->id,
+        ]); 
+
+        HS::create([
+            "nama"=>"05119130 - Kulit Ikan",
+            "id_data_master" => $data->id,
+        ]); 
+
+        HS::create([
+            "nama"=>"05119910 - Mani Dari Binatang Peliharaan",
+            "id_data_master" => $data->id,
+        ]); 
+
+        HS::create([
+            "nama"=>"05119920 - Telur Ulat Sutra",
+            "id_data_master" => $data->id,
+        ]); 
+
+        HS::create([
+            "nama"=>"05119930 - Sponge Alami",
+            "id_data_master" => $data->id,
+        ]); 
 
 }
 }
