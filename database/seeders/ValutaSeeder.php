@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\valuta;
+use App\Models\Valuta;
 use App\Models\DataMaster;
 use Illuminate\Database\Seeder;
 use Database\Seeders\DataMasterSeeder;
