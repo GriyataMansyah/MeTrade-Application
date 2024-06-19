@@ -13,7 +13,7 @@ class Akun extends Model implements Authenticatable
 
     public $timestamps = false;
     
-    protected $table = "Akuns";
+    protected $table = "akuns";
 
     protected $fillable = [
         "username", "password", "level"

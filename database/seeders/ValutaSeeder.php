@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\valuta;
+use App\Models\Valuta;
 use App\Models\DataMaster;
 use Illuminate\Database\Seeder;
 use Database\Seeders\DataMasterSeeder;
@@ -17,7 +17,7 @@ class ValutaSeeder extends Seeder
     {
         $this->call(DataMasterSeeder::class);
         $data = DataMaster::first();
-        valuta::create([
+        Valuta::create([
             "nama"=>"Rupiah",
             "id_data_master" => $data->id,
         ]);
