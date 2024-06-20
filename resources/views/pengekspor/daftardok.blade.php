@@ -1,6 +1,6 @@
 <?php
 $Auth = Auth::id();
-$loggedInUserId = \App\Models\pengekspor::where('id_akun', $Auth)->value('id');
+$loggedInUserId = \App\Models\Pengekspor::where('id_akun', $Auth)->value('id');
 $Dokumen1 = \App\Models\Dokumen::where('id_pengekspor', $loggedInUserId)->pluck('id');
 $Dokumen = \App\Models\Dokumen::whereIn('id', $Dokumen1)->get();
 
