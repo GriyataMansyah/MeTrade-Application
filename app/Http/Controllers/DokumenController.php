@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Akun;
-use App\Models\dokumen;
+use App\Models\Dokumen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Pengekspor;
